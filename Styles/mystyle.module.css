@@ -1,0 +1,106 @@
+.Logomain{
+    width:80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Logomain img{
+    width:100%;
+}
+.Logomain small{
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.LoginBox{
+    padding:20px;
+    background-color: red;
+
+}
+.inputlogin{
+    min-width: 300px;
+    margin: 20px;
+}
+.Catgrid{
+cursor: pointer;
+}
+.Catgrid:hover{
+    border: 1px dashed #5569ff;
+}
+.min100vh{
+    margin-top: 20px;
+    min-height: 100vh;
+}
+.featuresimagebox{
+    padding:10px;
+    border-radius: 10px;
+    border: 1px dashed rgb(211, 199, 199);
+    display: flex;
+    align-items: center;
+
+}
+.featuresimageboxA{
+    width:50%;
+    text-align: center;
+}
+.ItemList{
+    margin: 10px;
+    border: 1px solid rgb(233, 222, 222);
+    padding: 10px;
+    border-radius: 10px;
+}
+.ItemListBox{
+    display: flex;
+}
+.ItemListBoxA{
+    max-width: 200px;
+}
+.ItemListBoxB{
+    margin-left: 10px;
+}
+.ItemListBoxB h3{
+    margin: 0;
+}
+
+.OptionItem {
+    margin: 10px;
+    border: 1px solid rgb(233, 222, 222);
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.OptionItem:hover{
+    color: rgb(214, 95, 95);
+}
+.OptionItemBox{
+    display: flex;
+    align-items: center;
+}
+.OptionItemBoxA{
+width: 100%;
+}
+.OptionItemBoxB{
+    margin-left: 10px;
+width: fit-content;
+}
+
+.OptionItemBox h3{
+margin: 0;
+}
+.OptionItemBox span{
+    color: blue;
+    font-size: 12px;
+}
+.Modalheader{
+    display: flex;
+    align-items: center;
+   
+}
+.ModalheaderText{
+    margin-left: 10px;
+    font-weight: bold;
+}
+.Curserpointer{
+    cursor: pointer;
+}
