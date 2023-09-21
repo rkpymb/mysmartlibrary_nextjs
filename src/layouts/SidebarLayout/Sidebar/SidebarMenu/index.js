@@ -13,25 +13,8 @@ import {
 import NextLink from 'next/link';
 import { SidebarContext } from 'src/contexts/SidebarContext';
 
-import DesignServicesTwoToneIcon from '@mui/icons-material/DesignServicesTwoTone';
-import BrightnessLowTwoToneIcon from '@mui/icons-material/BrightnessLowTwoTone';
-import MmsTwoToneIcon from '@mui/icons-material/MmsTwoTone';
-import TableChartTwoToneIcon from '@mui/icons-material/TableChartTwoTone';
-import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
-import BallotTwoToneIcon from '@mui/icons-material/BallotTwoTone';
-import BeachAccessTwoToneIcon from '@mui/icons-material/BeachAccessTwoTone';
-import EmojiEventsTwoToneIcon from '@mui/icons-material/EmojiEventsTwoTone';
-import FilterVintageTwoToneIcon from '@mui/icons-material/FilterVintageTwoTone';
-import HowToVoteTwoToneIcon from '@mui/icons-material/HowToVoteTwoTone';
-import LocalPharmacyTwoToneIcon from '@mui/icons-material/LocalPharmacyTwoTone';
-import RedeemTwoToneIcon from '@mui/icons-material/RedeemTwoTone';
-import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
-import TrafficTwoToneIcon from '@mui/icons-material/TrafficTwoTone';
-import CheckBoxTwoToneIcon from '@mui/icons-material/CheckBoxTwoTone';
-import ChromeReaderModeTwoToneIcon from '@mui/icons-material/ChromeReaderModeTwoTone';
-import WorkspacePremiumTwoToneIcon from '@mui/icons-material/WorkspacePremiumTwoTone';
-import CameraFrontTwoToneIcon from '@mui/icons-material/CameraFrontTwoTone';
-import DisplaySettingsTwoToneIcon from '@mui/icons-material/DisplaySettingsTwoTone';
+
+import { LuHome, LuLayoutGrid, LuInspect, LuListOrdered, LuTrophy, LuLayoutList } from "react-icons/lu";
 
 const MenuWrapper = styled(Box)(
   ({ theme }) => `
@@ -186,14 +169,25 @@ function SidebarMenu() {
        
         <List
           component="div"
-          subheader={
-            <ListSubheader component="div" disableSticky>
-              Dashboards
-            </ListSubheader>
-          }
+          
         >
           <SubMenuWrapper>
             <List component="div">
+              <ListItem component="div">
+                <NextLink href="/" passHref>
+                  <Button
+                    className={
+                      currentRoute === '/' ? 'active' : ''
+                    }
+                    disableRipple
+                    component="a"
+                    onClick={closeSidebar}
+                    startIcon={<LuHome />}
+                  >
+                    Home Page
+                  </Button>
+                </NextLink>
+              </ListItem>
               <ListItem component="div">
                 <NextLink href="/dashboards/main" passHref>
                   <Button
@@ -203,24 +197,85 @@ function SidebarMenu() {
                     disableRipple
                     component="a"
                     onClick={closeSidebar}
-                    startIcon={<BrightnessLowTwoToneIcon />}
+                    startIcon={<LuLayoutGrid />}
                   >
                     Dashboard
                   </Button>
                 </NextLink>
               </ListItem>
+            
               <ListItem component="div">
-                <NextLink href="/Academics/main" passHref>
+                <NextLink href="/StudyMaterials/" passHref>
                   <Button
                     className={
-                      currentRoute === '/Academics/main' ? 'active' : ''
+                      currentRoute === '/StudyMaterials' ? 'active' : ''
+                    }
+                    disableRipple
+                    component="a"
+                    onClick={closeSidebar}
+                    startIcon={<LuInspect />}
+                  >
+                    Study Materials
+                  </Button>
+                </NextLink>
+              </ListItem>
+              <ListItem component="div">
+                <NextLink href="/MyTS/" passHref>
+                  <Button
+                    className={
+                      currentRoute === '/MyTS' ? 'active' : ''
+                    }
+                    disableRipple
+                    component="a"
+                    onClick={closeSidebar}
+                    startIcon={<LuListOrdered />}
+                  >
+                    My Test Series
+                  </Button>
+                </NextLink>
+              </ListItem>
+              {/* <ListItem component="div">
+                <NextLink href="/MyCourses/" passHref>
+                  <Button
+                    className={
+                      currentRoute === '/MyCourses' ? 'active' : ''
                     }
                     disableRipple
                     component="a"
                     onClick={closeSidebar}
                     startIcon={<EmojiEventsTwoToneIcon />}
                   >
-                    Academics
+                    My Courses
+                  </Button>
+                </NextLink>
+              </ListItem> */}
+              <ListItem component="div">
+                <NextLink href="/Results/" passHref>
+                  <Button
+                    className={
+                      currentRoute === '/Results' ? 'active' : ''
+                    }
+                    disableRipple
+                    component="a"
+                    onClick={closeSidebar}
+                    startIcon={<LuTrophy />}
+                  >
+                    My Results
+                  </Button>
+                </NextLink>
+              </ListItem>
+              <ListItem component="div">
+                <NextLink href="/Orders/" passHref>
+                  <Button
+                    className={
+                      currentRoute === '/Orders' ? 'active' : ''
+                    }
+                    disableRipple
+                    component="a"
+                    onClick={closeSidebar}
+                    startIcon={<LuLayoutList />}
+                  >
+                    My Orders
                   </Button>
                 </NextLink>
               </ListItem>

@@ -7,6 +7,8 @@ const FooterWrapper = styled(Container)(
 );
 
 function Footer() {
+  const date = new Date();
+  const year = date.getFullYear();
   return (
     <FooterWrapper className="footer-wrapper">
       <Box
@@ -18,10 +20,10 @@ function Footer() {
       >
         <Box>
           <Typography variant="subtitle1">
-            &copy; 2022 - Tokyo Free White Next.js Javascript Admin Dashboard
+            &copy; {year} - supermarks.in. all rights reserved
           </Typography>
         </Box>
-        <Typography
+        {/* <Typography
           sx={{
             pt: { xs: 2, md: 0 }
           }}
@@ -35,7 +37,7 @@ function Footer() {
           >
             BloomUI.com
           </Link>
-        </Typography>
+        </Typography> */}
       </Box>
     </FooterWrapper>
   );

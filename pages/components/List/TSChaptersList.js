@@ -39,9 +39,11 @@ function RecentOrders({ tsid }) {
 
     const [Retdata, setRetdata] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [JWTtoken, setJWTtoken] = useState(true);
     const router = useRouter()
     useEffect(() => {
-
+        const Tk = localStorage.getItem('Token');
+        setJWTtoken(Tk)
         const handleSubmit = async () => {
             const sendUM = { tsid: tsid }
             const data = await fetch("/api/V3/List/TSChaptersList", {
@@ -86,9 +88,9 @@ function RecentOrders({ tsid }) {
                                             <EditTSChaptersmodal ProductData={item} Chapterid={tsid} />
                                             <div style={{ minWidth:'10px'}}></div>
                                             <div style={{ minWidth: '10px' }}></div>
-                                            <Link href={`/TSChapterQues/${item._id}`}>
+                                            <Link href={`/TSPlayGround/${item._id}/${tsid}/${JWTtoken}`}>
                                                 <Button size='small' variant="outlined" startIcon={<ListIcon />}>
-                                                 Questions
+                                                 Attempt now
                                                 </Button>
                                             </Link>
 

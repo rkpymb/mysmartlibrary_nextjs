@@ -1,9 +1,9 @@
 import { Typography, Avatar, Grid, useTheme } from '@mui/material';
 
-function PageHeader() {
+function PageHeader({ UData }) {
   const user = {
-    name: 'Catherine Pike',
-    avatar: '/static/images/avatars/1.jpg'
+    name: UData.name,
+    avatar: '/userdp.png'
   };
   const theme = useTheme();
 
@@ -25,9 +25,12 @@ function PageHeader() {
         <Typography variant="h3" component="h3" gutterBottom>
           Welcome, {user.name}!
         </Typography>
-        <Typography variant="subtitle2">
-          Today is a good day to start trading crypto assets!
-        </Typography>
+        <div>
+          <small> {UData.mobile}</small>
+        </div>
+        <div>
+          <small>{UData.email}</small>
+        </div>
       </Grid>
     </Grid>
   );

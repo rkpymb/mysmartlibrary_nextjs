@@ -8,6 +8,7 @@ export const DomainURL = 'supermarks.in';
 export const CryptoJSKEY = 'XYZ';
 export const RazorPayKeyid = 'rzp_test_2OIlpARet0GTeY'
 export const RazorPaySecretkey = 'OugT3Qa77k6drclGr1yjXyip'
+export const MYKEY = '86afb51e932292b013a62196f4181f6e'
 
 export const SocialHandles = {
     Facebook: 'https://www.facebook.com/supermarks',
@@ -21,7 +22,5 @@ export const Contactinfo = {
     MainMobile: '+91 0000000000',
     MainAddress: '3rd Floor, Bhabua, kaimur, Bihar, 821101 IN.',
     ContactEmail: 'hi@supermarks.in',
-   
-
 };
 

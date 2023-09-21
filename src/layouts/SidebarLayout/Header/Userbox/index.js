@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
 
+import { useState, useEffect, useContext, useRef } from 'react';
 import NextLink from 'next/link';
-
+import CheckloginContext from '../../../../../context/auth/CheckloginContext'
 import {
   Avatar,
   Box,
@@ -61,7 +61,7 @@ const UserBoxDescription = styled(Typography)(
 function HeaderUserbox() {
   const user = {
     name: 'Catherine Pike',
-    avatar: '/static/images/avatars/1.jpg',
+    avatar: '/userdp.png',
     jobtitle: 'Project Manager'
   };
 
@@ -70,21 +70,31 @@ function HeaderUserbox() {
 
   const handleOpen = () => {
     setOpen(true);
+
+  };
+
+  const LogOut = () => {
+    const confirmation = confirm("Do you Really want to log out?");
+    if (confirmation) {
+      localStorage.clear();
+      alert("You are Logged Out");
+      location.reload();
+    }
   };
 
   const handleClose = () => {
     setOpen(false);
   };
-
+  const Contextdata = useContext(CheckloginContext)
   return (
     <>
       <UserBoxButton color="secondary" ref={ref} onClick={handleOpen}>
         <Avatar variant="rounded" alt={user.name} src={user.avatar} />
         <Hidden mdDown>
           <UserBoxText>
-            <UserBoxLabel variant="body1">Admin</UserBoxLabel>
+            <UserBoxLabel variant="body1">{Contextdata.Data.name}</UserBoxLabel>
             <UserBoxDescription variant="body2">
-              Main Controlls
+              Online
             </UserBoxDescription>
           </UserBoxText>
         </Hidden>
@@ -108,9 +118,9 @@ function HeaderUserbox() {
         <MenuUserBox sx={{ minWidth: 210 }} display="flex">
           <Avatar variant="rounded" alt={user.name} src={user.avatar} />
           <UserBoxText>
-            <UserBoxLabel variant="body1">Admin</UserBoxLabel>
+            <UserBoxLabel variant="body1">{Contextdata.Data.name}</UserBoxLabel>
             <UserBoxDescription variant="body2">
-              Main Controlls
+             Online
             </UserBoxDescription>
           </UserBoxText>
         </MenuUserBox>
@@ -122,22 +132,22 @@ function HeaderUserbox() {
               <ListItemText primary="My Profile" />
             </ListItem>
           </NextLink>
-          <NextLink href="/applications/messenger" passHref>
+          {/* <NextLink href="/applications/messenger" passHref>
             <ListItem button>
               <InboxTwoToneIcon fontSize="small" />
               <ListItemText primary="Messenger" />
             </ListItem>
-          </NextLink>
-          <NextLink href="/management/profile/settings" passHref>
+          </NextLink> */}
+          {/* <NextLink href="/management/profile/settings" passHref>
             <ListItem button>
               <AccountTreeTwoToneIcon fontSize="small" />
               <ListItemText primary="Account Settings" />
             </ListItem>
-          </NextLink>
+          </NextLink> */}
         </List>
         <Divider />
         <Box sx={{ m: 1 }}>
-          <Button color="primary" fullWidth>
+          <Button color="primary" fullWidth onClick={LogOut}>
             <LockOpenTwoToneIcon sx={{ mr: 1 }} />
             Sign out
           </Button>

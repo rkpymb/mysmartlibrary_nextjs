@@ -7,13 +7,21 @@ import {
   Button,
   styled
 } from '@mui/material';
+
 import BaseLayout from 'src/layouts/BaseLayout';
+import Mstyles from '../Styles/home.module.css'
 import CheckloginContext from '../context/auth/CheckloginContext'
 import Link from 'src/components/Link';
 import Head from 'next/head';
-import LoginBox from './components/Login/LoginBox'
-import Logo from 'src/components/LogoSign';
-import Hero from 'src/content/Overview/Hero';
+import Navbarmain from '../src/components/Parts/Navbarmain'
+import HeroBox from '../src/components/Parts/HeroBox'
+import HeroBoxTwo from '../src/components/Parts/HeroBoxTwo'
+import HeroBoxThree from '../src/components/Parts/HeroBoxThree'
+import HeroBoxFour from '../src/components/Parts/HeroBoxFour'
+import HeroBoxFive from '../src/components/Parts/HeroBoxFive'
+import AppHeroBox from '../src/components/Parts/AppHeroBox'
+import Footer from '../src/components/Parts/Footer'
+import ReviewBox from '../src/components/Parts/ReviewBox'
 import { useRouter, useParams } from 'next/router'
 const HeaderWrapper = styled(Card)(
   ({ theme }) => `
@@ -42,58 +50,80 @@ function Overview() {
     setLoading(false)
     if (Contextdata.IsLogin == true) {
       // router.push('/dashboards/main')
+    } else {
+      // router.push('/Login')
     }
    
   });
   return (
     <OverviewWrapper>
       <Head> 
-        <title>Admin Panel : SuperMarks</title>
+        <title>SuperMarks.in</title>
       </Head>
-      <HeaderWrapper>
-        <Container maxWidth="lg">
-          <Box display="flex" alignItems="center">
-
-            <Logo />
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-              flex={1}
-            >
-              <Box />
-              <Box>
-                <Button
-                  component={Link}
-                  href="/dashboards/main"
-                  variant="contained"
-                  sx={{ ml: 2 }}
-                >
-                  Live Preview
-                </Button>
-              </Box>
-            </Box>
-          </Box>
-        </Container>
-      </HeaderWrapper>
-
-      {Loading &&
-        <p>Loading...</p>
-      }
+      <Navbarmain/>
       {!Loading &&
         <div>
-          {!Contextdata.IsLogin && 
-            <LoginBox />
-          }
-          {Contextdata.IsLogin && 
-            <Hero />
-          }
-      
+          <div className={Mstyles.container}>
+            <div className={Mstyles.OnlyDesktop}>
+              <div style={{ minHeight: '100px' }}></div>
+            </div>
+            <HeroBox />
+          </div>
+         
+         
+          <div className={Mstyles.HeroBoxTwoVBox}>
+            <div className={Mstyles.container}>
+              <HeroBoxTwo />
+            </div>
+          </div>
+          
+          <div className={Mstyles.container}>
+            <div className={Mstyles.OnlyDesktop}>
+              <div style={{ minHeight: '20px' }}></div>
+            </div>
+            <div className={Mstyles.mobilepadding}>
+              <HeroBoxThree />
+            </div>
+            
+          </div>
+          <div className={Mstyles.HeroBoxTwoVBox}>
+            <div className={Mstyles.container}>
+              <HeroBoxFour />
+            </div>
+          </div>
+          <div className={Mstyles.container}>
+            <div className={Mstyles.OnlyDesktop}>
+              <div style={{ minHeight: '20px' }}></div>
+            </div>
+            <div className={Mstyles.mobilepadding}>
+              <HeroBoxFive />
+            </div>
+
+          </div>
+          <div className={Mstyles.container}>
+            <div className={Mstyles.OnlyDesktop}>
+              <div style={{ minHeight: '20px' }}></div>
+            </div>
+            <div className={Mstyles.mobilepadding}>
+              <AppHeroBox />
+            </div>
+            <div style={{ minHeight: '50px' }}></div>
+          </div>
+
+          <div className={Mstyles.containerFull}>
+            <div className={Mstyles.OnlyDesktop}>
+              <div style={{ minHeight: '20px' }}></div>
+            </div>
+            <Footer />
+
+          </div>
+          
         </div>
+       
       }
 
-
-    
+     
+     
     </OverviewWrapper>
   );
 }

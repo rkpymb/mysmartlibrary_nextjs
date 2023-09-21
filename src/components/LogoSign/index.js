@@ -1,10 +1,12 @@
 import React from 'react'
-import Mys from '../../../Styles/mystyle.module.css'
+import Mstyle from '../../../Styles/home.module.css'
 const index = () => {
   return (
-    <div className={Mys.Logomain}>
-      <img src='https://supermarks.in/logo/logomain.png' alt='logo' />
-      <small>Admin Panel</small>
+    <div className={Mstyle.logomainDB}>
+      <div className={Mstyle.logomainDBimg}>
+        <img src='https://supermarks.in/logo/logomain.png' alt='logo' />
+      </div>
+      <span>Student Dashboard</span>
     </div>
   )
 }

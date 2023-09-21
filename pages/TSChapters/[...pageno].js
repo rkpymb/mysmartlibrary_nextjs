@@ -59,7 +59,7 @@ function DashboardCrypto(DataSlug) {
                     }}
                 >
                     <Typography variant="h3">Chapters</Typography>
-                    <AddTsChapters tsid={DataSlug.DataSlug} />
+                   
                 </Box>
                 <TSChaptersList tsid={DataSlug.DataSlug}/>
             </Container>
