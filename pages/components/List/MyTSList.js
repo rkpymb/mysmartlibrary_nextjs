@@ -9,7 +9,7 @@ import Image from 'next/image';
 import EditTSmodal from '../Edit/EditTSmodal'
 import DeleteCatModal from '../Edit/DeleteCatModal'
 import MYS from '../../../Styles/mystyle.module.css'
-import { DO_SPACES_URL, DO_SPACES_FOLDER } from '../../../Data/config'
+import { MediaFilesUrl, MediaFilesFolder } from '../../../Data/config'
 import Button from '@mui/material/Button';
 import ViewStreamIcon from '@mui/icons-material/ViewStream';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
@@ -98,7 +98,7 @@ function RecentOrders() {
                                 <div className={MYS.ItemListBox}>
                                     <div className={MYS.ItemListBoxA}>
                                         <Image
-                                            src={`${DO_SPACES_URL}${DO_SPACES_FOLDER}/${item.img}`}
+                                            src={`${MediaFilesUrl}${MediaFilesFolder}/${item.img}`}
                                             width={250}
                                             height={150}
                                             

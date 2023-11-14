@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { LuShare2 } from "react-icons/lu";
 import Mstyles from '../../../Styles/home.module.css'
-import { DO_SPACES_URL, DO_SPACES_FOLDER } from '../../../Data/config'
+import { MediaFilesUrl, MediaFilesFolder } from '../../../Data/config'
 
 
 import {
@@ -94,7 +94,7 @@ function RecentOrders() {
                                             <Image
                                                 placeholder='blur'
                                                 blurDataURL={blurredImageData}
-                                                src={`${DO_SPACES_URL}${DO_SPACES_FOLDER}/${item.img}`} alt="Vercel Logo" layout='fill' />
+                                                src={`${MediaFilesUrl}${MediaFilesFolder}/${item.img}`} alt="Vercel Logo" layout='fill' />
                                         </div>
 
                                         <div className={Mstyles.CourseItemsData}>

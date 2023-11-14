@@ -9,7 +9,7 @@ import Image from 'next/image';
 import EditTSChaptersmodal from '../Edit/EditTSChaptersmodal'
 import DeleteCatModal from '../Edit/DeleteCatModal'
 import MYS from '../../../Styles/mystyle.module.css'
-import { DO_SPACES_URL, DO_SPACES_FOLDER } from '../../../Data/config'
+import { MediaFilesUrl, MediaFilesFolder } from '../../../Data/config'
 import Button from '@mui/material/Button';
 import ViewStreamIcon from '@mui/icons-material/ViewStream';
 import ListIcon from '@mui/icons-material/List';

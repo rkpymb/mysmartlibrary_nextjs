@@ -18,9 +18,11 @@ const HeroBox = (props) => {
             </div>
             <div style={{ minHeight: '30px' }}></div>
             <div className={Mstyles.HeroBoxTwoItemBox}>
-                <div className={Mstyles.HeroBoxTwoItem} style={{ backgroundColor: '#b6ffe4'}}>
+                
+                  
+                <div className={Mstyles.HeroBoxTwoItem} style={{ backgroundColor: '#fce4ec' }}>
                     <div className={Mstyles.HeroBoxTwoItemIcon}>
-                        <Image src={`/icons/StudyNotes.webp`}
+                        <Image src={`/icons/StructuredCourses.webp`}
                             alt="image"
                             layout="responsive"
                             placeholder='blur'
@@ -32,15 +34,15 @@ const HeroBox = (props) => {
                         />
                     </div>
                     <div className={Mstyles.HeroBoxTwoItemText}>
-                        <span>Study Materials</span>
+                        <span>Structured Courses</span>
                     </div>
                     <div className={Mstyles.HeroBoxTwoItemDetails}>
-                        <span>With relevant content to help you prepare for exams in the best way</span>
+                        <span>With 1000+ courses you can prepare for every exam!</span>
                     </div>
                     <div className={Mstyles.BtnWithIcon}>
                         <div>
-                            <Link href='/StudyMaterials' style={{ textDecoration: 'none' }}>
-                                <span>Explore more</span>
+                            <Link href='/Courses' style={{ textDecoration: 'none' }}>
+                                <span>Enroll Now</span>
                             </Link>
                            
                         </div>
@@ -80,6 +82,37 @@ const HeroBox = (props) => {
                         </div>
                     </div>
                 </div>
+                <div className={Mstyles.HeroBoxTwoItem} style={{ backgroundColor: '#b6ffe4'}}>
+                    <div className={Mstyles.HeroBoxTwoItemIcon}>
+                        <Image src={`/icons/StudyNotes.webp`}
+                            alt="image"
+                            layout="responsive"
+                            placeholder='blur'
+                            width={100}
+                            height={100}
+                            quality={100}
+                            blurDataURL={blurredImageData}
+
+                        />
+                    </div>
+                    <div className={Mstyles.HeroBoxTwoItemText}>
+                        <span>Study Materials</span>
+                    </div>
+                    <div className={Mstyles.HeroBoxTwoItemDetails}>
+                        <span>With relevant content to help you prepare for exams in the best way</span>
+                    </div>
+                    <div className={Mstyles.BtnWithIcon}>
+                        <div>
+                            <Link href='/StudyMaterials' style={{ textDecoration: 'none' }}>
+                                <span>Explore more</span>
+                            </Link>
+                           
+                        </div>
+                        <div>
+                            <FiChevronRight size={15}/>
+                        </div>
+                    </div>
+                </div>
                 <div className={Mstyles.HeroBoxTwoItem} style={{ backgroundColor: '#fff0cb' }}>
                     <div className={Mstyles.HeroBoxTwoItemIcon} >
                         <Image src={`/icons/VideoLectures.webp`}
@@ -110,38 +143,7 @@ const HeroBox = (props) => {
                         </div>
                     </div>
                 </div>
-                
-                <div className={Mstyles.HeroBoxTwoItem} style={{ backgroundColor: '#fce4ec' }}>
-                    <div className={Mstyles.HeroBoxTwoItemIcon}>
-                        <Image src={`/icons/StructuredCourses.webp`}
-                            alt="image"
-                            layout="responsive"
-                            placeholder='blur'
-                            width={100}
-                            height={100}
-                            quality={100}
-                            blurDataURL={blurredImageData}
-
-                        />
-                    </div>
-                    <div className={Mstyles.HeroBoxTwoItemText}>
-                        <span>Structured Courses</span>
-                    </div>
-                    <div className={Mstyles.HeroBoxTwoItemDetails}>
-                        <span>With 1000+ courses you can prepare for every exam!</span>
-                    </div>
-                    <div className={Mstyles.BtnWithIcon}>
-                        <div>
-                            <Link href='/Courses' style={{ textDecoration: 'none' }}>
-                                <span>Enroll Now</span>
-                            </Link>
-                           
-                        </div>
-                        <div>
-                            <FiChevronRight size={15}/>
-                        </div>
-                    </div>
-                </div>
+              
                 <div className={Mstyles.HeroBoxTwoItem} style={{ backgroundColor: '#cddeff' }}>
                     <div className={Mstyles.HeroBoxTwoItemIcon}>
                         <Image src={`/icons/BookSummaries.webp`}

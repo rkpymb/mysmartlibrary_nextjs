@@ -1,6 +1,11 @@
 export const BASE_URL = 'https://server.supermarks.in/';
 export const DO_SPACES_URL = 'https://fmenew.sgp1.cdn.digitaloceanspaces.com/';
 export const DO_SPACES_FOLDER = 'Supermarks/content'
+
+export const MediaFilesUrl = 'http://localhost:3001/';
+export const MediaFilesFolder = 'images'
+
+
 export const API_URL = 'https://consultancy.itechpandas.com/';
 export const AppName = 'SuperMarks';
 export const AppDesc = 'Innovative Best Education for a Smarter Tomorrow : Best Courses in india, Exam Ready Online Courses';

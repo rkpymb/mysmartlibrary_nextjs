@@ -148,7 +148,7 @@ const HeroBox2 = () => {
 
                 </div>
                 <div className={Mstyles.HeroBox2B}>
-                    <img src='https://server.supermarks.in/Storage/img/imgss.png' />
+                    <img src='/courugg.png' />
                 </div>
             </div>
 

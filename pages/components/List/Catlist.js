@@ -8,7 +8,7 @@ import Label from 'src/components/Label';
 import Image from 'next/image';
 import EditCatModal from '../Edit/EditCatModal'
 
-import { DO_SPACES_URL, DO_SPACES_FOLDER } from '../../../Data/config'
+import { MediaFilesUrl, MediaFilesFolder } from '../../../Data/config'
 
 import {
     Tooltip,
@@ -85,7 +85,7 @@ function RecentOrders() {
                                         <TableCell>
                                             <div style={{maxWidth:'50px'}}>
                                                 <Image
-                                                    src={`${DO_SPACES_URL}${DO_SPACES_FOLDER}/${item.image}`}
+                                                    src={`${MediaFilesUrl}${MediaFilesFolder}/${item.image}`}
                                                     width={100}
                                                     height={100}
                                                     layout='responsive'
