@@ -10,6 +10,7 @@ body {
   height: 60px;
 }
 
+/* ok */
 .swiper-button-next::after {
   display: none;
 }
