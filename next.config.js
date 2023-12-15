@@ -1,14 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
+  
+  reactStrictMode: true,
   swcMinify: true,
+  
   images: {
     domains: ['img.youtube.com', 'localhost','api.driteducation.com'],
+    
   },
   eslint: {
     ignoreDuringBuilds: true,
   },
-  
+ 
+  trailingSlash:true,
   async redirects() {
     return [
       {
