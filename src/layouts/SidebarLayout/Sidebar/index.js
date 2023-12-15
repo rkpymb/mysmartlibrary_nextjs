@@ -1,7 +1,8 @@
 import { useContext } from 'react';
 import Scrollbar from 'src/components/Scrollbar';
 import { SidebarContext } from 'src/contexts/SidebarContext';
-
+import MYS from 'Styles/mystyle.module.css'
+import { AppVersionCode, DomainURL } from 'Data/config'
 import {
   Box,
   Drawer,
@@ -55,7 +56,7 @@ function Sidebar() {
       >
         <Scrollbar>
           <Box mt={3}>
-            
+
             <Box
               mx={2}
               sx={{
@@ -79,19 +80,13 @@ function Sidebar() {
             background: theme.colors.alpha.trueWhite[10]
           }}
         />
-        {/* <Box p={2}>
-          <Button
-            href="https://bloomui.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="contained"
-            color="success"
-            size="small"
-            fullWidth
-          >
-            Upgrade to PRO
-          </Button>
-        </Box> */}
+        <Box p={2}>
+          <div className={MYS.DbCopyrightbox}>
+            <div><span>© {new Date().getFullYear()} {DomainURL} All Rights Reserved.</span></div>
+            <div><span>V {AppVersionCode}</span></div>
+
+          </div>
+        </Box>
       </SidebarWrapper>
       <Drawer
         sx={{
@@ -131,6 +126,13 @@ function Sidebar() {
             />
             <SidebarMenu />
           </Scrollbar>
+          <Box p={2}>
+          <div className={MYS.DbCopyrightbox}>
+            <div><span>© {new Date().getFullYear()} {DomainURL} All Rights Reserved.</span></div>
+            <div><span>V {AppVersionCode}</span></div>
+
+          </div>
+        </Box>
         </SidebarWrapper>
       </Drawer>
     </>

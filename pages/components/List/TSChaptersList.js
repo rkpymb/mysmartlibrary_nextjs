@@ -1,115 +1,170 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Card } from '@mui/material';
-import CatTable from './Extra/CatTable';
-import { subDays } from 'date-fns';
+
+import Badge from '@mui/material/Badge';
 import { useRouter } from 'next/router'
-import Link from 'next/link';
-import Label from 'src/components/Label';
-import Image from 'next/image';
-import EditTSChaptersmodal from '../Edit/EditTSChaptersmodal'
-import DeleteCatModal from '../Edit/DeleteCatModal'
+
+
 import MYS from '../../../Styles/mystyle.module.css'
-import { MediaFilesUrl, MediaFilesFolder } from '../../../Data/config'
-import Button from '@mui/material/Button';
-import ViewStreamIcon from '@mui/icons-material/ViewStream';
-import ListIcon from '@mui/icons-material/List';
+
+import { FiChevronRight } from "react-icons/fi";
+import CheckloginContext from '../../../context/auth/CheckloginContext'
+import Nodatafound from '../Extra/Nodatafound'
+import Skeleton from '@mui/material/Skeleton';
+
 import {
-    Tooltip,
-    Divider,
-    Box,
-    FormControl,
-    InputLabel,
+   
+    styled,
 
     IconButton,
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TablePagination,
-    TableRow,
-    TableContainer,
-    Select,
-    MenuItem,
-    Typography,
+  
     useTheme,
-    CardHeader
+ 
 } from '@mui/material';
 
 function RecentOrders({ tsid }) {
-
+    const Contextdata = useContext(CheckloginContext)
     const [Retdata, setRetdata] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [JWTtoken, setJWTtoken] = useState(true);
+    const [JWTtokenFinal, setJWTtokenFinal] = useState(Contextdata.JwtToken);
     const router = useRouter()
+    const StyledBadge = styled(Badge)(({ theme }) => ({
+        '& .MuiBadge-badge': {
+            right: -3,
+            top: 13,
+            border: `2px solid ${theme.palette.background.paper}`,
+            padding: '0 4px',
+        },
+    }));
+
     useEffect(() => {
-        const Tk = localStorage.getItem('Token');
-        setJWTtoken(Tk)
-        const handleSubmit = async () => {
-            const sendUM = { tsid: tsid }
-            const data = await fetch("/api/V3/List/TSChaptersList", {
-                method: "POST",
-                headers: {
-                    'Content-type': 'application/json'
-                },
-                body: JSON.stringify(sendUM)
-            }).then((a) => {
-                return a.json();
-            })
-                .then((parsed) => {
-                    console.log(parsed.ReqD.AllChapters)
-                    setRetdata(parsed.ReqD.AllChapters)
-                    setIsLoading(false)
-                })
-        }
-        handleSubmit()
-
-
+        setTimeout(function () {
+            GetData()
+        }, 1000);
     }, [router.query])
+
+    const Demodata = [
+        {
+            id: 1
+        },
+        {
+            id: 2
+        }
+        ,
+        {
+            id: 3
+        }
+        ,
+        {
+            id: 4
+        }
+        ,
+        {
+            id: 5
+        }
+        ,
+        {
+            id: 6
+        }
+    ]
+
+
+    const GetData = async () => {
+        const sendUM = { tsid: tsid, JwtToken: Contextdata.JwtToken }
+        const data = await fetch("/api/V3/Students/TSChaptersList", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(sendUM)
+        }).then((a) => {
+            return a.json();
+        })
+            .then((parsed) => {
+
+                setRetdata(parsed.ReqD.AllChapters)
+                setIsLoading(false)
+            })
+    }
 
     const theme = useTheme();
 
     return (
 
-        <>
-            <Card>
-                {!isLoading &&
-                    <div>
-                        {Retdata.map((item, index) => {
-                            return <div className={MYS.ItemList} key={item._id}>
-                                <div className={MYS.ItemListBox}>
-                                   
-                                    <div className={MYS.ItemListBoxB}>
-                                        <h3>{index+1}. {item.title}</h3>
-                                       
-                                       
-                                        <div style={{minHeight:'20px'}}>
-                                            </div>
-                                        <div style={{ display: 'flex', alignItems: 'center'}}>
-                                            <EditTSChaptersmodal ProductData={item} Chapterid={tsid} />
-                                            <div style={{ minWidth:'10px'}}></div>
-                                            <div style={{ minWidth: '10px' }}></div>
-                                            <Link href={`/TSPlayGround/${item._id}/${tsid}/${JWTtoken}`}>
-                                                <Button size='small' variant="outlined" startIcon={<ListIcon />}>
-                                                 Attempt now
-                                                </Button>
-                                            </Link>
-
-                                        </div>
-                                    </div>
-                                </div>
+        <div>
 
 
+            {isLoading &&
+                <div className={MYS.Titleboxitem}>
+
+                    <Skeleton variant="text" sx={{ fontSize: '1.5rem' }} width={150} animation="wave" />
+                </div>
+            }
+            {!isLoading &&
+                <div className={MYS.Titleboxitem}>
+
+                    Chpaters  ({Retdata.length})
+                </div>
+            }
+
+            {isLoading &&
+                <div>
+                    {Demodata.map((item, index) => {
+                        return <div className={MYS.ChapterlistItem} key={index} >
+                            <div className={MYS.ChapterlistItemA}>
+                                <h3> <Skeleton variant="text" sx={{ fontSize: '1rem' }} width={200} animation="wave" /></h3>
+                                <Skeleton variant="text" sx={{ fontSize: '0.5rem' }} width={50} animation="wave" />
                             </div>
-                        }
+                            <div className={MYS.ChapterlistItemB}>
+                                <Skeleton variant="rectangular" width={70} height={20} animation="wave" />
+                            </div>
 
-                        )}
-                      
-                    </div>
+                        </div>
+                    }
+                    )}
+                </div>
+            }
+            {!isLoading &&
+                <div>
+                    {Retdata.length == 0 &&
+                        <Nodatafound
+                            Title={'No Study material or Pdf Notes Found'}
+                            Desc={'We will be add Study Material Soon Please Stay tuned and try after some time '}
 
-                }
-            </Card>
+                        />
+                    }
+                    {Retdata.length > 0 &&
+                        <div>
+                            {Retdata.map((item, index) => {
+                                return <div className={MYS.ChapterlistItem} key={item._id} onClick={() => router.push(`/TSPlayGround/${item._id}/${tsid}/${JWTtokenFinal}`)}>
+                                    <div className={MYS.ChapterlistItemA}>
+                                        <h3>{index + 1}. {item.title}</h3>
 
-        </>
+                                    </div>
+
+                                    <div className={MYS.ChapterlistItemB}>
+
+                                        <IconButton aria-label="cart" onClick={() => router.push(`/TSPlayGround/${item._id}/${tsid}/${JWTtokenFinal}`)}>
+                                            <StyledBadge color="secondary" >
+                                                <FiChevronRight />
+                                            </StyledBadge>
+                                        </IconButton>
+
+
+                                    </div>
+
+                                </div>
+                            }
+
+                            )}
+                        </div>
+                    }
+
+
+                </div>
+
+            }
+
+        </div>
     );
 }
 

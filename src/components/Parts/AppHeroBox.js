@@ -2,12 +2,13 @@ import * as React from 'react';
 import styles from '../../../Styles/home.module.css'
 import Link from 'next/link';
 import Image from 'next/image'
-
+import { FiDownload } from "react-icons/fi";
+import LoadingButton from '@mui/lab/LoadingButton';
 import Icon1 from '../../../public/img/icon/explore-pass-trophy.svg'
 import Icon2 from '../../../public/img/icon/explore-pass-test.svg'
 import Icon3 from '../../../public/img/icon/explore-pass-poll.svg'
 import Icon4 from '../../../public/img/icon/explore-pass-lang.svg'
-import { BASE_URL, AppName } from '../../../Data/config';
+import { SocialHandles, AppName } from '../../../Data/config';
 export default function PassHeroBox() {
 
     return (
@@ -15,7 +16,7 @@ export default function PassHeroBox() {
 
             <div className={styles.PassHeroBoxA}>
                 <div className={styles.PassHeroBoxAImg}>
-                    <img src='https://server.supermarks.in/Storage/img/downapp2.png' />
+                    <img src='/6461.jpg' />
                 </div>
             </div>
             <div className={styles.PassHeroBoxB}>
@@ -72,11 +73,22 @@ export default function PassHeroBox() {
 
                 </div>
                 <div style={{ height: '20px' }}> </div>
-                <Link href='https://play.google.com/store/apps/details?id=com.supermarksapp' style={{ textDecoration: 'none' }}>
-                    <div className={styles.GetStartedBTN}>
-                        <span>DOWNLOAD APP</span>
-                    </div>
-                </Link>
+                <a href={SocialHandles.Playstore} target='_blank' style={{ textDecoration: 'none' }}>
+                        <div>
+                            <LoadingButton
+                                fullWidth
+
+                                startIcon={<FiDownload />}
+                                loading={false}
+                                loadingPosition="end"
+                                variant="contained"
+
+                            >
+                                <span>DOWNLOAD APP NOW</span>
+                            </LoadingButton>
+                        </div>
+                    </a>
+
                 <div style={{ height: '20px' }}> </div>
             </div>
 

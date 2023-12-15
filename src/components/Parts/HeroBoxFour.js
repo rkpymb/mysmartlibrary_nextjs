@@ -5,13 +5,13 @@ import Link from 'next/link';
 import Image from 'next/image'
 
 const HeroBox2 = () => {
-    
+
     return (
         <div className={Mstyles.container}>
             <div style={{ minHeight: '20px' }}></div>
             <div className={Mstyles.HeroBoxTwoTitle} style={{ textAlign: 'center' }}>
                 <h1>Prepare to Crack Your Exams with 100% Guarantee*</h1>
-                <span style={{textAlign: 'center'}}>We can assure you 100% about our programme and our ability to get you succeeded 👍
+                <span style={{ textAlign: 'center' }}>We can assure you 100% about our programme and our ability to get you succeeded 👍
                     SuperMarks is the best of the best edu portal for aspirant those who dreams for IIT, NIT, NEET, SSC, Banking, Railways, Class 9, Class 10 and Intermediate.</span>
             </div>
             <div style={{ minHeight: '30px' }}></div>
@@ -22,7 +22,7 @@ const HeroBox2 = () => {
                         <div className={Mstyles.FeaturesItem}>
                             <div className={Mstyles.FeaturesItemImg}>
                                 <Image
-                                    src={`${BASE_URL}Storage/img/yes.png`}
+                                    src={`/img/check.png`}
                                     alt="Picture of the author"
                                     width={20}
                                     height={20}
@@ -35,7 +35,7 @@ const HeroBox2 = () => {
                         <div className={Mstyles.FeaturesItem}>
                             <div className={Mstyles.FeaturesItemImg}>
                                 <Image
-                                    src={`${BASE_URL}Storage/img/yes.png`}
+                                    src={`/img/check.png`}
                                     alt="Picture of the author"
                                     width={20}
                                     height={20}
@@ -48,7 +48,7 @@ const HeroBox2 = () => {
                         <div className={Mstyles.FeaturesItem}>
                             <div className={Mstyles.FeaturesItemImg}>
                                 <Image
-                                    src={`${BASE_URL}Storage/img/yes.png`}
+                                    src={`/img/check.png`}
                                     alt="Picture of the author"
                                     width={20}
                                     height={20}
@@ -61,7 +61,7 @@ const HeroBox2 = () => {
                         <div className={Mstyles.FeaturesItem}>
                             <div className={Mstyles.FeaturesItemImg}>
                                 <Image
-                                    src={`${BASE_URL}Storage/img/yes.png`}
+                                    src={`/img/check.png`}
                                     alt="Picture of the author"
                                     width={20}
                                     height={20}
@@ -74,7 +74,7 @@ const HeroBox2 = () => {
                         <div className={Mstyles.FeaturesItem}>
                             <div className={Mstyles.FeaturesItemImg}>
                                 <Image
-                                    src={`${BASE_URL}Storage/img/yes.png`}
+                                    src={`/img/check.png`}
                                     alt="Picture of the author"
                                     width={20}
                                     height={20}
@@ -88,7 +88,7 @@ const HeroBox2 = () => {
                         <div className={Mstyles.FeaturesItem}>
                             <div className={Mstyles.FeaturesItemImg}>
                                 <Image
-                                    src={`${BASE_URL}Storage/img/yes.png`}
+                                    src={`/img/check.png`}
                                     alt="Picture of the author"
                                     width={20}
                                     height={20}
@@ -101,7 +101,7 @@ const HeroBox2 = () => {
                         <div className={Mstyles.FeaturesItem}>
                             <div className={Mstyles.FeaturesItemImg}>
                                 <Image
-                                    src={`${BASE_URL}Storage/img/yes.png`}
+                                    src={`/img/check.png`}
                                     alt="Picture of the author"
                                     width={20}
                                     height={20}
@@ -114,7 +114,7 @@ const HeroBox2 = () => {
                         <div className={Mstyles.FeaturesItem}>
                             <div className={Mstyles.FeaturesItemImg}>
                                 <Image
-                                    src={`${BASE_URL}Storage/img/yes.png`}
+                                    src={`/img/check.png`}
                                     alt="Picture of the author"
                                     width={20}
                                     height={20}
@@ -127,7 +127,7 @@ const HeroBox2 = () => {
                         <div className={Mstyles.FeaturesItem}>
                             <div className={Mstyles.FeaturesItemImg}>
                                 <Image
-                                    src={`${BASE_URL}Storage/img/yes.png`}
+                                    src={`/img/check.png`}
                                     alt="Picture of the author"
                                     width={20}
                                     height={20}

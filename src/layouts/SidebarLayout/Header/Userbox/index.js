@@ -1,7 +1,8 @@
 
 import { useState, useEffect, useContext, useRef } from 'react';
 import NextLink from 'next/link';
-import CheckloginContext from '../../../../../context/auth/CheckloginContext'
+import CheckloginContext from 'context/auth/CheckloginContext'
+import { MediaFilesUrl, MediaFilesFolder } from 'Data/config'
 import {
   Avatar,
   Box,
@@ -89,13 +90,18 @@ function HeaderUserbox() {
   return (
     <>
       <UserBoxButton color="secondary" ref={ref} onClick={handleOpen}>
-        <Avatar variant="rounded" alt={user.name} src={user.avatar} />
+        <Avatar
+          sx={{ width: 50, height: 50 }}
+
+          alt={Contextdata.Data.name} src={`${MediaFilesUrl}${MediaFilesFolder}/${Contextdata.Data.image}`}
+        />
         <Hidden mdDown>
           <UserBoxText>
             <UserBoxLabel variant="body1">{Contextdata.Data.name}</UserBoxLabel>
             <UserBoxDescription variant="body2">
-              Online
+              STUDENT
             </UserBoxDescription>
+         
           </UserBoxText>
         </Hidden>
         <Hidden smDown>
@@ -116,17 +122,21 @@ function HeaderUserbox() {
         }}
       >
         <MenuUserBox sx={{ minWidth: 210 }} display="flex">
-          <Avatar variant="rounded" alt={user.name} src={user.avatar} />
+          <Avatar
+            sx={{ width: 50, height: 50 }}
+
+            alt={Contextdata.Data.name} src={`${MediaFilesUrl}${MediaFilesFolder}/${Contextdata.Data.image}`}
+          />
           <UserBoxText>
             <UserBoxLabel variant="body1">{Contextdata.Data.name}</UserBoxLabel>
             <UserBoxDescription variant="body2">
-             Online
+              STUDENT
             </UserBoxDescription>
           </UserBoxText>
         </MenuUserBox>
         <Divider sx={{ mb: 0 }} />
         <List sx={{ p: 1 }} component="nav">
-          <NextLink href="/management/profile" passHref>
+          <NextLink href="/MyProfile" passHref>
             <ListItem button>
               <AccountBoxTwoToneIcon fontSize="small" />
               <ListItemText primary="My Profile" />
@@ -149,7 +159,7 @@ function HeaderUserbox() {
         <Box sx={{ m: 1 }}>
           <Button color="primary" fullWidth onClick={LogOut}>
             <LockOpenTwoToneIcon sx={{ mr: 1 }} />
-            Sign out
+            Logout
           </Button>
         </Box>
       </Popover>

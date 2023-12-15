@@ -5,9 +5,7 @@ import Mstyles from '../../../Styles/home.module.css'
 import { AiOutlineLogin } from 'react-icons/ai';
 import { VscAccount, VscVerified } from "react-icons/vsc";
 import { IoIosCall } from "react-icons/io";
-import { BiMenuAltLeft } from "react-icons/bi";
-import { BsFillEmojiSunglassesFill } from "react-icons/bs";
-import HeaderMenuLeft from '../Subparts/HeaderMenuLeft'
+
 import Link from 'next/link';
 import { ShortAbout, AppName, SocialHandles, Contactinfo, DomainURL } from '../../../Data/config'
 const Navbar = (props) => {
@@ -19,7 +17,7 @@ const Navbar = (props) => {
                     <div className={Mstyles.logo}>
                         <Link href='/'>
                             <div className={Mstyles.logomain}>
-                                <img src='/logo/logomain.png' alt='logo' className={Mstyles.NavLogo} />
+                                <img src='/img/mainlogo.svg' alt='logo' width={'100%'}/>
                             </div>
                         </Link>
                     </div>

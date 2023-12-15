@@ -1,144 +1,229 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Card } from '@mui/material';
-import CatTable from './Extra/CatTable';
-import { subDays } from 'date-fns';
+
 import { useRouter } from 'next/router'
 import Link from 'next/link';
-import Label from 'src/components/Label';
+
 import Image from 'next/image';
-import EditTSmodal from '../Edit/EditTSmodal'
-import DeleteCatModal from '../Edit/DeleteCatModal'
+
 import MYS from '../../../Styles/mystyle.module.css'
 import { MediaFilesUrl, MediaFilesFolder } from '../../../Data/config'
+import CheckloginContext from '../../../context/auth/CheckloginContext'
 import Button from '@mui/material/Button';
-import ViewStreamIcon from '@mui/icons-material/ViewStream';
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import {
-    Tooltip,
-    Divider,
-    Box,
-    FormControl,
-    InputLabel,
+import Nodatafound from '../Extra/Nodatafound'
+import Skeleton from '@mui/material/Skeleton';
 
-    IconButton,
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TablePagination,
-    TableRow,
-    TableContainer,
-    Select,
-    MenuItem,
-    Typography,
+import { FiChevronRight } from "react-icons/fi";
+
+import {
+
     useTheme,
-    CardHeader
+
 } from '@mui/material';
 
 function RecentOrders() {
-
+    const Contextdata = useContext(CheckloginContext)
     const [Retdata, setRetdata] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const router = useRouter()
-   
+
 
     useEffect(() => {
-        // check login
-        try {
-            if (localStorage.getItem('Token')) {
-                setIsLoading(true)
-                try {
-                    if (localStorage.getItem('Token')) {
-                        setIsLoading(true)
-                        const JwtToken = localStorage.getItem('Token');
-                        const sendUser = { JwtToken }
-                        const data = fetch("/api/V3/Students/MyTSlist", {
-                            method: "POST",
-                            headers: {
-                                'Content-type': 'application/json'
-                            },
-                            body: JSON.stringify(sendUser)
-                        }).then((a) => {
-                            return a.json();
-                        })
-                            .then((parsedUser) => {
-                                setRetdata(parsedUser.ReqData)
-                                setIsLoading(false)
-                                console.log(parsedUser.ReqData)
-
-                            })
-                    } else {
-                        setIsLoading(false)
-                    }
-                } catch (error) {
-                    console.error(error)
-
-                }
-
-            } else {
-                setIsLoading(false)
-            }
-        } catch (error) {
-            console.error(error)
-
-        }
-
+        setTimeout(function () {
+            GetData()   
+        }, 1000);
+      
 
     }, [router.query]);
     const theme = useTheme();
 
+
+    const GetData = async () => {
+        const sendUser = { JwtToken: Contextdata.JwtToken }
+        const data = fetch("/api/V3/Students/MyTSlist", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(sendUser)
+        }).then((a) => {
+            return a.json();
+        })
+            .then((parsedUser) => {
+                setRetdata(parsedUser.ReqData)
+                setIsLoading(false)
+              
+
+
+            })
+    }
+
+
+    const Demodata = [
+        {
+            id: 1
+        },
+        {
+            id: 2
+        }
+        ,
+        {
+            id: 3
+        }
+        ,
+        {
+            id: 4
+        }
+        ,
+        {
+            id: 5
+        }
+        ,
+        {
+            id: 6
+        }
+    ]
+
+
     return (
+        <div>
+            {isLoading &&
+                <div>
+                    {Demodata.map((item) => {
+                        return <div className={MYS.ItemList} key={item.id}>
+                            <div className={MYS.ItemListBox}>
+                                <div className={MYS.ItemListBoxA}>
+                                    <Skeleton variant="rounded" width={130} height={130} animation="wave" />
+                                </div>
+                                <div className={MYS.ItemListBoxB}>
+                                    <Skeleton variant="text" sx={{ fontSize: '1.5rem' }} width={'100%'} animation="wave" />
 
-        <>
-            <Card>
-                {!isLoading &&
-                    <div>
-                        {Retdata.map((item) => {
-                            return <div className={MYS.ItemList} key={item._id}>
-                                <div className={MYS.ItemListBox}>
-                                    <div className={MYS.ItemListBoxA}>
-                                        <Image
-                                            src={`${MediaFilesUrl}${MediaFilesFolder}/${item.img}`}
-                                            width={250}
-                                            height={150}
-                                            
-                                            alt='img'
-
-                                        />
+                                    <div>
+                                        <Skeleton variant="text" sx={{ fontSize: '0.5rem' }} width={200} animation="wave" />
                                     </div>
-                                    <div className={MYS.ItemListBoxB}>
-                                        <h3>{item.title}</h3>
-                                        <span>{item.pid}</span>
-                                        
-                                        <div>
-                                            <span>Valid till : {item.validityEndDate}</span>
+                                    <div>
+                                        <Skeleton variant="text" sx={{ fontSize: '0.5rem' }} width={200} animation="wave" />
+                                    </div>
+                                    <div style={{ height: '10px' }}></div>
+                                    <div className={MYS.BtnFlexBox}>
+                                        <Skeleton variant="rectangular" width={100} height={30} animation="wave" />
+
+                                        <div style={{ minWidth: '10px' }}></div>
+                                        <Skeleton variant="rectangular" width={100} height={30} animation="wave" />
+
+
+
+                                    </div>
+
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    }
+
+                    )}
+
+
+                </div>
+
+            }
+
+
+            {!isLoading &&
+
+                <div>
+
+                    {Retdata.length == 0 &&
+                        <Nodatafound
+                            Title={'No Test Series Found'}
+                            Desc={'You have do not Any Active Test Series Subscription. '}
+
+                        />
+                    }
+                    {Retdata.length > 0 &&
+                        <div>
+                            {Retdata.map((item) => {
+                                return <div className={MYS.ItemList} key={item._id}>
+                                    <div className={MYS.ItemListBox}>
+                                        <div className={MYS.ItemListBoxA}>
+                                            <Image
+                                                src={`${MediaFilesUrl}${MediaFilesFolder}/${item.img}`}
+                                                width={250}
+                                                height={150}
+
+                                                alt='img'
+
+                                            />
                                         </div>
-                                        <div>
-                                            <span>{item.StatusText}</span>
+                                        <div className={MYS.ItemListBoxB}>
+                                            <h3>{item.title}</h3>
+
+                                            <div>
+                                                <small>Valid till : {item.validityEndDate}</small>
+                                            </div>
+                                            <div>
+                                                <small>Status : {item.StatusText}</small>
+                                            </div>
+                                            <div style={{ height: '10px' }}></div>
+                                            <div className={MYS.BtnFlexBox}>
+                                                <Link href={`/CourseChapters/${item.ProductId}/${item.pid}`}>
+                                                    <Button size='small' variant="outlined" endIcon={<FiChevronRight />}>
+                                                        Chapters
+                                                    </Button>
+                                                </Link>
+                                                <div style={{ minWidth: '10px' }}></div>
+                                                <Link href={`/CourseTestSeries/${item.ProductId}`}>
+                                                    <Button size='small' variant="outlined" endIcon={<FiChevronRight />}>
+                                                        Exams & Test Series
+                                                    </Button>
+                                                </Link>
+
+
+                                            </div>
+
+
+
+
+
+
                                         </div>
-                                       
-                                        <div style={{ minHeight: '30px' }}></div>
-                                        <Link href={`/TSChapters/${item.pid}`} >
-                                            <Button size='small' variant="outlined" startIcon={<ViewStreamIcon />}>
+
+                                    </div>
+
+                                    <div className={MYS.BtnFlexBoxMobile}>
+                                        <Link href={`/CourseChapters/${item.ProductId}/${item.pid}`}>
+                                            <Button size='small' variant="outlined" endIcon={<FiChevronRight />}>
                                                 Chapters
                                             </Button>
                                         </Link>
-                                       
+                                        <div style={{ minWidth: '10px' }}></div>
+                                        <Link href={`/CourseTestSeries/${item.ProductId}`}>
+                                            <Button size='small' variant="outlined" endIcon={<FiChevronRight />}>
+                                                Exams & Test Series
+                                            </Button>
+                                        </Link>
+
+
                                     </div>
+
                                 </div>
+                            }
+
+                            )}
+                        </div>
+                    }
 
 
-                            </div>
-                        }
+                </div>
+            }
 
-                        )}
-                      
-                    </div>
-
-                }
-            </Card>
-
-        </>
+        </div>
     );
 }
 

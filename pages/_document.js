@@ -2,6 +2,7 @@ import * as React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
 import createEmotionCache from 'src/createEmotionCache';
+import Script from 'next/script';
 
 export default class MyDocument extends Document {
   render() {
@@ -10,6 +11,7 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
+         
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400&display=swap"
@@ -19,6 +21,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
+
       </Html>
     );
   }

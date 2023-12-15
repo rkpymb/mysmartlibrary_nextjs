@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Card } from '@mui/material';
-import CatTable from './Extra/CatTable';
-import { subDays } from 'date-fns';
+
 import { useRouter } from 'next/router'
 import Link from 'next/link';
-import Label from 'src/components/Label';
+
 import Image from 'next/image';
-import EditCatModal from '../Edit/EditCatModal'
+
 import Mstyles from '../../../Styles/home.module.css';
 import { MediaFilesUrl, MediaFilesFolder } from '../../../Data/config'
 

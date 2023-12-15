@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.h60 {
+  height: 60px;
+}
+
+.swiper-button-next::after {
+  display: none;
+}
+
+
+.swiper-button-prev::after {
+  display: none;
+
+}
+
+.displaynone {
+  color: white !important;
+
+}
+
+/* swipper js */
+.swiper-container {
+  width: 550px;
+  margin: 0px 0px 0px 2px;
+
+
+}
+
+@media screen and (min-width: 640px) {
+
+
+  .swiper-container {
+    width: 640px;
+    margin: 0px 0px 0px 0px;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .swiper-container {
+    width: 640px;
+    margin: 0px 0px 0px 0px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+
+  .swiper-container {
+    width: 768px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    width: calc(var(--swiper-navigation-size)/ 44 * 27);
+    height: var(--swiper-navigation-size);
+    
+    z-index: 10;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--swiper-navigation-color, var(--swiper-theme-color));
+    background-color: rgb(255, 255, 255);
+    border-radius: 21px;
+    padding: 2px;
+
+  }
+
+
+  .swiper-button-next {
+    background-image: url(/angle-small-right.svg);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+  }
+
+  .swiper-button-prev {
+    background-image: url(/angle-small-left.svg);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+
+  }
+}
+
+
+.IndexHeroImg {
+  background-image:
+    url('https://aitechnolog.com/examapp/Storage/img/home_banner_new.afe86261.jpg');
+  background-position: 'center';
+  background-repeat: 'no-repeat';
+  background-size: cover;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 900px) {
+  .IndexHeroImg {
+    background-image:
+      url('https://aitechnolog.com/examapp/Storage/img/home_banner_new.afe86261.jpg');
+    background-position: 'center';
+    background-repeat: 'no-repeat';
+    background-size: cover;
+    border-radius: 0px;
+
+    overflow: hidden;
+  }
+
+}
+

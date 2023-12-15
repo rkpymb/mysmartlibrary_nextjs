@@ -1,15 +1,18 @@
 import { useState, useEffect, useContext } from 'react';
+import Badge from '@mui/material/Badge';
 import {
     Typography,
     Box,
     Card,
-    Container,
+    IconButton,
     Button,
     styled
 } from '@mui/material';
+import { LuShoppingBag, LuSearch, LuChevronRight, LuArrowLeft } from "react-icons/lu";
 import BaseLayout from 'src/layouts/BaseLayout';
 import Mstyles from '../../Styles/home.module.css'
 import CircularProgress from '@mui/material/CircularProgress';
+import LoadingButton from '@mui/lab/LoadingButton';
 
 import { AiOutlineLogin } from 'react-icons/ai';
 import { VscAccount, VscVerified } from "react-icons/vsc";
@@ -17,21 +20,27 @@ import { IoIosCall } from "react-icons/io";
 import CheckloginContext from '../../context/auth/CheckloginContext'
 import Link from 'src/components/Link';
 import Head from 'next/head';
-import NavbarPG from '../../src/components/Parts/NavbarPG'
+
+import MainNavBarSecond from '../../src/components/Parts/Navbar/MainNavBarSecond'
+import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
 import crypto from 'crypto';
 import { MYKEY } from '../../Data/config'
 import Image from 'next/image'
 import { useRouter, useParams } from 'next/router'
 
+
+
+import SendIcon from '@mui/icons-material/Send';
+
 export async function getServerSideProps(context) {
     const ChapterID = context.query.pageno[0];
     const slug = context.query.pageno[1];
-    const JWTtoken = context.query.pageno[2];
-    // console.log(JWTtoken)
+    const JwtToken = context.query.pageno[2];
+    // console.log(JwtToken)
 
     const headers = {
-        Authorization: `Bearer ${JWTtoken}`,
+        Authorization: `Bearer ${JwtToken}`,
         'Content-Type': 'application/json', // Set the content type for your request
     };
     const requestOptions = {
@@ -44,20 +53,21 @@ export async function getServerSideProps(context) {
 
     return {
 
-        props: { CourseFullData, ChapterID, slug, JWTtoken }, // will be passed to the page component as props
+        props: { CourseFullData, ChapterID, slug, JwtToken }, // will be passed to the page component as props
     }
 
 }
 
-const HeaderWrapper = styled(Card)(
-    ({ theme }) => `
-  width: 100%;
-  display: flex;
-  align-items: center;
-  height: ${theme.spacing(10)};
-  margin-bottom: ${theme.spacing(10)};
-`
-);
+const StyledBadge = styled(Badge)(({ theme }) => ({
+    '& .MuiBadge-badge': {
+        right: -3,
+        top: 13,
+        border: `2px solid ${theme.palette.background.paper}`,
+        padding: '0 4px',
+
+    },
+}));
+
 
 const OverviewWrapper = styled(Box)(
     ({ theme }) => `
@@ -68,7 +78,7 @@ const OverviewWrapper = styled(Box)(
 `
 );
 
-function Overview({ CourseFullData, ChapterID, JWTtoken, slug }) {
+function Overview({ CourseFullData, ChapterID, JwtToken, slug }) {
 
     const blurredImageData = 'data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88enTfwAJYwPNteQx0wAAAABJRU5ErkJggg==';
     const router = useRouter()
@@ -91,6 +101,7 @@ function Overview({ CourseFullData, ChapterID, JWTtoken, slug }) {
     const [AttemtedQuestion, setAttemtedQuestion] = useState(0);
     const [timeRemaining, setTimeRemaining] = useState(0);
     const [AttNumber, setAttNumber] = useState(1);
+    const [TestStarted, setTestStarted] = useState(false);
 
     const [updatedQuestions, setUpdatedQuestions] = useState();
 
@@ -109,64 +120,48 @@ function Overview({ CourseFullData, ChapterID, JWTtoken, slug }) {
     const hours = Math.floor(timeRemaining / 3600);
 
     useEffect(() => {
-
-        if (Contextdata.IsLogin == true) {
-
-            try {
-                if (localStorage.getItem('Token')) {
-
-                    try {
-                        if (localStorage.getItem('Token')) {
-
-                            const JwtToken = localStorage.getItem('Token');
-                            const sendUser = { JwtToken: JwtToken, Chapterid: ChapterID, slug: slug }
-                            const data = fetch("/api/V3/Students/QuesLists", {
-                                method: "POST",
-                                headers: {
-                                    'Content-type': 'application/json'
-                                },
-                                body: JSON.stringify(sendUser)
-                            }).then((a) => {
-                                return a.json();
-                            })
-                                .then((parsedQL) => {
-
-                                    if (parsedQL.ReqS == true) {
-                                        setSecuresdlist(parsedQL.RetData)
-                                        const encryptedData = parsedQL.RetData
+        FirstStep()
+    }, [router.query]);
 
 
-                                        // Decrypt the data using AES decryption
-                                        const decipher = crypto.createDecipher('aes-256-cbc', MYKEY);
-                                        let decryptedMessage = decipher.update(encryptedData, 'hex', 'utf8');
-                                        decryptedMessage += decipher.final('utf8');
-                                        const QLwithOPS = JSON.parse(decryptedMessage)
-
-                                        setQList(QLwithOPS)
-                                        setUpdatedQuestions(QLwithOPS)
-                                        setLoading(false)
-                                        setLoadQues(true)
-
-
-                                    }
-
-                                })
-                        } else {
-
-                        }
-                    } catch (error) {
-                        console.error(error)
-
-                    }
-
-                } else {
-
-                }
-            } catch (error) {
-                console.error(error)
-
+    useEffect(() => {
+        if (TestStarted == true) {
+            if (TestStarted == true && seconds == 0 && minutes == 0 && hours == 0) {
+                alert('Time out , your attempt will be submited');
+                SubmitAtemptFinal()
             }
+        }
 
+    }, [seconds, minutes, hours]);
+
+    const FirstStep = async () => {
+        if (Contextdata.IsLogin == true) {
+            const sendUser = { JwtToken: JwtToken, Chapterid: ChapterID, slug: slug }
+            const data = fetch("/api/V3/Students/QuesLists", {
+                method: "POST",
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(sendUser)
+            }).then((a) => {
+                return a.json();
+            })
+                .then((parsedQL) => {
+
+                    if (parsedQL.ReqS == true) {
+                        setSecuresdlist(parsedQL.RetData)
+                        const encryptedData = parsedQL.RetData
+                        // Decrypt the data using AES decryption
+                        const decipher = crypto.createDecipher('aes-256-cbc', MYKEY);
+                        let decryptedMessage = decipher.update(encryptedData, 'hex', 'utf8');
+                        decryptedMessage += decipher.final('utf8');
+                        const QLwithOPS = JSON.parse(decryptedMessage)
+                        setQList(QLwithOPS)
+                        setUpdatedQuestions(QLwithOPS)
+                        setLoading(false)
+                        setLoadQues(true)
+                    }
+                })
 
             setTSData(CourseFullData.TSData)
             setChapterData(CourseFullData.ChapterData)
@@ -177,136 +172,105 @@ function Overview({ CourseFullData, ChapterID, JWTtoken, slug }) {
         } else {
             router.push('/Login')
         }
-        // check login
-
-
-
-    }, [router.query]);
+    }
 
 
     const CreateAtempt = async () => {
-        if (Contextdata.IsLogin == true) {
-            try {
-                if (localStorage.getItem('Token')) {
-                    setLoadingBTN(true)
-                    const Chid = ChapterID;
-                    const Tsid = slug;
-                    const Status = 1;
-                    const IsActive = true;
-                    const StatusText = 'Created';
-                    const takenTime = '0';
-                    const takenTimeSec = '0';
-                    const TotalMarks = '0';
-                    const JwtToken = localStorage.getItem('Token');
-                    const sendUser = { JwtToken: JwtToken, Chid: Chid, Tsid: Tsid, Status: Status, IsActive: IsActive, StatusText: StatusText, takenTime: takenTime, takenTimeSec: takenTimeSec, TotalMarks: TotalMarks, ChTitle: ChapterData.title, TsTitle: TSData.title }
-                    const data = fetch("/api/V3/Students/CreateAtempt", {
-                        method: "POST",
-                        headers: {
-                            'Content-type': 'application/json'
-                        },
-                        body: JSON.stringify(sendUser)
-                    }).then((a) => {
-                        return a.json();
-                    })
-                        .then((parsedAtback) => {
-                            if (parsedAtback.ReqS == true) {
-                                setTimeout(function () {
-                                    console.log(QList)
-                                    setAttemptID(parsedAtback.RetData.TsAtemptSData._id)
-                                    console.log(parsedAtback.RetData.TsAtemptSData._id)
-                                    setLoadingBTN(false)
-                                    setQuesBox(true)
-                                    StartTimer()
-                                }, 1000);
+        setLoadingBTN(true)
+        const Chid = ChapterID;
+        const Tsid = slug;
+        const Status = 1;
+        const IsActive = true;
+        const StatusText = 'Created';
+        const takenTime = '0';
+        const takenTimeSec = '0';
+        const TotalMarks = '0';
 
-
-
-                            } else {
-                                alert('Something Wnt Wrong, Try again')
-                            }
-                        })
+        const sendUser = { JwtToken: JwtToken, Chid: Chid, Tsid: Tsid, Status: Status, IsActive: IsActive, StatusText: StatusText, takenTime: takenTime, takenTimeSec: takenTimeSec, TotalMarks: TotalMarks, ChTitle: ChapterData.title, TsTitle: TSData.title }
+        const data = fetch("/api/V3/Students/CreateAtempt", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(sendUser)
+        }).then((a) => {
+            return a.json();
+        })
+            .then((parsedAtback) => {
+                if (parsedAtback.ReqS == true) {
+                    setTimeout(function () {
+                        console.log(QList)
+                        setAttemptID(parsedAtback.RetData.TsAtemptSData._id)
+                        console.log(parsedAtback.RetData.TsAtemptSData._id)
+                        setLoadingBTN(false)
+                        setQuesBox(true)
+                        StartTimer()
+                    }, 1000);
                 } else {
-
+                    alert('Something Wnt Wrong, Try again')
                 }
-            } catch (error) {
-                console.error(error)
-
-            }
-
-
-        } else {
-            router.push('/Login')
-        }
+            })
 
     }
     const HandleOptionindex = async (e, b) => {
         if (b !== currentQuestion) {
-            setCurrentQuestion(b) 
-        } 
+            setCurrentQuestion(b)
+        }
+    }
+
+    const SubmitAtempt = async () => {
+        let text = "Do you really want to submit ?";
+        if (confirm(text) == true) {
+            SubmitAtemptFinal()
+
+        }
     }
 
 
-    const SubmitAtempt = async () => {
-        if (Contextdata.IsLogin == true) {
-            if (AttemptID !== '') {
-                try {
-                    if (localStorage.getItem('Token')) {
-                        setLoadingBTN(true)
-                        const Chid = ChapterID;
-                        const Tsid = slug;
-                       
-                        const Status = 1;
-                        const IsActive = true;
-                        const StatusText = 'Created';
-                        const takenTime = '0';
-                        const takenTimeSec = '0';
-                        const TotalMarks = '0';
-                        // const studentsData = [
-                        //     { namex: 'Student 1', contactInfo: 'Email1@example.com' },
-                           
-                        //     // Add more student objects as needed
-                        // ];
+    const SubmitAtemptFinal = async () => {
+        if (AttemptID !== '') {
+            setLoadingBTN(true)
+            const Chid = ChapterID;
+            const Tsid = slug;
+            const Status = 1;
+            const IsActive = true;
+            const StatusText = 'Created';
+            const takenTime = '0';
+            const takenTimeSec = '0';
+            const TotalMarks = '0';
+            // const studentsData = [
+            //     { namex: 'Student 1', contactInfo: 'Email1@example.com' },
 
-                        const JwtToken = localStorage.getItem('Token');
-                        const sendUser = { JwtToken: JwtToken, Chid: Chid, Atid: AttemptID, Tsid: Tsid, Status: Status, IsActive: IsActive, StatusText: StatusText, takenTime: takenTime, takenTimeSec: takenTimeSec, TotalMarks: TotalMarks, SubmitData: updatedQuestions, ChTitle: ChapterData.title, TsTitle: TSData.title }
-                        const data = fetch("/api/V3/Students/SubmitAtempt", {
-                            method: "POST",
-                            headers: {
-                                'Content-type': 'application/json'
-                            },
-                            body: JSON.stringify(sendUser)
-                        }).then((a) => {
-                            return a.json();
-                        })
-                            .then((parsedAtback) => {
-                                if (parsedAtback.RetData.RetStatus == true) {
-                                    router.push(`/TSattempt/${parsedAtback.RetData.SubmitID}`)
-                                } else {
-                                    setLoadingBTN(false)
-                                    alert('Something Went Wrong, try again')
-                               }
-                               
-                            })
+            //     // Add more student objects as needed
+            // ];
+
+            const sendUser = { JwtToken: JwtToken, Chid: Chid, Atid: AttemptID, Tsid: Tsid, Status: Status, IsActive: IsActive, StatusText: StatusText, takenTime: takenTime, takenTimeSec: takenTimeSec, TotalMarks: TotalMarks, SubmitData: updatedQuestions, ChTitle: ChapterData.title, TsTitle: TSData.title }
+            const data = fetch("/api/V3/Students/SubmitAtempt", {
+                method: "POST",
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(sendUser)
+            }).then((a) => {
+                return a.json();
+            })
+                .then((parsedAtback) => {
+                    if (parsedAtback.RetData.RetStatus == true) {
+                        router.push(`/TSattempt/${parsedAtback.RetData.SubmitID}`)
                     } else {
-
+                        setLoadingBTN(false)
+                        alert('Something Went Wrong, try again')
                     }
-                } catch (error) {
-                    console.error(error)
 
-                }
-            } else {
-                alert('Something Wnt Wrong, Try again')
-            }
-            
-
-
+                })
         } else {
-            router.push('/Login')
+            alert('Something Wnt Wrong, Try again')
         }
 
     }
 
     const StartTimer = async () => {
+        setTestStarted(true)
         function convertMinutesToSeconds(minutes) {
             return minutes * 60;
         }
@@ -314,10 +278,32 @@ function Overview({ CourseFullData, ChapterID, JWTtoken, slug }) {
         const seconds = convertMinutesToSeconds(minutes);
         setTimeRemaining(seconds)
     }
+    const PrevQues = async () => {
 
 
-   
-   
+        console.log(currentQuestion)
+        if (currentQuestion !== 0) {
+            setCurrentQuestion(currentQuestion - 1)
+        }
+    }
+    const NextQues = async () => {
+
+        console.log(currentQuestion)
+        if (currentQuestion + 1 < TotalQues && currentQuestion + 1 !== TotalQues) {
+
+            setCurrentQuestion(currentQuestion + 1)
+        }
+
+
+    }
+    const Exittest = async () => {
+        let text = "Do you really want to Exit ?";
+        if (confirm(text) == true) {
+            router.back()
+        }
+
+
+    }
 
     function updateOption(questionIndex, optionIndex) {
         const updatedQuestionsCopy = [...updatedQuestions];
@@ -331,8 +317,8 @@ function Overview({ CourseFullData, ChapterID, JWTtoken, slug }) {
         });
         setUpdatedQuestions(updatedQuestionsCopy);
         markQuestionAsAttempted(questionIndex, updatedQuestionsCopy)
-      
-        
+
+
 
     }
 
@@ -343,14 +329,11 @@ function Overview({ CourseFullData, ChapterID, JWTtoken, slug }) {
         updatedQuestionsCopy[questionIndex].isAtempted = true;
 
         setUpdatedQuestions(updatedQuestionsCopy);
-      
+
     }
 
-
-
-
     const handleClick = (questionIndex, optionIndex) => {
-       
+
         // setCurrentQuestion(b)
         // console.log(updatedQuestions)
         const newStatus = true; // Set the new status here
@@ -360,73 +343,114 @@ function Overview({ CourseFullData, ChapterID, JWTtoken, slug }) {
 
     return (
         <OverviewWrapper>
+            <Head>
+                <title>Test Series Play Ground : {TSData && TSData.title}</title>
+            </Head>
+            {!QuesBox &&
+                <MainNavBarSecond />
+            }
+            
+
             {!QuesBox &&
                 <div>
-                    <Head>
-                        <title>Play Ground : {TSData && TSData.title}</title>
-                    </Head>
-                    <NavbarPG />
-                    {!Loading &&
-                        <div>
-                            <div className={Mstyles.container}>
-                                <div style={{ minHeight: '100px' }}></div>
-                                <div className={Mstyles.Playground}>
 
-                                    <div className={Mstyles.HeRoboxPGVATitle}>
-                                        <h1>{ChapterData && ChapterData.title}</h1>
-                                        <span>{TSData && TSData.title}</span>
+                    <div className={Mstyles.MainBoxContainer}>
+                        <div className={Mstyles.secndHeder}>
+                            <div className={Mstyles.secndHederBox}>
+                                <div className={Mstyles.secndHederBoxA}>
+                                    <div>
+                                        <IconButton aria-label="cart" onClick={() => router.back()}>
+                                            <StyledBadge color="secondary" >
+                                                <LuArrowLeft />
+                                            </StyledBadge>
+                                        </IconButton>
                                     </div>
-                                    <div className={Mstyles.HeRoboxPGVADetails}>
-                                        <div>
-                                            <span style={{ fontWeight: 'bold' }}>Instructions:</span>
-                                        </div>
-                                        <div>
-                                            <span>{ChapterData && ChapterData.details}</span>
-                                        </div>
-                                    </div>
-                                    <div className={Mstyles.PgCounter}>
-                                        <div className={Mstyles.PgCounterItem}>
-                                            <span>{TotalQues}</span>
-                                            <small>Total Questions</small>
-                                        </div>
-                                        <div className={Mstyles.PgCounterItem}>
-                                            <span>{TotalMarks}</span>
-                                            <small>Total Marks</small>
-                                        </div>
-                                        <div className={Mstyles.PgCounterItem}>
-                                            <span>{ChapterData && ChapterData.duration} min</span>
-                                            <small>Total Time</small>
-                                        </div>
-                                    </div>
+                                    <div>
+                                        <span><span className={Mstyles.linkpageitemClick}>{TSData && TSData.title.slice(0, 40)}</span> </span>
 
+
+                                    </div>
+                                </div>
+                                <div className={Mstyles.secndHederBoxB}>
                                 </div>
                             </div>
                         </div>
+                        <div className={Mstyles.MainBoxContainerInner}>
+                            <div className={Mstyles.VideoBoxTopDevider}></div>
+                            <div className={Mstyles.mobilepadding}>
+
+                                {!QuesBox &&
+                                    <div>
+                                        {!Loading &&
+                                            <div>
+                                                <div>
+                                                    <div style={{ minHeight: '20px' }}></div>
+                                                </div>
+                                                <div className={Mstyles.HeRoboxPGVATitle}>
+                                                    <h1>{ChapterData && ChapterData.title}</h1>
+                                                    <span>{TSData && TSData.title}</span>
+                                                </div>
+
+                                                <div style={{ minHeight: '20px' }}></div>
+                                                <div className={Mstyles.PgCounter}>
+                                                    <div className={Mstyles.PgCounterItem}>
+                                                        <span>{TotalQues}</span>
+                                                        <small>Total Questions</small>
+                                                    </div>
+                                                    <div className={Mstyles.PgCounterItem}>
+                                                        <span>{TotalMarks}</span>
+                                                        <small>Total Marks</small>
+                                                    </div>
+                                                    <div className={Mstyles.PgCounterItem}>
+                                                        <span>{ChapterData && ChapterData.duration} min</span>
+                                                        <small>Total Time</small>
+                                                    </div>
+                                                </div>
+                                                <div style={{ minHeight: '20px' }}></div>
+                                                <div className={Mstyles.QuizStartBtnbox}>
+
+                                                    <LoadingButton
+                                                        fullWidth
+                                                        onClick={CreateAtempt}
+                                                        endIcon={<FiChevronRight />}
+                                                        loading={LoadingBTN}
+                                                        loadingPosition="end"
+                                                        variant="contained"
+                                                    >
+                                                        <span> Start now</span>
+                                                    </LoadingButton>
+                                                </div>
 
 
-                    }
+                                                <div className={Mstyles.HeRoboxPGVADetails}>
+                                                    <div>
+                                                        <span style={{ fontWeight: 'bold' }}>Instructions:</span>
+                                                    </div>
+                                                    <div>
+                                                        <span>{ChapterData && ChapterData.details}</span>
+                                                    </div>
+                                                </div>
 
+                                            </div>
+                                        }
 
+                                    </div>
+                                }
 
-
-                    <div className={Mstyles.PlaygroundFooter}>
-
-
-                        {!LoadingBTN &&
-                            <div className={Mstyles.HeroBtn} style={{ minWidth: '300px' }} onClick={CreateAtempt}>
-                                <span>Start Now</span>
                             </div>
-                        }
-                        {LoadingBTN &&
-                            <CircularProgress />
-                        }
+
+                        </div>
+
+
                     </div>
                 </div>
             }
+
+
             {QuesBox &&
                 <div>
                     <Head>
-                        <title>Test Started : {TSData && TSData.title}</title>
+                        <title>🕖EXAM STARTED : {TSData && TSData.title}</title>
                     </Head>
 
                     {!Loading &&
@@ -435,16 +459,17 @@ function Overview({ CourseFullData, ChapterID, JWTtoken, slug }) {
                                 <div className={Mstyles.navbarBoxPGplayMobileBox}>
                                     <Link href='/'>
                                         <div className={Mstyles.navbarBoxPGplayMobileBoxLogo}>
-                                            <img src='/logo/logomain.png' alt='logo' className={Mstyles.NavLogo} />
+                                            <img src='/logo/weblogo.png' alt='logo' className={Mstyles.NavLogo} />
                                         </div>
-                                       
-                                    </Link> 
-                                
+
+
+                                    </Link>
+
                                     <div className={Mstyles.blinkText}>
                                         <span>Test Started</span>
 
                                     </div>
-                                   
+
                                 </div>
 
                                 <div className={Mstyles.HTextItemBox}>
@@ -465,7 +490,7 @@ function Overview({ CourseFullData, ChapterID, JWTtoken, slug }) {
                                                 <div className={Mstyles.logo}>
                                                     <Link href='/'>
                                                         <div className={Mstyles.logomain}>
-                                                            <img src='/logo/logomain.png' alt='logo' className={Mstyles.NavLogo} />
+                                                            <img src='/logo/weblogo.png' alt='logo' className={Mstyles.NavLogo} />
                                                         </div>
                                                     </Link>
                                                 </div>
@@ -509,8 +534,22 @@ function Overview({ CourseFullData, ChapterID, JWTtoken, slug }) {
                                     {LoadQues &&
                                         <div className={Mstyles.QuesPlayBox}>
                                             <div className={Mstyles.QuesBox}>
-                                                <div className={Mstyles.QuesBoxOnlymob}>
-                                                
+                                                <div className={Mstyles.NavLeftMob}>
+                                                    <div className={Mstyles.CountDownItemTitle}>
+                                                        <span>Time Left</span>
+                                                    </div>
+
+                                                    <div className={Mstyles.CountDownBox}>
+                                                        <div className={Mstyles.CountDownItem}>
+                                                            <span>{hours}</span>
+                                                        </div>
+                                                        <div className={Mstyles.CountDownItem}>
+                                                            <span>{minutes}</span>
+                                                        </div>
+                                                        <div className={Mstyles.CountDownItem}>
+                                                            <span>{seconds}</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div>
                                                     <span className={Mstyles.QuesNoTetxTag}>Question No : {currentQuestion + 1}</span>
@@ -544,43 +583,12 @@ function Overview({ CourseFullData, ChapterID, JWTtoken, slug }) {
                                                     ))}
                                                 </div>
 
-                                              
-                                            </div>
-                                            <div className={Mstyles.QueIndexNoteboxMobile}>
-                                                <div className={Mstyles.QueIndexNoteItem}>
-                                                    <div className={Mstyles.QueIndexNoteboxA}>
-                                                        <div className={Mstyles.IndextItemBoxSelected}>
-                                                            <span>1</span>
-                                                        </div>
-                                                    </div>
-                                                    <div className={Mstyles.QueIndexNoteboxB}>
-                                                        <span>Current Question</span>
-                                                    </div>
-                                                </div>
-                                                <div className={Mstyles.QueIndexNoteItem}>
-                                                    <div className={Mstyles.QueIndexNoteboxA}>
-                                                        <div className={Mstyles.IndextItemBox}>
-                                                            <span>1</span>
-                                                        </div>
-                                                    </div>
-                                                    <div className={Mstyles.QueIndexNoteboxB}>
-                                                        <span>Attempted Question</span>
-                                                    </div>
-                                                </div>
-                                                <div className={Mstyles.QueIndexNoteItem}>
-                                                    <div className={Mstyles.QueIndexNoteboxA}>
-                                                        <div className={Mstyles.IndextItemBoxNotAt}>
-                                                            <span>1</span>
-                                                        </div>
-                                                    </div>
-                                                    <div className={Mstyles.QueIndexNoteboxB}>
-                                                        <span>Not Attempted Question</span>
-                                                    </div>
-                                                </div>
+
                                             </div>
 
-                                            <div style={{minHeight:'50vh'}}>
-                                            
+
+                                            <div style={{ minHeight: '50vh' }}>
+
                                             </div>
                                         </div>
 
@@ -599,52 +607,20 @@ function Overview({ CourseFullData, ChapterID, JWTtoken, slug }) {
                                                 </div>
                                             </div>
 
-                                            <div className={Mstyles.QueIndexNotebox}>
-                                                <div className={Mstyles.QueIndexNoteItem}>
-                                                    <div className={Mstyles.QueIndexNoteboxA}>
-                                                        <div className={Mstyles.IndextItemBoxSelected}>
-                                                            <span>1</span>
-                                                        </div>
-                                                    </div>
-                                                    <div className={Mstyles.QueIndexNoteboxB}>
-                                                        <span>Current Question</span>
-                                                    </div>
-                                                </div>
-                                                <div className={Mstyles.QueIndexNoteItem}>
-                                                    <div className={Mstyles.QueIndexNoteboxA}>
-                                                        <div className={Mstyles.IndextItemBox}>
-                                                            <span>1</span>
-                                                        </div>
-                                                    </div>
-                                                    <div className={Mstyles.QueIndexNoteboxB}>
-                                                        <span>Attempted Question</span>
-                                                    </div>
-                                                </div>
-                                                <div className={Mstyles.QueIndexNoteItem}>
-                                                    <div className={Mstyles.QueIndexNoteboxA}>
-                                                        <div className={Mstyles.IndextItemBoxNotAt}>
-                                                            <span>1</span>
-                                                        </div>
-                                                    </div>
-                                                    <div className={Mstyles.QueIndexNoteboxB}>
-                                                        <span>Not Attempted Question</span>
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                          
+
 
                                             <div className={Mstyles.PlayindexBox}>
                                                 {updatedQuestions.map((Item, index) => (
                                                     <div id={'OptionSeleCtedIndex' + Item._id} key={Item._id} className={Mstyles.PlayindexItem} onClick={() => HandleOptionindex(Item._id, index)}
                                                         style={{
                                                             backgroundColor:
-                                                                Item.isAtempted === true ? '#00a6ff' : '#FEF9E7',
+                                                                Item.isAtempted === true ? 'green' : '#EBDEF0',
                                                             cursor: 'pointer',
                                                             color:
-                                                                Item.isAtempted === true ? 'white' : 'black',
-                                                            border:
-                                                                index === currentQuestion ? '3px solid #00a6ff' : 'none',
+                                                                Item.isAtempted === true ? 'white' : '#2E4053',
+                                                            borderBottom:
+                                                                index === currentQuestion ? '5px solid #00a6ff' : 'none',
 
                                                         }}
 
@@ -653,7 +629,7 @@ function Overview({ CourseFullData, ChapterID, JWTtoken, slug }) {
                                                     </div>
                                                 ))}
                                             </div>
-                                          
+
                                         </div>
 
                                     }
@@ -664,52 +640,97 @@ function Overview({ CourseFullData, ChapterID, JWTtoken, slug }) {
 
                     }
 
-                    <div className={Mstyles.PlaygroundFooter}>
-                        <div>
-                            <div className={Mstyles.NavLeftMob}>
-                                <div className={Mstyles.CountDownItemTitle}>
-                                    <span>Time Left</span>
-                                </div>
 
-                                <div className={Mstyles.CountDownBox}>
-                                    <div className={Mstyles.CountDownItem}>
-                                        <span>{hours}</span>
+                    <div className={Mstyles.PlaygroundFooter}>
+                        {!LoadingBTN &&
+
+                            <div>
+                                <div className={Mstyles.OnlyDesktop}>
+                                    <div className={Mstyles.PlaygroundFooterBtnBox}>
+
+                                        <div className={Mstyles.PlaygroundFooterBtnBoxFextbtn}>
+                                            <IconButton aria-label="prev" onClick={PrevQues}>
+                                                <StyledBadge color="secondary" >
+                                                    <FiChevronLeft />
+                                                </StyledBadge>
+                                            </IconButton>
+                                            <div className={Mstyles.QuesCountbox}>
+                                                {currentQuestion + 1} /  {TotalQues}
+                                            </div>
+                                            <IconButton aria-label="next" onClick={NextQues}>
+                                                <StyledBadge color="secondary" >
+                                                    <FiChevronRight />
+                                                </StyledBadge>
+                                            </IconButton>
+
+
+                                        </div>
+                                        <div className={Mstyles.PlaygroundFooterBtnBoxFextbtn}>
+                                            <Button variant="contained" style={{ backgroundColor: 'red' }} endIcon={<SendIcon />} onClick={Exittest}>
+                                                End and Exit
+                                            </Button>
+                                            <div style={{ width: '20px' }}></div>
+                                            <Button variant="contained" style={{ backgroundColor: '#00a6ff' }} endIcon={<SendIcon />} onClick={SubmitAtempt}>
+                                                Final Submit
+                                            </Button>
+
+                                        </div>
+
+
                                     </div>
-                                    <div className={Mstyles.CountDownItem}>
-                                        <span>{minutes}</span>
-                                    </div>
-                                    <div className={Mstyles.CountDownItem}>
-                                        <span>{seconds}</span>
+                                </div>
+                                <div className={Mstyles.OnlyMobile}>
+                                    <div className={Mstyles.PlaygroundFooterBtnBoxMobile}>
+
+                                        <div className={Mstyles.PlaygroundFooterBtnBoxFextbtn}>
+
+
+
+
+                                            <IconButton aria-label="prev" onClick={PrevQues}>
+                                                <StyledBadge color="secondary" >
+                                                    <FiChevronLeft />
+                                                </StyledBadge>
+                                            </IconButton>
+                                            <div className={Mstyles.QuesCountbox}>
+                                                {currentQuestion + 1} /  {TotalQues}
+                                            </div>
+                                            <IconButton aria-label="next" onClick={NextQues}>
+                                                <StyledBadge color="secondary" >
+                                                    <FiChevronRight />
+                                                </StyledBadge>
+                                            </IconButton>
+
+
+
+                                        </div>
+                                        <div style={{ height: '20px' }}></div>
+                                        <div className={Mstyles.PlaygroundFooterBtnBoxFextbtn}>
+                                            <Button variant="contained" size='small' style={{ backgroundColor: 'red' }} endIcon={<SendIcon />} onClick={Exittest}>
+                                                End and Exit
+                                            </Button>
+                                            <div style={{ width: '20px' }}></div>
+                                            <Button variant="contained" size='small' style={{ backgroundColor: '#00a6ff' }} endIcon={<SendIcon />} onClick={SubmitAtempt}>
+                                                Final Submit
+                                            </Button>
+
+                                        </div>
+
+
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className={Mstyles.PlaygroundFooterBtnBox}>
-                            {!LoadingBTN &&
-                                <div style={{display: 'flex', alignItems: 'center'}}>
-                                    <div className={Mstyles.PlayBtnQ} style={{ backgroundColor: 'red' }} onClick={CreateAtempt}>
-                                        <span>End Test Series</span>
-                                    </div>
 
 
-                                    <div className={Mstyles.PlayBtnQ} style={{ marginLeft: 10 }} onClick={SubmitAtempt}>
-                                        <span>Submit Test Series</span>
-                                    </div>
-                                    </div>
-                            }
+                        }
+                        <div className={Mstyles.PlaygroundFooterBox}>
                             {LoadingBTN &&
                                 <CircularProgress />
                             }
-                           
-                       </div>
+                        </div>
                     </div>
                 </div>
             }
-
-
-
-
-
 
         </OverviewWrapper>
     );

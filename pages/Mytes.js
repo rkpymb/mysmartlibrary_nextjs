@@ -1,168 +1,57 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import ReactHLS from 'react-hls';
 
-// Updated sample data structure with 5 questions, each having 1 mark
-const questions = [
-  {
-    title: "Question 1",
-    Attempted: true,
-    marks: 1, // Marks for this question
-    options: [
-      { title: "Option A", isActive: false, isSelected: false },
-      { title: "Option B", isActive: true, isSelected: false },
-      // Add more options
-    ],
-  },
-  // Add more questions (up to Question 9)
-  {
-    title: "Question 10",
-    Attempted: true,
-    marks: 1, // Marks for this question
-    options: [
-      { title: "Option A", isActive: false, isSelected: true },
-      { title: "Option B", isActive: true, isSelected: false },
-      { title: "Option C", isActive: true, isSelected: true },
-      { title: "Option D", isActive: false, isSelected: false },
-    ],
-  },
-];
-
-const givenTotalTime = 5; // Total time given in minutes
-const takenTime = 3.4; // Time taken in minutes
-
-function calculateStats(questions, givenTotalTime, takenTime) {
-  let totalFullMarks = 0; // Variable to store the full marks
-  let totalMarks = 0;
-  let totalMarksLost = 0;
-  let totalAttempted = 0;
-  let totalNotAttempted = 0;
-  let correctQuestions = 0;
-  let incorrectQuestions = 0;
-  let totalQuestions = questions.length;
-
-  questions.forEach((question) => {
-    // Calculate total obtained marks for each question
-    question.obtainedMarks = 0;
-
-    if (question.Attempted) {
-      let isCorrect = true;
-
-      question.options.forEach((option) => {
-        if (option.isActive !== option.isSelected) {
-          isCorrect = false;
-        }
-      });
-
-      if (isCorrect) {
-        question.obtainedMarks = question.marks;
-        correctQuestions++;
-      } else {
-        incorrectQuestions++;
-      }
-    } else {
-      totalNotAttempted++;
-    }
-
-    totalFullMarks += question.marks;
-    totalMarks += question.obtainedMarks;
-
-    if (question.Attempted) {
-      totalAttempted++;
-    }
-  });
-
-  // Calculate total marks lost
-  totalMarksLost = totalFullMarks - totalMarks;
-
-  // Calculate percentages
-  let percentageFullMarks = (totalFullMarks / (totalQuestions * 1)) * 100;
-  let percentageMarks = (totalMarks / (totalQuestions * 1)) * 100;
-  let percentageMarksLost = (totalMarksLost / (totalQuestions * 1)) * 100;
-  let percentageAttempted = (totalAttempted / (totalQuestions * 1)) * 100;
-  let percentageNotAttempted = (totalNotAttempted / (totalQuestions * 1)) * 100;
-  let percentageCorrectQuestions = (correctQuestions / (totalQuestions * 1)) * 100;
-  let percentageIncorrectQuestions = (incorrectQuestions / (totalQuestions * 1)) * 100;
-
-  // Calculate time-related percentages
-  let percentageTimeTaken = (takenTime / givenTotalTime) * 100;
-
-  return {
-    totalFullMarks,
-    totalMarks,
-    totalMarksLost,
-    totalAttempted,
-    totalNotAttempted,
-    correctQuestions,
-    incorrectQuestions,
-    totalQuestions,
-    percentageFullMarks,
-    percentageMarks,
-    percentageMarksLost,
-    percentageAttempted,
-    percentageNotAttempted,
-    percentageCorrectQuestions,
-    percentageIncorrectQuestions,
-    percentageTimeTaken, // Add percentage of time taken
-  };
-}
-
-export default function QuestionStats() {
-  const [stats, setStats] = useState(null);
+function VideoPlayer() {
+  const [m3u8Url, setM3u8Url] = useState('');
+  const [Loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const calculatedStats = calculateStats(questions, givenTotalTime, takenTime);
-    setStats(calculatedStats);
+
+    GetData()
   }, []);
 
-  if (!stats) {
-    return <div>Loading...</div>;
+
+  const GetData = async () => {
+    const sendUM = { videoId: "LTTnk4IdKcw" }
+    const data = await fetch(`http://localhost:3001/home/livestream2`, {
+      method: "POST",
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(sendUM)
+    }).then((a) => {
+      return a.json();
+    })
+      .then((parsed) => {
+        // setM3u8Url(parsed.m3u8Url);
+        // setLoading(false);
+        console.log(parsed)
+      }).catch((error) => console.error(error));
   }
 
   return (
     <div>
-      <h2>Question Statistics</h2>
-      <p>Total Full Marks: {stats.totalFullMarks}</p>
-      <p>Total Marks Obtained: {stats.totalMarks}</p>
-      <p>Total Marks Lost: {stats.totalMarksLost}</p>
-      <p>Total Attempted Questions: {stats.totalAttempted}</p>
-      <p>Total Not Attempted Questions: {stats.totalNotAttempted}</p>
-      <p>Correct Questions: {stats.correctQuestions}</p>
-      <p>Incorrect Questions: {stats.incorrectQuestions}</p>
-      <p>Total Questions: {stats.totalQuestions}</p>
-      <h3>Percentages:</h3>
-      <p>Percentage of Full Marks: {stats.percentageFullMarks.toFixed(2)}%</p>
-      <p>Percentage of Marks Obtained: {stats.percentageMarks.toFixed(2)}%</p>
-      <p>Percentage of Marks Lost: {stats.percentageMarksLost.toFixed(2)}%</p>
-      <p>Percentage of Attempted Questions: {stats.percentageAttempted.toFixed(2)}%</p>
-      <p>Percentage of Not Attempted Questions: {stats.percentageNotAttempted.toFixed(2)}%</p>
-      <p>Percentage of Correct Questions: {stats.percentageCorrectQuestions.toFixed(2)}%</p>
-      <p>Percentage of Incorrect Questions: {stats.percentageIncorrectQuestions.toFixed(2)}%</p>
-      <h3>Time Related:</h3>
-      <p>Percentage of Time Taken: {stats.percentageTimeTaken.toFixed(2)}%</p>
-      <h3>Questions:</h3>
-      {questions.map((question, index) => (
-        <div key={index}>
-          <p>
-            <strong>{question.title}</strong> (Marks: {question.marks})
-          </p>
-          <ul>
-            {question.options.map((option, optionIndex) => (
-              <li
-                key={optionIndex}
-                style={{
-                  color:
-                    question.Attempted && option.isActive === option.isSelected
-                      ? 'green'
-                      : question.Attempted
-                        ? 'red'
-                        : 'black',
-                }}
-              >
-                {option.title}
-              </li>
-            ))}
-          </ul>
+
+      {Loading &&
+
+        <div>
+          <p>Loading..</p>
         </div>
-      ))}
+      }
+      {!Loading &&
+
+        <div>
+          {/* <video controls width={'100%'}>
+            <source src={`http://localhost:3001/home/youtubeProxy${m3u8Url}`} type="application/x-mpegURL" />
+            Your browser does not support the video tag.
+          </video> */}
+
+          <ReactHLS url={`https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1701229709/ei/LWBmZbbuF9_Fz7sPz8iumA8/ip/2409:40e5:1f:3700:edd2:5531:49b:fe19/id/T81jwJ_WpjE.1/itag/95/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D136/rqh/1/hls_chunk_host/rr5---sn-gwpa-pmgl.googlevideo.com/playlist_duration/30/manifest_duration/30/spc/UWF9f4Blg4sTcJIAO3secOwuL_AXb-84tOqijH4pWA/vprv/1/playlist_type/DVR/initcwndbps/567500/mh/D9/mm/44/mn/sn-gwpa-pmgl/ms/lva/mv/m/mvi/5/pl/36/dover/11/pacing/0/keepalive/yes/fexp/24007246/mt/1701207154/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,playlist_duration,manifest_duration,spc,vprv,playlist_type/sig/ANLwegAwRQIhALUEbWQaHELdvShdw9NtCtVRUbZ7LeO6obGRM1SEXoVnAiBL_nTgYhowx5f-ut0PH081UKxaRFh2Hp4cBN20MMwWSQ%3D%3D/lsparams/hls_chunk_host,initcwndbps,mh,mm,mn,ms,mv,mvi,pl/lsig/AM8Gb2swRgIhAP_NVN7X5KeeITF3D0j6YqwFrxZDMK-OBFCLlmTxIzYCAiEA0cd3KQ0QduHTXTQsjyj_VBb-BtB6Znu-Qbsf3noTi7g%3D/playlist/index.m3u8`}/>
+        </div>
+      }
+
     </div>
   );
 }
+
+export default VideoPlayer;

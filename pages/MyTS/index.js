@@ -2,61 +2,41 @@ import { useState, useEffect, useContext } from 'react';
 import Head from 'next/head';
 import CheckloginContext from '../../context/auth/CheckloginContext'
 import SidebarLayout from 'src/layouts/SidebarLayout';
-import MYS from '../../Styles/mystyle.module.css'
-import PageHeader from 'src/content/Dashboards/Crypto/PageHeader';
-import PageTitleWrapper from 'src/components/PageTitleWrapper';
-import { Container, Grid } from '@mui/material';
+import Mstyles from '../../Styles/home.module.css'
+
 import Footer from 'src/components/Footer';
-import NextLink from 'next/link';
 
+import Badge from '@mui/material/Badge';
 import MyTSList from '../components/List/MyTSList';
+import { useRouter } from 'next/router'
 
-import AddTs from '../components/Add/AddTs'
 import {
-  Button,
-  Card,
 
-  Box,
-  CardContent,
-  Typography,
-  Avatar,
-  alpha,
-  Tooltip,
-  CardActionArea,
   styled
 } from '@mui/material';
 function DashboardCrypto() {
+  const router = useRouter()
+  
   const Contextdata = useContext(CheckloginContext)
   useEffect(() => {
-    if (Contextdata.IsLogin == true) {
-      console.log('Login')
-    } else {
-      // setIsLoading(true);
-      // router.push('/Login')
-      console.log('Not Login')
-    }
-  });
+    Contextdata.ChangeMainTitle('My Test Series')
+   
+  },[router.query]);
+
   return (
     <>
       <Head>
         <title>My Test Series</title>
       </Head>
+      <div className={Mstyles.Containerpadding}>
+      <div className={Mstyles.OnlyMobile}>
+          <div style={{ minHeight: '30px' }}></div>
+        </div>
+      <MyTSList />
+      </div>
 
-      <Container className={MYS.min100vh}>
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="space-between"
-          sx={{
-            pb: 3, mt: 5
-          }}
-        >
-          <Typography variant="h3">My Test Series</Typography>
-       
-        </Box>
-        <MyTSList />
-      </Container>
-      <Footer />
+
+     
     </>
   );
 }

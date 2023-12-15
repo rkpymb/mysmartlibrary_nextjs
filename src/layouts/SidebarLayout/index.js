@@ -13,15 +13,18 @@ const SidebarLayout = ({ children }) => {
   const router = useRouter()
   const [IsLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    if (Contextdata.IsLogin == false) {
-      router.push('/')
-    } else {
+    const Token = localStorage.getItem('Token');
+    if (!Token || Token.trim() === '') {
+      router.push('/Login')
+    }
+    if (Contextdata.IsLogin == true) {
       setIsLoading(false);
     }
-  });
+
+  }, [Contextdata.IsLogin]);
   return (
     <>
-      {!IsLoading && 
+      {!IsLoading &&
         <Box
           sx={{
             flex: 1,
@@ -68,7 +71,7 @@ const SidebarLayout = ({ children }) => {
         </Box>
 
       }
-      
+
     </>
   );
 };

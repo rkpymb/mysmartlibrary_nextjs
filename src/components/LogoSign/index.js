@@ -3,10 +3,9 @@ import Mstyle from '../../../Styles/home.module.css'
 const index = () => {
   return (
     <div className={Mstyle.logomainDB}>
-      <div className={Mstyle.logomainDBimg}>
-        <img src='https://supermarks.in/logo/logomain.png' alt='logo' />
+      <div className={Mstyle.logomain}>
+        <img src='/logo/weblogoDark.png' alt='logo' width={'100%'} />
       </div>
-      <span>Student Dashboard</span>
     </div>
   )
 }

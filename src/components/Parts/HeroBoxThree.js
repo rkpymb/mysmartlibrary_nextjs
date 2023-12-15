@@ -10,15 +10,23 @@ const HeroBoxThree = (props) => {
     const Contextdata = useContext(CheckloginContext)
     return (
 
-        <div className={Mstyles.HeroBoxTwoV}>
-            <div style={{ minHeight: '20px' }}></div>
-            <div className={Mstyles.HeroBoxTwoTitle}>
-                <h1>We cover all Exams and Classes</h1>
-                <span>From videos to notes to tests, providing all you need to learn and practice in one place</span>
+        <div>
+            <div className={Mstyles.OnlyDesktop}>
+                <div style={{ minHeight: '30px' }}></div>
             </div>
-            <div style={{ minHeight: '30px' }}></div>
-            <CatlistGrid />
-            <div style={{ minHeight: '30px' }}></div>
+            <div className={Mstyles.HeroBoxTwoTitle}>
+                <h1>We cover all <span className={Mstyles.HeroBoxTwoTitleBottom}>Exams and Classes</span></h1>
+                <div style={{ minHeight: '5px' }}></div>
+                <span className={Mstyles.HeroBoxTwoTitlespan}>From videos to notes to tests, providing all you need to learn and practice in one place</span>
+            </div>
+            <div style={{ minHeight: '20px' }}></div>
+            <div className={Mstyles.container}>
+                <CatlistGrid />
+            </div>
+
+            <div className={Mstyles.OnlyDesktop}>
+                <div style={{ minHeight: '30px' }}></div>
+            </div>
         </div>
 
     )

@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import BaseLayout from 'src/layouts/BaseLayout';
 import Mstyles from '../../Styles/home.module.css'
-import CircularProgress from '@mui/material/CircularProgress';
+import MainNavBarSecond from '../../src/components/Parts/Navbar/MainNavBarSecond'
 import { LuXSquare, LuCheckSquare, LuXOctagon } from "react-icons/lu";
 import { AiOutlineLogin } from 'react-icons/ai';
 import { VscAccount, VscVerified } from "react-icons/vsc";
@@ -170,285 +170,287 @@ function Overview({ ATDATA }) {
 
     return (
         <OverviewWrapper>
-            <Navbarmain />
-            <div className={Mstyles.ContainerMain}>
-                {!Loading &&
-                    <div className={Mstyles.ATScoreBox}>
+            <MainNavBarSecond CheckPComplete={false} />
+            <div className={Mstyles.MainBoxContainer}>
+            <div className={Mstyles.VideoBoxTopDevider}></div>
+                <div className={Mstyles.MainBoxContainerInner}>
+              
 
-
-                        <div className={Mstyles.ATScoreBoxItem}>
-                            <div className={Mstyles.TagICTAMAt}>
-                                Attempted
-                            </div>
-                            <div style={{ minHeight: '10px' }}></div>
-                            <div className={Mstyles.ATScoreBoxItemTitleBox}>
-                                <div>
-                                    <span>{TSData.ChTitle}</span>
+                    {!Loading &&
+                        <div className={Mstyles.ATScoreBox}>
+                            <div className={Mstyles.ATScoreBoxItem}>
+                                <div className={Mstyles.TagICTAMAt}>
+                                    Attempted
                                 </div>
-                                <div>
-                                    <small>{TSData.TsTitle}</small>
+                                <div style={{ minHeight: '10px' }}></div>
+                                <div className={Mstyles.ATScoreBoxItemTitleBox}>
+                                    <div>
+                                        <span>{TSData.ChTitle}</span>
+                                    </div>
+                                    <div>
+                                        <small>{TSData.TsTitle}</small>
+                                    </div>
+                                </div>
+                                <div style={{ minHeight: '15px' }}></div>
+                                <div className={Mstyles.ATScoreBoxItemTextIConBox}>
+                                    <div>
+                                        <div className={Mstyles.ATScoreBoxItemTextICon}>
+                                            <div className={Mstyles.ATScoreBoxItemTextIConA}>
+                                                <FiClock size={20} />
+                                            </div>
+                                            <div className={Mstyles.ATScoreBoxItemTextIConB}>
+                                                Attempted On: {TSData.date}, {TSData.time}
+                                            </div>
+                                        </div>
+                                        <div style={{ minHeight: '10px' }}></div>
+                                        <div className={Mstyles.ATbtns} >
+                                            <div className={Mstyles.ATbtnsItem}>
+                                                <Button variant="outlined">View Solutions</Button>
+                                            </div>
+                                            <div className={Mstyles.ATbtnsItem}>
+                                                <Button variant="outlined">Share Attempt</Button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div className={Mstyles.OnlyDesktop}>
+                                        <div>
+                                            <img src='/notepad.png' alt='logo' width={'80px'} />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div style={{ minHeight: '15px' }}></div>
-                            <div className={Mstyles.ATScoreBoxItemTextIConBox}>
-                                <div>
-                                    <div className={Mstyles.ATScoreBoxItemTextICon}>
-                                        <div className={Mstyles.ATScoreBoxItemTextIConA}>
-                                            <FiClock size={20} />
+                            <h2>Result Summary</h2>
+                            <div style={{ minHeight: '15px' }}></div>
+                            <div className={Mstyles.ATScoreBoxItem}>
+                                <div className={Mstyles.ATScoreBoxItemTextIConBox}>
+                                    <div>
+                                        <div className={Mstyles.ScorB}>
+                                            <span>SCORE</span>
                                         </div>
-                                        <div className={Mstyles.ATScoreBoxItemTextIConB}>
-                                            Attempted On: {TSData.date}, {TSData.time}
+                                        <div style={{ minHeight: '15px' }}></div>
+                                        <div className={Mstyles.MainScorB}>
+                                            <span>{stats.totalMarks}</span><small>/{stats.totalFullMarks}</small>
+                                            <div>
+                                                {Mnow <= 30 &&
+                                                    <div className={Mstyles.ScoreRemarktag}>Very Poor marks with {Mnow.toFixed(2)}%</div>
+
+                                                }
+                                                {Mnow > 30 && Mnow <= 40 &&
+                                                    <div className={Mstyles.ScoreRemarktag}> Poor marks with {Mnow.toFixed(2)}%</div>
+
+                                                }
+                                                {Mnow > 40 && Mnow <= 50 &&
+                                                    <div className={Mstyles.ScoreRemarktag}> Lowest marks with {Mnow.toFixed(2)}%</div>
+
+                                                }
+                                                {Mnow > 50 && Mnow <= 60 &&
+                                                    <div className={Mstyles.ScoreRemarktag}> Avarage marks with {Mnow.toFixed(2)}%</div>
+
+                                                }
+                                                {Mnow > 60 && Mnow <= 70 &&
+                                                    <div className={Mstyles.ScoreRemarktag}> Good marks with {Mnow.toFixed(2)}%</div>
+
+                                                }
+                                                {Mnow > 70 && Mnow <= 80 &&
+                                                    <div className={Mstyles.ScoreRemarktag}> Very Good marks with {Mnow.toFixed(2)}%</div>
+
+                                                }
+                                                {Mnow > 80 && Mnow <= 90 &&
+                                                    <div className={Mstyles.ScoreRemarktag}> Excellent marks with {Mnow.toFixed(2)}%</div>
+
+                                                }
+                                                {Mnow > 90 && Mnow <= 100 &&
+                                                    <div className={Mstyles.ScoreRemarktag}> Very Excellent marks with {Mnow.toFixed(2)}%</div>
+
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <img src='/rising.png' alt='logo' width={'80px'} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style={{ minHeight: '15px' }}></div>
+                            <h2>Your Progress Report</h2>
+                            <div style={{ minHeight: '15px' }}></div>
+                            <div className={Mstyles.ProgressBox}>
+                                <div className={Mstyles.ProgressBoxItem}>
+                                    <div className={Mstyles.ProgressBoxTitleBox}>
+                                        <div className={Mstyles.ProgressBoxTitleBoxA}>
+                                            <div className={Mstyles.TextWithIConItem}>
+                                                <div className={Mstyles.TextWithIConItemA}>
+                                                    <FiCheckSquare size={20} />
+                                                </div>
+                                                <div className={Mstyles.TextWithIConItemB}>Correct</div>
+                                            </div>
+                                        </div>
+                                        <div className={Mstyles.ProgressBoxTitleBoxB}>
+                                            {stats.correctQuestions}/{stats.totalAttempted}
                                         </div>
                                     </div>
                                     <div style={{ minHeight: '10px' }}></div>
-                                    <div className={Mstyles.ATbtns} >
-                                        <div className={Mstyles.ATbtnsItem}>
-                                            <Button variant="outlined">View Solutions</Button>
-                                        </div>
-                                        <div className={Mstyles.ATbtnsItem}>
-                                            <Button variant="outlined">Share Attempt</Button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div className={Mstyles.OnlyDesktop}>
-                                    <div>
-                                        <img src='/notepad.png' alt='logo' width={'80px'} />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div style={{ minHeight: '15px' }}></div>
-                        <h2>Result Summary</h2>
-                        <div style={{ minHeight: '15px' }}></div>
-                        <div className={Mstyles.ATScoreBoxItem}>
-                            <div className={Mstyles.ATScoreBoxItemTextIConBox}>
-                                <div>
-                                    <div className={Mstyles.ScorB}>
-                                        <span>SCORE</span>
-                                    </div>
-                                    <div style={{ minHeight: '15px' }}></div>
-                                    <div className={Mstyles.MainScorB}>
-                                        <span>{stats.totalMarks}</span><small>/{stats.totalFullMarks}</small>
-                                        <div>
-                                            {Mnow <= 30 &&
-                                                <div className={Mstyles.ScoreRemarktag}>Very Poor marks with {Mnow.toFixed(2)}%</div>
-                                            
-                                            }
-                                            {Mnow > 30 && Mnow <= 40 &&
-                                                <div className={Mstyles.ScoreRemarktag}> Poor marks with {Mnow.toFixed(2)}%</div>
-                                            
-                                            }
-                                            {Mnow > 40 && Mnow <= 50 &&
-                                                <div className={Mstyles.ScoreRemarktag}> Lowest marks with {Mnow.toFixed(2)}%</div>
-                                            
-                                            }
-                                            {Mnow > 50 && Mnow <= 60 &&
-                                                <div className={Mstyles.ScoreRemarktag}> Avarage marks with {Mnow.toFixed(2)}%</div>
-                                            
-                                            }
-                                            {Mnow > 60 && Mnow <= 70 &&
-                                                <div className={Mstyles.ScoreRemarktag}> Good marks with {Mnow.toFixed(2)}%</div>
-                                            
-                                            }
-                                            {Mnow > 70 && Mnow <= 80 &&
-                                                <div className={Mstyles.ScoreRemarktag}> Very Good marks with {Mnow.toFixed(2)}%</div>
-                                            
-                                            }
-                                            {Mnow > 80 && Mnow <= 90 &&
-                                                <div className={Mstyles.ScoreRemarktag}> Excellent marks with {Mnow.toFixed(2)}%</div>
-                                            
-                                            }
-                                            {Mnow > 90 && Mnow <= 100 &&
-                                                <div className={Mstyles.ScoreRemarktag}> Very Excellent marks with {Mnow.toFixed(2)}%</div>
-                                            
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div>
-                                        <img src='/rising.png' alt='logo' width={'80px'} />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div style={{ minHeight: '15px' }}></div>
-                        <h2>Your Progress Report</h2>
-                        <div style={{ minHeight: '15px' }}></div>
-                        <div className={Mstyles.ProgressBox}>
-                            <div className={Mstyles.ProgressBoxItem}>
-                                <div className={Mstyles.ProgressBoxTitleBox}>
-                                    <div className={Mstyles.ProgressBoxTitleBoxA}>
-                                        <div className={Mstyles.TextWithIConItem}>
-                                            <div className={Mstyles.TextWithIConItemA}>
-                                                <FiCheckSquare size={20} />
+                                    <LinearProgress variant="determinate" value={stats.percentageCorrectQuestions.toFixed(2)} />
+                                    <div style={{ minHeight: '10px' }}></div>
+                                    <div className={Mstyles.ProgressBoxTitleBox}>
+                                        <div className={Mstyles.ProgressBoxTitleBoxA}>
+                                            <div className={Mstyles.TextWithIConItem}>
+                                                Marks Obtained : {stats.totalMarks}
                                             </div>
-                                            <div className={Mstyles.TextWithIConItemB}>Correct</div>
+                                        </div>
+                                        <div className={Mstyles.ProgressBoxTitleBoxB}>
+                                            {stats.percentageCorrectQuestions.toFixed(2)}%
                                         </div>
                                     </div>
-                                    <div className={Mstyles.ProgressBoxTitleBoxB}>
-                                        {stats.correctQuestions}/{stats.totalAttempted}
-                                    </div>
                                 </div>
-                                <div style={{ minHeight: '10px' }}></div>
-                                <LinearProgress variant="determinate" value={stats.percentageCorrectQuestions.toFixed(2)} />
-                                <div style={{ minHeight: '10px' }}></div>
-                                <div className={Mstyles.ProgressBoxTitleBox}>
-                                    <div className={Mstyles.ProgressBoxTitleBoxA}>
-                                        <div className={Mstyles.TextWithIConItem}>
-                                            Marks Obtained : {stats.totalMarks}
+                                <div style={{ minHeight: '15px' }}></div>
+                                <div className={Mstyles.ProgressBoxItem}>
+                                    <div className={Mstyles.ProgressBoxTitleBox}>
+                                        <div className={Mstyles.ProgressBoxTitleBoxA}>
+                                            <div className={Mstyles.TextWithIConItem}>
+                                                <div className={Mstyles.TextWithIConItemA}>
+                                                    <FiAlertTriangle size={20} />
+                                                </div>
+                                                <div className={Mstyles.TextWithIConItemB}>Incorrect</div>
+                                            </div>
+                                        </div>
+                                        <div className={Mstyles.ProgressBoxTitleBoxB}>
+                                            {stats.incorrectQuestions}/{stats.totalAttempted}
                                         </div>
                                     </div>
-                                    <div className={Mstyles.ProgressBoxTitleBoxB}>
-                                        {stats.percentageCorrectQuestions.toFixed(2)}%
+                                    <div style={{ minHeight: '10px' }}></div>
+                                    <LinearProgress variant="determinate" value={stats.percentageIncorrectQuestions.toFixed(2)} color="secondary" />
+                                    <div style={{ minHeight: '10px' }}></div>
+                                    <div className={Mstyles.ProgressBoxTitleBox}>
+                                        <div className={Mstyles.ProgressBoxTitleBoxA}>
+                                            <div className={Mstyles.TextWithIConItem}>
+                                                Marks Lost : {stats.totalMarksLost}
+                                            </div>
+                                        </div>
+                                        <div className={Mstyles.ProgressBoxTitleBoxB}>
+                                            {stats.percentageIncorrectQuestions.toFixed(2)}%
+                                        </div>
                                     </div>
                                 </div>
+                                <div style={{ minHeight: '15px' }}></div>
+                                <div className={Mstyles.ProgressBoxItem}>
+                                    <div className={Mstyles.ProgressBoxTitleBox}>
+                                        <div className={Mstyles.ProgressBoxTitleBoxA}>
+                                            <div className={Mstyles.TextWithIConItem}>
+                                                <div className={Mstyles.TextWithIConItemA}>
+                                                    <FiScissors size={20} />
+                                                </div>
+                                                <div className={Mstyles.TextWithIConItemB}>Skipped</div>
+                                            </div>
+                                        </div>
+                                        <div className={Mstyles.ProgressBoxTitleBoxB}>
+                                            {stats.totalNotAttempted}/{stats.totalQuestions}
+                                        </div>
+                                    </div>
+                                    <div style={{ minHeight: '10px' }}></div>
+                                    <LinearProgress variant="determinate" color="secondary" value={stats.percentageNotAttempted.toFixed(2)} />
+                                    <div style={{ minHeight: '10px' }}></div>
+                                    <div className={Mstyles.ProgressBoxTitleBox}>
+                                        <div className={Mstyles.ProgressBoxTitleBoxA}>
+                                            <div className={Mstyles.TextWithIConItem}>
+                                                Marks Skipped : 60
+                                            </div>
+                                        </div>
+                                        <div className={Mstyles.ProgressBoxTitleBoxB}>
+                                            {stats.percentageNotAttempted.toFixed(2)}%
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style={{ minHeight: '15px' }}></div>
+                                <div className={Mstyles.ProgressBoxItem}>
+                                    <div className={Mstyles.ProgressBoxTitleBox}>
+                                        <div className={Mstyles.ProgressBoxTitleBoxA}>
+                                            <div className={Mstyles.TextWithIConItem}>
+                                                <div className={Mstyles.TextWithIConItemA}>
+                                                    <FiClock size={20} />
+                                                </div>
+                                                <div className={Mstyles.TextWithIConItemB}>Time Taken</div>
+                                            </div>
+                                        </div>
+                                        <div className={Mstyles.ProgressBoxTitleBoxB}>
+                                            60/100
+                                        </div>
+                                    </div>
+                                    <div style={{ minHeight: '10px' }}></div>
+                                    <LinearProgress variant="determinate" value={percentage} color="primary" />
+                                    <div style={{ minHeight: '10px' }}></div>
+                                    <div className={Mstyles.ProgressBoxTitleBox}>
+                                        <div className={Mstyles.ProgressBoxTitleBoxA}>
+                                            <div className={Mstyles.TextWithIConItem}>
+                                                Total Time : 10 min
+                                            </div>
+                                        </div>
+                                        <div className={Mstyles.ProgressBoxTitleBoxB}>
+                                            {`${Math.round(percentage)}%`}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
                             </div>
                             <div style={{ minHeight: '15px' }}></div>
-                            <div className={Mstyles.ProgressBoxItem}>
-                                <div className={Mstyles.ProgressBoxTitleBox}>
-                                    <div className={Mstyles.ProgressBoxTitleBoxA}>
-                                        <div className={Mstyles.TextWithIConItem}>
-                                            <div className={Mstyles.TextWithIConItemA}>
-                                                <FiAlertTriangle size={20} />
-                                            </div>
-                                            <div className={Mstyles.TextWithIConItemB}>Incorrect</div>
-                                        </div>
-                                    </div>
-                                    <div className={Mstyles.ProgressBoxTitleBoxB}>
-                                        {stats.incorrectQuestions}/{stats.totalAttempted}
-                                    </div>
-                                </div>
-                                <div style={{ minHeight: '10px' }}></div>
-                                <LinearProgress variant="determinate" value={stats.percentageIncorrectQuestions.toFixed(2)} color="secondary" />
-                                <div style={{ minHeight: '10px' }}></div>
-                                <div className={Mstyles.ProgressBoxTitleBox}>
-                                    <div className={Mstyles.ProgressBoxTitleBoxA}>
-                                        <div className={Mstyles.TextWithIConItem}>
-                                            Marks Lost : {stats.totalMarksLost}
-                                        </div>
-                                    </div>
-                                    <div className={Mstyles.ProgressBoxTitleBoxB}>
-                                        {stats.percentageIncorrectQuestions.toFixed(2)}%
-                                    </div>
-                                </div>
-                            </div>
+                            <h2>Complete Analysis for each Question </h2>
                             <div style={{ minHeight: '15px' }}></div>
-                            <div className={Mstyles.ProgressBoxItem}>
-                                <div className={Mstyles.ProgressBoxTitleBox}>
-                                    <div className={Mstyles.ProgressBoxTitleBoxA}>
-                                        <div className={Mstyles.TextWithIConItem}>
-                                            <div className={Mstyles.TextWithIConItemA}>
-                                                <FiScissors size={20} />
-                                            </div>
-                                            <div className={Mstyles.TextWithIConItemB}>Skipped</div>
-                                        </div>
-                                    </div>
-                                    <div className={Mstyles.ProgressBoxTitleBoxB}>
-                                        {stats.totalNotAttempted}/{stats.totalQuestions}
-                                    </div>
-                                </div>
-                                <div style={{ minHeight: '10px' }}></div>
-                                <LinearProgress variant="determinate" color="secondary" value={stats.percentageNotAttempted.toFixed(2)} />
-                                <div style={{ minHeight: '10px' }}></div>
-                                <div className={Mstyles.ProgressBoxTitleBox}>
-                                    <div className={Mstyles.ProgressBoxTitleBoxA}>
-                                        <div className={Mstyles.TextWithIConItem}>
-                                            Marks Skipped : 60
-                                        </div>
-                                    </div>
-                                    <div className={Mstyles.ProgressBoxTitleBoxB}>
-                                        {stats.percentageNotAttempted.toFixed(2)}%
-                                    </div>
-                                </div>
-                            </div>
-                            <div style={{ minHeight: '15px' }}></div>
-                            <div className={Mstyles.ProgressBoxItem}>
-                                <div className={Mstyles.ProgressBoxTitleBox}>
-                                    <div className={Mstyles.ProgressBoxTitleBoxA}>
-                                        <div className={Mstyles.TextWithIConItem}>
-                                            <div className={Mstyles.TextWithIConItemA}>
-                                                <FiClock size={20} />
-                                            </div>
-                                            <div className={Mstyles.TextWithIConItemB}>Time Taken</div>
-                                        </div>
-                                    </div>
-                                    <div className={Mstyles.ProgressBoxTitleBoxB}>
-                                        60/100
-                                    </div>
-                                </div>
-                                <div style={{ minHeight: '10px' }}></div>
-                                <LinearProgress variant="determinate" value={percentage} color="primary" />
-                                <div style={{ minHeight: '10px' }}></div>
-                                <div className={Mstyles.ProgressBoxTitleBox}>
-                                    <div className={Mstyles.ProgressBoxTitleBoxA}>
-                                        <div className={Mstyles.TextWithIConItem}>
-                                            Total Time : 10 min
-                                        </div>
-                                    </div>
-                                    <div className={Mstyles.ProgressBoxTitleBoxB}>
-                                        {`${Math.round(percentage)}%`}
-                                    </div>
-                                </div>
-                            </div>
+                            <div className={Mstyles.ResultMyAtemptsBox}>
+
+                                {QuestionsList.map((question, index) => (
+                                    <div key={index} className={Mstyles.QSBOXatResultItm}>
+                                        <p>
+                                            <strong>Q {index + 1} :</strong> <strong>{question.title}</strong> (Marks: {question.marks})
+                                        </p>
+                                        <ul>
+                                            {question.options.map((option, optionIndex) => (
+                                                <li
+                                                    key={optionIndex}
+                                                    style={{
+                                                        color:
+                                                            question.isAtempted && option.IsS
+                                                                ? 'blue'
+                                                                : 'black',
+                                                    }}
+                                                >
+                                                    <span>  {option.title}</span>
 
 
+                                                    {question.isAtempted && option.IsS ? (<span
+                                                        style={{ color: 'black', fontSize: '12px', marginLeft: 5 }}
+                                                    > 👈🏽(Option Selected)</span>) : <span></span>
 
-                        </div>
-                        <div style={{ minHeight: '15px' }}></div>
-                        <h2>Complete Analysis for each Question </h2>
-                        <div style={{ minHeight: '15px' }}></div>
-                        <div className={Mstyles.ResultMyAtemptsBox}>
+                                                    }
 
-                            {QuestionsList.map((question, index) => (
-                                <div key={index} className={Mstyles.QSBOXatResultItm}>
-                                    <p>
-                                        <strong>Q {index + 1} :</strong> <strong>{question.title}</strong> (Marks: {question.marks})
-                                    </p>
-                                    <ul>
-                                        {question.options.map((option, optionIndex) => (
-                                            <li
-                                                key={optionIndex}
-                                                style={{
-                                                    color:
-                                                        question.isAtempted && option.IsS
-                                                            ? 'blue'
-                                                            : 'black',
-                                                }}
-                                            >
-                                                <span>  {option.title}</span>
+                                                    {option.isActive ? (<span
+                                                        style={{ color: 'black', fontSize: '12px', marginLeft: 5 }}
+                                                    > 👈🏽(Correct answer)</span>) : <span></span>
 
+                                                    }
 
-                                                {question.isAtempted && option.IsS ? (<span
-                                                    style={{ color: 'black', fontSize: '12px', marginLeft: 5 }}
-                                                > 👈🏽(Option Selected)</span>) : <span></span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <div className={Mstyles.QSBOXatResultItmFooter}>
+                                            <div>
+                                                {question.isAtempted ? (
+                                                    question.obtainedMarks && question.marks ? (
+                                                        <div className={Mstyles.tagItemCorrect}>
+                                                            <div>
+                                                                <LuCheckSquare size={20} />
+                                                            </div>
+                                                            <div className={Mstyles.tagItemCorrectText}>
+                                                                Correct
+                                                            </div>
 
-                                                }
-                                               
-                                                {option.isActive ? (<span
-                                                    style={{ color: 'black', fontSize: '12px', marginLeft: 5 }}
-                                                > 👈🏽(Correct answer)</span>) : <span></span>
-
-                                                }
-
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <div className={Mstyles.QSBOXatResultItmFooter}>
-                                        <div>
-                                            {question.isAtempted ? (
-                                                question.obtainedMarks && question.marks ? (
-                                                    <div className={Mstyles.tagItemCorrect}>
-                                                      <div>
-                                                            <LuCheckSquare size={20} />
-                                                        </div>    
-                                                      <div className={Mstyles.tagItemCorrectText}>
-                                                           Correct
-                                                        </div>    
-                                                    
-                                                    </div>
-                                                ) : (
+                                                        </div>
+                                                    ) : (
                                                         <div className={Mstyles.tagItemInCorrect}>
                                                             <div>
                                                                 <LuXSquare size={20} />
@@ -458,8 +460,8 @@ function Overview({ ATDATA }) {
                                                             </div>
 
                                                         </div>
-                                                )
-                                            ) : (
+                                                    )
+                                                ) : (
                                                     <div className={Mstyles.NotAt}>
                                                         <div>
                                                             <LuXOctagon size={20} />
@@ -469,68 +471,70 @@ function Overview({ ATDATA }) {
                                                         </div>
 
                                                     </div>
-                                            )}
-                                        </div>
-                                        <div>
-                                            {question.isAtempted ? (
-                                                question.obtainedMarks && question.marks ? (
-                                                    <span style={{ color: '#00a6ff', fontWeight:500 }}>Marks Obtained : {question.marks}</span>
-                                                ) : (
+                                                )}
+                                            </div>
+                                            <div>
+                                                {question.isAtempted ? (
+                                                    question.obtainedMarks && question.marks ? (
+                                                        <span style={{ color: '#00a6ff', fontWeight: 500 }}>Marks Obtained : {question.marks}</span>
+                                                    ) : (
                                                         <span style={{ color: 'red', fontWeight: 500 }}>Marks Obtained : 0</span>
-                                                )
-                                            ) : (
+                                                    )
+                                                ) : (
                                                     <span style={{ color: 'black', fontWeight: 500 }}>Marks Obtained : 0</span>
-                                            )}
+                                                )}
+                                            </div>
                                         </div>
-                                    </div>
-                                    
 
-                                </div>
-                            ))}
-                        </div>
-                        <div style={{ minHeight: '55px' }}></div>
-                        <div className={Mstyles.ATScoreBoxItem}>
-                            <div className={Mstyles.ATScoreBoxItemTextIConBox}>
-                                <div>
-                                    <div className={Mstyles.ScorB}>
-                                        <span>Share This Attempt</span>
+
                                     </div>
-                                    <div style={{ minHeight: '15px' }}></div>
-                                    <div className={Mstyles.ATScoreBoxItemTitleBox}>
-                                        <div>
-                                            <span>{TSData.ChTitle}</span>
-                                        </div>
-                                        <div>
-                                            <small>{TSData.TsTitle}</small>
-                                        </div>
-                                    </div>
-                                    <div style={{ minHeight: '15px' }}></div>
-                                    <div className={Mstyles.MainScorB}>
-                                     <span>{stats.totalMarks}</span><small>/{stats.totalFullMarks}</small>
-                                    </div>
-                                    
+                                ))}
+                            </div>
+                            <div style={{ minHeight: '55px' }}></div>
+                            <div className={Mstyles.ATScoreBoxItem}>
+                                <div className={Mstyles.ATScoreBoxItemTextIConBox}>
                                     <div>
-                                        <small>Total Obtained Marks</small>
+                                        <div className={Mstyles.ScorB}>
+                                            <span>Share This Attempt</span>
+                                        </div>
+                                        <div style={{ minHeight: '15px' }}></div>
+                                        <div className={Mstyles.ATScoreBoxItemTitleBox}>
+                                            <div>
+                                                <span>{TSData.ChTitle}</span>
+                                            </div>
+                                            <div>
+                                                <small>{TSData.TsTitle}</small>
+                                            </div>
+                                        </div>
+                                        <div style={{ minHeight: '15px' }}></div>
+                                        <div className={Mstyles.MainScorB}>
+                                            <span>{stats.totalMarks}</span><small>/{stats.totalFullMarks}</small>
+                                        </div>
+
+                                        <div>
+                                            <small>Total Obtained Marks</small>
+                                        </div>
+                                        <div style={{ minHeight: '15px' }}></div>
+                                        <div className={Mstyles.ATbtnsItem}>
+                                            <Button variant="contained">Share Attempt</Button>
+                                        </div>
                                     </div>
-                                    <div style={{ minHeight: '15px' }}></div>
-                                    <div className={Mstyles.ATbtnsItem}>
-                                        <Button variant="contained">Share Attempt</Button>
-                                    </div>
-                                </div>
-                                <div>
                                     <div>
-                                        <img src='/share.png' alt='logo' width={'80px'} />
+                                        <div>
+                                            <img src='/share.png' alt='logo' width={'80px'} />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                }
-                <div style={{ minHeight: '50px' }}></div>
+                    }
+                </div>
+
+
             </div>
 
             <div style={{ minHeight: '205px' }}></div>
-            <Footer />
+
 
 
 

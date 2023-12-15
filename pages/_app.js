@@ -11,28 +11,39 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import CheckloginStates from '../context/auth/CheckloginStates'
 const clientSideEmotionCache = createEmotionCache();
+import '../Styles/globals.css'
 
+import { useEffect} from 'react';
 function TokyoApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const getLayout = Component.getLayout ?? ((page) => page);
-
+ 
   Router.events.on('routeChangeStart', nProgress.start);
   Router.events.on('routeChangeError', nProgress.done);
   Router.events.on('routeChangeComplete', nProgress.done);
 
+
+  
+
+
+
+
+
   return (
 
     <CheckloginStates >
+      {/* Same as */}
+      
       <CacheProvider value={emotionCache}>
         <Head>
-          <title>SuperMarks.in</title>
+          <title>DR IT EDUCATION</title>
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
         </Head>
         <SidebarProvider>
-          <ThemeProvider>
+          <ThemeProvider >
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <CssBaseline />
               {getLayout(<Component {...pageProps} />)}

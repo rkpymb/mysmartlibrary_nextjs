@@ -1,13 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   images: {
-    domains: ['fmenew.sgp1.cdn.digitaloceanspaces.com', 'localhost','server.supermarks.in'],
+    domains: ['img.youtube.com', 'localhost','api.driteducation.com'],
   },
   eslint: {
     ignoreDuringBuilds: true,
   },
+  
   async redirects() {
     return [
       {

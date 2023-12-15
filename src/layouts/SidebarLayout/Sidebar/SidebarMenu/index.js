@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
+import MYS from 'Styles/mystyle.module.css'
 
 import {
   ListSubheader,
@@ -11,10 +12,11 @@ import {
   ListItem
 } from '@mui/material';
 import NextLink from 'next/link';
+
 import { SidebarContext } from 'src/contexts/SidebarContext';
 
 
-import { LuHome, LuLayoutGrid, LuInspect, LuListOrdered, LuTrophy, LuLayoutList } from "react-icons/lu";
+import { LuHome, LuLayoutGrid, LuInspect, LuPencilRuler, LuClipboardCheck, LuLayoutList, LuAirplay, LuUserCircle2, LuShieldCheck, LuMonitorPlay } from "react-icons/lu";
 
 const MenuWrapper = styled(Box)(
   ({ theme }) => `
@@ -131,9 +133,9 @@ const SubMenuWrapper = styled(Box)(
                 background: ${theme.colors.alpha.trueWhite[100]};
                 opacity: 0;
                 transition: ${theme.transitions.create([
-                  'transform',
-                  'opacity'
-                ])};
+    'transform',
+    'opacity'
+  ])};
                 width: 6px;
                 height: 6px;
                 transform: scale(0);
@@ -166,13 +168,17 @@ function SidebarMenu() {
   return (
     <>
       <MenuWrapper>
-       
+
         <List
           component="div"
-          
+
         >
           <SubMenuWrapper>
+
             <List component="div">
+              <div className={MYS.DbMenuTitle}>
+                <span>Learning Dashboard</span>
+              </div>
               <ListItem component="div">
                 <NextLink href="/" passHref>
                   <Button
@@ -203,19 +209,18 @@ function SidebarMenu() {
                   </Button>
                 </NextLink>
               </ListItem>
-            
               <ListItem component="div">
-                <NextLink href="/StudyMaterials/" passHref>
+                <NextLink href="/MyCourses/" passHref>
                   <Button
                     className={
-                      currentRoute === '/StudyMaterials' ? 'active' : ''
+                      currentRoute === '/MyCourses' ? 'active' : ''
                     }
                     disableRipple
                     component="a"
                     onClick={closeSidebar}
-                    startIcon={<LuInspect />}
+                    startIcon={<LuAirplay />}
                   >
-                    Study Materials
+                    My Courses
                   </Button>
                 </NextLink>
               </ListItem>
@@ -228,27 +233,43 @@ function SidebarMenu() {
                     disableRipple
                     component="a"
                     onClick={closeSidebar}
-                    startIcon={<LuListOrdered />}
+                    startIcon={<LuInspect />}
                   >
                     My Test Series
                   </Button>
                 </NextLink>
               </ListItem>
-              {/* <ListItem component="div">
-                <NextLink href="/MyCourses/" passHref>
+              <ListItem component="div">
+                <NextLink href="/Videos/" passHref>
                   <Button
                     className={
-                      currentRoute === '/MyCourses' ? 'active' : ''
+                      currentRoute === '/StudyMaterials' ? 'active' : ''
                     }
                     disableRipple
                     component="a"
                     onClick={closeSidebar}
-                    startIcon={<EmojiEventsTwoToneIcon />}
+                    startIcon={<LuMonitorPlay />}
                   >
-                    My Courses
+                    Videos Classes
                   </Button>
                 </NextLink>
-              </ListItem> */}
+              </ListItem>
+              <ListItem component="div">
+                <NextLink href="/StudyMaterials/" passHref>
+                  <Button
+                    className={
+                      currentRoute === '/StudyMaterials' ? 'active' : ''
+                    }
+                    disableRipple
+                    component="a"
+                    onClick={closeSidebar}
+                    startIcon={<LuPencilRuler />}
+                  >
+                    Study Materials
+                  </Button>
+                </NextLink>
+              </ListItem>
+
               <ListItem component="div">
                 <NextLink href="/Results/" passHref>
                   <Button
@@ -258,13 +279,53 @@ function SidebarMenu() {
                     disableRipple
                     component="a"
                     onClick={closeSidebar}
-                    startIcon={<LuTrophy />}
+                    startIcon={<LuClipboardCheck />}
                   >
                     My Results
                   </Button>
                 </NextLink>
               </ListItem>
+
+
+            </List>
+            <List>
+              <div className={MYS.DbMenuTitle}>
+                <span>Usefull Links</span>
+              </div>
               <ListItem component="div">
+
+                <NextLink href="/MyProfile/" passHref>
+                  <Button
+                    className={
+                      currentRoute === '/MyProfile' ? 'active' : ''
+                    }
+                    disableRipple
+                    component="a"
+                    onClick={closeSidebar}
+                    startIcon={<LuUserCircle2 />}
+                  >
+                    My Profile
+                  </Button>
+                </NextLink>
+              </ListItem>
+              <ListItem component="div">
+
+                <a href="https://erp.driteducation.com/verification/studentdocsverification" target='_blank'>
+                  <Button
+                    className={
+                      currentRoute === '/Certificate' ? 'active' : ''
+                    }
+                    disableRipple
+                    component="a"
+                    onClick={closeSidebar}
+                    startIcon={<LuShieldCheck />}
+                  >
+                    Certificate Verification
+                  </Button>
+                </a>
+              </ListItem>
+              <ListItem component="div">
+
                 <NextLink href="/Orders/" passHref>
                   <Button
                     className={
@@ -275,15 +336,15 @@ function SidebarMenu() {
                     onClick={closeSidebar}
                     startIcon={<LuLayoutList />}
                   >
-                    My Orders
+                    Orders and Payments
                   </Button>
                 </NextLink>
               </ListItem>
             </List>
           </SubMenuWrapper>
         </List>
-        
-       
+
+
       </MenuWrapper>
     </>
   );

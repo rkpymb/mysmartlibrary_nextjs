@@ -13,15 +13,19 @@ import Mstyles from '../Styles/home.module.css'
 import CheckloginContext from '../context/auth/CheckloginContext'
 import Link from 'src/components/Link';
 import Head from 'next/head';
-import Navbarmain from '../src/components/Parts/Navbarmain'
+
+import MainNavBar from '../src/components/Parts/Navbar/MainNavBar'
 import HeroBox from '../src/components/Parts/HeroBox'
 import HeroBoxTwo from '../src/components/Parts/HeroBoxTwo'
 import HeroBoxThree from '../src/components/Parts/HeroBoxThree'
-import HeroBoxFour from '../src/components/Parts/HeroBoxFour'
+import HeroBoxSix from '../src/components/Parts/HeroBoxSix'
 import HeroBoxFive from '../src/components/Parts/HeroBoxFive'
 import AppHeroBox from '../src/components/Parts/AppHeroBox'
 import Footer from '../src/components/Parts/Footer'
-import ReviewBox from '../src/components/Parts/ReviewBox'
+import VideoListHome from './components/List/VideoListHome'
+import TSlistGridHome from './components/List/TSlistGridHome'
+import SMlistHome from './components/List/SMlistHome'
+import { AppDesc, AppName } from '../Data/config'
 import { useRouter, useParams } from 'next/router'
 const HeaderWrapper = styled(Card)(
   ({ theme }) => `
@@ -53,45 +57,39 @@ function Overview() {
     } else {
       // router.push('/Login')
     }
-   
+
   });
   return (
     <OverviewWrapper>
-      <Head> 
-        <title>SuperMarks.in</title>
+      <Head>
+        <title>{AppName} : {AppDesc}</title>
       </Head>
-      <Navbarmain/>
+      <MainNavBar />
       {!Loading &&
         <div>
-          <div className={Mstyles.container}>
-            <div className={Mstyles.OnlyDesktop}>
-              <div style={{ minHeight: '100px' }}></div>
-            </div>
+          <div className={Mstyles.containerFull} >
             <HeroBox />
           </div>
-         
-         
-          <div className={Mstyles.HeroBoxTwoVBox}>
-            <div className={Mstyles.container}>
-              <HeroBoxTwo />
-            </div>
+
+          <div className={Mstyles.HeroBoxTwoV}>
+            <HeroBoxTwo />
+
           </div>
-          
-          <div className={Mstyles.container}>
+
+
+
+
+          <div>
             <div className={Mstyles.OnlyDesktop}>
               <div style={{ minHeight: '20px' }}></div>
             </div>
             <div className={Mstyles.mobilepadding}>
               <HeroBoxThree />
             </div>
-            
+
           </div>
-          <div className={Mstyles.HeroBoxTwoVBox}>
-            <div className={Mstyles.container}>
-              <HeroBoxFour />
-            </div>
-          </div>
-          <div className={Mstyles.container}>
+
+          <div>
             <div className={Mstyles.OnlyDesktop}>
               <div style={{ minHeight: '20px' }}></div>
             </div>
@@ -100,9 +98,42 @@ function Overview() {
             </div>
 
           </div>
-          <div className={Mstyles.container}>
+
+          <div className={Mstyles.HeroBoxTwoVBox}>
+            <div className={Mstyles.container}>
+              <HeroBoxSix />
+            </div>
+          </div>
+          <div className={Mstyles.container} >
             <div className={Mstyles.OnlyDesktop}>
               <div style={{ minHeight: '20px' }}></div>
+            </div>
+
+            <div className={Mstyles.mobilepadding}>
+              <TSlistGridHome />
+            </div>
+          </div>
+          <div className={Mstyles.container} >
+            <div className={Mstyles.OnlyDesktop}>
+              <div style={{ minHeight: '20px' }}></div>
+            </div>
+
+            <div className={Mstyles.mobilepadding}>
+              <VideoListHome />
+            </div>
+          </div>
+          <div className={Mstyles.container} >
+            <div className={Mstyles.OnlyDesktop}>
+              <div style={{ minHeight: '20px' }}></div>
+            </div>
+
+            <div className={Mstyles.mobilepadding}>
+              <SMlistHome />
+            </div>
+          </div>
+          <div className={Mstyles.container}>
+            <div className={Mstyles.OnlyDesktop}>
+              <div style={{ minHeight: '80px' }}></div>
             </div>
             <div className={Mstyles.mobilepadding}>
               <AppHeroBox />
@@ -117,13 +148,13 @@ function Overview() {
             <Footer />
 
           </div>
-          
+
         </div>
-       
+
       }
 
-     
-     
+
+
     </OverviewWrapper>
   );
 }
