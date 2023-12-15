@@ -112,7 +112,7 @@ function Overview() {
     return (
         <OverviewWrapper>
             <Head>
-               
+                <title>Student's Onboarding</title>
             </Head>
             <MainNavBarSecond CheckPComplete={false} />
             {!Loading &&

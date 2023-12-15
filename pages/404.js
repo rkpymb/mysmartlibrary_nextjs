@@ -51,7 +51,7 @@ function Status404() {
   return (
     <>
       <Head>
-      
+        <title>Status - 404</title>
       </Head>
       <MainContent>
         <TopWrapper>

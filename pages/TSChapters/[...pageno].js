@@ -53,7 +53,7 @@ function DashboardCrypto({DataSlug,Title}) {
     return (
         <>
             <Head>
-                {/* <title>Chapters : {Title}</title> */}
+                <title>Chapters : {Title}</title>
             </Head>
 
 

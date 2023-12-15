@@ -53,7 +53,7 @@ function Overview({ padid, title }) {
     return (
         <OverviewWrapper>
             <Head>
-                {/* <title>{title}</title> */}
+                <title>{title}</title>
             </Head>
             <div className={MYS.TitleWithBackHeader}>
                 <div className={MYS.TitleWithBackHeaderA}>
