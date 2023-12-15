@@ -1,11 +1,11 @@
 
 // export const MediaFilesUrl = 'https://api.driteducation.com/';
-export const MediaFilesUrl = 'https://api.driteducation.com//';
+export const MediaFilesUrl = 'https://api.driteducation.com/';
 export const MediaFilesFolder = 'images'
 export const AppVersionCode = '2.0'
 
 // export const API_URL = 'https://api.driteducation.com/';
-export const API_URL = 'https://api.driteducation.com//';
+export const API_URL = 'https://api.driteducation.com/';
 export const AppName = 'Dr. IT Education';
 export const AppDesc = 'Innovative Best Education for a Smarter Tomorrow : Best Courses in india, Exam Ready Online Courses';
 export const DomainURL = 'driteducation.com';
