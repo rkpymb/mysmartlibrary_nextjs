@@ -211,7 +211,7 @@ function Overview({ VD, videoid }) {
     return (
         <OverviewWrapper>
             <Head>
-                <title>{VideoMainData && VideoMainData.title}</title>
+                {/* <title>{VideoMainData && VideoMainData.title}</title> */}
             </Head>
             <MainNavBarSecond CheckPComplete={false} />
             <div className={Mstyles.MainBoxContainer}>

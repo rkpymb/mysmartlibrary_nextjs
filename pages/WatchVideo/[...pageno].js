@@ -205,7 +205,7 @@ function DashboardCrypto(Videoid) {
     return (
         <>
             <Head>
-                <title>Video : {VideoData.title}</title>
+                {/* <title>Video : {VideoData.title}</title> */}
             </Head>
 
             <div className={MYS.VideoPlayerBox}>

@@ -77,7 +77,7 @@ function Overview({ DataA }) {
     return (
         <OverviewWrapper>
             <Head>
-                <title>Videos : {CatMainData && CatMainData.name}</title>
+                {/* <title>Videos : {CatMainData && CatMainData.name}</title> */}
             </Head>
             <MainNavBarSecond CheckPComplete={false} />
             <div className={Mstyles.MainBoxContainer}>

@@ -344,7 +344,7 @@ function Overview({ CourseFullData, ChapterID, JwtToken, slug }) {
     return (
         <OverviewWrapper>
             <Head>
-                <title>Test Series Play Ground : {TSData && TSData.title}</title>
+                {/* <title>Test Series Play Ground : {TSData && TSData.title}</title> */}
             </Head>
             {!QuesBox &&
                 <MainNavBarSecond />
@@ -449,9 +449,7 @@ function Overview({ CourseFullData, ChapterID, JwtToken, slug }) {
 
             {QuesBox &&
                 <div>
-                    <Head>
-                        <title>🕖EXAM STARTED : {TSData && TSData.title}</title>
-                    </Head>
+                   
 
                     {!Loading &&
                         <div>

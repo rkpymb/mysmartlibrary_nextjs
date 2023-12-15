@@ -87,9 +87,9 @@ function Overview({ CourseFullData }) {
     return (
         <OverviewWrapper>
             <Head>
-                <title>{DataMian && `${DataMian.title} : Enroll Now`} </title>
+                {/* <title>{DataMian && `${DataMian.title} : Enroll Now`} </title>
                 <meta name="description" content={DataMian && DataMian.details} />
-                <meta property="og:image" content={DataMian && `${MediaFilesUrl}${MediaFilesFolder}/${DataMian.img}`} />
+                <meta property="og:image" content={DataMian && `${MediaFilesUrl}${MediaFilesFolder}/${DataMian.img}`} /> */}
 
             </Head>
 

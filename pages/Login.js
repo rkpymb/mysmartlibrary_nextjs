@@ -195,7 +195,7 @@ const Login = () => {
     return (
         <>
             <Head>
-                <title>Login / Sign up : {AppName}</title>
+               
 
             </Head>
 

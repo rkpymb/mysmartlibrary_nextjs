@@ -62,7 +62,7 @@ function Overview() {
   return (
     <OverviewWrapper>
       <Head>
-        <title>{AppName} : {AppDesc}</title>
+      
       </Head>
       <MainNavBar />
       {!Loading &&
