@@ -29,7 +29,7 @@ const Footer = () => {
               <div className={styles.dataspacer}> </div>
               <Link href='/' style={{ textDecoration: 'none' }}>
                 <div className={styles.logomain}>
-                  <img src='/logo/weblogodark.png' alt='logo' className={styles.NavLogo} />
+                  <img src='/logo/weblogoDark.png' alt='logo' className={styles.NavLogo} />
                 </div>
               </Link>
               <p>{AppName} {ShortAbout}</p>

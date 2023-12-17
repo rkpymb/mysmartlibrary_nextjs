@@ -5,6 +5,7 @@ import {
 
     styled
 } from '@mui/material';
+import Footer from '/src/components/Parts/Footer'
 import LoadingButton from '@mui/lab/LoadingButton';
 import BaseLayout from 'src/layouts/BaseLayout';
 import Mstyles from '../../Styles/home.module.css'
@@ -88,7 +89,7 @@ function Overview({ CourseFullData }) {
         <OverviewWrapper>
             <Head>
                 <title>{DataMian && `${DataMian.title} : Enroll Now`} </title>
-                <meta name="description" content={DataMian && DataMian.details} />
+                <meta name="description" content={DataMian && DataMian.tagline} />
                 <meta property="og:image" content={DataMian && `${MediaFilesUrl}${MediaFilesFolder}/${DataMian.img}`} />
 
             </Head>
@@ -170,7 +171,7 @@ function Overview({ CourseFullData }) {
                             }
                             {!Loading &&
                                 <div>
-                                    {DataMian.details}
+ <div dangerouslySetInnerHTML={{ __html: DataMian.details }} />
                                 </div>
                             }
                             {/* <CourseData CourseHtml={CourseHtml} /> */}
@@ -525,7 +526,13 @@ function Overview({ CourseFullData }) {
 
 
 
+<div className={Mstyles.containerFull}>
+            <div className={Mstyles.OnlyDesktop}>
+              <div style={{ minHeight: '20px' }}></div>
+            </div>
+            <Footer />
 
+          </div>
 
         </OverviewWrapper>
     );

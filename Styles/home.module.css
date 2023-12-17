@@ -2162,18 +2162,45 @@
 
 .CourseBox_container_A {
   width: 60%;
+  height: 600px;
+  overflow: auto;
 
 
 }
 
+.CourseBox_container_A::-webkit-scrollbar {
+  width: 7px; /* You can adjust the width as needed */
+}
+
+/* Define the style for the scrollbar thumb of the specific class */
+.CourseBox_container_A::-webkit-scrollbar-thumb {
+  background-color: #00a6ff; /* Color of the thumb */
+  border-radius: 6px; /* Rounded corners */
+
+}
+
+/* Define the style for the scrollbar track of the specific class when the thumb is being dragged */
+.CourseBox_container_A::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color of the track */
+}
+
+/* Define the style for the corners of the scrollbar of the specific class */
+.CourseBox_container_A::-webkit-scrollbar-corner {
+  background-color: #ffffff; /* Color of the corners */
+}
+
 .CourseBox_container_B {
 
-  height: 100%;
+  
   overflow: auto;
+ 
   position: -webkit-sticky;
   position: sticky;
-  top: 10%;
+  top: 0;
 
+  align-self: flex-start;
+  overflow-y: auto;
+  justify-self: flex-start;
   width: 40%;
   padding: 10px;
 
@@ -5491,8 +5518,12 @@
 
   .CourseBox_container_A {
     width: 100%;
-
+    height: 100%;
+    overflow: auto;
+  
+  
   }
+  
 
   .CourseBox_container_B {
     width: 100%;
