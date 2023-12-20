@@ -43,7 +43,7 @@ const CheckloginStates = (props) => {
                         decryptData(NTok)
 
                     } else {
-                        alert('Something went wrong, Please Login again')
+
                         setIsLogin(false)
                         localStorage.clear()
                     }

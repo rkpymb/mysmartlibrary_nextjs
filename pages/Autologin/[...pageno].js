@@ -44,8 +44,6 @@ function Overview({ JwtToken }) {
     const router = useRouter()
     useEffect(() => {
         if (localStorage.getItem('Token')) {
-
-            alert('login')
         } else {
             localStorage.setItem('Token', JwtToken)
             window.location.reload();
