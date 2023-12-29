@@ -45,8 +45,11 @@ function Overview({ JwtToken }) {
     useEffect(() => {
         if (localStorage.getItem('Token')) {
         } else {
-            localStorage.setItem('Token', JwtToken)
-            window.location.reload();
+            if(localStorage.getItem('Token') !== JwtToken){
+                localStorage.setItem('Token', JwtToken)
+                window.location.reload();
+            }
+           
         }
 
     }, [router.query]);

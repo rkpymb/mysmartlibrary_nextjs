@@ -19,7 +19,7 @@ export const SocialHandles = {
     Instagram: 'https://www.instagram.com/driteducation',
     Linkedin: 'https://www.linkedin.com/driteducation',
     Youtube: 'https://www.linkedin.com/driteducation',
-    Playstore: 'https://play.google.com/store/apps/details?id=com.driteducation',
+    Playstore: 'https://play.google.com/store/apps/details?id=com.dritapp',
 
 };
 export const ShortAbout = 'offers industry-relevant Courses and Test Series to crack your Jobs with high performance and get succeeded in your Career. 👍';
