@@ -3,8 +3,7 @@ import Head from 'next/head';
 import SidebarLayout from 'src/layouts/SidebarLayout';
 import MYS from '../../Styles/mystyle.module.css'
 import Mstyles from '../../Styles/home.module.css'
-import { Container, Grid } from '@mui/material';
-import Footer from 'src/components/Footer';
+
 import TslistbyCourse from '../components/Courses/TslistbyCourse';
 import CheckloginContext from '../../context/auth/CheckloginContext'
 import { LuArrowLeft } from "react-icons/lu";

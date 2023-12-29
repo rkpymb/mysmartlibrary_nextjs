@@ -68,7 +68,7 @@ const Footer = () => {
               <Link href='/Privacypolicy' style={{ textDecoration: 'none', color: 'white' }}>
                 <li>Privacy Policy </li>
               </Link>
-              <Link href='/TermsConsitions' style={{ textDecoration: 'none', color: 'white' }}>
+              <Link href='/TermsConditions' style={{ textDecoration: 'none', color: 'white' }}>
                 <li>Terms & Conditions </li>
               </Link>
             </div>

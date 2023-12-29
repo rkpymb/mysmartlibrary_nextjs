@@ -29,9 +29,9 @@ function RecentOrders() {
 
     useEffect(() => {
         setTimeout(function () {
-            GetData()   
+            GetData()
         }, 1000);
-      
+
 
     }, [router.query]);
     const theme = useTheme();
@@ -51,7 +51,7 @@ function RecentOrders() {
             .then((parsedUser) => {
                 setRetdata(parsedUser.ReqData)
                 setIsLoading(false)
-              
+
 
 
             })
@@ -172,17 +172,12 @@ function RecentOrders() {
                                             </div>
                                             <div style={{ height: '10px' }}></div>
                                             <div className={MYS.BtnFlexBox}>
-                                                <Link href={`/CourseChapters/${item.ProductId}/${item.pid}`}>
+                                                <Link href={`/TSChapters/${item.pid}/${item.title}`}>
                                                     <Button size='small' variant="outlined" endIcon={<FiChevronRight />}>
                                                         Chapters
                                                     </Button>
                                                 </Link>
-                                                <div style={{ minWidth: '10px' }}></div>
-                                                <Link href={`/CourseTestSeries/${item.ProductId}`}>
-                                                    <Button size='small' variant="outlined" endIcon={<FiChevronRight />}>
-                                                        Exams & Test Series
-                                                    </Button>
-                                                </Link>
+
 
 
                                             </div>
@@ -197,15 +192,9 @@ function RecentOrders() {
                                     </div>
 
                                     <div className={MYS.BtnFlexBoxMobile}>
-                                        <Link href={`/CourseChapters/${item.ProductId}/${item.pid}`}>
+                                        <Link href={`/TSChapters/${item.pid}/${item.title}`}>
                                             <Button size='small' variant="outlined" endIcon={<FiChevronRight />}>
                                                 Chapters
-                                            </Button>
-                                        </Link>
-                                        <div style={{ minWidth: '10px' }}></div>
-                                        <Link href={`/CourseTestSeries/${item.ProductId}`}>
-                                            <Button size='small' variant="outlined" endIcon={<FiChevronRight />}>
-                                                Exams & Test Series
                                             </Button>
                                         </Link>
 
