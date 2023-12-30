@@ -341,6 +341,58 @@ function Overview({ VD, videoid }) {
                                 </div>
                             </div>
                         </div>
+                        {IsLoadingcmt &&
+                                <div>
+                                    <Skeleton variant="text" sx={{ fontSize: '3rem' }} animation="wave" width={'100%'} />
+                                </div>
+
+                            }
+                            {!IsLoadingcmt &&
+                                <div className={MYS.AddCommentboxWatchxss}>
+                                    <div className={MYS.AddCommentboxMain}>
+                                        <div className={MYS.AddCommentboxA}>
+                                            <Avatar
+                                                alt="Remy Sharp"
+                                                src="/static/images/avatar/1.jpg"
+                                                sx={{ width: 40, height: 40 }}
+                                            />
+                                            <form onSubmit={Addcmt}>
+
+                                                <div className={MYS.Cmtinput}>
+                                                    <input type='text' placeholder={`Post Comments as ${Contextdata.Data.name}`}
+                                                        required
+                                                        value={CmtText}
+                                                        onInput={e => setCmtText(e.target.value)} />
+                                                </div>
+
+                                            </form>
+
+
+
+                                        </div>
+
+
+                                        <div className={MYS.AddCommentboxB}>
+                                            {IsLoadingcmt &&
+                                                <Skeleton variant="rounded" animation="wave" width={30} height={30} />
+                                            }
+                                            {!IsLoadingcmt &&
+                                                <IconButton aria-label="cart" onClick={Addcmt}>
+                                                    <StyledBadge color="secondary" >
+                                                        <LuArrowRight />
+                                                    </StyledBadge>
+                                                </IconButton>
+                                            }
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
+                            }
+
                     </div>
                     <div className={Mstyles.VideoPlayerBoxB}>
                         <div className={MYS.Comentbox}>
@@ -394,58 +446,7 @@ function Overview({ VD, videoid }) {
                                 }
                             </div>
 
-                            {IsLoadingcmt &&
-                                <div>
-                                    <Skeleton variant="text" sx={{ fontSize: '3rem' }} animation="wave" width={'100%'} />
-                                </div>
-
-                            }
-                            {!IsLoadingcmt &&
-                                <div className={MYS.AddCommentboxWatch}>
-                                    <div className={MYS.AddCommentboxMain}>
-                                        <div className={MYS.AddCommentboxA}>
-                                            <Avatar
-                                                alt="Remy Sharp"
-                                                src="/static/images/avatar/1.jpg"
-                                                sx={{ width: 40, height: 40 }}
-                                            />
-                                            <form onSubmit={Addcmt}>
-
-                                                <div className={MYS.Cmtinput}>
-                                                    <input type='text' placeholder={`Post Comments as ${Contextdata.Data.name}`}
-                                                        required
-                                                        value={CmtText}
-                                                        onInput={e => setCmtText(e.target.value)} />
-                                                </div>
-
-                                            </form>
-
-
-
-                                        </div>
-
-
-                                        <div className={MYS.AddCommentboxB}>
-                                            {IsLoadingcmt &&
-                                                <Skeleton variant="rounded" animation="wave" width={30} height={30} />
-                                            }
-                                            {!IsLoadingcmt &&
-                                                <IconButton aria-label="cart" onClick={Addcmt}>
-                                                    <StyledBadge color="secondary" >
-                                                        <LuArrowRight />
-                                                    </StyledBadge>
-                                                </IconButton>
-                                            }
-
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-
-                            }
-
+                            
 
 
 
