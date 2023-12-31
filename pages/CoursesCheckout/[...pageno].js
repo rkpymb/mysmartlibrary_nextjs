@@ -64,7 +64,7 @@ function Overview({ CourseFullData, PAYTM_MID, PAYTM_HOST }) {
 
     const [Loading, setLoading] = useState(true);
     const [LoadingBtn, setLoadingBtn] = useState(false);
-    
+
     const [DataMian, setDataMian] = useState(CourseFullData.CourseData[0]);
     const [UserData, setUserData] = useState();
     const [TotalDiscount, setTotalDiscount] = useState(0);
@@ -95,7 +95,7 @@ function Overview({ CourseFullData, PAYTM_MID, PAYTM_HOST }) {
 
                 const RandA = Math.floor(Math.random() * 100000) + 1;
                 const RandB = Math.floor(Math.random() * 100) + 10;
-              
+
 
                 if (DataMian.isFree === false) {
                     setOrderID('DRITPC24' + RandA + RandB);
@@ -442,7 +442,7 @@ function Overview({ CourseFullData, PAYTM_MID, PAYTM_HOST }) {
                                                 </div>
 
                                             }
-                                         
+
 
                                         </div>
 
@@ -457,7 +457,7 @@ function Overview({ CourseFullData, PAYTM_MID, PAYTM_HOST }) {
                         </div>
                     }
 
-                  
+
 
                     {DataMian && DataMian.isFree === false &&
 
@@ -540,7 +540,7 @@ function Overview({ CourseFullData, PAYTM_MID, PAYTM_HOST }) {
                                                 </div>
 
                                             }
-                                            
+
 
                                         </div>
 

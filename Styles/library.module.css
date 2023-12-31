@@ -1,0 +1,143 @@
+.PassContainerMain {
+
+  background-color: #f0f5f7;
+}
+
+.PassContainer {
+  margin: auto !important;
+  /* background-color: #ffffff; */
+  width: 50%;
+  min-height: 100vh;
+}
+
+.Fotterpass {
+  display: flex !important;
+  flex-direction: column;
+  position: fixed !important;
+  bottom: 0;
+  backdrop-filter: blur(8px);
+  background-color: #ffffff22;
+  width: 100%;
+
+  border-top: 1px solid rgb(243, 237, 237);
+  z-index: 9999;
+}
+
+.Passimagebox {
+  border-radius: 10px;
+  background-color: bisque;
+  padding: 20px;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 22%);
+}
+
+.PassimageboxB h3 {
+  margin: 0;
+}
+
+.FotterpassBox {
+  width: 100%;
+  padding: 10px;
+
+}
+
+.PassContainerPadding {
+  padding: 10px;
+}
+
+
+.Shiftgrid {
+  margin: 0 auto;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+
+}
+
+.Shiftitem {
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 22%);
+  display: flex;
+  justify-content: space-between;
+}
+
+.ShiftitemA {
+  min-width: 60%;
+}
+
+.secndHeder {
+  position: fixed;
+  width: 100%;
+  transition: background-color 0.5s ease;
+  z-index: 999;
+  background-color: rgb(255, 255, 255);
+
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 22%);
+
+}
+
+.secndHederBox {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+
+}
+
+.secndHederBoxB {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.secndHederBoxB span {
+  font-weight: 600;
+
+}
+
+.SeatBox {
+  padding: 10px;
+}
+
+
+.SeatGrid {
+  margin: 0 auto;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+
+}
+
+.SeatGridItem {
+  text-align: center;
+  padding: 5px;
+  border-radius: 10px;
+  /* box-shadow: 0 1px 3px 0 rgb(0 0 0 / 22%); */
+  border: 1px solid rgb(212, 203, 203);
+  cursor: pointer;
+}
+
+
+.LbFooterStikey {
+  display: flex !important;
+  flex-direction: column;
+  position: fixed !important;
+  bottom: 0;
+  backdrop-filter: blur(8px);
+  /* background-color: #ffffff22; */
+  background-color: white;
+  width: 100%;
+  border-top: 1px solid rgb(243, 237, 237);
+  padding: 10px;
+  z-index: 9999;
+}
+
+
+@media only screen and (max-width: 1100px) {
+  .PassContainer {
+    margin: auto !important;
+    width: 100%;
+  }
+}
