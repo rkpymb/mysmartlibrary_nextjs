@@ -7,7 +7,7 @@ import {
     styled
 } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
-
+import Head from 'next/head';
 import Bookingmodal from '../../components/Library/Bookingmodal'
 import BaseLayout from 'src/layouts/BaseLayout';
 import Mstyles from '/Styles/library.module.css'
@@ -16,9 +16,14 @@ import Link from 'src/components/Link';
 import Badge from '@mui/material/Badge';
 import Skeleton from '@mui/material/Skeleton';
 import IconButton from '@mui/material/IconButton';
-import { LuArrowLeft } from "react-icons/lu";
+import { LuArrowLeft, LuCheckCircle } from "react-icons/lu";
 import { BiCheckCircle } from "react-icons/bi";
 import { FiX, FiChevronRight, FiClock, FiPlus } from "react-icons/fi";
+import * as animationData from '/Data/Lottie/doneanimation.json'
+import Lottie from 'react-lottie'
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { useRouter, useParams } from 'next/router'
 
@@ -82,6 +87,7 @@ function Overview({ PassD }) {
     const [Loading, setLoading] = useState(true);
     const [LoadingSeats, setLoadingSeats] = useState(true);
     const [LoadingBtn, setLoadingBtn] = useState(false);
+    const [Alldone, setAlldone] = useState(false);
     const [ShowPaybtn, setShowPaybtn] = useState(false);
     const [AddonLoading, setAddonLoading] = useState(true);
     const [ShwoSeatsModal, setShwoSeatsModal] = useState(false);
@@ -94,6 +100,27 @@ function Overview({ PassD }) {
     const [CurrentSeat, setCurrentSeat] = useState({});
     const [Totalamt, setTotalamt] = useState();
     const [selectedItems, setSelectedItems] = useState([]);
+
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+        }
+    }
+
+
+    const notify = (T) => toast(T, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
 
     const handleClose = () => {
         setShwoSeatsModal(false);
@@ -183,10 +210,10 @@ function Overview({ PassD }) {
     }
 
     const CreateOrderBtn = async () => {
+        setLoadingBtn(true)
+        const datasend = { JwtToken: Contextdata.JwtToken, PassData: PassD.PassData[0], Addons: selectedItems, Sift: CurrentShift, Seat: CurrentSeat }
 
-        const datasend = { JwtToken: Contextdata.JwtToken, PassData: PassD.PassData[0], Addons: selectedItems, Sift: CurrentShift,Seat:CurrentSeat }
-
-        const data = fetch("/api/V3/Library/CreateOrder", {
+        const data = fetch("/api/V3/Library/LibraryCreateOrder", {
             method: "POST",
             headers: {
                 'Content-type': 'application/json'
@@ -196,7 +223,14 @@ function Overview({ PassD }) {
             return a.json();
         })
             .then((OrderParse) => {
-                console.log(OrderParse)
+
+                if (OrderParse.ReqData.done) {
+                    initiatePayment(OrderParse.ReqData.done)
+                } else {
+                    setLoadingBtn(false)
+                    alert('Something Went Wrong')
+
+                }
 
             })
     }
@@ -226,8 +260,129 @@ function Overview({ PassD }) {
             setSelectedItems([...selectedItems, product]);
         }
     };
+
+
+    // Paytm
+
+    const initiatePayment = async (e) => {
+        console.log(e)
+        setLoadingBtn(true)
+        let ODRERID = e.Orderid
+        let amount = e.amt
+
+        // Get Transcation Token
+        const sendUser = { ODRERID: ODRERID, amount: amount, custId: Contextdata.Data.mobile }
+        const a = await fetch("/api/Paytm/Library/pretransaction", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(sendUser)
+        })
+
+        let txnData = await a.json()
+        const txnToken = txnData.txnToken
+
+        // Get Transcation Token end
+        var config = {
+            "root": "",
+            "data": {
+                "orderId": ODRERID,
+                "token": txnToken,
+                "tokenType": "TXN_TOKEN",
+                "amount": amount /* update amount */
+            },
+            "merchant": {
+                "redirect": false
+            },
+            "handler": {
+                "notifyMerchant":
+                    function notifyMerchant(eventName, data) {
+                        setLoadingBtn(false)
+                    },
+                "transactionStatus":
+                    function transactionStatus(paymentStatus) {
+                        UpdateOrder(paymentStatus)
+                    },
+
+
+            },
+
+
+
+        };
+
+        window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
+
+            window.Paytm.CheckoutJS.invoke();
+        }).catch(function onError(error) {
+            console.log("Error => ", error);
+        });
+    }
+
+    // Paytm
+
+    const UpdateOrder = async (DataRec) => {
+        setLoadingBtn(true)
+        const sendData = { JwtToken: Contextdata.JwtToken, DataRec: DataRec }
+        const data = fetch("/api/Paytm//Library/posttransaction", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(sendData)
+        }).then((a) => {
+            return a.json();
+        })
+            .then((parsedUpdated) => {
+                setLoadingBtn(false)
+                var element = document.getElementById("paytm-checkoutjs");
+                if (element) {
+                    element.style.display = "none";
+                }
+                if (parsedUpdated.ReqData.done) {
+                    notify('😎 Subscription Successfully Added to your Account')
+                    setShowPaybtn(false)
+                    setAlldone(true)
+
+                } else {
+                    notify('Something went wrong')
+
+                }
+
+            })
+
+
+    }
+
+
     return (
         <OverviewWrapper>
+
+            <Head>
+                <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
+
+                <script type="application/javascript" src={`https://securegw.paytm.in/merchantpgpui/checkoutjs/merchants/iykuMk16010130075351.js`} crossorigin="anonymous"></script>
+
+
+            </Head>
+
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+
+            <ToastContainer />
+
+
             {Step == 1 &&
                 <div className={Mstyles.PassContainerMain}>
                     <div className={Mstyles.PassContainer}>
@@ -434,6 +589,45 @@ function Overview({ PassD }) {
 
 
                         </div>
+                    </div>
+
+
+
+                </Dialog>
+            </React.Fragment>
+
+
+            <React.Fragment>
+
+                <Dialog
+                    fullScreen
+                    open={Alldone}
+                    onClose={handleClose}
+                    TransitionComponent={Transition}>
+
+
+                    <div style={{ backgroundColor: 'white' }}>
+                        <Lottie options={defaultOptions}
+                            height={null}
+                            width={'80%'}
+                            isStopped={false}
+                            isPaused={false} />
+                        <div style={{ padding: 20 , textAlign:'center'}}>
+                            <h2 style={{margin:0}}>Subscription Added</h2>
+                            <p>Subscription Succesfully Added to your Account</p>
+
+                            <LoadingButton
+                                fullWidth
+                                endIcon={<FiChevronRight />}
+                                loading={false}
+                                loadingPosition="end"
+                                variant="contained"
+
+                            >
+                                <span>Go to Home page</span>
+                            </LoadingButton>
+                        </div>
+
                     </div>
 
 
