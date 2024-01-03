@@ -183,7 +183,8 @@ function Overview({ PassD }) {
 
     const Showseats = async (e) => {
         setCurrentShift(e)
-        const sendUser = { JwtToken: Contextdata.JwtToken, Branchcode: PassD.PassData[0].Branchcode }
+        console.log(e.Shiftid)
+        const sendUser = { JwtToken: Contextdata.JwtToken, Branchcode: PassD.PassData[0].Branchcode,Shiftid:e.Shiftid }
         const data = fetch("/api/V3/Library/GetLBSeatsbyBranchCode", {
             method: "POST",
             headers: {
@@ -266,6 +267,7 @@ function Overview({ PassD }) {
 
     const initiatePayment = async (e) => {
         console.log(e)
+        
         setLoadingBtn(true)
         let ODRERID = e.Orderid
         let amount = e.amt
@@ -282,6 +284,7 @@ function Overview({ PassD }) {
 
         let txnData = await a.json()
         const txnToken = txnData.txnToken
+        setShwoSeatsModal(false)
 
         // Get Transcation Token end
         var config = {
@@ -299,6 +302,7 @@ function Overview({ PassD }) {
                 "notifyMerchant":
                     function notifyMerchant(eventName, data) {
                         setLoadingBtn(false)
+                       
                     },
                 "transactionStatus":
                     function transactionStatus(paymentStatus) {
@@ -346,7 +350,7 @@ function Overview({ PassD }) {
                     setAlldone(true)
 
                 } else {
-                    notify('Something went wrong')
+                    notify(parsedUpdated.ReqData.message)
 
                 }
 
@@ -528,9 +532,9 @@ function Overview({ PassD }) {
                                 {!LoadingSeats &&
                                     <div className={Mstyles.SeatGrid}>
                                         {Seats.map((item) => {
-                                            return <div className={Mstyles.SeatGridItem}
+                                            return <div className={ item.isActive === 3 ? Mstyles.SeatGridItem :Mstyles.SeatGridItemOccupied}
                                                 key={item.SeatCode}
-                                                onClick={() => SeatSeleted(item)}
+                                                onClick={() => item.isActive === 3 ? SeatSeleted(item) : null}
                                             >
                                                 <span style={{ fontWeight: 500, fontSize: 10 }}>{item.SeatCode}</span>
 
