@@ -263,7 +263,7 @@ function Overview({ PassD }) {
     };
 
 
-    // Paytm
+    // Paytm data
 
     const initiatePayment = async (e) => {
         console.log(e)
