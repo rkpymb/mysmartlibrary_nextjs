@@ -99,6 +99,7 @@ function Overview({ PassD }) {
     const [CurrentShift, setCurrentShift] = useState({});
     const [CurrentSeat, setCurrentSeat] = useState({});
     const [Totalamt, setTotalamt] = useState();
+    const [SelectedSeatCode, setSelectedSeatCode] = useState(0);
     const [selectedItems, setSelectedItems] = useState([]);
 
     const defaultOptions = {
@@ -127,6 +128,7 @@ function Overview({ PassD }) {
         setShowPaybtn(false);
         setAddonLoading(true)
         setSelectedItems([])
+        setSelectedSeatCode(0)
     };
 
 
@@ -173,7 +175,7 @@ function Overview({ PassD }) {
                 setShowPaybtn(true)
                 if (parsedFinal.ReqData.Addons.length > 0) {
                     setAddons(parsedFinal.ReqData.Addons)
-                    console.log(parsedFinal.ReqData.Addons)
+                    // console.log(parsedFinal.ReqData.Addons)
                     setAddonLoading(false)
                 }
 
@@ -183,8 +185,8 @@ function Overview({ PassD }) {
 
     const Showseats = async (e) => {
         setCurrentShift(e)
-        console.log(e.Shiftid)
-        const sendUser = { JwtToken: Contextdata.JwtToken, Branchcode: PassD.PassData[0].Branchcode,Shiftid:e.Shiftid }
+        // console.log(e.Shiftid)
+        const sendUser = { JwtToken: Contextdata.JwtToken, Branchcode: PassD.PassData[0].Branchcode, Shiftid: e.Shiftid }
         const data = fetch("/api/V3/Library/GetLBSeatsbyBranchCode", {
             method: "POST",
             headers: {
@@ -195,7 +197,7 @@ function Overview({ PassD }) {
             return a.json();
         })
             .then((ParseSeats) => {
-
+                // console.log(ParseSeats.ReqData)
                 if (ParseSeats.ReqData.SeatsList) {
                     setSeats(ParseSeats.ReqData.SeatsList)
                     handleClickOpen(true)
@@ -205,6 +207,7 @@ function Overview({ PassD }) {
     }
     const SeatSeleted = async (e) => {
         setCurrentSeat(e)
+        setSelectedSeatCode(e.SeatCode)
         setSelectedItems([])
         setTotalamt(CurrentShift.sprice * DataMian.Validity)
         getAddons()
@@ -227,6 +230,7 @@ function Overview({ PassD }) {
 
                 if (OrderParse.ReqData.done) {
                     initiatePayment(OrderParse.ReqData.done)
+                    setShowPaybtn(false)
                 } else {
                     setLoadingBtn(false)
                     alert('Something Went Wrong')
@@ -266,8 +270,8 @@ function Overview({ PassD }) {
     // Paytm data
 
     const initiatePayment = async (e) => {
-        console.log(e)
-        
+        // console.log(e)
+
         setLoadingBtn(true)
         let ODRERID = e.Orderid
         let amount = e.amt
@@ -301,8 +305,16 @@ function Overview({ PassD }) {
             "handler": {
                 "notifyMerchant":
                     function notifyMerchant(eventName, data) {
-                        setLoadingBtn(false)
-                       
+
+                        if (eventName == 'APP_CLOSED') {
+                            // console.log(eventName)
+                            setLoadingBtn(false)
+                            setShowPaybtn(false)
+                            setSelectedItems([])
+                            setTotalamt(CurrentShift.sprice * DataMian.Validity)
+                            setSelectedSeatCode(0)
+                        }
+
                     },
                 "transactionStatus":
                     function transactionStatus(paymentStatus) {
@@ -472,7 +484,7 @@ function Overview({ PassD }) {
                                 <div style={{ marginTop: 10 }}>
                                     <div style={{ fontWeight: 600, fontSize: '12px', }}>  <span>Terms and Conditions</span></div>
                                     <div>
-                                        <small>{DataMian.details}</small>
+                                        <small>{DataMian.TC}</small>
                                     </div>
                                 </div>
                             </div>
@@ -528,15 +540,35 @@ function Overview({ PassD }) {
                         <div style={{ marginTop: '40px' }}> </div>
                         <div className={Mstyles.PassContainer}>
                             <div className={Mstyles.SeatBox} style={{ backgroundColor: 'White' }}>
-                                <div style={{ height: '20px' }}> </div>
+                                <div style={{ height: '30px' }}> </div>
                                 {!LoadingSeats &&
                                     <div className={Mstyles.SeatGrid}>
                                         {Seats.map((item) => {
-                                            return <div className={ item.isActive === 3 ? Mstyles.SeatGridItem :Mstyles.SeatGridItemOccupied}
-                                                key={item.SeatCode}
-                                                onClick={() => item.isActive === 3 ? SeatSeleted(item) : null}
-                                            >
-                                                <span style={{ fontWeight: 500, fontSize: 10 }}>{item.SeatCode}</span>
+                                            return <div>
+
+                                                {item.Occupied === true &&
+                                                    <div>
+                                                        <div className={Mstyles.SeatGridItemOccupied}
+                                                            key={item.SeatCode}
+
+                                                        >
+                                                            <span style={{ fontWeight: 500, fontSize: 10 }}>{item.SeatCode}</span>
+
+                                                        </div>
+                                                    </div>
+                                                }
+                                                {item.Occupied === false &&
+                                                    <div>
+                                                        <div className={SelectedSeatCode == item.SeatCode && item.Occupied === false ? Mstyles.SeatGridItemChoosed : Mstyles.SeatGridItem}
+                                                            key={item.SeatCode}
+                                                            onClick={() => item.Occupied === false ? SeatSeleted(item) : null}
+                                                        >
+                                                            <span style={{ fontWeight: 500, fontSize: 10 }}>{item.SeatCode}</span>
+
+                                                        </div>
+                                                    </div>
+                                                }
+
 
                                             </div>
                                         }
@@ -616,11 +648,12 @@ function Overview({ PassD }) {
                             width={'80%'}
                             isStopped={false}
                             isPaused={false} />
-                        <div style={{ padding: 20 , textAlign:'center'}}>
-                            <h2 style={{margin:0}}>Subscription Added</h2>
+                        <div style={{ padding: 20, textAlign: 'center' }}>
+                            <h2 style={{ margin: 0 }}>Subscription Added</h2>
                             <p>Subscription Succesfully Added to your Account</p>
 
                             <LoadingButton
+                               onClick={() => router.push('/loaderExit')}
                                 fullWidth
                                 endIcon={<FiChevronRight />}
                                 loading={false}

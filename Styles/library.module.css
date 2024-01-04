@@ -1,3 +1,27 @@
+.Passimagebox {
+  border-radius: 10px;
+	background: linear-gradient(45deg,#ffc5b4, #3f24db, #ffd900 , #27DBB1,#ffd900, #805449);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	
+  padding: 20px;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 22%);
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+    color: white;
+	}
+	50% {
+		background-position: 100% 50%;
+    color: rgb(0, 0, 0);
+	}
+	100% {
+		background-position: 0% 50%;
+    color: rgb(255, 255, 255);
+	}
+}
+
 .PassContainerMain {
 
   background-color: #f0f5f7;
@@ -23,12 +47,7 @@
   z-index: 9999;
 }
 
-.Passimagebox {
-  border-radius: 10px;
-  background-color: bisque;
-  padding: 20px;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 22%);
-}
+
 
 .PassimageboxB h3 {
   margin: 0;
@@ -127,6 +146,17 @@
   cursor: pointer;
   background-color: rgb(241, 232, 232);
   color: rgb(152, 168, 181);
+}
+.SeatGridItemChoosed {
+  text-align: center;
+  padding: 5px;
+  border-radius: 10px;
+  /* box-shadow: 0 1px 3px 0 rgb(0 0 0 / 22%); */
+  border: none;
+  cursor: pointer;
+  background-color: rgb(48, 96, 255);
+  color: rgb(152, 168, 181);
+  color:white
 }
 
 
