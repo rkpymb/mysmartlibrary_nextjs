@@ -1,7 +1,7 @@
 import React from 'react'
 import Lottie from 'react-lottie'
-import * as animationData from '../../../Data/Lottie/nodatafound.json'
-import MYS from '../../../Styles/mystyle.module.css';
+import * as animationData from '/Data/Lottie/nodatafound.json'
+import MYS from '/Styles/library.module.css';
 const nodatafound = ({ Title, Desc }) => {
     const defaultOptions = {
         loop: true,

@@ -11,6 +11,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import CheckloginStates from '../context/auth/CheckloginStates'
 const clientSideEmotionCache = createEmotionCache();
+import BackdropLoader from '/src/components/Parts/BackdropLoader'
 import '../Styles/globals.css'
 
 import { useEffect} from 'react';
@@ -36,7 +37,6 @@ function TokyoApp(props) {
       
       <CacheProvider value={emotionCache}>
         <Head>
-          <title>DR IT EDUCATION</title>
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -44,6 +44,7 @@ function TokyoApp(props) {
         </Head>
         <SidebarProvider>
           <ThemeProvider >
+          <BackdropLoader />
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <CssBaseline />
               {getLayout(<Component {...pageProps} />)}

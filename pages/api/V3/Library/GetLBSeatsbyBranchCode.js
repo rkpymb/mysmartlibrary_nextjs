@@ -1,20 +1,45 @@
 import axios from 'axios';
 
+
 export default function handler(req, res) {
     if (req.method === 'POST') {
-        let ReqStatus = false;
-        // console.log(req.body.JwtToken)
-        const headers = {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${req.body.JwtToken}`,
-        };
+      
+        const token = getTokenFromCookie(req);
 
-        axios.post(`${process.env.API_URL}student/GetLBSeatsbyBranchCode`, { token: process.env.MYKEY ,Branchcode:req.body.Branchcode ,Shiftid:req.body.Shiftid}, { headers }).then((response) => {
-            res.status(200).json({ReqData: response.data });
-            
-        });
+        if (token) {
+            const headers = {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            };
+            axios.post(`${process.env.API_URL}Users/GetLBSeatsbyBranchCode`, { token: process.env.MYKEY, Branchcode: req.body.Branchcode, Shiftid: req.body.Shiftid, webid: req.body.webid }, { headers }).then((response) => {
+                res.status(200).json({ ReqData: response.data });
 
+            }).catch((error) => {
+                console.error(error);
+                res.status(500).json({ error: 'Internal Server Error' });
+            });
+        } else {
+            res.status(401).json({ error: 'Unauthorized' });
+        }
     } else {
-        res.status(200).json({ ReqS: ReqStatus });
+        res.status(405).json({ error: 'Method Not Allowed' });
     }
 }
+
+
+// Function to get JWT token from cookies
+const getTokenFromCookie = (req) => {
+    const cookieHeader = req.headers.cookie;
+
+    if (cookieHeader) {
+        const cookies = cookieHeader.split(';');
+        for (let cookie of cookies) {
+            const [cookieName, cookieValue] = cookie.split('=');
+            if (cookieName.trim() === 'jwt_token') {
+                return decodeURIComponent(cookieValue);
+            }
+        }
+    }
+
+    return null;
+};

@@ -1,26 +1,2439 @@
+
+.PassOrdermsg {
+  margin: 10px;
+  color: #918147;
+  font-weight: 600;
+  font-size: 12px;
+  text-align: center;
+}
+.PassOrdermsg {
+  margin: 10px;
+  color: #918147;
+  font-weight: 600;
+  font-size: 12px;
+  text-align: center;
+}
+
+.CreditBBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+
+
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  border-radius: 20px;
+}
+
+.CreditBBoxA {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.CreditBBoxB {
+  font-weight: 700;
+  color: #7fce34;
+}
+
+.OrderDonebox {
+  padding: 30px;
+  margin: auto;
+  width: 60%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.OrderDonebox {
+  padding: 30px;
+  margin: auto;
+  width: 60%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.OrderDoneboxText {
+  text-align: center;
+  margin: 10px;
+}
+
+
+
+.OrderDoneboxFooter {
+  margin: auto;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.PGDilogBox {
+  min-width: 400px;
+  max-width: 400px;
+  border-radius: 20px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  padding: 10px;
+  background-color: white;
+
+}
+.TitleWithBackHeaderA {
+  display: flex;
+  align-items: center;
+
+}
+
+.TitleWithBackHeaderA span {
+  font-weight: bold;
+}
+
+.TitleWithBackHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.CreditBBoxPbox {
+  padding: 20px;
+  width: 100%;
+
+}
+
+.CreditBBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+
+
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  border-radius: 20px;
+}
+
+.CreditBBoxA {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.CreditBBoxB {
+  font-weight: 700;
+  color: #7fce34;
+}
+.InvBoxMsg {
+  margin-top: 20px;
+  padding: 20px;
+  text-align: center;
+  font-weight: 600;
+
+}
+
+.InvBoxItem {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+
+}
+
+.InvBox {
+  border: 1px solid rgb(220, 209, 209);
+  padding: 10px;
+}
+
+.InvBoxItemA {
+  max-width: 50%;
+}
+
+.InvBoxHeader {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.OrderID {
+  font-weight: 700;
+  font-size: 12px;
+  color: #DC7633;
+
+}
+
+.Rbbox {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(240, 236, 236);
+  margin-top: 20px;
+
+}
+
+.RbboxItem {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+
+}
+
+.RbboxItemA span {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.RbboxItemB span {
+  font-weight: 600;
+  font-size: 13px;
+}
+.RcAmtgrid {
+
+  margin: 0 auto;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+
+}
+
+.RcAmtgridBox {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.RcAmtItem {
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #eeeff5;
+  width: 100%;
+  padding: 5px 20px 5px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  text-transform: uppercase;
+  height: fit-content;
+}
+
+.RcAmtItem span {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+.RcAmtItem {
+
+  font-weight: 500x;
+
+}
+
+.Cform {
+  display: flex;
+  align-items: center;
+
+}
+
+
+.rechargewalletimg {
+  margin: auto;
+  width: 300px;
+
+}
+
+.RechargeBoxATop {
+  display: flex;
+  flex-direction: column;
+}
+
+.RechargeBoxA {
+  width: 50%;
+  padding: 10px;
+}
+
+.RechargeBoxB {
+  padding: 10px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.RechargeBoxATop span {
+  font-weight: 600;
+  font-size: 15px;
+
+}
+
+.RechargeBox {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.784);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  padding: 20px;
+}
+
+.Rechargebtn {
+  margin-top: 20px;
+
+}
+
+.inputlogin {
+  min-width: 300px;
+  margin: 20px;
+}
+
+.MBtnbox {
+  width: 30%;
+}
+
+.Formdone {
+  margin: 20px;
+}
+
+.CformItem {
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.784);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  padding: 30px 50px 50px 50px;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.ContactusTop {
+  position: relative;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, .08);
+  padding: 30px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.HowWorksTitle {
+  text-align: center;
+  margin: auto;
+  width: 60%;
+}
+
+.FmenuBox {
+  margin-top: 20px;
+}
+
+.ContactItem {
+  display: flex;
+
+  margin-top: 10px;
+}
+
+.ContactItemA {
+  margin-top: 3px;
+}
+
+.ContactItemB {
+  margin-left: 10px;
+  font-weight: 500;
+}
+
+.FmenuItem {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.FooterAbout p {
+  padding: 20px;
+}
+
+
+
+.FooterTitle span {
+  font-weight: 600;
+
+}
+
+.Contactusp {
+  display: flex;
+
+}
+
+.ContactuspA {
+  width: 50%;
+  background-color: #ffffff;
+  padding: 30px;
+
+}
+
+.ContactuspB {
+  width: 50%;
+}
+
+.Aboutbox {
+  position: relative;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, .08);
+  padding: 30px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.AboutboxText {
+  text-align: center;
+}
+
+
+.AboutboxText h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.LoginBtnMain {
+  border-radius: 5px;
+  background-color: #eeeff5;
+  min-width: fit-content;
+  padding: 5px 20px 5px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.AddonGridMY {
+
+  margin: 0 auto;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+
+}
+
+.AddonGrid {
+
+  margin: 0 auto;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+
+}
+
+.AddonItemMYA {
+  min-width: 100%;
+}
+
+.AddonItemMY {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  display: flex;
+  margin: 5px;
+  justify-content: space-between;
+}
+
+.AddonItem {
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  display: flex;
+  margin: 5px;
+  justify-content: space-between;
+}
+
+.AddonItemA {
+  min-width: 60%;
+}
+
+.AddonItemB {
+  margin-left: 10px;
+}
+
+.WalletGrid {
+  margin: 0 auto;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(auto, 1fr));
+
+}
+
+.Amountbox {
+
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 700;
+
+}
+
+.Wbbox {
+
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+
+}
+
+.TotalBalanceBox {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.TotalBalanceBox span {
+  color: #fe934b;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.TotalBalanceBox small {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.WalletItem {
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  border-radius: 5px;
+  padding: 20px;
+  margin: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.AdontxtGrid {
+  margin: 0 auto;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(auto, 1fr));
+
+}
+
+.Addonboxtxt {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.MsgBoxWarnig {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  margin: auto;
+
+  padding: 20px;
+}
+
+.MsgBoxWarnigLottie {
+  width: 30%;
+}
+
+.MsgBoxWarnigDetails {
+  padding: 10px;
+  margin: 20px;
+}
+
+.MsgBoxWarnigTitle {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.AddonboxtxtTitle {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.Adontxti {
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.SusPassGrid {
+  margin: 0 auto;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+
+}
+
+.SusPassItem {
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  border-radius: 5px;
+  padding: 20px;
+  margin: 5px;
+}
+
+.SusPassItemTop {
+  display: flex;
+
+}
+
+.SusPassItemTopA {
+  border: 1px solid #e3e6e9;
+
+  border-radius: 5px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Statutag {
+  border-radius: 5px;
+  background-color: #eeeff5;
+  width: fit-content;
+  padding: 5px 20px 5px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  height: fit-content;
+}
+
+.Spf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #e3e6e9;
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.SusPassItemTopB {
+  margin-left: 15px;
+}
+
+.SusPasTitle {
+  font-weight: 600;
+}
+
+.SusPasSubtext {
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.SelectOPGrid {
+  margin: 0 auto;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+
+}
+
+.Hprofile {
+  display: flex;
+  align-items: initial;
+  justify-content: initial;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+
+}
+
+.HprofileA {
+  width: 70%;
+
+}
+
+.HprofileB {
+  width: 20%;
+
+}
+
+.SelectOPItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  cursor: pointer;
+
+}
+
+.SelectOPItemB {
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.SelectOPItemAImg {
+  width: 50px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  height: 50px;
+  border-radius: 50%;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.TodayAttGrid {
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+
+
+}
+
+.HnameTitle {
+  display: flex;
+  flex-direction: column;
+}
+
+.HnameTitle span {
+  font-size: 20px;
+  font-weight: 600;
+
+}
+
+.UserBoxHome {
+  padding: 2px;
+  margin-top: 10px;
+}
+
+.QrReader {
+  width: 100%;
+  height: 100%;
+}
+
+.attdoneLottie {
+  width: 70%;
+  margin: auto;
+}
+
+.BoxTitle {
+  margin: 10px;
+
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+}
+
+.BoxTitle span {
+  font-weight: 700;
+  font-size: 15px;
+
+}
+
+.BoxTitle small {
+  font-size: 12px;
+
+}
+
+.FDevider {
+  height: 200px;
+}
+
+.TodayAttItem {
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  margin: 5px;
+
+
+}
+
+.markedatt {
+  font-weight: 500;
+  font-size: 12px;
+  color: rgb(141, 191, 92);
+}
+
+.Attbtn {
+
+  margin-top: 10px;
+}
+
+.attitem {
+  display: flex;
+}
+
+.attitemimg {
+  width: 50px;
+}
+
+.attitemimgsmall {
+  width: 30px;
+}
+
+.ShiftTitle {
+  font-weight: 600;
+}
+
+.ShiftTiming {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.SeatTitle {
+  font-size: 12px;
+}
+
+.attitemA {
+  width: 100px;
+  height: 100px;
+  background-color: #f1f7f790;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.attitemB {
+  margin-left: 10px;
+}
+
+.StstatusText {
+  margin-top: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.TodayAtbox {
+  margin-top: 10px;
+}
+
+
+.TodayAtboxB {
+  margin-top: 40px;
+
+}
+
+.OrderDatabox {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  padding: 50px;
+
+}
+
+
+.InvBoxMsg {
+  margin-top: 20px;
+  padding: 20px;
+  text-align: center;
+  font-weight: 600;
+
+}
+
+.InvBoxItem {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+
+}
+
+.InvBox {
+  border: 1px solid rgb(220, 209, 209);
+  padding: 10px;
+}
+
+.InvBoxItemA {
+  max-width: 50%;
+}
+
+.InvBoxHeader {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.OrderID {
+  font-weight: 700;
+  font-size: 12px;
+  color: #DC7633;
+
+}
+
+.Statustag {
+  padding: 3px 15px 2px;
+  border-radius: 5px;
+  background-color: #eeeff5;
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  color: black;
+
+}
+
+.OrderTitle {
+  margin-top: 5px;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.OrderDate {
+  font-size: 12px;
+  margin-top: 10px;
+
+}
+
+
+.OrderStatusA {
+  display: flex;
+  align-items: center;
+
+
+}
+
+.OrderStatusBox {
+  margin: auto;
+  width: 40%;
+
+}
+
+.OrderDoneLottie {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+
+}
+
+.AminityGrid {
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+
+
+}
+
+.Attmsg {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.AttbtnSelect {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.FelxWrapAside {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+}
+
+.AtttypeBox {
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid rgb(228, 219, 219);
+  min-height: 200px;
+}
+
+.Bottomsheetbox {
+  padding: 10px;
+  margin: auto;
+  width: 50%;
+  margin-top: 0;
+}
+
+.PMTitle {
+
+  text-align: center;
+  font-weight: 600;
+}
+
+.PMGrid {
+
+  margin: 0 auto;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+
+}
+
+.PMItemMain {
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 22%);
+
+}
+
+.PMItem {
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.OFFLINEMsg {
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: red;
+}
+
+.PMItemA {
+  width: 70%;
+  display: flex;
+  align-items: center;
+
+
+}
+
+.PMItemB {
+  margin-left: 10px;
+
+}
+
+.PMItemAImg {
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 10px;
+  background-color: #eaeaf1b4;
+  padding: 10px;
+
+}
+
+.PMTypeText {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.PMTypeText span {
+  font-weight: 700;
+}
+
+.AminityGridItem {
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  background-color: white;
+  padding: 10px;
+
+}
+
+.AminityGridItemText {
+
+  font-weight: 500;
+  font-size: 12px;
+  margin-left: 10px;
+
+}
+
+.AminityGridItemImg {
+  min-width: 35px;
+}
+
+.OnlyDesktop {
+  display: block;
+}
+
+.OnlyMobile {
+  display: none;
+}
+
+.LBModalheader {
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  transition: all .15s;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+}
+
+.LBModalheaderBox {
+  margin: auto;
+  width: 60%;
+  display: flex;
+  align-items: center;
+
+}
+
+.LBModalheaderBoxB {
+  padding: 5px;
+}
+
+.LBTitle {
+  font-weight: 600;
+}
+
+.Diloagbox {
+  width: 60%;
+  margin: 0 auto;
+}
+
+
+.SeatsBox {
+  padding: 20px 50px 20px 50px;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, .08);
+  margin-top: 20px;
+  border-radius: 20px;
+}
+
+.SeatsTitle {
+  font-weight: 600;
+}
+
+.Shiftbox {
+
+  background: radial-gradient(circle at top left, transparent 9%, #ffffff 10%, #ffffff 15%, transparent 16%), radial-gradient(circle at bottom left, transparent 9%, #ffffff 10%, #ffffff 15%, transparent 16%), radial-gradient(circle at top right, transparent 9%, #ffffff 10%, #ffffff 15%, transparent 16%), radial-gradient(circle at bottom right, transparent 9%, #ffffff 10%, #ffffff 15%, transparent 16%), radial-gradient(circle, transparent 25%, #d9d8e7 26%), linear-gradient(45deg, transparent 46%, #ffffff 47%, #ffffff 52%, transparent 53%), linear-gradient(135deg, transparent 46%, #ffffff 47%, #ffffff 52%, transparent 53%);
+  background-size: 6em 6em;
+  background-color: #d9d8e7;
+  opacity: 1;
+
+
+  border-radius: 20px;
+  overflow: hidden;
+
+
+}
+
+.ShiftboxOver {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(29, 23, 209, 0.773);
+
+  padding: 50px;
+  position: relative;
+
+}
+
+.AmenitiesItem {
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  background-color: white;
+  padding: 10px;
+
+}
+
+.AmenitiesItemText {
+
+  font-weight: 500;
+  font-size: 12px;
+  margin-left: 10px;
+
+}
+
+.AmenitiesItemImg {
+  min-width: 35px;
+}
+
+.AmenitiesItemGrid {
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+
+
+}
+
+.PaniBox {
+  padding: 50px;
+
+  border-radius: 20px;
+  width: 100%;
+  margin-top: 10px;
+  position: relative;
+  background: linear-gradient(25.25deg, #00a6ff 13.69%, #ffe270 79.13%);
+}
+
+.PassItemDet {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
+
+.Passimg {
+  width: 50px;
+  height: 50px;
+
+
+}
+
+.PassItemDetTop {
+  display: flex;
+  align-items: center;
+
+
+}
+
+.PassItemDetTopA {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+
+
+}
+
+.PassItemDetTopA span {
+  font-size: 20px;
+  font-weight: 700;
+
+}
+
+
+.PassItemDetTopA small {
+
+  font-weight: 600;
+  color: #DC7633;
+  text-transform: uppercase;
+
+}
+
+.PassItemDetTopA {
+  width: 80%;
+}
+
+.PassItemDetTopB {
+
+  border: 1px solid #e3e6e9;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.PassItemDetMiddle {
+  margin-top: 10px;
+  font-size: 12px;
+
+}
+
+.PassItemDetFooter {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+
+
+
+
+/* Login */
+.LoginBoxItemLottie {
+  width: 50%;
+}
+
+.LoginFull {
+
+  background-image:
+    url('/img/bgicon.jpg');
+  background-position: 'center';
+  background-repeat: 'repeat';
+  background-size: contain;
+  overflow: hidden;
+}
+
+.LoginBox {
+  background-color: rgba(255, 255, 255, 0.901);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.LoginBoxItem {
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.784);
+  width: 40%;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 22%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 50px;
+  border-radius: 20px;
+
+
+}
+
+.logo {
+  min-width: 100px;
+
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logomainBox {
+  width: 100%;
+}
+
+.regBox {
+  width: 50%;
+}
+
+.LoginBoxItem_logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.LoginBoxItem img {
+  width: 100px;
+}
+
+.LoginBox_input {
+  margin-top: 20px;
+}
+
+.LoginBoxItem h1 {
+  margin-bottom: 0px;
+}
+
+.logingif {
+  width: 40%;
+}
+
+.regdoneimg img {
+  width: 100%;
+}
+
+.logingif img {
+  width: 100%;
+}
+
+/* Login End */
+.Minh100vh {
+  min-height: 100vh;
+}
+
+.TopMainMenuBox {
+  display: flex;
+  align-items: center;
+}
+
+.TopMenuItem {
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: #5569ff;
+}
+
+.bgA {
+  background-image: radial-gradient(circle at center center, rgba(217, 217, 217, 0.05) 0%, rgba(217, 217, 217, 0.05) 15%, rgba(197, 197, 197, 0.05) 15%, rgba(197, 197, 197, 0.05) 34%, rgba(178, 178, 178, 0.05) 34%, rgba(178, 178, 178, 0.05) 51%, rgba(237, 237, 237, 0.05) 51%, rgba(237, 237, 237, 0.05) 75%, rgba(138, 138, 138, 0.05) 75%, rgba(138, 138, 138, 0.05) 89%, rgba(158, 158, 158, 0.05) 89%, rgba(158, 158, 158, 0.05) 100%), radial-gradient(circle at center center, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 6%, rgb(255, 255, 255) 6%, rgb(255, 255, 255) 12%, rgb(255, 255, 255) 12%, rgb(255, 255, 255) 31%, rgb(255, 255, 255) 31%, rgb(255, 255, 255) 92%, rgb(255, 255, 255) 92%, rgb(255, 255, 255) 97%, rgb(255, 255, 255) 97%, rgb(255, 255, 255) 100%);
+  background-size: 42px 42px;
+}
+
+.PassBox {
+  background-image: radial-gradient(circle at 99% 0%, rgba(235, 235, 235, 0.03) 0%, rgba(235, 235, 235, 0.03) 50%, rgba(142, 142, 142, 0.03) 50%, rgba(142, 142, 142, 0.03) 100%), radial-gradient(circle at 84% 89%, rgba(229, 229, 229, 0.03) 0%, rgba(229, 229, 229, 0.03) 50%, rgba(1, 1, 1, 0.03) 50%, rgba(1, 1, 1, 0.03) 100%), radial-gradient(circle at 89% 20%, rgba(219, 219, 219, 0.03) 0%, rgba(219, 219, 219, 0.03) 50%, rgba(38, 38, 38, 0.03) 50%, rgba(38, 38, 38, 0.03) 100%), radial-gradient(circle at 90% 0%, rgba(48, 48, 48, 0.03) 0%, rgba(48, 48, 48, 0.03) 50%, rgba(109, 109, 109, 0.03) 50%, rgba(109, 109, 109, 0.03) 100%), linear-gradient(45deg, rgb(85, 105, 255), rgb(164, 129, 216));
+  border-radius: 20px;
+  padding: 50px;
+  backdrop-filter: blur(8px);
+  margin-top: 20px;
+
+
+
+}
+
+.Socialhandlebox {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.SocialhandleItem {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.SocialhandleItemA {
+  width: 25px;
+  height: 25px;
+}
+
+
+
+.menuurlfGrid {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+
+}
+
+.menuurlf {
+  min-width: fit-content;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+
+}
+
+
+
+.FMh {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+
+
+
+.MFooter {
+  background-image: radial-gradient(circle at 99% 0%, rgba(235, 235, 235, 0.03) 0%, rgba(235, 235, 235, 0.03) 50%, rgba(142, 142, 142, 0.03) 50%, rgba(142, 142, 142, 0.03) 100%), radial-gradient(circle at 84% 89%, rgba(229, 229, 229, 0.03) 0%, rgba(229, 229, 229, 0.03) 50%, rgba(1, 1, 1, 0.03) 50%, rgba(1, 1, 1, 0.03) 100%), radial-gradient(circle at 89% 20%, rgba(219, 219, 219, 0.03) 0%, rgba(219, 219, 219, 0.03) 50%, rgba(38, 38, 38, 0.03) 50%, rgba(38, 38, 38, 0.03) 100%), radial-gradient(circle at 90% 0%, rgba(48, 48, 48, 0.03) 0%, rgba(48, 48, 48, 0.03) 50%, rgba(109, 109, 109, 0.03) 50%, rgba(109, 109, 109, 0.03) 100%), linear-gradient(45deg, rgb(85, 105, 255), rgb(164, 129, 216));
+  backdrop-filter: blur(8px);
+
+  color: white;
+
+
+}
+
+.CeditboxTex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+
+}
+
+.CeditboxTexTwo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+
+}
+
+.Ceditbox {
+  cursor: pointer;
+  width: 150px;
+  margin-top: 30px;
+  font-size: 10px;
+
+}
+
+
+.Ceditimgbox {
+  width: 100%;
+
+  background-color: white;
+  padding: 15px 25px 15px 25px;
+  border-radius: 5px;
+
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.Ceditimgbox img {
+  filter: brightness(1) invert(0);
+
+}
+
+.Bottom_menu {
+  font-weight: 400;
+}
+
+.FotterDeviderdot {
+  background-image: url(/img/bgd.png);
+  background-repeat: repeat;
+  width: 100%;
+  min-height: 50px;
+  margin-top: 5px;
+}
+
+.MFooterboxIt {
+  display: flex;
+  justify-content: space-between;
+}
+
+.MFooterbox {
+  width: 80%;
+  margin: auto
+}
+
+
+.GetStartedPoster {
+  height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.ContactitemGrid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+
+.Contactitem {
+  padding: 20px;
+  cursor: pointer;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+}
+
+.ContactitemAimg {
+  width: 50px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  height: 50px;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.ContactitemB {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ContactitemB span {
+  font-weight: 700;
+  color: #7DCEA0;
+  font-size: 20px;
+}
+
+.ContactitemBx {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ContactitemBx span {
+  font-weight: 700;
+  color: #7DCEA0;
+  font-size: 15px;
+}
+
+/* dnf */
+
+
+.WhyChooseusBoxGrid {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+
+}
+
+
+.WhyChooseusItem {
+  padding: 20px;
+  cursor: pointer;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+}
+
+.WhyChooseusItemAimg {
+  width: 50px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  height: 50px;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.WhyChooseusItemB {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.WhyChooseusItemB span {
+  font-weight: 700;
+  color: #7DCEA0;
+  font-size: 20px;
+}
+
+.WhyChooseusItemBx {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.WhyChooseusItemBx span {
+  font-weight: 700;
+  color: #7DCEA0;
+  font-size: 15px;
+}
+
+.Tbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  max-width: 80%;
+  margin: auto;
+
+}
+
+.Tbox h1 {
+  margin: 0;
+
+
+
+}
+
+.RatingStar {
+  max-width: 120px;
+}
+
+.RatingStarBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.RatingStarBoxB {
+  margin-left: 10px;
+}
+
+.RatingMsg {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.ReviewGrid {
+  margin: 0 auto;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+
+}
+
+.ReviewItem {
+  padding: 20px;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+
+
+
+  line-height: normal;
+
+
+}
+
+.ReviewItemTop {
+  display: flex;
+
+}
+
+
+.ReviewItemNamebox {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: initial;
+}
+
+.ReviewItemNamebox span {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.ReviewItemNamebox small {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.PassItemGrid {
+  margin: 0 auto;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+
+}
+
+.PassItem {
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: white;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+
+}
+
+.Passimg {
+  width: 50px;
+  height: 50px;
+
+
+}
+
+.PassItemTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.PassItemTopA {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.PassItemTopA span {
+  font-size: 20px;
+  font-weight: 700;
+
+}
+
+.PassItemTopA small {
+
+  font-weight: 600;
+  color: #DC7633;
+  text-transform: uppercase;
+
+}
+
+.PassItemTopA {
+  width: 80%;
+}
+
+.PassItemTopB {
+
+  border: 1px solid #e3e6e9;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.PassItemMiddle {
+  margin-top: 10px;
+  font-size: 12px;
+
+}
+
+.PassItemFooter {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+
+.HeroSwiperItem {
+  width: 100%;
+  cursor: pointer;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.Herosliderimg {
+  width: 100%;
+  display: block;
+
+  cursor: pointer;
+}
+
+.WebsteTitlebox {
+  display: flex;
+  flex-direction: column;
+  color: white;
+
+}
+
+.WebsteTitlebox h1 {
+  margin: 0;
+  font-weight: 700;
+
+}
+
+.WebsteTitlebox h2 {
+  margin: 0;
+  font-weight: 700;
+
+}
+
+.WebsteTitlebox span {
+  font-size: 18px;
+
+}
+
+.LbAmenitiesgrid {
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+
+
+}
+
+.LbAmenitiesimg {
+  width: 35px;
+}
+
+
+.LbAmenitiesItem {
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.LbAmenitiesItemText {
+  text-align: center;
+  font-weight: 500;
+  font-size: 12px;
+
+}
+
+.LbPhotoGrid {
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+
+}
+
+.LbPhotoItem {
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.LbPhotoItemimg {
+  width: 100%;
+}
+
+.secndHederTitle {
+  font-weight: 500;
+}
+
+.Mbox {
+  width: 80%;
+  margin: auto;
+}
+
+.MboxSmall {
+  width: 60%;
+  margin: auto;
+}
+
+.MNavDevider {
+  height: 55px;
+}
+
+.MNavDeviderSmall {
+  height: 40px;
+}
+
+.MSecDevider {
+  height: 60px;
+}
+
+.P7 {
+  padding: 0px;
+}
+
+.HomeAboutbox {
+  position: relative;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, .08);
+
+  padding: 30px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+
+.WMCounterGrid {
+  margin: 0 auto;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+}
+
+.WMCounterItem {
+  border: 1px solid #e3e6e9;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.WMCounterItemA {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.WMCounterItemB {
+  width: 20%;
+}
+
+.WMCounterItemA span {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.WMCounterItemA small {
+
+  font-weight: 600;
+}
+
+.HomeAboutboxText {
+
+  color: rgb(7, 7, 7);
+
+}
+
+.HomeAboutboxText h1 {
+  margin: 0;
+}
+
+.HeroBoxTwoTitleBottom {
+  display: inline-block;
+  height: inherit;
+  background-image: url('/img/btmline.svg');
+  background-position: 0 2rem;
+  background-repeat: repeat-x;
+  color: #ff4747;
+}
+
+.HeroBoxTwoTitlespan {
+  margin: 10px;
+
+  text-align: justify;
+
+
+}
+
+.primaryColorAnim {
+  color: #5569ff;
+}
+
+.primaryColor {
+  color: #5569ff;
+}
+
+.primaryColortwo {
+  color: #ffffff;
+}
+
+.GridItemHomeBox {
+  padding: 20px;
+}
+
+.GridItemHome {
+  margin: 0 auto;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+
+}
+
+.HeroBtn {
+  padding: 10px;
+  background-color: #00a6ff;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  max-width: 50%;
+
+}
+
+.HeroBtn:hover {
+  background-color: black;
+}
+
+.HeroBoxTwoItemBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+
+}
+
+
+.HeroBoxTwoItem {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  /* background: linear-gradient(to right, #00a6ff, #00a6ff); */
+  color: rgb(36, 34, 34);
+  background-color: white;
+  border-radius: 10px;
+  cursor: pointer;
+
+
+
+}
+
+.HeroBoxTwoItem:hover {
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 22%);
+
+
+
+}
+
+.HeroBoxTwoItem::-webkit-scrollbar {
+  display: none;
+}
+
+.HeroBoxTwoItemIcon {
+  width: 60px;
+}
+
+.HeroBoxTwoItemText {
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.HeroBoxTwoItemDetails {
+  font-size: 12px;
+}
+
+.BtnWithIcon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  color: #000000;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  padding-top: 10px;
+  border-top: 1px dashed rgb(174, 152, 152);
+
+}
+
+
+.secndHeder {
+  width: 100%;
+  background-color: rgb(250, 246, 246);
+  transition: all .15s;
+}
+
+
+@keyframes slideIn {
+  from {
+    top: -100%;
+    /* Start above the viewport */
+    opacity: 0;
+  }
+
+  to {
+    top: 0;
+    /* Slide down to its normal position */
+    opacity: 1;
+    /* Make it visible */
+  }
+}
+
+.secndHederBox {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  padding: 20px  10px  10px  10px;
+  justify-content: space-between;
+
+}
+
+.secndHederBoxA {
+  display: flex;
+  align-items: center;
+}
+
+.secndHederBoxB {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.secndHederBoxB span {
+  font-weight: 600;
+
+}
+
+
+
+.Topdpbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.TopdpboxB {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.TopdpboxB span {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.TopdpboxB small {
+  font-size: 10px;
+}
+
+
+.transparent {
+  background-color: white;
+}
+
+.white {
+  background-color: rgb(255, 255, 255);
+}
+
+.navbarMain {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  z-index: 999;
+
+}
+
+.navbarMainBox {
+
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+
+
+}
+
+.Navbar {
+  margin: auto;
+  width: 80%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.NavA {
+  display: flex;
+  align-items: center;
+
+}
+
+.NavB {
+  display: flex;
+  align-items: center;
+
+}
+
+.logomain {
+  width: 150px;
+  /* height: 40px; */
+  cursor: pointer;
+  padding: 5px;
+
+}
+
+.Contact_icon {
+
+  font-size: 15px
+}
+
+.Contact_number_Text {
+
+  font-size: 10px
+}
+
+.ContactTop {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 15px 5px 15px;
+
+  border-radius: 5px;
+}
+
+.Colorwhite {
+  color: #ffffff;
+}
+
+.ColorBlack {
+  color: #000000;
+}
+
+.ColorYellow {
+  color: yellow;
+}
+
+.ColorDC7633 {
+  color: #DC7633;
+}
+
+.loginbtnTopBtns {
+  padding: 10px;
+}
+
+.Topdpbox {
+  display: flex;
+}
+
+.TopdpboxB {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.TopdpboxB span {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.TopdpboxB small {
+  font-size: 10px;
+}
+
+.Avatarbox {
+  display: flex;
+}
+
+.VmenuHeader {
+  display: flex;
+
+  justify-content: space-between;
+  padding: 20px;
+
+}
+
+.DbIcon {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  transition: 0.3s;
+
+
+}
+
+.VmenuItemB {
+  margin-left: 10px;
+  font-weight: 600;
+}
+
+.DbIcon:hover {
+  transform: scale(1.1);
+}
+
+.VmenuHeaderA {
+  font-weight: 700;
+}
+
+.VmenuItemMainC {
+  margin: 20px;
+}
+
+.VmenuFotter {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.VmSmallItem {
+  font-weight: 600;
+  font-size: 12px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.VmSmallItem:hover {
+  color: #5569ff;
+}
+
+.VmenuItemMain {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+
+  margin: 10px;
+}
+
+
+
+.VmenuItem {
+  display: flex;
+  align-items: center;
+
+
+}
+
+
+.Vmenu {
+  height: 80vh;
+
+  width: 400px;
+  overflow: auto;
+
+}
+
+.Vmenu::-webkit-scrollbar {
+  display: none;
+}
+
+.Vmenu::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+.UmenuItemMain {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.UmenuItemMain:hover {
+  color: #5569ff;
+
+}
+
+
+.Mobilenumberblink {
+  animation: blink 1s step-start infinite;
+}
+
+
+
+@keyframes blink {
+  50% {
+    opacity: 0.8;
+  }
+}
+
+
+
+/* End NewNavbar */
+
+
+
+
 .Passimagebox {
   border-radius: 10px;
-	background: linear-gradient(45deg,#ffc5b4, #3f24db, #ffd900 , #27DBB1,#ffd900, #805449);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-	
+  background: linear-gradient(45deg, #ffc5b4, #3f24db, #ffd900, #27DBB1, #ffd900, #805449);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+
   padding: 20px;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 22%);
 }
+
+.Selectbranchtopbtn {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  border-radius: 10px;
+  border: 1px solid wheat;
+  padding: 5px 15px 5px 15px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.SelectbranchtopbtnA {
+  margin-top: 2px;
+}
+
+.SelectbranchtopbtnB {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
+.LocationBoxHeadertwo {
+  display: flex;
+  padding: 15px;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+
+}
+
+.LocationBoxHeadertwoMain {
+  width: 80%;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.LocationBoxHeadertwoMainBox {
+  width: 100%;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+.LocationBoxHeader {
+  display: flex;
+  padding: 15px;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+
+}
+
 /* ok */
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
+  0% {
+    background-position: 0% 50%;
     color: white;
-	}
-	50% {
-		background-position: 100% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
     color: rgb(0, 0, 0);
-	}
-	100% {
-		background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
     color: rgb(255, 255, 255);
-	}
+  }
 }
 
 .PassContainerMain {
@@ -30,7 +2443,7 @@
 
 .PassContainer {
   margin: auto !important;
- 
+
   width: 50%;
   min-height: 100vh;
 }
@@ -65,7 +2478,102 @@
 }
 
 
+.BRimg {
+  position: relative;
+  width: 100%;
+  max-width: 250px;
+  aspect-ratio: 70/45;
+  margin: 2rem auto;
+
+
+}
+
+
+.Brnachlistgrid {
+  margin: 10px;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(auto, 1fr));
+
+}
+
+.BrItem {
+  border-radius: 10px;
+  border: 1px solid rgb(228, 219, 219);
+  padding: 20px;
+  display: flex;
+}
+
+.BrItemActive {
+
+  border: 1px solid #00a6ff;
+  ;
+  border-radius: 10px;
+
+  padding: 20px;
+  display: flex;
+}
+
+.BrItemA {
+  width: 100px;
+  height: 80px;
+  border-radius: 10px;
+  border: 1px solid rgb(228, 219, 219);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.BrItemB {
+  margin-left: 10px;
+
+  width: 100%;
+  overflow: hidden;
+
+
+}
+
+.LocBoxm {
+  width: 50%;
+  margin: auto;
+  margin-top: 0;
+}
+
+.BrItemBBox {
+
+  display: flex;
+  flex-direction: column;
+
+}
+
+.Brbtnbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  flex-wrap: wrap;
+
+}
+
+.Titlebr {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.Addresstext {
+  font-size: 12px;
+
+}
+
+.Distancetagbr {
+  color: #beb375d4;
+  font-weight: 600;
+}
+
 .Shiftgrid {
+
   margin: 0 auto;
   display: grid;
   gap: 0.8rem;
@@ -86,40 +2594,8 @@
   min-width: 60%;
 }
 
-.secndHeder {
-  position: fixed;
-  width: 100%;
-  transition: background-color 0.5s ease;
-  z-index: 999;
-  background-color: rgb(255, 255, 255);
 
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 22%);
 
-}
-
-.secndHederBox {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding: 5px;
-
-}
-
-.secndHederBoxB {
-  margin-left: 10px;
-  display: flex;
-  flex-direction: column;
-
-}
-
-.secndHederBoxB span {
-  font-weight: 600;
-
-}
-
-.SeatBox {
-  padding: 10px;
-}
 
 
 .SeatGrid {
@@ -138,6 +2614,7 @@
   border: 1px solid rgb(212, 203, 203);
   cursor: pointer;
 }
+
 .SeatGridItemOccupied {
   text-align: center;
   padding: 5px;
@@ -148,6 +2625,7 @@
   background-color: rgb(241, 232, 232);
   color: rgb(152, 168, 181);
 }
+
 .SeatGridItemChoosed {
   text-align: center;
   padding: 5px;
@@ -157,7 +2635,7 @@
   cursor: pointer;
   background-color: rgb(48, 96, 255);
   color: rgb(152, 168, 181);
-  color:white
+  color: white
 }
 
 
@@ -181,4 +2659,696 @@
     margin: auto !important;
     width: 100%;
   }
+
+
+
+  .LocationBoxHeadertwo {
+
+    padding: 10px;
+
+
+  }
+
+  .LocationBoxHeadertwoMain {
+    width: 100%;
+
+  }
+
+  .LocationBoxHeader {
+
+    padding: 10px;
+
+
+  }
+
+  .LocBoxm {
+    width: 100%;
+    margin: initial;
+  }
+
+  .Brbtnbox {
+
+
+    width: auto;
+  }
+
+
+  .Mbox {
+    width: 100%;
+    margin: auto;
+
+  }
+
+  .MboxSmall {
+    width: 100%;
+    margin: auto;
+
+  }
+
+
+  .Navbar {
+    margin: auto;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+
+  .logomain {
+    width: 120px;
+    /* height: 40px; */
+    cursor: pointer;
+    padding: 5px;
+
+  }
+
+  .TopdpboxB {
+    display: none;
+  }
+
+
+  .Selectbranchtopbtn {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    border-radius: 0px;
+    border: none;
+    padding: 0px;
+    font-size: 12px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+
+
+
+  .Vmenu {
+    height: 80vh;
+
+    width: 300px;
+    overflow: auto;
+
+  }
+
+  .HomeAboutbox {
+    position: relative;
+    box-shadow: none;
+
+    padding: 10px;
+    border-radius: 0px;
+    overflow: hidden;
+  }
+
+  .HomeAboutboxText {
+    text-align: center;
+  }
+
+
+  .HomeAboutboxText h1 {
+    margin: 0;
+    font-size: 20px;
+  }
+
+  .HeroBoxTwoTitlespan {
+    margin: 5px;
+
+    text-align: justify;
+    font-size: 12px;
+
+
+  }
+
+  .WMCounterGrid {
+    margin: 0 auto;
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+
+  }
+
+  .WMCounterItem {
+    border: 1px solid #e3e6e9;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+
+
+    justify-content: initial;
+  }
+
+
+  .WMCounterItemA {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+  }
+
+  .WMCounterItemB {
+    width: 50px;
+    margin: auto;
+  }
+
+  .WMCounterItemA span {
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .WMCounterItemA small {
+
+    font-weight: 500;
+    font-size: 10px;
+  }
+
+  .OnlyDesktop {
+    display: none;
+  }
+
+  .OnlyMobile {
+    display: block;
+  }
+
+
+  .WhyChooseusBoxGrid {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    overflow: auto;
+
+
+  }
+
+  .WhyChooseusBoxGrid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .WhyChooseusItem {
+    padding: 10px;
+    cursor: pointer;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    min-width: fit-content;
+  }
+
+  .WhyChooseusItemAimg {
+    width: 30px;
+    box-shadow: none;
+    height: 30px;
+    border-radius: 0;
+    padding: 0;
+
+
+  }
+
+  .WhyChooseusItemB {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .WhyChooseusItemB span {
+    font-weight: 600;
+    color: #7DCEA0;
+    font-size: 15px;
+
+  }
+
+  .WhyChooseusItemBx {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .WhyChooseusItemBx span {
+    font-weight: 700;
+    color: #7DCEA0;
+    font-size: 15px;
+  }
+
+  .P7 {
+    padding: 7px;
+  }
+
+  .PaniBox {
+    padding: 10px;
+
+    border-radius: 0px;
+    width: 100%;
+    margin-top: 0px;
+    position: relative;
+    background: linear-gradient(25.25deg, #00a6ff 13.69%, #00a6ff 79.13%);
+  }
+
+  .AmenitiesItemGrid {
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+
+
+  }
+
+  .primaryColorAnim {
+    color: white;
+  }
+
+  .Tbox {
+    text-align: center;
+  }
+
+  .Tbox h1 {
+    margin: 0;
+    font-size: 20px;
+  }
+
+  .PassBox {
+    background-image: none !important;
+    border-radius: 0px;
+    padding: 10px;
+    backdrop-filter: none !important;
+    background-color: rgba(238, 231, 231, 0.575);
+    padding-top: 20px;
+    padding-bottom: 50px;
+
+  }
+
+
+  .WebsteTitlebox {
+    display: flex;
+    flex-direction: column;
+    color: rgb(0, 0, 0);
+
+  }
+
+  .Passbtns {
+    width: 100%;
+    margin: 10px;
+  }
+
+  .WebsteTitlebox h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 20px;
+
+  }
+
+  .WebsteTitlebox h2 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 20px;
+
+  }
+
+  .WebsteTitlebox span {
+    font-size: 14px;
+
+  }
+
+  .Mleftphoto {
+    margin-left: 100px;
+    background-color: rebeccapurple;
+  }
+
+  .GetStartedPoster {
+    height: 170px;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  .MSecDevider {
+    height: 30px;
+  }
+
+
+  .ContactitemGrid {
+
+    align-items: initial;
+    justify-content: initial;
+    flex-wrap: wrap;
+  }
+
+  .MFooterboxIt {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Bottom_menu {
+    text-align: center;
+  }
+
+  .MFooterbox {
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Socialhandlebox {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .menuurlfGrid {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+
+  }
+
+  .secndHeder {
+    width: 100%;
+    background-color: rgb(250, 246, 246);
+    transition: all .15s;
+  }
+
+
+  .secndHederBox {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    justify-content: space-between;
+
+  }
+
+  .secndHederBoxA {
+    display: flex;
+    align-items: center;
+  }
+
+  .secndHederBoxB {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .secndHederBoxB span {
+    font-weight: 600;
+
+  }
+
+  .PassItemDet {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+  }
+
+
+  .PassDbox {
+    padding: 10px;
+
+    font-size: 12px;
+    text-align: center;
+  }
+
+
+
+  .Shiftbox {
+
+    background: none;
+    background-size: 100%;
+    background-color: #ffffff;
+    opacity: 1;
+
+
+    border-radius: 0px;
+    overflow: hidden;
+    padding: 10px;
+
+
+  }
+
+  .ShiftboxOver {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    padding: 0px;
+    position: relative;
+
+  }
+
+  .AminityGrid {
+    display: flex;
+    overflow: auto;
+
+  }
+
+  .AminityGrid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .AminityGridItem {
+    border-radius: 10px;
+    overflow: hidden;
+    min-width: 80px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+
+  }
+
+  .AminityGridItemText {
+
+    font-weight: 500;
+    font-size: 10px;
+    margin-left: 0px;
+
+  }
+
+  .AminityGridItemImg {
+    min-width: 35px;
+  }
+
+
+
+  .LBModalheaderBox {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+  }
+
+  .LBModalheaderBoxB {
+    padding: 5px;
+
+  }
+
+  .LBTitle {
+    font-weight: 600;
+
+  }
+
+  .LBDescText {
+    font-size: 12px;
+  }
+
+  .Diloagbox {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .SeatsBox {
+    padding: 20px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, .08);
+    margin-top: 0px;
+    border-radius: 20px;
+  }
+
+  .Bottomsheetbox {
+    padding: 10px;
+    margin: 0;
+    width: 100%;
+  }
+
+  .TodayAtbox {
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  }
+
+  .BrItem {
+    border-radius: 10px;
+    border: 1px solid rgb(228, 219, 219);
+    padding: 10px;
+    display: flex;
+  }
+
+  .SelectOPGrid {
+    margin: 10px;
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+
+  }
+
+  .Hprofile {
+    display: flex;
+    align-items: initial;
+    justify-content: initial;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 0px;
+
+  }
+
+
+  .HprofileA {
+    width: 100%;
+
+  }
+
+  .HprofileB {
+    width: 100%;
+
+  }
+
+  .SelectOPItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    cursor: pointer;
+
+  }
+
+  .SelectOPItemB {
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 12px;
+  }
+
+  .SelectOPItemAImg {
+    width: 50px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+    height: 50px;
+    border-radius: 50%;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .UserBoxHome {
+    padding: 2px;
+    margin-top: 30px;
+  }
+
+  .MsgBoxWarnigLottie {
+    width: 80%;
+  }
+
+  .NavA {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .slectbbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    backdrop-filter: blur(8px);
+    background-color: transparent;
+    width: 100%;
+
+  }
+
+  .MNavDeviderSmall {
+    height: 20px;
+  }
+
+  .HowWorksTitle {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .HowWorksTitle h1 {
+    font-size: 20px;
+  }
+
+  .Contactusp {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .ContactuspA {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 30px;
+
+  }
+
+  .ContactuspB {
+    width: 100%;
+    padding: 5px;
+  }
+
+
+  .rechargewalletimg {
+    margin: auto;
+    width: 300px;
+
+  }
+
+  .RechargeBoxATop {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .RechargeBoxA {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .RechargeBoxB {
+    display: none;
+  }
+
+
+  .RechargeBoxATop span {
+    font-weight: 600;
+    font-size: 15px;
+
+  }
+
+  .RechargeBox {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.784);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+    padding: 20px;
+  }
+
 }

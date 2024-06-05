@@ -1,108 +1,131 @@
 import CheckloginContext from './CheckloginContext'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { CryptoJSKEY } from '../../Data/config'
 
-import CryptoJS from "crypto-js";
 const CheckloginStates = (props) => {
     const [Data, setData] = useState({});
     const [IsLogin, setIsLogin] = useState(false);
-    const [currentQuestion, setCurrentQuestion] = useState(0);
+
     const [JwtToken, setJwtToken] = useState(null);
+    const [PayGatway, setPayGatway] = useState(null);
+    const [WebData, setWebData] = useState(null);
+    const [MainLoaderData, setMainLoaderData] = useState({
+        Title: '',
+        Msg: '',
+    });
+
     const [ProfileDone, setProfileDone] = useState(0);
-    const [MainTitle, setMainTitle] = useState();
-    const [NotiTitle, setNotiTitle] = useState('');
-    const [NotiDesc, setNotiDesc] = useState('');
-    const [NotiShow, setNotiShow] = useState(false);
 
-
-    const [MainCat, setMainCat] = useState({});
-    const [GoalStatus, setGoalStatus] = useState(false);
+    const [MapRadius, setMapRadius] = useState(5000000);
+    const [LocationData, setLocationData] = useState(null);
+    const [MainLoader, setMainLoader] = useState(true);
+    const [UserBranchData, setUserBranchData] = useState(null);
 
     const router = useRouter()
 
+
     useEffect(() => {
-        setMainTitle('Study Dashboard')
-        if (localStorage.getItem('Token')) {
-            setIsLogin(true)
-            const JwtTokenx = localStorage.getItem('Token');
-            setJwtToken(JwtTokenx)
-            const sendUser = { JwtToken: JwtTokenx }
-            const data = fetch("/api/V2/auth/Checklogin", {
-                method: "POST",
-                headers: {
-                    'Content-type': 'application/json'
-                },
-                body: JSON.stringify(sendUser)
-            }).then((a) => {
-                return a.json();
-            })
-                .then((parsedUser) => {
-                    if (parsedUser.ReqS == true) {
-                        const NTok = parsedUser.RetD;
-                        decryptData(NTok)
+        CheckLocation()
 
-                    } else {
+        CheckUSerLogin()
 
-                        setIsLogin(false)
-                        localStorage.clear()
-                    }
+    }, []);
 
-                })
-        } else {
-            setIsLogin(false)
+    const CheckUSerLogin = async () => {
+
+
+        try {
+            const token = getCookie('jwt_token');
+
+            if (token) {
+                setJwtToken(token)
+                const sendUM = {  };
+                const data = await fetch("/api/V2/auth/CheckAuth", {
+                    method: "POST",
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify(sendUM)
+                });
+                const parsedFinal = await data.json();
+
+                if (parsedFinal.RetD.UserData) {
+                    setData(parsedFinal.RetD.UserData);
+
+                    setIsLogin(true);
+                } else {
+                  
+                }
+            } 
+        } catch (error) {
+            setIsLogin(false);
         }
+    };
 
 
-        const mainCatValue = localStorage.getItem('MainCat');
-        if (!mainCatValue || mainCatValue.trim() === '') {
-            setGoalStatus(false)
+    const ChnageUserBranchData = async (e) => {
+        setUserBranchData(e)
 
-        }
-        if (localStorage.getItem('MainCat')) {
-            const McatData = localStorage.getItem('MainCat');
-            if (McatData) {
-                const DataObject = JSON.parse(McatData);
-                const Final  = Object.keys(DataObject)
-                setMainCat(DataObject[0]);
-                setGoalStatus(true)
-            }else{
-                setGoalStatus(false)
+    }
+    const ChnagePayGatway = async (e) => {
+        setPayGatway(e)
+
+    }
+
+    const ChangeWebData = async (e) => {
+        setWebData(e)
+
+    }
+
+
+
+    const ChangeLocationData = async (e) => {
+
+        setLocationData(e)
+    }
+    const ChangeMapRadius = async (e) => {
+
+        setMapRadius(e)
+    }
+
+
+    const CheckLocation = async () => {
+        try {
+            if (localStorage.getItem('UBranchData')) {
+                const UBranchDataD = localStorage.getItem('UBranchData');
+                setUserBranchData(JSON.parse(UBranchDataD))
+                console.log(JSON.parse(UBranchDataD))
             }
-
-        }
-
-
-
-    }, [router.query]);
-
-
-
-
-
-    const decryptData = (e) => {
-        const bytes = CryptoJS.AES.decrypt(e, CryptoJSKEY);
-        const dataNew = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-        console.log(dataNew.isActive)
-        setData(dataNew)
-        CheckisProfileComplete(dataNew)
-    };
-    const CheckisProfileComplete = (UserD) => {
-        if (UserD.email == '') {
-
-
+        } catch (error) {
+            console.log(error)
         }
     };
-    const ChangeCurrentQuestion = (e) => {
-        setCurrentQuestion(e)
-    };
-    const ChangeMainTitle = (e) => {
-        setMainTitle(e)
-    };
-  
 
+
+    // Function to get cookie by name
+    const getCookie = (name) => {
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            const [cookieName, cookieValue] = cookie.split('=');
+            if (cookieName.trim() === name) {
+                return decodeURIComponent(cookieValue);
+            }
+        }
+        return null;
+    };
+
+    // Function to remove cookie by name
+    const removeCookie = (name) => {
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    };
+    const ChangeMainLoader = async (e) => {
+        setMainLoader(e)
+    }
+    const ChangeMainLoaderData = async (e) => {
+        setMainLoaderData(e)
+    }
     return (
-        <CheckloginContext.Provider value={{ Data, IsLogin, ProfileDone, currentQuestion, ChangeCurrentQuestion, JwtToken, MainTitle, ChangeMainTitle, NotiShow, NotiDesc, NotiTitle, MainCat, GoalStatus }}>
+        <CheckloginContext.Provider value={{ Data, IsLogin, ProfileDone, JwtToken, ChangeLocationData, LocationData, MapRadius, ChangeMapRadius, UserBranchData, ChnageUserBranchData, WebData, ChangeWebData, ChangeMainLoader, MainLoader, MainLoaderData, ChangeMainLoaderData, ChnagePayGatway, PayGatway }}>
             {props.children}
         </CheckloginContext.Provider>
     )
