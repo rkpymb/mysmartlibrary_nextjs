@@ -7,7 +7,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-      domains: ['img.youtube.com', 'localhost', 'res.cloudinary.com'],
+      domains: ['img.youtube.com', 'localhost', 'res.cloudinary.com', 'api.mysmartlibrary.in'],
   },
   eslint: {
       ignoreDuringBuilds: true,

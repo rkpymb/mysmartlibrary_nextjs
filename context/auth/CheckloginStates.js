@@ -29,7 +29,7 @@ const CheckloginStates = (props) => {
 
         CheckUSerLogin()
 
-    }, []);
+    }, [router.query]);
 
     const CheckUSerLogin = async () => {
 
@@ -125,7 +125,7 @@ const CheckloginStates = (props) => {
         setMainLoaderData(e)
     }
     return (
-        <CheckloginContext.Provider value={{ Data, IsLogin, ProfileDone, JwtToken, ChangeLocationData, LocationData, MapRadius, ChangeMapRadius, UserBranchData, ChnageUserBranchData, WebData, ChangeWebData, ChangeMainLoader, MainLoader, MainLoaderData, ChangeMainLoaderData, ChnagePayGatway, PayGatway }}>
+        <CheckloginContext.Provider value={{ Data, IsLogin, ProfileDone, JwtToken, ChangeLocationData, LocationData, MapRadius, ChangeMapRadius, UserBranchData, ChnageUserBranchData, WebData, ChangeWebData, ChangeMainLoader, MainLoader, MainLoaderData, ChangeMainLoaderData, ChnagePayGatway, PayGatway,CheckUSerLogin }}>
             {props.children}
         </CheckloginContext.Provider>
     )

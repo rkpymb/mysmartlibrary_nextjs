@@ -165,6 +165,7 @@ const Login = () => {
 
 
                             notify('😀Login Successful')
+                            Contextdata.CheckUSerLogin()
                             setTimeout(function () {
                                 router.back();
                             }, 1000);
