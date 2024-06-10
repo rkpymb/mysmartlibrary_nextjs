@@ -23,7 +23,7 @@ import LbContactboxHome from '../../src/components/Parts/StudyCenter/LbContactbo
 import LBPassList from '../../src/components/Parts/StudyCenter/LBPassList'
 import UserBoxHome from '/src/components/Parts/StudyCenter/UserBoxHome'
 
-
+import {API_URL} from '/Data/config'
 import Footer from '/src/components/Parts/Footer'
 
 import { AppDesc, AppName } from '/Data/config'
@@ -82,7 +82,7 @@ function Overview({ WD }) {
         if (WD && WD.WebData.isActive) {
             Contextdata.ChangeWebData(WD.WebData)
 
-            setManifestURL(`http://localhost:3001/Openendpoint/manifest.json?webid=${WD.WebData.webid}`)
+            setManifestURL(`${API_URL}/Openendpoint/manifest.json?webid=${WD.WebData.webid}`)
             setLoading(false)
 
         } else {
