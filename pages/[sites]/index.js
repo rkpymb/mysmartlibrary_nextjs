@@ -82,7 +82,7 @@ function Overview({ WD }) {
         if (WD && WD.WebData.isActive) {
             Contextdata.ChangeWebData(WD.WebData)
 
-            setManifestURL(`${API_URL}/Openendpoint/manifest.json?webid=${WD.WebData.webid}`)
+            setManifestURL(`${API_URL}Openendpoint/manifest.json?webid=${WD.WebData.webid}`)
             setLoading(false)
 
         } else {
