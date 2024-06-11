@@ -23,7 +23,7 @@ import LbContactboxHome from '../../src/components/Parts/StudyCenter/LbContactbo
 import LBPassList from '../../src/components/Parts/StudyCenter/LBPassList'
 import UserBoxHome from '/src/components/Parts/StudyCenter/UserBoxHome'
 
-import {API_URL} from '/Data/config'
+import { API_URL } from '/Data/config'
 import Footer from '/src/components/Parts/Footer'
 
 import { AppDesc, AppName } from '/Data/config'
@@ -78,15 +78,14 @@ function Overview({ WD }) {
     const Contextdata = useContext(CheckloginContext)
 
     useEffect(() => {
-
-        if (WD && WD.WebData.isActive) {
+        if (WD.WebData && WD.WebData.isActive) {
             Contextdata.ChangeWebData(WD.WebData)
-
             setManifestURL(`${API_URL}Openendpoint/manifest.json?webid=${WD.WebData.webid}`)
             setLoading(false)
 
         } else {
             alert('Website not Found')
+            router.push('/')
         }
     }, [Contextdata.WebData, Contextdata.Data]);
 
