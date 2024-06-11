@@ -92,7 +92,7 @@ function RecentOrders() {
     
                         <div className={Mstyles.AminityGrid}>
                             {Retdata.map((item, index) => {
-                                return <div className={Mstyles.AminityGridItem} key={item.index}>
+                                return <div className={Mstyles.AminityGridItem} key={index}>
                                     <div className={Mstyles.AminityGridItemImg}>
                                         <Image
                                             src={`${MediaFilesUrl}${MediaFilesFolder}/${item.img}`}

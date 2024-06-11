@@ -32,7 +32,7 @@ function Overview() {
     const router = useRouter()
     const [Loading, setLoading] = useState(true);
     return (
-        <OverviewWrapper>
+        <OverviewWrapper >
             <WebsiteData />
             <NavBarTop />
             <div className={Mstyles.MNavDevider} ></div>

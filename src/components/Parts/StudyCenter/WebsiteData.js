@@ -8,8 +8,8 @@ const WebsiteData = () => {
 
     useEffect(() => {
         console.log(router.query.sites)
-     
-       const webid  =router.query.sites
+
+        const webid = router.query.sites
         if (Contextdata.WebData) {
             console.log('Contextdata.WebData available')
 
@@ -18,13 +18,13 @@ const WebsiteData = () => {
             GetData(webid)
 
         }
-       
 
-    }, [Contextdata.WebData,router.query]);
+
+    }, [Contextdata.WebData, router.query]);
 
     const GetData = async (e) => {
-       
-        
+
+
         const sendUM = { webid: e }
         const data = await fetch("/api/V3/auth/WebsiteData", {
             method: "POST",
@@ -36,7 +36,11 @@ const WebsiteData = () => {
             return a.json();
         })
             .then((parsedFinal) => {
+
                 if (parsedFinal.ReqD.WebData) {
+                    Contextdata.ChangeWebSettings(parsedFinal.ReqD.WebSetings.SettingsData)
+                    console.log(parsedFinal.ReqD.WebSetings.SettingsData)
+
                     Contextdata.ChangeWebData(parsedFinal.ReqD.WebData)
                 }
             })

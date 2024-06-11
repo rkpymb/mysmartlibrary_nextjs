@@ -9,6 +9,7 @@ const CheckloginStates = (props) => {
     const [JwtToken, setJwtToken] = useState(null);
     const [PayGatway, setPayGatway] = useState(null);
     const [WebData, setWebData] = useState(null);
+    const [WebSettings, setWebSettings] = useState(null);
     const [MainLoaderData, setMainLoaderData] = useState({
         Title: '',
         Msg: '',
@@ -76,6 +77,10 @@ const CheckloginStates = (props) => {
         setWebData(e)
 
     }
+    const ChangeWebSettings = async (e) => {
+        setWebSettings(e)
+
+    }
 
 
 
@@ -94,7 +99,7 @@ const CheckloginStates = (props) => {
             if (localStorage.getItem('UBranchData')) {
                 const UBranchDataD = localStorage.getItem('UBranchData');
                 setUserBranchData(JSON.parse(UBranchDataD))
-                console.log(JSON.parse(UBranchDataD))
+                
             }
         } catch (error) {
             console.log(error)
@@ -125,7 +130,7 @@ const CheckloginStates = (props) => {
         setMainLoaderData(e)
     }
     return (
-        <CheckloginContext.Provider value={{ Data, IsLogin, ProfileDone, JwtToken, ChangeLocationData, LocationData, MapRadius, ChangeMapRadius, UserBranchData, ChnageUserBranchData, WebData, ChangeWebData, ChangeMainLoader, MainLoader, MainLoaderData, ChangeMainLoaderData, ChnagePayGatway, PayGatway,CheckUSerLogin }}>
+        <CheckloginContext.Provider value={{ Data, IsLogin, ProfileDone, JwtToken, ChangeLocationData, LocationData, MapRadius, ChangeMapRadius, UserBranchData, ChnageUserBranchData, WebData, ChangeWebData,ChangeWebSettings, ChangeMainLoader, MainLoader, MainLoaderData, ChangeMainLoaderData, ChnagePayGatway, PayGatway,CheckUSerLogin,WebSettings }}>
             {props.children}
         </CheckloginContext.Provider>
     )

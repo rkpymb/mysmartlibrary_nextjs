@@ -112,7 +112,7 @@ function RecentOrders() {
 
         >
             {Retdata.map((item, index) => {
-                return <SwiperSlide className={Mstyles.HeroSwiperItem} key={item.index}>
+                return <SwiperSlide className={Mstyles.HeroSwiperItem} key={index}>
                     <div>
                         {isLoading ? <div>
                             <Skeleton variant="rounded" height={250} width={'100%'} animation="wave" />

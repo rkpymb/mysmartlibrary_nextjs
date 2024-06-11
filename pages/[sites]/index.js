@@ -10,7 +10,7 @@ import Mstyles from '/Styles/library.module.css'
 import CheckloginContext from '/context/auth/CheckloginContext'
 
 import Head from 'next/head';
-
+import InstallModal from '../../src/components/InstallModal';
 
 import NavBarTop from '/src/components/Parts/Navbar/NavBarTop'
 import BranchPosterSlider from '../../src/components/Parts/StudyCenter/BranchPosterSlider'
@@ -79,8 +79,10 @@ function Overview({ WD }) {
 
     useEffect(() => {
         if (WD.WebData && WD.WebData.isActive) {
-
+            
             Contextdata.ChangeWebData(WD.WebData)
+            Contextdata.ChangeWebSettings(WD.WebSetings.SettingsData)
+            
             setManifestURL(`${API_URL}Openendpoint/manifest.json?webid=${WD.WebData.webid}`)
             setLoading(false)
 
@@ -92,22 +94,23 @@ function Overview({ WD }) {
 
     return (
         <OverviewWrapper>
+            <Head>
+                <title>{WD.WebData && WD.WebData.WebName}</title>
+
+                <meta property="og:title" name="og:title" content={WD.WebData && WD.WebData.WebName} />
+
+                <meta name="description" property="og:description" content={WD.WebData && WD.WebData.WebData.ShortDesc} />
+                <meta property="og:image" name="og:image" content={WD.WebData && `${DomainURL}${WD.WebData.WebData.Logo}`} />
+                <meta property="og:url" name="og:url" content={WD.WebData && `${DomainURL}${WD.webid}`} />
+                <link rel="manifest" href={manifestURL && manifestURL} />
+                <meta name="theme-color" content="#ffffff" />
+                <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+            </Head>
 
             {!Loading && manifestURL &&
 
                 <div>
-                    <Head>
-                        <title>{WD.WebData && WD.WebData.WebName}</title>
 
-                        <meta property="og:title" name="og:title" content={WD.WebData && WD.WebData.WebName} />
-
-                        <meta name="description" property="og:description" content={WD.WebData && WD.WebData.WebData.ShortDesc} />
-                        <meta property="og:image" name="og:image" content={WD.WebData && `${DomainURL}${WD.WebData.WebData.Logo}`} />
-                        <meta property="og:url" name="og:url" content={WD.WebData && `${DomainURL}${WD.webid}`} />
-                        <link rel="manifest" href={manifestURL} />
-                        <meta name="theme-color" content="#ffffff" />
-                        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
-                    </Head>
                     <NavBarTop SubTitle={false} SubTitleText={null} />
 
                     <div className={Mstyles.Minh100vh}>
@@ -135,9 +138,14 @@ function Overview({ WD }) {
                             <div style={{ height: '10px' }} ></div>
                         </div>
 
-
+                        <div className={Mstyles.OnlyMobile} >
+                            <div style={{ height: '10px' }} ></div>
+                        </div>
                         <div className={Mstyles.Mbox} >
                             <WhyChooseus />
+                        </div>
+                        <div className={Mstyles.OnlyMobile} >
+                            <div style={{ height: '10px' }} ></div>
                         </div>
                         <div className={Mstyles.MSecDevider} ></div>
                         <div className={Mstyles.Mbox} >
@@ -163,12 +171,11 @@ function Overview({ WD }) {
                         <div className={Mstyles.Mbox} >
                             <LbContactboxHome />
                         </div>
-                        <div className={Mstyles.OnlyDesktop}>
-                            <div className={Mstyles.MSecDevider} ></div>
-                        </div>
-                       
+                      
+
 
                     </div>
+                    <InstallModal/>
 
                     <Footer />
 

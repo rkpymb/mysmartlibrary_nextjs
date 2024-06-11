@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {
     Box,
-    Card,
+    IconButton,
     styled
 } from '@mui/material';
-
+import Backdrop from '@mui/material/Backdrop';
+import Badge from '@mui/material/Badge';
 
 import TextField from '@mui/material/TextField';
 import BaseLayout from 'src/layouts/BaseLayout';
@@ -14,9 +15,13 @@ import NavBarTop from '/src/components/Parts/Navbar/NavBarTop'
 import NavbarTitle from '/src/components/Parts/Navbar/NavbarTitle'
 import WebsiteData from '/src/components/Parts/StudyCenter/WebsiteData'
 
+import { FaWhatsapp } from "react-icons/fa";
 
-import { LuArrowRight } from "react-icons/lu";
 import LoadingButton from '@mui/lab/LoadingButton';
+import { LuChevronRight, LuArrowLeft,LuArrowRight } from "react-icons/lu";
+
+
+
 
 import { useRouter, useParams } from 'next/router'
 
@@ -32,6 +37,15 @@ const OverviewWrapper = styled(Box)(
 `
 );
 
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+    '& .MuiBadge-badge': {
+        right: -3,
+        top: 13,
+        border: `2px solid ${theme.palette.background.paper}`,
+        padding: '0 4px',
+    },
+}));
 
 const RcAmt = [
     {
@@ -56,10 +70,22 @@ function Overview() {
     const Contextdata = useContext(CheckloginContext)
     const router = useRouter()
     const [BtnLoading, setBtnLoading] = useState(false);
+    const [OpenDiloag, setOpenDiloag] = useState(false);
     const [Amount, setAmount] = useState(0);
     const [CreditValue, setCreditValue] = useState(0);
     const [GstAmt, setGstAmt] = useState(0);
-    const [GstText, setGstText] = useState('18 % GST');
+    const [GstText, setGstText] = useState('');
+
+
+    const ClickWhtasApp = () => {
+        const Whatsapp= Contextdata.UserBranchData.Whatsapp
+        const phoneNumber = Whatsapp;
+        const message= `Recharge my wallet, Mobile: ${Contextdata.Data.mobile}, Amount: ${Amount}`
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        
+        window.open(whatsappURL, '_blank');
+      };
 
 
 
@@ -72,13 +98,13 @@ function Overview() {
 
 
     }, [router.query])
-  
+
 
     const ChangeAmt = async (Amt) => {
         if (Amt >= 1) {
             setCreditValue(Amt)
 
-            const taxRate = 0.18; // 18% tax rate
+            const taxRate =0; // 0.18 18% tax rate
             const taxAmount = Amt * taxRate;
             setGstAmt(taxAmount.toFixed(2))
 
@@ -129,7 +155,7 @@ function Overview() {
 
                 } else {
                     setBtnLoading(false)
-                    alert('Something went wrong try after some time');
+                    setOpenDiloag(true)
                 }
 
 
@@ -240,7 +266,7 @@ function Overview() {
                                     <LoadingButton
 
                                         onClick={RechargeProceed}
-                                        endIcon={<LuArrowRight />}
+                                        endIcon={<LuChevronRight />}
                                         loading={BtnLoading}
                                         desabled={BtnLoading}
                                         loadingPosition="end"
@@ -277,6 +303,64 @@ function Overview() {
                 </div>
             </div>
             <div className={Mstyles.FDevider} ></div>
+
+            <Backdrop
+                sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={OpenDiloag}
+
+            >
+
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+
+
+                    <div className={Mstyles.PGDilogBox}>
+                        <div>
+                            <div className={Mstyles.TitleWithBackHeaderA}>
+                                <IconButton aria-label="cart" onClick={() => router.back()}>
+                                    <StyledBadge color="secondary" >
+                                        <LuArrowLeft />
+                                    </StyledBadge>
+                                </IconButton>
+                                <div>
+                                    <span>Wallet Recharge</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div className={Mstyles.OrderDoneb}>
+                                    
+                                    <div className={Mstyles.OrderDoneboxFooter}>
+                                        <div className={Mstyles.OrderDoneboxText}>
+                                            <h1>Contact us</h1>
+                                            <span>Currently, we are not supporting online payment due to some technical error,  you can recharge your wallet by sending a WhatsApp message.</span>
+                                        </div>
+                                        <div style={{ height: '10px' }}></div>
+                                        <LoadingButton
+                                            onClick={ClickWhtasApp}
+                                            startIcon={<FaWhatsapp />}
+
+                                            loadingPosition="end"
+                                            variant="contained"
+                                        >
+                                            <span>Recharge Via WhatsApp</span>
+                                        </LoadingButton>
+
+                                        <div style={{ height: '20px' }}></div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+            </Backdrop>
         </OverviewWrapper>
     );
 }

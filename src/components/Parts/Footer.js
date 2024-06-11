@@ -32,11 +32,11 @@ const Footer = () => {
           </div>
           <div style={{ minHeight: '20px' }}></div>
           <div className={Mstyles.MFooter}>
-            <div style={{ minHeight: '20px' }}></div>
+           
             <div className={Mstyles.MFooterbox}>
               <div className={Mstyles.MFooterboxIt}>
                 <div className={Mstyles.MFooterboxItA}>
-                  {/* <LbSocialHandles /> */}
+                  <LbSocialHandles />
                   <FooterMenu1 />
                   <div style={{ minHeight: '20px' }}></div>
                   <div className={Mstyles.Bottom_menu}>

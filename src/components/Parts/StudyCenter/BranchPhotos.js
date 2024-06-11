@@ -91,7 +91,7 @@ function RecentOrders() {
                 {Retdata.length > 0 &&
                     <div>
                         <div className={Mstyles.Tbox} >
-                            <h1>Study Center <span className={Mstyles.primaryColor}>Photos</span></h1>
+                            <h1>Study Center Photos</h1>
                             <span>Let's Look Hows Looks Your Study Center , we have listed best photos </span>
                         </div>
                         <div className={Mstyles.ContectDiv} ></div>

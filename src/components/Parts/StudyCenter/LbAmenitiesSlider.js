@@ -93,7 +93,7 @@ function RecentOrders() {
 
                         <div className={Mstyles.AmenitiesItemGrid}>
                             {Retdata.map((item, index) => {
-                                return <div className={Mstyles.AmenitiesItem} key={item.index}>
+                                return <div className={Mstyles.AmenitiesItem} key={index}>
                                     <div className={Mstyles.AmenitiesItemImg}>
                                         <Image
                                             src={`${MediaFilesUrl}${MediaFilesFolder}/${item.img}`}
