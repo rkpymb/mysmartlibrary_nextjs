@@ -79,10 +79,10 @@ function Overview({ WD }) {
 
     useEffect(() => {
         if (WD.WebData && WD.WebData.isActive) {
-            
+
             Contextdata.ChangeWebData(WD.WebData)
             Contextdata.ChangeWebSettings(WD.WebSetings.SettingsData)
-            
+
             setManifestURL(`${API_URL}Openendpoint/manifest.json?webid=${WD.WebData.webid}`)
             setLoading(false)
 
@@ -114,42 +114,50 @@ function Overview({ WD }) {
                     <NavBarTop SubTitle={false} SubTitleText={null} />
 
                     <div className={Mstyles.Minh100vh}>
-
-                        <div className={Mstyles.Mbox} >
-                            <UserBoxHome />
-                        </div>
-
-                        <div className={Mstyles.OnlyMobile} >
-                            <div style={{ height: '10px' }} ></div>
+                        <div className={Mstyles.OnlyDesktop} >
+                            <div className={Mstyles.Mbox} >
+                                <UserBoxHome />
+                            </div>
                         </div>
                         <div className={Mstyles.Mbox} >
                             <div className={Mstyles.P7}>
                                 <BranchPosterSlider />
                             </div>
                         </div>
-                        <div className={Mstyles.Mbox} >
-                            <HomeAbout />
-                        </div>
-
-                        <div className={Mstyles.OnlyDesktop} >
+                        <div className={Mstyles.OnlyMobile} >
+                            <div className={Mstyles.MSecDeviderSmall} ></div>
+                            <div className={Mstyles.Mbox} >
+                                <UserBoxHome />
+                            </div>
                             <div className={Mstyles.MSecDevider} ></div>
                         </div>
-                        <div className={Mstyles.OnlyMobile} >
-                            <div style={{ height: '10px' }} ></div>
+                        <div className={Mstyles.Mbox} >
+                            <div className={Mstyles.MobileDiv} >
+                                <HomeAbout />
+                            </div>
                         </div>
 
-                        <div className={Mstyles.OnlyMobile} >
-                            <div style={{ height: '10px' }} ></div>
-                        </div>
+                        <div className={Mstyles.MSecDevider} ></div>
+
                         <div className={Mstyles.Mbox} >
                             <WhyChooseus />
                         </div>
                         <div className={Mstyles.OnlyMobile} >
-                            <div style={{ height: '10px' }} ></div>
+                            <div className={Mstyles.MSecDevider} ></div>
                         </div>
-                        <div className={Mstyles.MSecDevider} ></div>
+
+
+                        <div className={Mstyles.OnlyDesktop} >
+                            <div className={Mstyles.MSecDevider} ></div>
+                        </div>
                         <div className={Mstyles.Mbox} >
-                            <LbAmenities />
+                            <div className={Mstyles.MobileDiv} >
+                                <LbAmenities />
+                            </div>
+                        </div>
+
+                        <div className={Mstyles.OnlyMobile} >
+                            <div className={Mstyles.MSecDevider} ></div>
                         </div>
 
                         <div className={Mstyles.Mbox} >
@@ -171,11 +179,11 @@ function Overview({ WD }) {
                         <div className={Mstyles.Mbox} >
                             <LbContactboxHome />
                         </div>
-                      
+
 
 
                     </div>
-                    <InstallModal/>
+                    <InstallModal />
 
                     <Footer />
 

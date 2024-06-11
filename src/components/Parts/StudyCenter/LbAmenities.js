@@ -132,7 +132,7 @@ function RecentOrders() {
 
         {Retdata.length > 0 &&
 
-            <div>
+            <div className={Mstyles.OnlyDesktop}>
                 <div className={Mstyles.MSecDevider} ></div>
             </div>
         }

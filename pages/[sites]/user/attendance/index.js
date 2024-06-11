@@ -6,8 +6,6 @@ import {
 } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 
-import Dialog from '@mui/material/Dialog';
-
 import QrReader from 'react-qr-scanner'
 
 import Sheet from 'react-modal-sheet';
@@ -19,6 +17,8 @@ import MsgBoxtBtn from '/src/components/Parts/StudyCenter/Extra/MsgBoxtBtn';
 import LoadingButton from '@mui/lab/LoadingButton';
 import IconButton from '@mui/material/IconButton';
 
+
+import { MdFlipCameraAndroid } from "react-icons/md";
 
 import Badge from '@mui/material/Badge';
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
@@ -80,11 +80,19 @@ function Overview() {
 
     const [TodayAtt, setTodayAtt] = useState([]);
     const [CurrentLocation, setCurrentLocation] = useState(null);
-
+    const [cameraFacingMode, setCameraFacingMode] = useState('environment'); // 'user' for front camera, 'environment' for back camera
 
     const [delay, setDelay] = useState(100);
-    const [result, setResult] = useState('Scan Libary Center QR Code');
-    const [QRtext, setQRtext] = useState('Scan Libary Center QR Code');
+    const [result, setResult] = useState('Scan Attendance QR Code');
+    const [QRtext, setQRtext] = useState('Scan Attendance QR Code');
+
+
+
+    const handleCameraFlip = () => {
+        setCameraFacingMode(prevMode =>
+            prevMode === 'environment' ? 'user' : 'environment'
+        );
+    };
 
     const handleScan = (data) => {
         if (data !== null) {
@@ -155,7 +163,7 @@ function Overview() {
                 setTodayAtt(Parsed.ReqData.Mypasslist)
                 setLoading(false)
                 setAttmodal(false)
-                
+
 
 
             })
@@ -230,11 +238,11 @@ function Overview() {
     }
 
     const MarkLBAbsent = async () => {
-        if (Attdata !== null &&  CurrentLocation !==null) {
+        if (Attdata !== null && CurrentLocation !== null) {
             setLoadingMarkAtt(true)
             const datasend = {
                 Orderid: Attdata.Orderid,
-                CurrentLocation:CurrentLocation
+                CurrentLocation: CurrentLocation
             }
 
 
@@ -260,11 +268,11 @@ function Overview() {
 
                             }, 3000);
 
-                        }else{
+                        } else {
                             alert(Parsed.ReqData.error)
                             setLoadingMarkAtt(false)
                         }
-                        
+
                     } else {
                         alert('Something went wrong')
                         setLoadingMarkAtt(false)
@@ -278,11 +286,11 @@ function Overview() {
 
     }
     const MarkLBPresentAtt = async () => {
-        if (Attdata !== null && CurrentLocation !==null) {
+        if (Attdata !== null && CurrentLocation !== null) {
             setLoadingMarkAtt(true)
             const datasend = {
                 Orderid: Attdata.Orderid,
-                CurrentLocation:CurrentLocation
+                CurrentLocation: CurrentLocation
             }
 
 
@@ -308,11 +316,11 @@ function Overview() {
 
                             }, 3000);
 
-                        }else{
+                        } else {
                             alert(Parsed.ReqData.error)
                             setLoadingMarkAtt(false)
                         }
-                        
+
                     } else {
                         alert('Something went wrong')
                         setLoadingMarkAtt(false)
@@ -333,32 +341,32 @@ function Overview() {
             navigator.geolocation.getCurrentPosition(
                 position => {
                     const { latitude, longitude } = position.coords;
-                    
+
                     const SeLocData = {
                         lat: latitude,
                         lng: longitude,
                     }
                     setCurrentLocation(SeLocData)
-                   
-                   console.log('SeLocData')
-                   console.log(SeLocData)
+
+                    console.log('SeLocData')
+                    console.log(SeLocData)
 
                 },
                 error => {
                     RetryLocate()
                     console.log('Error getting user location:', error);
-                    
+
                 }
             );
         } else {
             RetryLocate()
-           
+
             console.log('Geolocation is not supported by this browser.');
         }
     }
 
     const RetryLocate = () => {
-      
+
         Locateuser()
 
     };
@@ -451,10 +459,11 @@ function Overview() {
                                             </div>
                                         </div> :
                                         <div>
-                                            <MsgBoxtBtn Title={`Your don't have any Active Subscriptios.`} Msg={`Please subscribe to a valid pass to mark your daily attendance`} Url={'/'} />
+                                            <MsgBoxtBtn Title={`Your don't have any Active Subscriptios.`} Msg={`Please subscribe to a valid pass to mark your daily attendance`} Url={`/${Contextdata.WebData.WebData.webid}/subscription-pass`} />
                                         </div>
 
                                     }
+
 
                                 </div> :
                                 <div style={{ padding: '5px' }}>
@@ -573,14 +582,31 @@ function Overview() {
                                 {QRScaner &&
 
                                     <div>
+
+                                        <div className={Mstyles.QrReaderTop}>
+                                            <div className={Mstyles.QrReaderTopA}>
+                                                <span>{QRtext}</span>
+                                            </div>
+                                            <div className={Mstyles.QrReaderTopB}>
+                                                <IconButton aria-label="cart" onClick={handleCameraFlip}>
+                                                    <StyledBadge color="secondary">
+                                                        <MdFlipCameraAndroid />
+                                                    </StyledBadge>
+                                                </IconButton>
+                                            </div>
+
+                                        </div>
+
                                         <QrReader
                                             className={Mstyles.QrReader}
                                             delay={delay}
-
+                                            facingMode={cameraFacingMode}
                                             // onError={handleError}
                                             onScan={handleScan}
                                         />
-                                        <div style={{ textAlign: 'center' }}>{QRtext}</div>
+
+
+
 
 
                                     </div>

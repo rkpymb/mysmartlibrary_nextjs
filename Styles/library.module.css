@@ -6,6 +6,9 @@
   font-size: 12px;
   text-align: center;
 }
+.MSecDeviderSmall{
+  min-height: 10px;
+}
 .PwaaBox h2{
   margin: 0;
 
@@ -709,7 +712,14 @@
 
 }
 
-
+.QrReaderTopA span{
+  font-weight: 600;
+}
+.QrReaderTop{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .QrReader {
   width: 100%;
@@ -2725,7 +2735,15 @@
   .Mbox {
     width: 100%;
     margin: auto;
+    
 
+  }
+
+  .MobileDiv {
+    margin: 5px;
+    padding:5px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.5)
   }
 
   .MboxSmall {
@@ -2860,7 +2878,7 @@
 
 
   .WhyChooseusBoxGrid {
-    margin: 0 auto;
+    margin: 5px;
     display: grid;
     gap: 0.2rem;
     grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
