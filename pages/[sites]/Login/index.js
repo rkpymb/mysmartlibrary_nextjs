@@ -169,11 +169,14 @@ const Login = () => {
                             setTimeout(function () {
                                 router.back();
                             }, 1000);
+                        } else {
+                            setLoadingBtn(false);
                         }
                         if (parsed.ReqD.error) {
                             notify(parsed.ReqD.error)
+                            setLoadingBtn(false);
                         }
-                        setLoadingBtn(false);
+
                     }, 2000);
                 })
 
