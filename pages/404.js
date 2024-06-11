@@ -107,5 +107,5 @@ function Status404() {
 export default Status404;
 
 Status404.getLayout = function getLayout(page) {
-  return <BaseLayout>{page}</BaseLayout>;
+  return <div>{page}</div>;
 };

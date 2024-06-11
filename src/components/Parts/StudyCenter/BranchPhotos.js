@@ -94,19 +94,21 @@ function RecentOrders() {
                             <h1>Study Center <span className={Mstyles.primaryColor}>Photos</span></h1>
                             <span>Let's Look Hows Looks Your Study Center , we have listed best photos </span>
                         </div>
-                        <div style={{ height: '20px' }}></div>
+                        <div className={Mstyles.ContectDiv} ></div>
                         <Swiper
 
                             breakpoints={{
                                 768: {
-                                    slidesPerView: 2.5, // Display 2 slides on tablets (768px or more)
+                                    slidesPerView: 1.5,
+                                    spaceBetween: 5
                                 },
                                 992: {
-                                    slidesPerView: 4, // Display 3 slides on desktop (992px or more)
+                                    slidesPerView: 4,
+                                    spaceBetween: 10
                                 },
                             }}
-                            slidesPerView={2.5}
-                            spaceBetween={10}
+                            slidesPerView={1.5}
+                            spaceBetween={5}
                             centeredSlides={false}
 
                             pagination={{
@@ -118,9 +120,16 @@ function RecentOrders() {
 
                         >
                             {Retdata.map((item, index) => {
-                                return <SwiperSlide className={Mstyles.HeroSwiperItem} key={item.index}>
-                                    <div>
+                                const isFirstItem = index === 0;
+                                const isLastItem = index === Retdata.length - 1;
 
+                                return (
+                                    <SwiperSlide
+                                        className={`${Mstyles.HeroSwiperItem} 
+                        ${isFirstItem ? Mstyles.marginLeft5 : null} 
+                        ${isLastItem ? Mstyles.marginRight5 : null}`}
+                                        key={index}
+                                    >
                                         <div className={Mstyles.LbPhotoItemimg}>
                                             <Image
                                                 src={`${MediaFilesUrl}${MediaFilesFolder}/${item.img}`}
@@ -132,19 +141,12 @@ function RecentOrders() {
                                                 quality={80}
                                                 blurDataURL={blurredImageData}
                                                 objectFit='cover'
-
                                             />
                                         </div>
+                                    </SwiperSlide>
+                                );
+                            })}
 
-                                    </div>
-
-                                </SwiperSlide>
-
-
-
-                            }
-
-                            )}
 
 
 
@@ -162,7 +164,7 @@ function RecentOrders() {
         }
         {Retdata.length > 0 &&
 
-            <div>
+            <div className={Mstyles.OnlyDesktop}>
                 <div className={Mstyles.MSecDevider} ></div>
             </div>
         }

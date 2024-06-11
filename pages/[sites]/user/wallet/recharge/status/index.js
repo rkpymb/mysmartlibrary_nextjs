@@ -23,9 +23,8 @@ import { useRouter, useParams } from 'next/router'
 
 const OverviewWrapper = styled(Box)(
     ({ theme }) => `
-    overflow: auto;
+   
     background: ${theme.palette.common.white};
-    flex: 1;
     overflow-x: hidden;
 `
 );
@@ -153,5 +152,5 @@ function Overview() {
 export default Overview;
 
 Overview.getLayout = function getLayout(page) {
-    return <BaseLayout>{page}</BaseLayout>;
+    return <div>{page}</div>;
 };

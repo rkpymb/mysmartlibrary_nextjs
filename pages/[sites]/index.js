@@ -23,7 +23,7 @@ import LbContactboxHome from '../../src/components/Parts/StudyCenter/LbContactbo
 import LBPassList from '../../src/components/Parts/StudyCenter/LBPassList'
 import UserBoxHome from '/src/components/Parts/StudyCenter/UserBoxHome'
 
-import { API_URL } from '/Data/config'
+import { API_URL, DomainURL } from '/Data/config'
 import Footer from '/src/components/Parts/Footer'
 
 import { AppDesc, AppName } from '/Data/config'
@@ -43,9 +43,9 @@ const HeaderWrapper = styled(Card)(
 
 const OverviewWrapper = styled(Box)(
     ({ theme }) => `
-    overflow: auto;
+    
     background: ${theme.palette.common.white};
-    flex: 1;
+   
    
 `
 );
@@ -79,6 +79,7 @@ function Overview({ WD }) {
 
     useEffect(() => {
         if (WD.WebData && WD.WebData.isActive) {
+
             Contextdata.ChangeWebData(WD.WebData)
             setManifestURL(`${API_URL}Openendpoint/manifest.json?webid=${WD.WebData.webid}`)
             setLoading(false)
@@ -96,40 +97,47 @@ function Overview({ WD }) {
 
                 <div>
                     <Head>
-                        <title>{Contextdata.WebData && Contextdata.WebData.WebName}</title>
+                        <title>{WD.WebData && WD.WebData.WebName}</title>
 
+                        <meta property="og:title" name="og:title" content={WD.WebData && WD.WebData.WebName} />
+
+                        <meta name="description" property="og:description" content={WD.WebData && WD.WebData.WebData.ShortDesc} />
+                        <meta property="og:image" name="og:image" content={WD.WebData && `${DomainURL}${WD.WebData.WebData.Logo}`} />
+                        <meta property="og:url" name="og:url" content={WD.WebData && `${DomainURL}${WD.webid}`} />
                         <link rel="manifest" href={manifestURL} />
                         <meta name="theme-color" content="#ffffff" />
                         <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
                     </Head>
                     <NavBarTop SubTitle={false} SubTitleText={null} />
-                    <div className={Mstyles.MNavDeviderSmall} ></div>
+
                     <div className={Mstyles.Minh100vh}>
 
                         <div className={Mstyles.Mbox} >
-
-                            <div className={Mstyles.P7}>
-                                <UserBoxHome />
-                            </div>
+                            <UserBoxHome />
                         </div>
 
+                        <div className={Mstyles.OnlyMobile} >
+                            <div style={{ height: '10px' }} ></div>
+                        </div>
                         <div className={Mstyles.Mbox} >
-
                             <div className={Mstyles.P7}>
                                 <BranchPosterSlider />
                             </div>
                         </div>
                         <div className={Mstyles.Mbox} >
-                            <div className={Mstyles.P7}>
-                                <HomeAbout />
-                            </div>
+                            <HomeAbout />
                         </div>
-                        <div className={Mstyles.MSecDevider} ></div>
+
+                        <div className={Mstyles.OnlyDesktop} >
+                            <div className={Mstyles.MSecDevider} ></div>
+                        </div>
+                        <div className={Mstyles.OnlyMobile} >
+                            <div style={{ height: '10px' }} ></div>
+                        </div>
+
 
                         <div className={Mstyles.Mbox} >
-                            <div className={Mstyles.P7}>
-                                <WhyChooseus />
-                            </div>
+                            <WhyChooseus />
                         </div>
                         <div className={Mstyles.MSecDevider} ></div>
                         <div className={Mstyles.Mbox} >
@@ -137,9 +145,7 @@ function Overview({ WD }) {
                         </div>
 
                         <div className={Mstyles.Mbox} >
-                            <div className={Mstyles.P7}>
-                                <BranchPhotos />
-                            </div>
+                            <BranchPhotos />
                         </div>
 
 
@@ -149,22 +155,18 @@ function Overview({ WD }) {
 
 
                         <div className={Mstyles.Mbox} >
-                            <div className={Mstyles.P7}>
-                                <Lbreviews />
-                            </div>
+                            <Lbreviews />
                         </div>
 
 
 
                         <div className={Mstyles.Mbox} >
-                            <div className={Mstyles.P7}>
-                                <LbContactboxHome />
-                            </div>
+                            <LbContactboxHome />
                         </div>
-                        <div className={Mstyles.MSecDevider} ></div>
-                        <div style={{ textAlign: 'center', margin: 'auto', margin: '50px' }} >
-                            <b>Yay! You have seen it all 🎉</b>
+                        <div className={Mstyles.OnlyDesktop}>
+                            <div className={Mstyles.MSecDevider} ></div>
                         </div>
+                       
 
                     </div>
 
@@ -181,7 +183,7 @@ function Overview({ WD }) {
 export default Overview;
 
 Overview.getLayout = function getLayout(page) {
-    return <BaseLayout>{page}</BaseLayout>;
+    return <div>{page}</div>;
 };
 
 

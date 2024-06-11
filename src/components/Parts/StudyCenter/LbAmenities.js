@@ -92,10 +92,11 @@ function RecentOrders() {
 
 
                         <div className={Mstyles.Tbox} >
-                            <h1>Facilities & Amenities at <span className={Mstyles.primaryColor}>{Contextdata.UserBranchData.name}</span></h1>
+                            <h1>Facilities & Amenities</h1>
                             <span>Let's Look Hows Looks Your Study Center , we have listed best photos </span>
                         </div>
-                        <div style={{ height: '20px' }}></div>
+                        <div className={Mstyles.ContectDiv} ></div>
+                      
                         <div className={Mstyles.AmenitiesItemGrid}>
                             {Retdata.map((item, index) => {
                                 return <div className={Mstyles.AmenitiesItem} key={item.index}>

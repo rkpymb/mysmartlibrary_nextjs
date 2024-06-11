@@ -80,7 +80,7 @@ export async function middleware(request) {
     }
   }
 
-  const requiresAuthPaths = ['/user'];
+  const requiresAuthPaths = ['/user','/subscription-pass'];
 
   if (requiresAuthPaths.some(path => currentPathname.includes(path))) {
     const { response, isValid, redirect } = await checkUserAuthentication(request);

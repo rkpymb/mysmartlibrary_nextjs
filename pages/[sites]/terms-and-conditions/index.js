@@ -38,9 +38,8 @@ const HeaderWrapper = styled(Card)(
 
 const OverviewWrapper = styled(Box)(
     ({ theme }) => `
-    overflow: auto;
+   
     background: ${theme.palette.common.white};
-    flex: 1;
    
 `
 );
@@ -132,7 +131,7 @@ function Overview({ PD }) {
 export default Overview;
 
 Overview.getLayout = function getLayout(page) {
-    return <BaseLayout>{page}</BaseLayout>;
+    return <div>{page}</div>;
 };
 
 
