@@ -57,7 +57,7 @@ const NavBar = () => {
         };
     }, []);
     return (
-        <nav className={`${Mstyles.navbar} ${scrolled ? Mstyles.scrolled : ''}`}>
+        <nav className={`${Mstyles.navbar} ${scrolled ? Mstyles.White : Mstyles.Transprent}`}>
             <div className={Mstyles.navContent}>
                 <div className={Mstyles.navContentA}>
                     <div className={Mstyles.NavLogo}>

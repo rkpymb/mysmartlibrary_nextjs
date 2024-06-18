@@ -9,12 +9,16 @@ import {
 } from '@mui/material';
 
 import NavBar from './components/Main/NavBar'
+
 import BaseLayout from 'src/layouts/BaseLayout';
 import Mstyles from '../Styles/main.module.css'
 import CheckloginContext from '../context/auth/CheckloginContext'
 
 import Head from 'next/head';
 import HeroBox from './components/Main/HomePage/HeroBox'
+import Highlights from './components/Main/HomePage/Highlights'
+import KeyFeatures from './components/Main/HomePage/KeyFeatures'
+import GoliveSteps from './components/Main/HomePage/GoliveSteps'
 
 import Footer from '../src/components/Parts/Footer'
 
@@ -60,7 +64,14 @@ function Overview() {
 
       <div className={Mstyles.Container}>
 
-      <HeroBox />
+        <HeroBox />
+        <div className={Mstyles.MainDevidor}> </div>
+        <Highlights />
+        <div className={Mstyles.MainDevidor}> </div>
+        <KeyFeatures />
+        <div className={Mstyles.MainDevidor}> </div>
+        <GoliveSteps />
+        <div className={Mstyles.MainDevidor}> </div>
       </div>
 
 
