@@ -7,8 +7,8 @@ const KeyFeatures = () => {
     return (
         <div>
             <div className={Mstyles.SecInTitle}>
-                <h1>Explore Usefull Features</h1>
-                <span>Whether you’re a startup or an established business, here’s why My Smart Library is your best choice</span>
+                <h1>One Stop Solution for Self Study Center Business</h1>
+                <span>are you running a self study center and facing issues with managing Attendance, Fee and User Subscription ? One Stop Solution for Self Study Center Business , manage your Study Center with My Smart Library Software seamlessly.</span>
             </div>
 
             <div className={Mstyles.KeyFeatures}>
@@ -63,7 +63,7 @@ const KeyFeatures = () => {
                             </div>
                             <div className={Mstyles.FeatursItemB}>
                                 <span>Branche's Shifts</span>
-                                <small>Manage Multiple Branches of your Self Study center from Single Dashboard.</small>
+                                <small>You can add multiple shifts for your self study center branch.</small>
                             </div>
 
                         </div>
@@ -82,7 +82,7 @@ const KeyFeatures = () => {
                             </div>
                             <div className={Mstyles.FeatursItemB}>
                                 <span>Seating Management</span>
-                                <small>Manage Multiple Branches of your Self Study center from Single Dashboard.</small>
+                                <small>The seating management of your library center has become even easier.</small>
                             </div>
 
                         </div>
@@ -101,7 +101,7 @@ const KeyFeatures = () => {
                             </div>
                             <div className={Mstyles.FeatursItemB}>
                                 <span>Fees Collection</span>
-                                <small>Manage Multiple Branches of your Self Study center from Single Dashboard.</small>
+                                <small>Easily accept payments from your users and manage their fees.</small>
                             </div>
 
                         </div>
@@ -120,7 +120,7 @@ const KeyFeatures = () => {
                             </div>
                             <div className={Mstyles.FeatursItemB}>
                                 <span>Subscription Passes</span>
-                                <small>Manage Multiple Branches of your Self Study center from Single Dashboard.</small>
+                                <small>Create subscription passes for your study center and sell them online.</small>
                             </div>
 
                         </div>
@@ -139,7 +139,7 @@ const KeyFeatures = () => {
                             </div>
                             <div className={Mstyles.FeatursItemB}>
                                 <span>Addons Products</span>
-                                <small>Manage Multiple Branches of your Self Study center from Single Dashboard.</small>
+                                <small>You can also add addon products like laptop,Tablet, locker box, other items.</small>
                             </div>
                         </div>
                         <div className={Mstyles.FeatursItem}>
@@ -157,7 +157,7 @@ const KeyFeatures = () => {
                             </div>
                             <div className={Mstyles.FeatursItemB}>
                                 <span>Users Accounts</span>
-                                <small>Manage Multiple Branches of your Self Study center from Single Dashboard.</small>
+                                <small>Manage the accounts of all your users easily.</small>
                             </div>
                         </div>
                         <div className={Mstyles.FeatursItem}>
@@ -175,7 +175,7 @@ const KeyFeatures = () => {
                             </div>
                             <div className={Mstyles.FeatursItemB}>
                                 <span>Users Wallet</span>
-                                <small>Manage Multiple Branches of your Self Study center from Single Dashboard.</small>
+                                <small>Wallet features give your users access to a digital wallet Stystem that they can easily use to make purchases on your website.</small>
                             </div>
                         </div>
                         <div className={Mstyles.FeatursItem}>
@@ -193,7 +193,25 @@ const KeyFeatures = () => {
                             </div>
                             <div className={Mstyles.FeatursItemB}>
                                 <span>Users Attendance</span>
-                                <small>Manage Multiple Branches of your Self Study center from Single Dashboard.</small>
+                                <small>Now make the attendance of your library center even easier with QR based attendance system.</small>
+                            </div>
+                        </div>
+                        <div className={Mstyles.FeatursItem}>
+                            <div className={Mstyles.FeatursItemA}>
+                                <Image
+                                    src={`/Home/check-circle-solid.svg`}
+                                    alt="image"
+                                    layout="responsive"
+                                    placeholder='blur'
+                                    width={30}
+                                    height={30}
+                                    quality={100}
+                                    blurDataURL={blurredImageData}
+                                />
+                            </div>
+                            <div className={Mstyles.FeatursItemB}>
+                                <span>Notification and Reminders</span>
+                                <small>Send Instant and autometic Reminders and Notification to your Users.</small>
                             </div>
                         </div>
 

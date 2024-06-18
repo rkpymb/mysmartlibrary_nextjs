@@ -1,3 +1,364 @@
+.PlanGrid {
+  margin: 0 auto;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.PlanImg {
+  width: 80px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgb(233, 229, 225);
+}
+
+.Pricebox {
+  margin: 5px;
+
+}
+
+.Pricebox del {
+  color: red;
+}
+
+.Pricebox span {
+  color: rgb(0, 81, 255);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.PriceboxText small {
+  color: rgb(54, 55, 58);
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.PlanItem {
+  padding: 20px;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+  margin: 5px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.PlanTop {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.WaringBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px;
+
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 6px 5px rgba(0, 0, 0, .08);
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.Pmtag {
+  margin: 5px;
+
+  text-transform: uppercase;
+
+  padding: 3px 15px 2px 15px;
+  border-radius: 5px;
+  background-color: #405aee;
+  min-width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+
+}
+
+.Pmtag span {
+  color: rgb(255, 255, 255);
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.PmtagCredit {
+  margin: 5px;
+  text-transform: uppercase;
+  border-radius: 5px;
+
+  min-width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+
+}
+
+.PmtagCredit span {
+  color: #F39C12;
+
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.PmtagCredit small {
+  color: #A3E4D7;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.PMItemFotter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #eaeaf1b4;
+  padding-top: 10px;
+}
+
+
+.includedBox {
+  margin-top: 20px;
+}
+
+.includedBoxTitle span {
+  font-weight: 500;
+  font-size: 12px;
+}
+.PlanInItem {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+  border-bottom: 1px solid rgb(242, 234, 234);
+  padding: 5px;
+}
+
+.PlanInItemA {
+  width: 50%;
+
+}
+
+.PlanInItemB {
+  width: 50%;
+}
+
+.PlanInItemA {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.PlanInItemB {
+  font-size: 13px;
+  font-weight: 600;
+}
+.Planh {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+}
+
+.PlanhA {
+  text-align: center;
+}
+
+.PlanhA h1 {
+
+  margin: 0;
+
+}
+
+.PlanhAx span {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ea4e4e;
+
+}
+
+.PlanhB {
+  margin: 20px;
+}
+
+.PlanTitle span {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.PlanTitle small {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.includedBox {
+  margin-top: 20px;
+}
+
+.includedBoxTitle span {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.PTSelctbtnBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d4d4dc;
+  padding: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 40px;
+
+}
+
+.PTSelctbtnActive {
+  width: 50%;
+  background-color: #5569ff;
+  color: white;
+  padding: 5px 20px 5px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  min-width: fit-content;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.PTSelctbtn {
+  margin: 5px;
+  cursor: pointer;
+  width: 50%;
+  background-color: #f8f1f1;
+
+  padding: 5px 20px 5px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  color: rgb(95, 86, 86);
+
+  /* border: 1px solid #d4d4dc; */
+  min-width: fit-content;
+}
+
+
+.Planh {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+}
+
+.PlanhA {
+  text-align: center;
+}
+
+.PlanhA h1 {
+
+  margin: 0;
+
+}
+
+.PlanhAx span {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ea4e4e;
+
+}
+
+.PlanhB {
+  margin: 20px;
+}
+.FotterM {
+  background-image: radial-gradient(circle at 99% 0%, rgba(235, 235, 235, 0.03) 0%, rgba(235, 235, 235, 0.03) 50%, rgba(142, 142, 142, 0.03) 50%, rgba(142, 142, 142, 0.03) 100%), radial-gradient(circle at 84% 89%, rgba(229, 229, 229, 0.03) 0%, rgba(229, 229, 229, 0.03) 50%, rgba(1, 1, 1, 0.03) 50%, rgba(1, 1, 1, 0.03) 100%), radial-gradient(circle at 89% 20%, rgba(219, 219, 219, 0.03) 0%, rgba(219, 219, 219, 0.03) 50%, rgba(38, 38, 38, 0.03) 50%, rgba(38, 38, 38, 0.03) 100%), radial-gradient(circle at 90% 0%, rgba(48, 48, 48, 0.03) 0%, rgba(48, 48, 48, 0.03) 50%, rgba(109, 109, 109, 0.03) 50%, rgba(109, 109, 109, 0.03) 100%), linear-gradient(45deg, rgb(85, 105, 255), rgb(164, 129, 216));
+  backdrop-filter: blur(8px);
+
+  color: white;
+  
+
+}
+.menuurlf {
+  min-width: fit-content;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+
+}
+
+
+.menuurlfGrid {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+
+}
+.FotterMBox {
+  width: 80%;
+  margin: 0 auto !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+}
+.Madein{
+  display: flex;
+  align-items: center;
+  min-width: fit-content;
+
+    font-weight: 600;
+    color: yellow;
+  
+}
+
+.FotterDeviderdot {
+  background-image: url(/img/bgd.png);
+  background-repeat: repeat;
+  width: 100%;
+  min-height: 50px;
+  margin-top: 5px;
+}
+
+.playerwrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: 'hidden';
+  height: 450px;
+
+}
+
+.reactplayer {
+  position: relative;
+  height: 450px;
+  margin-top: 20px;
+  border-radius: 20px;
+  overflow: 'hidden'
+}
+
+.Golivebox {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.GoliveImg img {
+  width: 100%;
+}
+
+.GoliveBtn {
+  margin: auto;
+  width: 50%;
+}
+
 .FeatursGrid {
   margin-top: 5px;
   display: flex;
@@ -11,11 +372,15 @@
   align-items: center;
   margin-bottom: 20px;
 
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
+
 }
 
 .FeatursItemA {
-  width: 25px;
-  height: 25px;
+  min-width: 25px;
+  min-height: 25px;
 }
 
 .FeatursItemB {
@@ -43,6 +408,8 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  max-width: 70%;
+  margin: auto;
 }
 
 .SecInTitle h1 {
@@ -76,7 +443,7 @@
 .KeyFeaturesAImg {
   width: 100%;
   border-radius: 20px;
-  
+
 }
 
 .MainDevidor {
@@ -146,6 +513,7 @@
 
 .Heroimg {
   width: 100%;
+  cursor: pointer;
 
 }
 
@@ -318,7 +686,7 @@
     grid-template-columns: none;
     place-items: initial;
     overflow: auto;
-    flex-direction: column;
+
   }
 
 
@@ -385,7 +753,7 @@
 
   .KeyFeaturesB {
     width: 100%;
-    padding: 15px;
+    padding: 5px;
   }
 
   .KeyFeaturesAImg {
@@ -401,6 +769,8 @@
 
   .SecInTitle {
     padding: 10px;
+    max-width: 99%;
+    margin: auto;
   }
 
   .SecInTitle h1 {
@@ -415,5 +785,73 @@
     color: rgb(103, 99, 107);
   }
 
+
+  .FeatursItem {
+    display: flex;
+    align-items: initial;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+
+  }
+
+
+  .Golivebox {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .playerwrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: 'hidden';
+    height: 350px;
+
+  }
+
+  .reactplayer {
+    position: relative;
+    height: 350px;
+    margin-top: 20px;
+    border-radius: 20px;
+    overflow: 'hidden'
+  }
+
+  .menuurlfGrid {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+
+  }
+
+
+  .FotterMBox {
+    width: 80%;
+    margin: 0 auto !important;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 30px;
+  
+  }
+  .FotterMBoxB{
+    text-align: center;
+  }
+  .Madein{
+    display: flex;
+    align-items: center;
+    min-width: fit-content;
+    justify-content: center;
+    font-weight: 600;
+    color: yellow;
+    
+  }
+  
 
 }

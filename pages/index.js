@@ -17,11 +17,12 @@ import CheckloginContext from '../context/auth/CheckloginContext'
 import Head from 'next/head';
 import HeroBox from './components/Main/HomePage/HeroBox'
 import Highlights from './components/Main/HomePage/Highlights'
+import HighlightsA from './components/Main/HomePage/HighlightsA'
 import KeyFeatures from './components/Main/HomePage/KeyFeatures'
 import GoliveSteps from './components/Main/HomePage/GoliveSteps'
-
-import Footer from '../src/components/Parts/Footer'
-
+import DemoBox from './components/Main/HomePage/DemoBox'
+import SubscriptionsPlan from './components/Main/HomePage/SubscriptionsPlan'
+import MainFooter from './components/Main/MainFooter'
 import { AppDesc, AppName } from '../Data/config'
 import { useRouter, useParams } from 'next/router'
 
@@ -57,7 +58,7 @@ function Overview() {
   return (
     <OverviewWrapper>
       <Head>
-        <title>My Smart Library</title>
+        <title>My Smart Library : One Stop Solution for Self Study Center Business.</title>
       </Head>
 
       <NavBar />
@@ -66,14 +67,23 @@ function Overview() {
 
         <HeroBox />
         <div className={Mstyles.MainDevidor}> </div>
-        <Highlights />
+        <HighlightsA />
         <div className={Mstyles.MainDevidor}> </div>
         <KeyFeatures />
         <div className={Mstyles.MainDevidor}> </div>
+        <DemoBox />
+        <div className={Mstyles.MainDevidor}> </div>
         <GoliveSteps />
         <div className={Mstyles.MainDevidor}> </div>
+        <Highlights />
+  
+        <div className={Mstyles.MainDevidor}> </div>
+        <SubscriptionsPlan />
+  
       </div>
 
+      <div className={Mstyles.MainDevidor}> </div>
+      <MainFooter/>
 
 
 

@@ -60,7 +60,7 @@ const NavBar = () => {
         <nav className={`${Mstyles.navbar} ${scrolled ? Mstyles.White : Mstyles.Transprent}`}>
             <div className={Mstyles.navContent}>
                 <div className={Mstyles.navContentA}>
-                    <div className={Mstyles.NavLogo}>
+                    <div className={Mstyles.NavLogo}  onClick={() => router.push(`/`)}>
                         <img src={`/logo/logo.png`} alt='logo' width={'100%'} />
 
                     </div>
@@ -73,6 +73,7 @@ const NavBar = () => {
                         <div className={Mstyles.NavBtn}>
 
                             <LoadingButton
+                                onClick={() => router.push(`https://admin.mysmartlibrary.in/Signup`)}
                                 startIcon={<LuUser2 />}
                                 loadingPosition="end"
                                 variant="outlined"
@@ -85,38 +86,38 @@ const NavBar = () => {
                             </LoadingButton>
                             <div style={{ width: '10px' }} ></div>
                             <LoadingButton
-
+                                onClick={() => router.push(`https://admin.mysmartlibrary.in/Login`)}
                                 startIcon={<LuLogIn />}
                                 loadingPosition="end"
                                 variant="contained"
                                 loading={false}
                                 fullWidth
                                 size='small'
-                               
+
                             >
                                 <span>Login</span>
                             </LoadingButton>
-                           
+
                         </div>
                     </div>
                     <div className={Mstyles.OnlyMobile}>
                         <div className={Mstyles.NavBtn}>
 
-                           
+
                             <div style={{ width: '10px' }} ></div>
                             <LoadingButton
-
+                                onClick={() => router.push(`https://admin.mysmartlibrary.in/Login`)}
                                 startIcon={<LuLogIn />}
                                 loadingPosition="end"
                                 variant="outlined"
                                 loading={false}
                                 fullWidth
                                 size='small'
-                               
+
                             >
                                 <span>Login</span>
                             </LoadingButton>
-                           
+
                         </div>
                     </div>
 

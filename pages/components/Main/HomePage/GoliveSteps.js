@@ -2,36 +2,46 @@ import React from 'react'
 import Mstyles from '/Styles/main.module.css';
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 import Image from 'next/image';
+
+import LoadingButton from '@mui/lab/LoadingButton';
+import { useRouter, useParams } from 'next/router'
+
+import { LuLogIn, LuArrowRight } from "react-icons/lu";
 const GoliveSteps = () => {
+    const router = useRouter()
     const blurredImageData = 'data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88enTfwAJYwPNteQx0wAAAABJRU5ErkJggg==';
     return (
         <div>
             <div className={Mstyles.SecInTitle}>
-                <h1>Explore Usefull Features</h1>
-                <span>Whether you’re a startup or an established business, here’s why My Smart Library is your best choice</span>
+                <h1>Go Live Within Minutes 🚀</h1>
+                <span>Create a website for your self study center Business in minutes.</span>
             </div>
 
-            <div className={Mstyles.KeyFeatures}>
-                <div className={Mstyles.KeyFeaturesA}>
+            <div className={Mstyles.Golivebox}>
+                <div className={Mstyles.GoliveImg}>
+                    <img
+                        src={`/Home/golivestep.png`}
+                        alt="image"
+
+                    />
 
                 </div>
 
-                <div className={Mstyles.KeyFeaturesB}>
 
-                    <div className={Mstyles.KeyFeaturesAImg}>
-                        <Image
-                            src={`/Home/mobilef.png`}
-                            alt="image"
-                            layout="responsive"
-                            placeholder='blur'
-                            width={30}
-                            height={30}
-                            quality={100}
-                            blurDataURL={blurredImageData}
-                        />
-                    </div>
-
+                <div className={Mstyles.GoliveBtn}>
+                    <LoadingButton
+                        endIcon={<LuArrowRight />}
+                        loadingPosition="end"
+                        variant="contained"
+                        loading={false}
+                        fullWidth
+                        onClick={() => router.push(`https://admin.mysmartlibrary.in/Signup`)}
+                    >
+                        <span>Start Free Trial</span>
+                    </LoadingButton>
                 </div>
+
+
 
             </div>
 

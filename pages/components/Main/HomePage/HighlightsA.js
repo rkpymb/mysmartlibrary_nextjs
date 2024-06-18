@@ -10,7 +10,7 @@ const Highlights = () => {
                 <div className={Mstyles.HighlightsItem}>
                     <div className={Mstyles.HighlightsImg}>
                         <Image
-                            src={`/Home/presentation.png`}
+                            src={`/Home/landing-page.png`}
                             alt="image"
                             layout="responsive"
                             placeholder='blur'
@@ -21,9 +21,9 @@ const Highlights = () => {
                         />
                     </div>
                     <div className={Mstyles.HighlightsDe}>
-                        <span>Free Trainig</span>
+                        <span>Responsive Website</span>
                         <small>
-                            We Provide Free training to run software seamlessly.
+                        Create Your Study Center Optmized and Secured Website with 99.5% Uptime !
                         </small>
 
                     </div>
@@ -31,7 +31,7 @@ const Highlights = () => {
                 <div className={Mstyles.HighlightsItem}>
                     <div className={Mstyles.HighlightsImg}>
                         <Image
-                            src={`/Home/customer-service.png`}
+                            src={`/Home/pwamobile.png`}
                             alt="image"
                             layout="responsive"
                             placeholder='blur'
@@ -42,15 +42,15 @@ const Highlights = () => {
                         />
                     </div>
                     <div className={Mstyles.HighlightsDe}>
-                        <span>Free Support</span>
-                        <small>Live Chat Solution for any queries and problems</small>
+                        <span>PWA APP</span>
+                        <small>Progressive web app support for your web App. Free and Quick Installation</small>
 
                     </div>
                 </div>
                 <div className={Mstyles.HighlightsItem}>
                     <div className={Mstyles.HighlightsImg}>
                         <Image
-                            src={`/Home/classroom.png`}
+                            src={`/Home/admin-panel.png`}
                             alt="image"
                             layout="responsive"
                             placeholder='blur'
@@ -61,10 +61,11 @@ const Highlights = () => {
                         />
                     </div>
                     <div className={Mstyles.HighlightsDe}>
-                        <span>Video Tutorial</span>
-                        <small>Acces Free Video Tutorials and Docs.</small>
+                        <span>Admin Panel</span>
+                        <small>Manage Fee Collection, Seat, Shift, Users and Multiple Branches with admin panel.</small>
                     </div>
                 </div>
+                
             </div>
 
         </div>

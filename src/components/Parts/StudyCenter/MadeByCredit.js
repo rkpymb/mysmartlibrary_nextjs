@@ -22,7 +22,7 @@ const MadeByCredit = () => {
                         width={15}
                         height={15}
 
-                    /> <div style={{ width: '5px' }}></div> India
+                    /> <div style={{ width: '5px' }}></div> Bharat
 
                 </div>
                 <div style={{ minHeight: '5px' }}></div>
