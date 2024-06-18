@@ -9,7 +9,7 @@ import { MediaFilesUrl, MediaFilesFolder } from '/Data/config'
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
 
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import Drawer from '@mui/material/Drawer';
 import LoadingButton from '@mui/lab/LoadingButton';
 // import ThemeSwitch from './ThemeSwitch'
 import Skeleton from '@mui/material/Skeleton';
@@ -61,7 +61,7 @@ const UserMenu = () => {
                     <span>{Contextdata.Data.name}</span>
                 </div>
             </div>
-            <SwipeableDrawer
+            <Drawer
                 anchor={'right'}
                 open={OpenMenu}
                 onClose={HandleCloseMenu}
@@ -242,7 +242,7 @@ const UserMenu = () => {
                         <span>Logout</span>
                     </LoadingButton>
                 </div>
-            </SwipeableDrawer>
+            </Drawer>
         </div>
     );
 }

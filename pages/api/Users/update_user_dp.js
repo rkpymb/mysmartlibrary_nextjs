@@ -11,9 +11,9 @@ export default function handler(req, res) {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             };
-            axios.post(`${process.env.API_URL}Users/UpdateProfile`, { token: process.env.MYKEY,
-                name: req.body.name,
-                email: req.body.email, }, { headers }).then((response) => {
+            axios.post(`${process.env.API_URL}Users/update_user_dp`, { token: process.env.MYKEY,
+                dp: req.body.dp,
+              }, { headers }).then((response) => {
                 res.status(200).json({ ReqData: response.data });
 
             }).catch((error) => {

@@ -1,3 +1,101 @@
+.FIconMenuGrid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.FIconMenuItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.FooterNav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  z-index: 999;
+  background-color: rgb(255, 255, 255) !important;
+  padding: 0px 10px 2px 10px;
+
+}
+
+.FIconMenuItemText {
+  font-weight: 600;
+  font-size: 10px;
+  text-align: center;
+  margin-top: -5px;
+}
+
+.DpDiloagContainer {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.DpDiloagHeader {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.UploadteUploadDetalisBox {
+
+  font-size: 10px;
+  margin-top: 10px;
+}
+
+.UploadingboxText {
+  margin-top: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.UploadingboxTextDone {
+  margin-top: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+
+}
+
+.dropzoneStylesA {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -20px;
+
+}
+
+.dropzoneStylesB {
+
+  font-weight: 600;
+  text-align: center;
+
+}
+
+.DpMbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.EdiPBox {
+  width: 100%;
+  display: flex;
+
+  justify-content: center;
+  padding: 20px;
+
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  border-radius: 20px;
+}
+
+.EdiPBoxB {
+  width: 70%;
+}
+
 
 .PassOrdermsg {
   margin: 10px;
@@ -6,25 +104,30 @@
   font-size: 12px;
   text-align: center;
 }
-.MSecDeviderSmall{
+
+.MSecDeviderSmall {
   min-height: 10px;
 }
-.PwaaBox h2{
+
+.PwaaBox h2 {
   margin: 0;
 
 }
-.PwaaBox{
+
+.PwaaBox {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center
 }
-.PwaImg{
+
+.PwaImg {
   margin: 10px;
   padding: 5px;
   width: 100px;
 }
+
 .PassOrdermsg {
   margin: 10px;
   color: #918147;
@@ -32,7 +135,8 @@
   font-size: 12px;
   text-align: center;
 }
-.ContectDiv{
+
+.ContectDiv {
   height: 20px;
 }
 
@@ -88,6 +192,7 @@
   justify-content: center;
   flex-direction: column;
 }
+
 .PGDilogBox {
   min-width: 400px;
   max-width: 400px;
@@ -97,6 +202,7 @@
   background-color: white;
 
 }
+
 .TitleWithBackHeaderA {
   display: flex;
   align-items: center;
@@ -139,6 +245,7 @@
   font-weight: 700;
   color: #7fce34;
 }
+
 .InvBoxMsg {
   margin-top: 20px;
   padding: 20px;
@@ -200,6 +307,7 @@
   font-weight: 600;
   font-size: 13px;
 }
+
 .RcAmtgrid {
 
   margin: 0 auto;
@@ -712,10 +820,11 @@
 
 }
 
-.QrReaderTopA span{
+.QrReaderTopA span {
   font-weight: 600;
 }
-.QrReaderTop{
+
+.QrReaderTop {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1566,7 +1675,7 @@
   gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
 
-  place-items: center; 
+  place-items: center;
 
 }
 
@@ -1619,6 +1728,7 @@
   text-align: center;
   width: 80%;
   margin: auto;
+
 
 }
 
@@ -1883,6 +1993,7 @@
 .MboxSmall {
   width: 60%;
   margin: auto;
+
 }
 
 .MNavDevider {
@@ -2081,7 +2192,7 @@
   width: 100%;
   background-color: rgb(250, 246, 246);
   transition: all .15s;
- 
+
 }
 
 
@@ -2735,15 +2846,17 @@
   .Mbox {
     width: 100%;
     margin: auto;
-    
+
 
   }
 
   .MobileDiv {
     margin: 5px;
-    padding:5px;
+    padding: 5px;
+    margin-top: 10px;
     border-radius: 10px;
-    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.5)
+    box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+   background-color: #ffffff;
   }
 
   .MboxSmall {
@@ -2809,7 +2922,7 @@
     overflow: hidden;
   }
 
- 
+
 
 
   .HomeAboutboxText h1 {
@@ -2882,7 +2995,7 @@
     display: grid;
     gap: 0.2rem;
     grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
-    place-items: center; 
+    place-items: center;
   }
 
   .WhyChooseusBoxGrid::-webkit-scrollbar {
@@ -2895,9 +3008,9 @@
     line-height: normal;
     display: flex;
     flex-direction: column;
-   
+
     min-width: fit-content;
-   
+
     justify-content: space-between;
   }
 
@@ -2927,8 +3040,9 @@
     text-align: center;
 
   }
+
   .WhyChooseusItemB small {
-  
+
     font-size: 10px;
     text-align: center;
 
@@ -2979,11 +3093,11 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-  
+
     background-color: white;
     text-align: center;
     padding: 5px;
-  
+
   }
 
   .primaryColorAnim {
@@ -2991,7 +3105,7 @@
   }
 
   .Tbox {
-    
+
     width: 100%;
     padding: 0px 10px 0px 10px;
 
@@ -3000,14 +3114,14 @@
     align-items: initial;
     justify-content: initial;
     text-align: initial;
-   
+
     margin: auto;
   }
 
   .Tbox h1 {
     margin: 0;
     font-size: 15px;
-    
+
   }
 
   .Tbox span {
@@ -3020,9 +3134,11 @@
     border-radius: 0px;
     padding: 10px;
     backdrop-filter: none !important;
-    background-color: rgba(238, 231, 231, 0.575);
+    background-color: rgba(255, 255, 255, 0.575);
     padding-top: 20px;
     padding-bottom: 20px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+
 
   }
 
@@ -3070,7 +3186,8 @@
     width: 100%;
     position: relative;
   }
-  .ContectDiv{
+
+  .ContectDiv {
     height: 10px;
   }
 
@@ -3079,9 +3196,9 @@
     font-weight: 600;
     font-size: 10px;
     margin-left: 0px;
-  
+
   }
-  
+
 
   .MSecDevider {
     height: 5px;
@@ -3453,35 +3570,37 @@
     box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
     padding: 20px;
   }
+
   .LoginBoxItem {
     margin: auto;
     background-color: rgba(255, 255, 255, 0.784);
     width: 95%;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 22%);
-  
+
     display: flex;
     justify-content: center;
     align-items: center;
-  
+
     padding: 30px;
     border-radius: 20px;
-  
-  
+
+
   }
 
   .navbarMain {
-   
+
     box-shadow: none;
-   
+
   }
-  
+
   .marginLeft5 {
     margin-left: 5px;
   }
-  
+
   .marginRight5 {
     margin-right: 15px;
   }
+
   .SusPassItem {
     box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
     border-radius: 5px;
@@ -3498,33 +3617,54 @@
     justify-content: space-between;
   }
 
-  
-.TodayAttItem {
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
-  margin: 5px;
+
+  .TodayAttItem {
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+    margin: 5px;
 
 
-}
-.AddonItemMY {
-  background-color: white;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
-  display: flex;
-  margin: 5px;
-  justify-content: space-between;
-}
+  }
 
-.PGDilogBox {
-  min-width: 95%;
-  max-width: 95%;
-margin: auto;
-  border-radius: 20px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
-  padding: 10px;
-  background-color: white;
+  .AddonItemMY {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+    display: flex;
+    margin: 5px;
+    justify-content: space-between;
+  }
 
-}
+  .PGDilogBox {
+    min-width: 95%;
+    max-width: 95%;
+    margin: auto;
+    border-radius: 20px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+    padding: 10px;
+    background-color: white;
+
+  }
+
+  .MBtnbox {
+    width: 100%;
+  }
+
+  .EdiPBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: none;
+    border-radius: 20px;
+  }
+
+  .EdiPBoxB {
+    width: 100%;
+  }
+
 }

@@ -37,7 +37,7 @@ const YourComponent = ({ Title }) => {
                 <div className={Mstyles.secndHederBox}>
                     <div className={Mstyles.secndHederBoxA}>
                         <div>
-                            <IconButton aria-label="cart" onClick={() => router.back()}>
+                            <IconButton aria-label="go back" onClick={() => router.back()}>
                                 <StyledBadge color="secondary">
                                     <LuArrowLeft />
                                 </StyledBadge>

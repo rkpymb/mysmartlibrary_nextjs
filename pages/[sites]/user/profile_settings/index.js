@@ -52,9 +52,8 @@ function Overview() {
                         <div className={Mstyles.OnlyDesktop}>
                             <div style={{ height: '20px' }}></div>
                         </div>
-                        <div className={Mstyles.P7}>
-                          <EditProfile/>
-                        </div>
+                        <EditProfile/>
+                     
                     </div>
 
                 </div>

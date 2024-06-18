@@ -89,14 +89,14 @@ function RecentOrders() {
             <div>
                 {Retdata.length > 0 &&
                     <div>
-
+                        <div style={{ height: '10px' }}></div>
 
                         <div className={Mstyles.Tbox} >
                             <h1>Facilities & Amenities</h1>
                             <span>Let's Look Hows Looks Your Study Center , we have listed best photos </span>
                         </div>
                         <div className={Mstyles.ContectDiv} ></div>
-                      
+
                         <div className={Mstyles.AmenitiesItemGrid}>
                             {Retdata.map((item, index) => {
                                 return <div className={Mstyles.AmenitiesItem} key={index}>

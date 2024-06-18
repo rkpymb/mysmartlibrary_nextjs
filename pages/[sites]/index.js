@@ -5,7 +5,6 @@ import {
     styled
 } from '@mui/material';
 
-import BaseLayout from 'src/layouts/BaseLayout';
 import Mstyles from '/Styles/library.module.css'
 import CheckloginContext from '/context/auth/CheckloginContext'
 
@@ -13,6 +12,8 @@ import Head from 'next/head';
 import InstallModal from '../../src/components/InstallModal';
 
 import NavBarTop from '/src/components/Parts/Navbar/NavBarTop'
+
+import FooterNav from '/src/components/Parts/Navbar/FooterNav'
 import BranchPosterSlider from '../../src/components/Parts/StudyCenter/BranchPosterSlider'
 import HomeAbout from '../../src/components/Parts/StudyCenter/HomeAbout'
 import BranchPhotos from '../../src/components/Parts/StudyCenter/BranchPhotos'
@@ -22,6 +23,7 @@ import WhyChooseus from '../../src/components/Parts/StudyCenter/WhyChooseus'
 import LbContactboxHome from '../../src/components/Parts/StudyCenter/LbContactboxHome'
 import LBPassList from '../../src/components/Parts/StudyCenter/LBPassList'
 import UserBoxHome from '/src/components/Parts/StudyCenter/UserBoxHome'
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
 import { API_URL, DomainURL } from '/Data/config'
 import Footer from '/src/components/Parts/Footer'
@@ -183,9 +185,16 @@ function Overview({ WD }) {
 
 
                     </div>
+                    {isMobile &&
+                        <FooterNav />
+
+                    }
                     <InstallModal />
 
                     <Footer />
+
+
+
 
                 </div>
 

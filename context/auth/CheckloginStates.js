@@ -55,6 +55,7 @@ const CheckloginStates = (props) => {
 
                     setIsLogin(true);
                 } else {
+                    setIsLogin(false);
                   
                 }
             } 

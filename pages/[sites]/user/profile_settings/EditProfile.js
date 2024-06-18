@@ -21,9 +21,9 @@ const EditProfile = () => {
   const Contextdata = useContext(CheckloginContext)
   const [Btnloading, setBtnloading] = useState(false);
 
-  const [Name, setName] = useState(Contextdata.Data.name);
-  const [Email, setEmail] = useState(Contextdata.Data.email);
-  const [UserDp, setUserDp] = useState();
+  const [Name, setName] = useState('');
+  const [Email, setEmail] = useState('');
+  const [UserDp, setUserDp] = useState('');
 
   const notify = (T) => toast(T, {
     position: "bottom-center",
@@ -37,31 +37,32 @@ const EditProfile = () => {
   });
 
 
- 
+
   useEffect(() => {
     setName(Contextdata.Data.name)
     setEmail(Contextdata.Data.email)
     setUserDp(Contextdata.Data.dp)
 
-    document.getElementById("FinalFileName").value = Contextdata.Data.dp;
+
 
   }, [Contextdata.Data]);
 
   const UpdateProfile = (e) => {
     e.preventDefault();
-    let FinalFileName = document.querySelector('#FinalFileName').value
-    if (Name !== '' && Email !== '' && FinalFileName !== '') {
-      UpdateData(FinalFileName)
-      setBtnloading(true)
-    } else {
     
+    if (Name !== '' && Email !== '') {
+     
+      setBtnloading(true)
+      UpdateData()
+    } else {
+
       notify('All Fields are required*')
     }
   };
 
-  const UpdateData = async (NewImage) => {
+  const UpdateData = async () => {
 
-    const sendUM = { image: NewImage, name: Name, email: Email }
+    const sendUM = {  name: Name, email: Email }
     const data = await fetch("/api/Users/UpdateProfile", {
       method: "POST",
       headers: {
@@ -75,7 +76,7 @@ const EditProfile = () => {
         setBtnloading(false)
         if (parsed.ReqData.done) {
           notify('Profile Updated Successfully')
-        
+
         } else {
           notify('Something went wrong')
         }
@@ -84,6 +85,17 @@ const EditProfile = () => {
 
       })
   }
+
+  
+  const onImageUpload = (Filedata) => {
+    if (Filedata) {
+      setUserDp(Filedata)
+    } else {
+      setUserDp(null)
+    }
+
+
+};
 
 
   return (
@@ -103,56 +115,57 @@ const EditProfile = () => {
       />
 
       <ToastContainer />
-      <div>
+      <div className={MYS.EdiPBox}>
 
 
-        <UploadDp />
-        <form onSubmit={UpdateProfile} >
-          <div className={MYS.inputlogin}>
-            <TextField
-              required
-              label="Student's Name"
-              fullWidth
-              value={Name}
-              onInput={e => setName(e.target.value)}
-
-            />
-          </div>
-          <div className={MYS.inputlogin}>
-            <TextField
-              required
-              label="Email Address"
-              fullWidth
-
-              value={Email}
-              onInput={e => setEmail(e.target.value)}
-
-            />
-          </div>
-
-
-          <input type="hidden" value={UserDp} id="FinalFileName" />
-
-
-          <div className={MYS.inputlogin}>
-            <div className={MYS.MBtnbox}>
-              <LoadingButton
-
+        <div  className={MYS.EdiPBoxA}>
+          <UploadDp onImageUpload={onImageUpload}/>
+        </div>
+        <div  className={MYS.EdiPBoxB}>
+          <form onSubmit={UpdateProfile} >
+            <div className={MYS.inputlogin}>
+              <TextField
+                required
+                label="Student's Name"
                 fullWidth
-                onClick={UpdateProfile}
-                endIcon={<LuArrowRight />}
-                loading={Btnloading}
-                desabled={Btnloading}
-                loadingPosition="end"
-                variant="contained"
-              >
-                <span>Update</span>
-              </LoadingButton>
+                value={Name}
+                onInput={e => setName(e.target.value)}
+
+              />
             </div>
-          </div>
+            <div className={MYS.inputlogin}>
+              <TextField
+                required
+                label="Email Address"
+                fullWidth
+
+                value={Email}
+                onInput={e => setEmail(e.target.value)}
+
+              />
+            </div>
 
 
-        </form>
+            <div className={MYS.inputlogin}>
+              <div className={MYS.MBtnbox}>
+                <LoadingButton
+
+                  fullWidth
+                  onClick={UpdateProfile}
+                  endIcon={<LuArrowRight />}
+                  loading={Btnloading}
+                  desabled={Btnloading}
+                  loadingPosition="end"
+                  variant="contained"
+                >
+                  <span>Update</span>
+                </LoadingButton>
+              </div>
+            </div>
+
+
+          </form>
+        </div>
 
       </div>
     </div>

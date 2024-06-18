@@ -1,0 +1,32 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 1rem;
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+  background-color: transparent !important;;
+}
+
+.navbar.scrolled {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.Container{
+  width: 80%;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+.NavLogo{
+  width: 100px;
+}
+

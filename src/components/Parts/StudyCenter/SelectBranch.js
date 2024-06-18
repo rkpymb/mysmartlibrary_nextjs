@@ -175,7 +175,7 @@ const LocationboxMain = ({ ShowType }) => {
                     </div>
                     <div>
 
-                        {isLoading ? <div>
+                        {isLoading ? <div style={{padding:'10px'}}>
                             <Skeleton variant="text" sx={{ fontSize: '1rem' }} width={'100%'} animation="wave" />
                             <div style={{ height: '5px' }}></div>
                             <Skeleton variant="text" sx={{ fontSize: '1rem' }} width={'50%'} animation="wave" />

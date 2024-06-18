@@ -8,8 +8,9 @@ import {
   styled
 } from '@mui/material';
 
+import NavBar from './components/Main/NavBar'
 import BaseLayout from 'src/layouts/BaseLayout';
-import Mstyles from '../Styles/library.module.css'
+import Mstyles from '../Styles/main.module.css'
 import CheckloginContext from '../context/auth/CheckloginContext'
 
 import Head from 'next/head';
@@ -45,34 +46,22 @@ function Overview() {
   const Contextdata = useContext(CheckloginContext)
   useEffect(() => {
     setLoading(false)
-  
 
+    Contextdata.ChangeMainLoader(false)
   });
   return (
     <OverviewWrapper>
       <Head>
-        <title>{AppName} : {AppDesc}</title>
+        <title>My Smart Library</title>
       </Head>
-    
-      <div className={Mstyles.MNavDevider} ></div>
-      {!Loading &&
-        <div>
-          <div style={{ height: '10px' }}></div>
-         
-        
-          <div className={Mstyles.MSecDevider} ></div>
 
-          <div className={Mstyles.containerFull}>
-            <div className={Mstyles.OnlyDesktop}>
-              <div style={{ minHeight: '20px' }}></div>
-            </div>
-            <Footer />
+      <NavBar />
 
-          </div>
+      <div className={Mstyles.Container}>
 
-        </div>
 
-      }
+      </div>
+
 
 
 

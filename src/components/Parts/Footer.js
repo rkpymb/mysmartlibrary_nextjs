@@ -2,9 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import Mstyles from '/Styles/library.module.css'
 import Link from 'next/link';
 import { useRouter, useParams } from 'next/router'
-import { ShortAbout, AppName, SocialHandles, Contactinfo, DomainURL } from '/Data/config'
-import { BsFacebook, BsInstagram, BsTwitter, BsLinkedin, BsYoutube } from "react-icons/bs";
-import { HiLocationMarker, HiPhone, HiOutlineMail } from "react-icons/hi";
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+
 import FooterMenu1 from './StudyCenter/FooterMenu1'
 import MadeByCredit from './StudyCenter/MadeByCredit'
 import LbSocialHandles from './StudyCenter/LbSocialHandles'
@@ -32,7 +31,7 @@ const Footer = () => {
           </div>
           <div style={{ minHeight: '20px' }}></div>
           <div className={Mstyles.MFooter}>
-           
+
             <div className={Mstyles.MFooterbox}>
               <div className={Mstyles.MFooterboxIt}>
                 <div className={Mstyles.MFooterboxItA}>
@@ -56,7 +55,13 @@ const Footer = () => {
 
       }
 
+      {isMobile &&
+        <div>
+          <div className={Mstyles.MSecDevider} ></div>
+          <div className={Mstyles.MSecDevider} ></div>
+        </div>
 
+      }
 
     </div>
 
