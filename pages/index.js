@@ -14,6 +14,7 @@ import Mstyles from '../Styles/main.module.css'
 import CheckloginContext from '../context/auth/CheckloginContext'
 
 import Head from 'next/head';
+import HeroBox from './components/Main/HomePage/HeroBox'
 
 import Footer from '../src/components/Parts/Footer'
 
@@ -59,7 +60,7 @@ function Overview() {
 
       <div className={Mstyles.Container}>
 
-
+      <HeroBox />
       </div>
 
 

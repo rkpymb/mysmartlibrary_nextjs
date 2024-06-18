@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import CheckloginContext from '/context/auth/CheckloginContext';
 import Mstyles from '/Styles/main.module.css';
-
+import HomeNav from './HomeMenu'
 import { IoIosCall } from "react-icons/io";
 import { useRouter } from 'next/router';
 import LoadingButton from '@mui/lab/LoadingButton';
 
-import { LuUserCircle2 } from "react-icons/lu";
-
+import { LuLogIn, LuUser2 } from "react-icons/lu";
 
 import Skeleton from '@mui/material/Skeleton';
 import Avatar from '@mui/material/Avatar';
@@ -67,7 +66,60 @@ const NavBar = () => {
                     </div>
                 </div>
                 <div className={Mstyles.navContentB}>
-                    gtyfy
+                    <div>
+                        <HomeNav />
+                    </div>
+                    <div className={Mstyles.OnlyDesktop}>
+                        <div className={Mstyles.NavBtn}>
+
+                            <LoadingButton
+                                startIcon={<LuUser2 />}
+                                loadingPosition="end"
+                                variant="outlined"
+                                loading={false}
+                                fullWidth
+                                size='small'
+
+                            >
+                                <span>Signup</span>
+                            </LoadingButton>
+                            <div style={{ width: '10px' }} ></div>
+                            <LoadingButton
+
+                                startIcon={<LuLogIn />}
+                                loadingPosition="end"
+                                variant="contained"
+                                loading={false}
+                                fullWidth
+                                size='small'
+                               
+                            >
+                                <span>Login</span>
+                            </LoadingButton>
+                           
+                        </div>
+                    </div>
+                    <div className={Mstyles.OnlyMobile}>
+                        <div className={Mstyles.NavBtn}>
+
+                           
+                            <div style={{ width: '10px' }} ></div>
+                            <LoadingButton
+
+                                startIcon={<LuLogIn />}
+                                loadingPosition="end"
+                                variant="outlined"
+                                loading={false}
+                                fullWidth
+                                size='small'
+                               
+                            >
+                                <span>Login</span>
+                            </LoadingButton>
+                           
+                        </div>
+                    </div>
+
                 </div>
             </div>
 

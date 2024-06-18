@@ -55,13 +55,7 @@ const Footer = () => {
 
       }
 
-      {isMobile &&
-        <div>
-          <div className={Mstyles.MSecDevider} ></div>
-          <div className={Mstyles.MSecDevider} ></div>
-        </div>
-
-      }
+    
 
     </div>
 

@@ -2,10 +2,19 @@
   position: sticky;
   top: 0;
   width: 100%;
-  padding: 1rem;
+ 
   transition: background-color 0.3s ease;
-  z-index: 1000;
-  background-color: transparent !important;;
+  z-index: 999;
+  background-color: transparent !important;
+  ;
+}
+.Heroimg{ 
+  width: 100%;
+
+}
+.Heroimg img{ 
+  width: 100%;
+
 }
 
 .navbar.scrolled {
@@ -15,18 +24,148 @@
 
 .navContent {
   display: flex;
-  justify-content: space-between;
+
   align-items: center;
   margin: 0 auto;
   width: 80%;
+  padding: 1rem;
+  justify-content: space-between;
 }
 
-.Container{
+.Container {
   width: 80%;
   margin: 0 auto;
-  min-height: 100vh;
-}
-.NavLogo{
-  width: 100px;
+
 }
 
+.NavLogo {
+  width: 120px;
+}
+
+.HomeMenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.HomeMenuItem {
+  margin-left: 30px;
+  cursor: pointer;
+  width: fit-content;
+  margin-right: 30px;
+}
+
+.HomeMenuItem span {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.NavBtn {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  width: fit-content;
+}
+
+.navContentB {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  
+  justify-content: flex-end;
+}
+
+.OnlyDesktop {
+  display: block;
+}
+
+.OnlyMobile {
+  display: none;
+}
+
+@media only screen and (max-width: 1100px) {
+
+  .navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding:0;
+    transition: background-color 0.3s ease;
+    z-index: 999;
+    overflow: hidden;
+
+  }
+
+  .navbar.scrolled {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .navContent {
+    display: flex;
+
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0.5rem;
+
+
+    justify-content: space-between;
+  }
+
+  .Container {
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+  }
+
+  .NavLogo {
+    width: 100px;
+  }
+
+  .HomeMenu {
+    display: none;
+    
+
+  }
+
+  .HomeMenuItem {
+    margin-left: 30px;
+    cursor: pointer;
+    width: fit-content;
+    margin-right: 30px;
+  }
+
+  .HomeMenuItem span {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .NavBtn {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    width:auto;
+  }
+
+  .navContentB {
+    width: auto;
+    display: flex;
+    align-items: center;
+
+    justify-content: flex-end;
+  }
+
+  .OnlyDesktop {
+    display: none;
+  }
+
+  .OnlyMobile {
+    display: block;
+  }
+  
+
+
+
+}
