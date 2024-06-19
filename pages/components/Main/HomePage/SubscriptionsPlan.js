@@ -208,7 +208,7 @@ const SubscriptionsPlan = () => {
                                             <span>  {item.Tagline}</span>
                                         </div>
                                         <div className={Mstyles.PmtagCredit}>
-                                            <span>{item.FreeCredits || 0}</span>
+                                            <span>₹{item.IncludedItems.FreeCredits || 0}</span>
                                             <small>Free Credits</small>
                                         </div>
                                     </div>

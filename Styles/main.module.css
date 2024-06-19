@@ -1,8 +1,70 @@
+/* Add this to your main.module.css or a new CSS file */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slideUp {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.FmenuBox {
+  margin-top: 20px;
+}
+
+.ContactItem {
+  display: flex;
+
+  margin-top: 10px;
+}
+.ContacTTitle span{
+  font-size: 15px !important;
+  font-weight: 600;
+}
+
+.ContactItemA {
+  margin-top: 3px;
+}
+
+.ContactItemB {
+  margin-left: 10px;
+  font-weight: 500;
+}
+
+.FmenuItem {
+  margin-top: 10px;
+  cursor: pointer;
+}
+.Contactusp {
+  display: flex;
+
+}
+
+.ContactuspA {
+  width: 50%;
+  background-color: #ffffff;
+  padding: 30px;
+
+}
+
+.ContactuspB {
+  width: 50%;
+}
 .PlanGrid {
   margin: 0 auto;
   display: grid;
   gap: 0.5rem;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.AboutPage h3{
+  margin: 0;
 }
 
 .PlanImg {
@@ -540,15 +602,25 @@
   padding: 1rem;
   justify-content: space-between;
 }
+.AboutPage{
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+  border-radius: 10px;
+  padding: 20px 50px 50px 50px;
+}
 
+.SmallDevidor{
+  min-height: 20px;
+}
 .Container {
   width: 80%;
   margin: 0 auto;
+  min-height: 100vh;
 
 }
 
 .NavLogo {
   width: 120px;
+  cursor: pointer;
 }
 
 .HomeMenu {
@@ -631,6 +703,7 @@
 
   .NavLogo {
     width: 100px;
+    cursor: pointer;
   }
 
   .HomeMenu {
@@ -852,6 +925,28 @@
     color: yellow;
     
   }
+
+  .AboutPage{
+    box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
+    border-radius: 5px;
+    padding: 10px 10px 10px 10px;
+  }
+  .Contactusp {
+    display: flex;
+    flex-direction: column;
   
+  }
+  
+  .ContactuspA {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 30px;
+  
+  }
+  
+  .ContactuspB {
+    width: 100%;
+    
+  }
 
 }
