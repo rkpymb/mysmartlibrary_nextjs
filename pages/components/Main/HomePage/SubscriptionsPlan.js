@@ -278,7 +278,7 @@ const SubscriptionsPlan = () => {
                                     </div>
                                     <div className={Mstyles.PlanInItem}>
                                         <div className={Mstyles.PlanInItemA}>
-                                            <span>MobileApp</span>
+                                            <span>Android App</span>
                                         </div>
                                         <div className={Mstyles.PlanInItemB}>
                                             <span>{item.IncludedItems.MobileApp}</span>

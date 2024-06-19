@@ -18,7 +18,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import IconButton from '@mui/material/IconButton';
 
 
-import { MdFlipCameraAndroid } from "react-icons/md";
+import { IoCameraReverseOutline ,IoCameraReverseSharp} from "react-icons/io5";
 
 import Badge from '@mui/material/Badge';
 import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
@@ -80,7 +80,7 @@ function Overview() {
 
     const [TodayAtt, setTodayAtt] = useState([]);
     const [CurrentLocation, setCurrentLocation] = useState(null);
-    const [cameraFacingMode, setCameraFacingMode] = useState('environment'); // 'user' for front camera, 'environment' for back camera
+    const [facingMode, setFacingMode] = useState('environment'); // 'user' for front camera, 'environment' for back camera
 
     const [delay, setDelay] = useState(100);
     const [result, setResult] = useState('Scan Attendance QR Code');
@@ -88,12 +88,11 @@ function Overview() {
 
 
 
-    const handleCameraFlip = () => {
-        setCameraFacingMode(prevMode =>
-            prevMode === 'environment' ? 'user' : 'environment'
-        );
-    };
 
+
+    const handleCameraFlip = () => {
+        setFacingMode((prevFacingMode) => (prevFacingMode === 'environment' ? 'user' : 'environment'));
+    };
     const handleScan = (data) => {
         if (data !== null) {
             console.log(data.text)
@@ -590,19 +589,27 @@ function Overview() {
                                             <div className={Mstyles.QrReaderTopB}>
                                                 <IconButton aria-label="cart" onClick={handleCameraFlip}>
                                                     <StyledBadge color="secondary">
-                                                        <MdFlipCameraAndroid />
+                                                        {facingMode ? <IoCameraReverseOutline />: <IoCameraReverseSharp /> }
+                                                       
                                                     </StyledBadge>
                                                 </IconButton>
                                             </div>
 
                                         </div>
 
+                                      
+
                                         <QrReader
-                                            className={Mstyles.QrReader}
-                                            delay={delay}
-                                            facingMode={cameraFacingMode}
-                                            // onError={handleError}
+                                         className={Mstyles.QrReader}
+                                            delay={300}
+                                           
+                                            onError={handleError}
                                             onScan={handleScan}
+                                            constraints={{
+                                                video: {
+                                                    facingMode: facingMode,
+                                                },
+                                            }}
                                         />
 
 
