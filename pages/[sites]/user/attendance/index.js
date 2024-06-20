@@ -94,8 +94,9 @@ function Overview() {
         setFacingMode((prevFacingMode) => (prevFacingMode === 'environment' ? 'user' : 'environment'));
     };
     const handleScan = (data) => {
+       
         if (data !== null) {
-            console.log(data.text)
+            
             const webid = Contextdata.UserBranchData.WebData.webid
 
             if (data.text === `${DomainURL}${webid}`) {
