@@ -38,6 +38,9 @@ const Footer = () => {
                             <div className={Mstyles.menuurlf} onClick={() => router.push(`/p/terms-and-conditions`)}>
                                 <span>Terms & Conditions</span>
                             </div>
+                            <div className={Mstyles.menuurlf} onClick={() => router.push(`/p/privacy-policy`)}>
+                                <span>Privacy Policy</span>
+                            </div>
 
                         </div>
                     </div>

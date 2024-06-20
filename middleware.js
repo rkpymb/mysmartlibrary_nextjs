@@ -7,8 +7,8 @@ async function checkUserAuthentication(request) {
 
   if (!jwtToken) {
     console.log('No jwt token');
-    // If jwt_token is not found, redirect to login
-    return { isValid: false, redirect: true };
+    // If jwt_token is not found, redirect to login and delete the cookie
+    return { isValid: false, redirect: true, deleteCookie: true };
   }
 
   // API endpoint for checking authentication
@@ -31,32 +31,20 @@ async function checkUserAuthentication(request) {
     if (apiResponse.ok) {
       const data = await apiResponse.json();
       if (data && !data.error) {
-
         const response = NextResponse.next();
-        // response.cookies.set('user_data', JSON.stringify(data), {
-        //   httpOnly: true,
-        //   secure: request.url.startsWith('https'),
-        //   sameSite: 'lax',
-        //   maxAge: 86400, // Cookie expiry set to 1 day (86400 seconds)
-        // });
-
         return { response, data, isValid: true };
       } else {
         console.log(data.error);
       }
     }
 
-
-    return { isValid: false };
-
+    return { isValid: false, deleteCookie: true };
   } catch (error) {
     console.error('Error checking user authentication:', error);
-    return { isValid: false };
+    return { isValid: false, deleteCookie: true };
   }
 }
 
-// Middleware function
-// Middleware function
 // Middleware function
 export async function middleware(request) {
   // Extract current pathname
@@ -80,23 +68,33 @@ export async function middleware(request) {
     }
   }
 
-  const requiresAuthPaths = ['/user','/subscription-pass'];
+  const requiresAuthPaths = ['/user', '/subscription-pass'];
 
   if (requiresAuthPaths.some(path => currentPathname.includes(path))) {
-    const { response, isValid, redirect } = await checkUserAuthentication(request);
+    const { response, isValid, redirect, data, deleteCookie } = await checkUserAuthentication(request);
 
-    if (redirect) {
-      
-       console.log(pathAfterFirstSlash);
-      return NextResponse.redirect(new URL(`/${pathAfterFirstSlash}/Login`, request.url));
+    if (deleteCookie) {
+      const newResponse = NextResponse.redirect(new URL(`/${pathAfterFirstSlash}/Login`, request.url));
+      newResponse.cookies.delete('jwt_token');
+      return newResponse;
     }
 
-    if (isValid) {
-     
+    if (redirect) {
+      const newResponse = NextResponse.redirect(new URL(`/${pathAfterFirstSlash}/Login`, request.url));
+      newResponse.cookies.delete('jwt_token');
+      return newResponse;
+    }
+
+    if (isValid && data.UserData.WebData.webid === pathAfterFirstSlash) {
+      console.log('pathAfterFirstSlash');
+      console.log(data);
       return response;
+    } else {
+      const newResponse = NextResponse.redirect(new URL(`/${pathAfterFirstSlash}/Login`, request.url));
+      newResponse.cookies.delete('jwt_token');
+      return newResponse;
     }
   }
 
   return NextResponse.next();
 }
-
