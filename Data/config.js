@@ -1,14 +1,14 @@
 
-export const MediaFilesUrl = 'http://localhost:3002/';
+export const MediaFilesUrl = 'https://api.mysmartlibrary.in/';
 export const MediaFilesFolder = 'images'
 export const AppVersionCode = '2.0'
 
-// export const API_URL = 'http://localhost:3002/';
-export const API_URL = 'http://localhost:3002/';
-export const AppName = 'Dr. IT Education';
-export const AppDesc = 'Innovative Best Education for a Smarter Tomorrow : Best Courses in india, Exam Ready Online Courses';
-export const DomainURL = 'http://localhost:3000/';
-export const LbsubWebhook = 'http://localhost:3002/Users/UpdateOrder';
+// export const API_URL = 'https://api.mysmartlibrary.in/';
+export const API_URL = 'https://api.mysmartlibrary.in/';
+export const AppName = 'My Smart Library';
+export const AppDesc = 'Best For Stduy Center Business';
+export const DomainURL = 'https://.mysmartlibrary.in/';
+export const LbsubWebhook = 'https://api.mysmartlibrary.in/Users/UpdateOrder';
 export const CryptoJSKEY = 'XYZ';
 export const MainLogo = 'https://res.cloudinary.com/dt5ygstk9/image/upload/v1713471358/logo_rkbjex.png';
 
