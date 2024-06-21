@@ -11,7 +11,7 @@ export default function handler(req, res) {
         Authorization: `Bearer ${token}`,
       };
 
-      axios.post(`${process.env.API_URL}Users/check_auth`, { token: process.env.MYKEY }, { headers })
+      axios.post(`${process.env.API_URL}Users/check_auth`, { token: process.env.MYKEY,webid:req.body.webid }, { headers })
         .then((response) => {
           res.status(200).json({ RetD: response.data });
         })

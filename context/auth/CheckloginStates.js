@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 const CheckloginStates = (props) => {
-    const [Data, setData] = useState({});
+    const [Data, setData] = useState(null);
     const [IsLogin, setIsLogin] = useState(false);
 
     const [JwtToken, setJwtToken] = useState(null);
@@ -27,20 +27,18 @@ const CheckloginStates = (props) => {
 
     useEffect(() => {
         CheckLocation()
-
         CheckUSerLogin()
-
-    }, [router.query]);
+    }, [router.query, WebData]);
 
     const CheckUSerLogin = async () => {
-
-
         try {
             const token = getCookie('jwt_token');
 
-            if (token) {
+            if (token && WebData) {
                 setJwtToken(token)
-                const sendUM = {  };
+                const sendUM = {
+                    webid: WebData.webid,
+                };
                 const data = await fetch("/api/V2/auth/CheckAuth", {
                     method: "POST",
                     headers: {
@@ -52,17 +50,29 @@ const CheckloginStates = (props) => {
 
                 if (parsedFinal.RetD.UserData) {
                     setData(parsedFinal.RetD.UserData);
-
                     setIsLogin(true);
                 } else {
-                    setIsLogin(false);
-                  
+                    ResetLogin();
+
                 }
-            } 
+            }
         } catch (error) {
-            setIsLogin(false);
+            // ResetLogin(false);
         }
     };
+
+
+    const ResetLogin = async () => {
+        setIsLogin(false)
+        setUserBranchData(null)
+        setLocationData(null)
+        setWebSettings(null)
+        setJwtToken(null)
+        setData(null)
+       
+        localStorage.clear();
+        removeCookie('jwt_token')
+    }
 
 
     const ChnageUserBranchData = async (e) => {
@@ -100,7 +110,6 @@ const CheckloginStates = (props) => {
             if (localStorage.getItem('UBranchData')) {
                 const UBranchDataD = localStorage.getItem('UBranchData');
                 setUserBranchData(JSON.parse(UBranchDataD))
-                
             }
         } catch (error) {
             console.log(error)
@@ -131,7 +140,7 @@ const CheckloginStates = (props) => {
         setMainLoaderData(e)
     }
     return (
-        <CheckloginContext.Provider value={{ Data, IsLogin, ProfileDone, JwtToken, ChangeLocationData, LocationData, MapRadius, ChangeMapRadius, UserBranchData, ChnageUserBranchData, WebData, ChangeWebData,ChangeWebSettings, ChangeMainLoader, MainLoader, MainLoaderData, ChangeMainLoaderData, ChnagePayGatway, PayGatway,CheckUSerLogin,WebSettings }}>
+        <CheckloginContext.Provider value={{ Data, IsLogin, ProfileDone, JwtToken, ChangeLocationData, LocationData, MapRadius, ChangeMapRadius, UserBranchData, ChnageUserBranchData, WebData, ChangeWebData, ChangeWebSettings, ChangeMainLoader, MainLoader, MainLoaderData, ChangeMainLoaderData, ChnagePayGatway, PayGatway, CheckUSerLogin, WebSettings,ResetLogin }}>
             {props.children}
         </CheckloginContext.Provider>
     )

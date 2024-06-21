@@ -11,6 +11,7 @@ const WebsiteData = () => {
 
         const webid = router.query.sites
         if (Contextdata.WebData) {
+            console.log(Contextdata.WebData)
             console.log('Contextdata.WebData available')
 
         } else {
@@ -20,7 +21,7 @@ const WebsiteData = () => {
         }
 
 
-    }, [Contextdata.WebData, router.query]);
+    }, [router.query]);
 
     const GetData = async (e) => {
 
@@ -36,10 +37,11 @@ const WebsiteData = () => {
             return a.json();
         })
             .then((parsedFinal) => {
-
+                console.log('Web data')
+                console.log(parsedFinal)
                 if (parsedFinal.ReqD.WebData) {
                     Contextdata.ChangeWebSettings(parsedFinal.ReqD.WebSetings.SettingsData)
-                    console.log(parsedFinal.ReqD.WebSetings.SettingsData)
+                   
 
                     Contextdata.ChangeWebData(parsedFinal.ReqD.WebData)
                 }

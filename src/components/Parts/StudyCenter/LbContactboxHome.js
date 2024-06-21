@@ -19,6 +19,8 @@ const HeroBox = () => {
     useEffect(() => {
         if (Contextdata.UserBranchData) {
             setLoading(false)
+        }else{
+            
         }
     }, [Contextdata.UserBranchData]);
 
@@ -26,7 +28,7 @@ const HeroBox = () => {
     return (
 
         <div>
-            {!Loading &&
+            {!Loading && Contextdata.UserBranchData &&
 
                 <div>
                     <div>

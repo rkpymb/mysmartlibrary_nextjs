@@ -17,7 +17,7 @@
   box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
   z-index: 999;
   background-color: rgb(255, 255, 255) !important;
-  padding: 0px 10px 2px 10px;
+  padding: 8px;
 
 }
 
@@ -1173,7 +1173,7 @@
 }
 
 .AminityGridItemImg {
-  min-width: 35px;
+  min-width: 45px;
 }
 
 .OnlyDesktop {
@@ -1279,8 +1279,6 @@
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-
-
 }
 
 .PaniBox {
@@ -1669,14 +1667,20 @@
 
 
 .WhyChooseusBoxGrid {
-
   margin: 0 auto;
+  /* Centers the grid container horizontally if it has a fixed width */
   display: grid;
+  /* Defines the element as a grid container */
   gap: 1rem;
+  /* Sets a gap of 1 rem between grid items */
   grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
-
+  /* Creates responsive columns that fill the container and have a minimum width of 30% */
   place-items: center;
-
+  /* Centers items both horizontally and vertically within their grid cells */
+  grid-auto-rows: 1fr;
+  /* Sets a uniform height for all rows */
+  align-items: stretch;
+  /* Ensures all items stretch to fill the row height */
 }
 
 
@@ -1689,9 +1693,9 @@
 }
 
 .WhyChooseusItemAimg {
-  width: 50px;
+  min-width: 70px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
-  height: 50px;
+  min-height: 70px;
   border-radius: 50%;
   padding: 10px;
 }
@@ -2856,7 +2860,7 @@
     margin-top: 10px;
     border-radius: 10px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
-   background-color: #ffffff;
+    background-color: #ffffff;
   }
 
   .MboxSmall {
@@ -2991,33 +2995,40 @@
 
 
   .WhyChooseusBoxGrid {
-    margin: 5px;
+    margin: 0 auto;
+    /* Centers the grid container horizontally if it has a fixed width */
     display: grid;
-    gap: 0.2rem;
+    /* Defines the element as a grid container */
+    gap: 0rem;
+    /* Sets a gap of 1 rem between grid items */
     grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    /* Creates responsive columns that fill the container and have a minimum width of 30% */
     place-items: center;
-  }
-
-  .WhyChooseusBoxGrid::-webkit-scrollbar {
-    display: none;
+    /* Centers items both horizontally and vertically within their grid cells */
+    grid-auto-rows: 1fr;
+    /* Sets a uniform height for all rows */
+    align-items: stretch;
+    /* Ensures all items stretch to fill the row height */
   }
 
   .WhyChooseusItem {
-    padding: 0px;
+    padding: 5px;
     cursor: pointer;
     line-height: normal;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
 
     min-width: fit-content;
 
-    justify-content: space-between;
+    margin: 5px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
   }
 
   .WhyChooseusItemAimg {
-    width: 30px;
+    min-width: 50px;
     box-shadow: none;
-    height: 30px;
+    min-height: 50px;
     border-radius: 0;
     padding: 0;
     margin-bottom: 2px;

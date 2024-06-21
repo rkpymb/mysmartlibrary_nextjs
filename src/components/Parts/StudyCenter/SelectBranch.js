@@ -15,6 +15,7 @@ import Image from 'next/image';
 
 import Skeleton from '@mui/material/Skeleton';
 import Slide from '@mui/material/Slide';
+import { Web } from '@mui/icons-material';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -46,11 +47,11 @@ const LocationboxMain = ({ ShowType }) => {
                     Contextdata.ChangeLocationData(SeLocData);
                     const LocationData = JSON.stringify(SeLocData, null, 2);
                     localStorage.setItem('LocationData', LocationData);
-                   
-                 
+
+
 
                     if (Contextdata.WebData && Contextdata.MapRadius) {
-                        
+
                         GetBList(SeLocData)
                     }
 
@@ -98,20 +99,29 @@ const LocationboxMain = ({ ShowType }) => {
 
             })
     }
-
     useEffect(() => {
-        if (localStorage.getItem('UBranchData')) {
-            if (Contextdata.UserBranchData !== null) {
+        let BranchWebid = null
+        const BData = localStorage.getItem('UBranchData');
+        const parsedBData = JSON.parse(BData);
+        if (BData) {
 
-                setSelectedBranchName(Contextdata.UserBranchData.name)
-                Contextdata.ChangeMainLoader(false)
+            BranchWebid = parsedBData.WebData.webid
+            if (Contextdata.WebData.webid == BranchWebid && Contextdata.UserBranchData !== null) {
+                setSelectedBranchName(Contextdata.UserBranchData.name);
+                Contextdata.ChangeMainLoader(false);
+            } else {
+                Contextdata.ResetLogin()
             }
+            Contextdata.ChangeMainLoader(false);
         } else {
-            handleClickOpen()
-            Locateuser()
+            if(OpenEdit === false){
+                handleClickOpen();
+            }
+            Locateuser();
         }
 
-    }, [Contextdata.UserBranchData]);
+
+    }, [Contextdata.UserBranchData, Contextdata.WebData]);
 
     const handleClickOpen = () => {
         setOpenEdit(true);
@@ -119,7 +129,7 @@ const LocationboxMain = ({ ShowType }) => {
 
     };
     const RetryLocate = () => {
-      
+
         Locateuser()
 
     };
@@ -137,7 +147,7 @@ const LocationboxMain = ({ ShowType }) => {
         alert('Branch Updated Successfully')
         handleCloseEdit();
     };
-   
+
     return (
         <div className={Mstyles.slectbbox}>
             {ShowType == 1 &&
@@ -175,7 +185,7 @@ const LocationboxMain = ({ ShowType }) => {
                     </div>
                     <div>
 
-                        {isLoading ? <div style={{padding:'10px'}}>
+                        {isLoading ? <div style={{ padding: '10px' }}>
                             <Skeleton variant="text" sx={{ fontSize: '1rem' }} width={'100%'} animation="wave" />
                             <div style={{ height: '5px' }}></div>
                             <Skeleton variant="text" sx={{ fontSize: '1rem' }} width={'50%'} animation="wave" />

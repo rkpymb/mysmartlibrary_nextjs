@@ -11,7 +11,7 @@ const WhyChooseus = () => {
                     <div className={Mstyles.WhyChooseusItemA}>
                         <div className={Mstyles.WhyChooseusItemAimg}>
                             <Image
-                                src={`/img/location-pin.png`}
+                                src={`/img/premiumq.png`}
                                 alt="image"
                                 layout="responsive"
                                 placeholder='blur'
@@ -32,7 +32,7 @@ const WhyChooseus = () => {
                     <div className={Mstyles.WhyChooseusItemA}>
                         <div className={Mstyles.WhyChooseusItemAimg}>
                             <Image
-                                src={`/img/plant.png`}
+                                src={`/img/calm.png`}
                                 alt="image"
                                 layout="responsive"
                                 placeholder='blur'
@@ -53,7 +53,7 @@ const WhyChooseus = () => {
                     <div className={Mstyles.WhyChooseusItemA}>
                         <div className={Mstyles.WhyChooseusItemAimg}>
                             <Image
-                                src={`/img/rupees.png`}
+                                src={`/img/rupee.png`}
                                 alt="image"
                                 layout="responsive"
                                 placeholder='blur'

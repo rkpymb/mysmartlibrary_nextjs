@@ -29,12 +29,17 @@ const Login = () => {
     const [Otpbox, setOtpbox] = useState(false);
     const [RegBox, setRegBox] = useState(false);
 
+
+    useEffect(() => {
+        setIsalert(false)
+    }, [usermobile,FullName,Email,OtpText,]);
+
     useEffect(() => {
         if (Contextdata.WebData) {
             setLoading(false);
             Contextdata.ChangeMainLoader(false);
             if (Contextdata.IsLogin == true) {
-                router.back();
+                // router.push();
             }
         }
     }, [Contextdata.WebData, router.query]);
