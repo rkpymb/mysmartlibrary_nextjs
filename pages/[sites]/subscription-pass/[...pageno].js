@@ -13,7 +13,7 @@ import Sheet from 'react-modal-sheet';
 import Slide from '@mui/material/Slide';
 import PaywithCredit from '/src/components/Parts/StudyCenter/PaymentGatway/PaywithCredit'
 
-import AminityGrid from '/src/components/Parts/StudyCenter/AminityGrid'
+import LbAmenities from '/src/components/Parts/StudyCenter/LbAmenities'
 import WhyChooseus from '/src/components/Parts/StudyCenter/WhyChooseus'
 import Lbreviews from '/src/components/Parts/StudyCenter/Lbreviews'
 import LbContactboxHome from '/src/components/Parts/StudyCenter/LbContactboxHome'
@@ -128,7 +128,7 @@ function Overview({ PassD }) {
             LibraryShift()
 
 
-        } 
+        }
 
 
     }, [Contextdata.WebData]);
@@ -312,7 +312,7 @@ function Overview({ PassD }) {
 
 
 
-  
+
     return (
         <OverviewWrapper>
             <WebsiteData />
@@ -378,7 +378,10 @@ function Overview({ PassD }) {
 
                             <div className={Mstyles.MSecDevider} id="booknow"></div>
 
-                            <AminityGrid />
+                            <div className={Mstyles.Shiftbox}>
+                                <LbAmenities />
+                            
+                            </div>
 
                             <div className={Mstyles.MSecDevider} ></div>
 
@@ -386,7 +389,7 @@ function Overview({ PassD }) {
 
                                 <div className={Mstyles.ShiftboxOver}>
                                     <div className={Mstyles.WebsteTitlebox} >
-                                        <h2>Available Shifts</h2>
+                                        <h3>Available Shifts</h3>
                                         <span>Choose Your Shift to book your Seat now !</span>
                                     </div>
                                     <div style={{ height: '20px' }}></div>

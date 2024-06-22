@@ -5,25 +5,66 @@ import CheckloginContext from '/context/auth/CheckloginContext'
 
 
 const FooterMenu1 = () => {
-    const Contextdata = useContext(CheckloginContext)
     const router = useRouter()
+    const Contextdata = useContext(CheckloginContext)
+    const [Loading, setLoading] = useState(true);
+    const [Pagelist, setPagelist] = useState([]);
+    useEffect(() => {
+        if (Contextdata.WebData) {
+
+            GetData(Contextdata.WebData.webid)
+        }
+    }, [Contextdata.WebData]);
+
+
+    const GetData = async (e) => {
+        const sendUM = { webid: e }
+        const data = await fetch("/api/V3/List/webite_pages", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(sendUM)
+        }).then((a) => {
+            return a.json();
+        })
+            .then((parsedFinal) => {
+
+                if (parsedFinal.ReqD && parsedFinal.ReqD.WebPages) {
+                   
+                    setPagelist(parsedFinal.ReqD.WebPages)
+                    setLoading(false);
+
+                }
+
+            })
+
+    }
     return (
         <div>
-            <div className={Mstyles.menuurlfGrid}>
-                <div className={Mstyles.menuurlf} onClick={() => router.push(`/${Contextdata.WebData.WebData.webid}/about`)}>
-                    <span>About us</span>
-                </div>
-                <div className={Mstyles.menuurlf} onClick={() => router.push(`/${Contextdata.WebData.WebData.webid}/contact`)}>
-                    <span>Contact us</span>
-                </div>
-                <div className={Mstyles.menuurlf} onClick={() => router.push(`/${Contextdata.WebData.WebData.webid}/privacy-policy`)}>
-                    <span>Privacy Policy</span>
-                </div>
-                <div className={Mstyles.menuurlf} onClick={() => router.push(`/${Contextdata.WebData.WebData.webid}/terms-and-conditions`)}>
-                    <span>Terms & Conditions</span>
+            {!Loading &&
+
+                <div>
+                    {Pagelist.length > 0 &&
+                        <div>
+                            <div className={Mstyles.menuurlfGrid}>
+                                {Pagelist.map((item, index) => {
+                                    return <div key={index} className={Mstyles.menuurlf} onClick={() => router.push(`/${Contextdata.WebData.WebData.webid}/p/${item.PageSlug}`)}>
+                                        <span>{item.PageTitle}</span>
+                                    </div>
+                                }
+                                )}
+                            </div>
+
+                        </div>
+                    }
+
+
                 </div>
 
-            </div>
+
+            }
+
         </div>
     )
 }

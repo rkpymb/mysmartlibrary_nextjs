@@ -78,11 +78,11 @@ function RecentOrders() {
 
 
     useEffect(() => {
-        if (Contextdata.UserBranchData !== null) {
+        if (Contextdata.UserBranchData && Contextdata.WebData) {
             GetSliders()
         }
 
-    }, [Contextdata.UserBranchData]);
+    }, [Contextdata.UserBranchData, Contextdata.WebData]);
 
 
     return (<div>
@@ -117,7 +117,9 @@ function RecentOrders() {
                         {isLoading ? <div>
                             <Skeleton variant="rounded" height={250} width={'100%'} animation="wave" />
                         </div> :
-                            <div>
+                            <div 
+                            onClick={() => router.push(`${item.url}`)}
+                            >
                                 <img src={`${MediaFilesUrl}${MediaFilesFolder}/${item.img}`} alt='img' className={Mstyles.Herosliderimg} />
                             </div>}
 

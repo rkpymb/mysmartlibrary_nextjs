@@ -95,7 +95,6 @@ function RecentOrders() {
                             <h1>Facilities & Amenities</h1>
                             <span>Let's Look Hows Looks Your Study Center , we have listed best photos </span>
                         </div>
-                        <div className={Mstyles.ContectDiv} ></div>
 
                         <div className={Mstyles.AmenitiesItemGrid}>
                             {Retdata.map((item, index) => {

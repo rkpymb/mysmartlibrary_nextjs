@@ -104,22 +104,21 @@ const LocationboxMain = ({ ShowType }) => {
         const BData = localStorage.getItem('UBranchData');
         const parsedBData = JSON.parse(BData);
         if (BData) {
-
-            BranchWebid = parsedBData.WebData.webid
-            if (Contextdata.WebData.webid == BranchWebid && Contextdata.UserBranchData !== null) {
-                setSelectedBranchName(Contextdata.UserBranchData.name);
+            if (Contextdata.WebData) {
+                BranchWebid = parsedBData.WebData.webid
+                if (Contextdata.WebData.webid == BranchWebid && Contextdata.UserBranchData !== null) {
+                    setSelectedBranchName(Contextdata.UserBranchData.name);
+                    Contextdata.ChangeMainLoader(false);
+                } else {
+                    Contextdata.ResetLogin()
+                }
                 Contextdata.ChangeMainLoader(false);
-            } else {
-                Contextdata.ResetLogin()
             }
-            Contextdata.ChangeMainLoader(false);
+
         } else {
-            if(OpenEdit === false){
-                handleClickOpen();
-            }
+            handleClickOpen();
             Locateuser();
         }
-
 
     }, [Contextdata.UserBranchData, Contextdata.WebData]);
 

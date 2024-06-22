@@ -36,13 +36,15 @@ const Login = () => {
 
     useEffect(() => {
         if (Contextdata.WebData) {
-            setLoading(false);
-            Contextdata.ChangeMainLoader(false);
             if (Contextdata.IsLogin == true) {
-                // router.push();
+                
+                router.push(`/${Contextdata.WebData.webid}`);
+            }else{
+                Contextdata.ChangeMainLoader(false);
+                setLoading(false);
             }
         }
-    }, [Contextdata.WebData, router.query]);
+    }, [Contextdata.WebData, Contextdata.IsLogin]);
 
     const notify = (T) => toast(T, {
         position: "top-center",
@@ -147,7 +149,7 @@ const Login = () => {
             setLoadingBtn(true)
             const sendUM = {
 
-                webid: Contextdata.UserBranchData.WebData.webid,
+                webid: Contextdata.WebData.webid,
                 otp: OtpText,
                 mobile: usermobile,
 
@@ -172,7 +174,7 @@ const Login = () => {
                             notify('😀Login Successful')
                             Contextdata.CheckUSerLogin()
                             setTimeout(function () {
-                                router.back();
+                                router.push(`/${Contextdata.WebData.webid}`);
                             }, 1000);
                         } else {
                             setLoadingBtn(false);
@@ -216,7 +218,7 @@ const Login = () => {
             />
 
             <ToastContainer />
-            {!Loading &&
+            {!Loading && !Contextdata.IsLogin &&
                 <div className={Mstyles.LoginFull}>
                     <div className={Mstyles.LoginBox}>
 
