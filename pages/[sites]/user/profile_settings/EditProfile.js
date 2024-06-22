@@ -20,6 +20,7 @@ const EditProfile = () => {
   const router = useRouter()
   const Contextdata = useContext(CheckloginContext)
   const [Btnloading, setBtnloading] = useState(false);
+  const [Loading, setLoading] = useState(true);
 
   const [Name, setName] = useState('');
   const [Email, setEmail] = useState('');
@@ -39,19 +40,24 @@ const EditProfile = () => {
 
 
   useEffect(() => {
-    setName(Contextdata.Data.name)
-    setEmail(Contextdata.Data.email)
-    setUserDp(Contextdata.Data.dp)
+
+    if(Contextdata.Data){
+      setName(Contextdata.Data.name)
+      setEmail(Contextdata.Data.email)
+      setUserDp(Contextdata.Data.dp)
+      setLoading(false)
+  
+    }
+    
 
 
-
-  }, [Contextdata.Data]);
+  }, [Contextdata.Data,Contextdata.WebData]);
 
   const UpdateProfile = (e) => {
     e.preventDefault();
-    
+
     if (Name !== '' && Email !== '') {
-     
+
       setBtnloading(true)
       UpdateData()
     } else {
@@ -62,7 +68,7 @@ const EditProfile = () => {
 
   const UpdateData = async () => {
 
-    const sendUM = {  name: Name, email: Email }
+    const sendUM = { name: Name, email: Email }
     const data = await fetch("/api/Users/UpdateProfile", {
       method: "POST",
       headers: {
@@ -86,7 +92,7 @@ const EditProfile = () => {
       })
   }
 
-  
+
   const onImageUpload = (Filedata) => {
     if (Filedata) {
       setUserDp(Filedata)
@@ -95,7 +101,7 @@ const EditProfile = () => {
     }
 
 
-};
+  };
 
 
   return (
@@ -115,59 +121,63 @@ const EditProfile = () => {
       />
 
       <ToastContainer />
-      <div className={MYS.EdiPBox}>
+      {!Loading &&
 
+        <div className={MYS.EdiPBox}>
 
-        <div  className={MYS.EdiPBoxA}>
-          <UploadDp onImageUpload={onImageUpload}/>
-        </div>
-        <div  className={MYS.EdiPBoxB}>
-          <form onSubmit={UpdateProfile} >
-            <div className={MYS.inputlogin}>
-              <TextField
-                required
-                label="Student's Name"
-                fullWidth
-                value={Name}
-                onInput={e => setName(e.target.value)}
-
-              />
-            </div>
-            <div className={MYS.inputlogin}>
-              <TextField
-                required
-                label="Email Address"
-                fullWidth
-
-                value={Email}
-                onInput={e => setEmail(e.target.value)}
-
-              />
-            </div>
-
-
-            <div className={MYS.inputlogin}>
-              <div className={MYS.MBtnbox}>
-                <LoadingButton
-
+          <div className={MYS.EdiPBoxA}>
+            <UploadDp onImageUpload={onImageUpload} />
+          </div>
+          <div className={MYS.EdiPBoxB}>
+            <form onSubmit={UpdateProfile} >
+              <div className={MYS.inputlogin}>
+                <TextField
+                  required
+                  label="Student's Name"
                   fullWidth
-                  onClick={UpdateProfile}
-                  endIcon={<LuArrowRight />}
-                  loading={Btnloading}
-                  desabled={Btnloading}
-                  loadingPosition="end"
-                  variant="contained"
-                >
-                  <span>Update</span>
-                </LoadingButton>
+                  value={Name}
+                  onInput={e => setName(e.target.value)}
+
+                />
               </div>
-            </div>
+              <div className={MYS.inputlogin}>
+                <TextField
+                  required
+                  label="Email Address"
+                  fullWidth
+
+                  value={Email}
+                  onInput={e => setEmail(e.target.value)}
+
+                />
+              </div>
 
 
-          </form>
+              <div className={MYS.inputlogin}>
+                <div className={MYS.MBtnbox}>
+                  <LoadingButton
+
+                    fullWidth
+                    onClick={UpdateProfile}
+                    endIcon={<LuArrowRight />}
+                    loading={Btnloading}
+                    desabled={Btnloading}
+                    loadingPosition="end"
+                    variant="contained"
+                  >
+                    <span>Update</span>
+                  </LoadingButton>
+                </div>
+              </div>
+
+
+            </form>
+          </div>
+
         </div>
+      }
 
-      </div>
+
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import CheckloginContext from '/context/auth/CheckloginContext';
-import { useRouter, useParams } from 'next/router';
+import { useRouter } from 'next/router';
 import Dialog from '@mui/material/Dialog';
 import Avatar from '@mui/material/Avatar';
 import { useDropzone } from 'react-dropzone';
@@ -19,7 +19,6 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { FiChevronRight } from 'react-icons/fi';
 import Slide from '@mui/material/Slide';
 
-
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -27,8 +26,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const DpUploader = ({ onImageUpload }) => {
     const router = useRouter();
     const Contextdata = useContext(CheckloginContext);
-    const [OpenEdit, setOpenEdit] = React.useState(false);
-    const [Loading, setLoading] = useState(false);
+    const [OpenEdit, setOpenEdit] = useState(false);
+    const [Loading, setLoading] = useState(true);
     const [UserDp, setUserDp] = useState();
     const [imageSrc, setImageSrc] = useState(null);
     const [uploadProgress, setUploadProgress] = useState(0);
@@ -40,7 +39,6 @@ const DpUploader = ({ onImageUpload }) => {
     const [scale, setScale] = useState(1);
     const [rotation, setRotation] = useState(0);
 
-    // Handle image file drop
     const onDrop = async (acceptedFiles) => {
         const file = acceptedFiles[0];
         const fileType = file.type;
@@ -57,7 +55,6 @@ const DpUploader = ({ onImageUpload }) => {
         }
     };
 
-    // Handle image upload
     const handleUpload = async () => {
         if (!imageEditor) return;
 
@@ -139,6 +136,7 @@ const DpUploader = ({ onImageUpload }) => {
     useEffect(() => {
         if (Contextdata.Data) {
             setUserDp(Contextdata.Data.dp);
+            setLoading(false);
         }
     }, [Contextdata.Data]);
 
@@ -158,156 +156,161 @@ const DpUploader = ({ onImageUpload }) => {
         cursor: 'pointer',
     }));
 
+    if (Loading) return <div>Loading...</div>;
+
     return (
-        <div style={{margin:'10px'}}> 
-            <Badge
-                overlap="circular"
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                badgeContent={
-                    <div>
-                        <SmallAvatar onClick={handleClickOpen} alt={Contextdata.Data.name} src="/img/upload.png" />
-                    </div>
-                }
-            >
-                <Avatar
-                    alt={Contextdata.Data.name}
-                    sx={{ width: 100, height: 100 }}
-                    src={`${MediaFilesUrl}${MediaFilesFolder}/${UserDp}`} 
-                />
-            </Badge>
+        <div>
+            {Contextdata.Data && (
+                <div style={{ margin: '10px' }}>
+                    <Badge
+                        overlap="circular"
+                        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                        badgeContent={
+                            <div>
+                                <SmallAvatar onClick={handleClickOpen} alt={Contextdata.Data.name} src="/img/upload.png" />
+                            </div>
+                        }
+                    >
+                        <Avatar
+                            alt={Contextdata.Data.name}
+                            sx={{ width: 100, height: 100 }}
+                            src={`${MediaFilesUrl}${MediaFilesFolder}/${UserDp}`}
+                        />
+                    </Badge>
 
-            <Dialog
-                fullScreen
-                open={OpenEdit}
-                onClose={handleCloseEdit}
-                TransitionComponent={Transition}
-            >
-                <div className={Mstyles.DpDiloagContainer}>
-                    <div className={Mstyles.DpDiloagHeader}>
-                        <div>
-                            <IconButton
-                                onClick={handleCloseEdit}
-                                aria-label="toggle password visibility"
-                                style={{ width: 40, height: 40 }}
-                            >
-                                <LuArrowLeft size={20} />
-                            </IconButton>
-                        </div>
-                        <div>
-                            <span>Set Image</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        
-                        {!selectFile ? (
-                            <div className={Mstyles.DpMbox}>
-                                <Avatar
-                                    alt={Contextdata.Data.name}
-                                    sx={{ width: 150, height: 150 }}
-                                    src={`${fileUpldedFinal}`}
-                                />
-                                <div {...getRootProps()} className={Mstyles.dropzoneStyles}>
-                                    <input {...getInputProps()} />
-                                    <div className={Mstyles.dropzoneStylesA}>
-                                        <SmallAvatar alt={Contextdata.Data.name} src="/img/upload.png" />
-                                    </div>
-                                    <div className={Mstyles.dropzoneStylesB}>
-                                        Select File to Upload
-                                    </div>
+                    <Dialog
+                        fullScreen
+                        open={OpenEdit}
+                        onClose={handleCloseEdit}
+                        TransitionComponent={Transition}
+                    >
+                        <div className={Mstyles.DpDiloagContainer}>
+                            <div className={Mstyles.DpDiloagHeader}>
+                                <div>
+                                    <IconButton
+                                        onClick={handleCloseEdit}
+                                        aria-label="toggle password visibility"
+                                        style={{ width: 40, height: 40 }}
+                                    >
+                                        <LuArrowLeft size={20} />
+                                    </IconButton>
+                                </div>
+                                <div>
+                                    <span>Set Image</span>
                                 </div>
                             </div>
-                        ) : (
-                            <div className={Mstyles.DpMbox}>
-                                {uploadProgress > 0 && (
-                                    <div className="Uploadingbox">
-                                        {!uploadedFile ? (
-                                            <div>
-                                                <LinearProgress variant="buffer" value={uploadProgress} valueBuffer={uploadProgress} />
-                                                <div className="UploadingboxText">Uploading {uploadProgress.toFixed(2)}%</div>
+
+                            <div>
+                                {!selectFile ? (
+                                    <div className={Mstyles.DpMbox}>
+                                        <Avatar
+                                            alt={Contextdata.Data.name}
+                                            sx={{ width: 150, height: 150 }}
+                                            src={`${fileUpldedFinal}`}
+                                        />
+                                        <div {...getRootProps()} className={Mstyles.dropzoneStyles}>
+                                            <input {...getInputProps()} />
+                                            <div className={Mstyles.dropzoneStylesA}>
+                                                <SmallAvatar alt={Contextdata.Data.name} src="/img/upload.png" />
                                             </div>
-                                        ) : (
-                                            <div>
-                                                <div className="UploadedBox">
+                                            <div className={Mstyles.dropzoneStylesB}>
+                                                Select File to Upload
+                                            </div>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className={Mstyles.DpMbox}>
+                                        {uploadProgress > 0 && (
+                                            <div className="Uploadingbox">
+                                                {!uploadedFile ? (
                                                     <div>
-                                                        <div className="FileItem">
-                                                            <Avatar
-                                                                alt={Contextdata.Data.name}
-                                                                sx={{ width: 100, height: 100 }}
-                                                                src={`${fileUpldedFinal}`}
-                                                            />
-                                                            <div className="FileItemOverlay">
-                                                                <IconButton
-                                                                    onClick={handleResetUpload}
-                                                                    aria-label="toggle password visibility"
-                                                                    style={{ color: 'white', cursor: 'pointer' }}
-                                                                >
-                                                                    <FiTrash size={20} />
-                                                                </IconButton>
+                                                        <LinearProgress variant="buffer" value={uploadProgress} valueBuffer={uploadProgress} />
+                                                        <div className="UploadingboxText">Uploading {uploadProgress.toFixed(2)}%</div>
+                                                    </div>
+                                                ) : (
+                                                    <div>
+                                                        <div className="UploadedBox">
+                                                            <div>
+                                                                <div className="FileItem">
+                                                                    <Avatar
+                                                                        alt={Contextdata.Data.name}
+                                                                        sx={{ width: 100, height: 100 }}
+                                                                        src={`${fileUpldedFinal}`}
+                                                                    />
+                                                                    <div className="FileItemOverlay">
+                                                                        <IconButton
+                                                                            onClick={handleResetUpload}
+                                                                            aria-label="toggle password visibility"
+                                                                            style={{ color: 'white', cursor: 'pointer' }}
+                                                                        >
+                                                                            <FiTrash size={20} />
+                                                                        </IconButton>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                )}
                                             </div>
                                         )}
                                     </div>
                                 )}
-                            </div>
-                        )}
 
-                        {imageSrc && (
-                            <div className={Mstyles.DpMbox}>
-                                <div style={{ margin: '10px' }}>Edit and Crop Image to set image</div>
-                                <AvatarEditor
-                                    ref={(ref) => setImageEditor(ref)}
-                                    image={imageSrc}
-                                    width={300}
-                                    height={300}
-                                    border={20}
-                                    color={[255, 255, 255, 0.6]} // RGBA
-                                    scale={scale}
-                                    rotate={rotation}
-                                />
-                                <div style={{ marginTop: '10px' }}>
-                                    <label>Zoom:</label>
-                                    <input
-                                        type="range"
-                                        min="1"
-                                        max="3"
-                                        step="0.01"
-                                        value={scale}
-                                        onChange={(e) => setScale(Number(e.target.value))}
-                                    />
-                                </div>
-                                <div style={{ marginTop: '10px' }}>
-                                    <label>Rotate:</label>
-                                    <input
-                                        type="range"
-                                        min="-180"
-                                        max="180"
-                                        value={rotation}
-                                        onChange={(e) => setRotation(Number(e.target.value))}
-                                    />
-                                </div>
-                                <div style={{ marginTop: '20px' }}>
-                                    <LoadingButton
-                                        fullWidth
-                                        onClick={handleUpload}
-                                        endIcon={<FiChevronRight />}
-                                        loading={BtnLoading}
-                                        disabled={BtnLoading}
-                                        loadingPosition="end"
-                                        variant="contained"
-                                    >
-                                        Update Profile Picture
-                                    </LoadingButton>
-                                    <div className={Mstyles.SecDevider}></div>
-                                </div>
+                                {imageSrc && (
+                                    <div className={Mstyles.DpMbox}>
+                                        <div style={{ margin: '10px' }}>Edit and Crop Image to set image</div>
+                                        <AvatarEditor
+                                            ref={(ref) => setImageEditor(ref)}
+                                            image={imageSrc}
+                                            width={300}
+                                            height={300}
+                                            border={20}
+                                            color={[255, 255, 255, 0.6]}
+                                            scale={scale}
+                                            rotate={rotation}
+                                        />
+                                        <div style={{ marginTop: '10px' }}>
+                                            <label>Zoom:</label>
+                                            <input
+                                                type="range"
+                                                min="1"
+                                                max="3"
+                                                step="0.01"
+                                                value={scale}
+                                                onChange={(e) => setScale(Number(e.target.value))}
+                                            />
+                                        </div>
+                                        <div style={{ marginTop: '10px' }}>
+                                            <label>Rotate:</label>
+                                            <input
+                                                type="range"
+                                                min="-180"
+                                                max="180"
+                                                value={rotation}
+                                                onChange={(e) => setRotation(Number(e.target.value))}
+                                            />
+                                        </div>
+                                        <div style={{ marginTop: '20px' }}>
+                                            <LoadingButton
+                                                fullWidth
+                                                onClick={handleUpload}
+                                                endIcon={<FiChevronRight />}
+                                                loading={BtnLoading}
+                                                disabled={BtnLoading}
+                                                loadingPosition="end"
+                                                variant="contained"
+                                            >
+                                                Update Profile Picture
+                                            </LoadingButton>
+                                            <div className={Mstyles.SecDevider}></div>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
-                        )}
-                    </div>
+                        </div>
+                    </Dialog>
                 </div>
-            </Dialog>
+            )}
         </div>
     );
 };

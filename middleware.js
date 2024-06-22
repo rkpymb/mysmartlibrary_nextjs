@@ -1,13 +1,13 @@
 import { NextResponse, NextRequest } from 'next/server';
-import jwt from 'jsonwebtoken';
 
 // Function to decode JWT and extract webid
 function getWebidFromJwt(jwtToken) {
-
   try {
-    const decoded = jwt.decode(jwtToken);
+    const payload = jwtToken.split('.')[1];
+    const decodedPayload = atob(payload);
+    const decoded = JSON.parse(decodedPayload);
 
-    return decoded
+    return decoded;
   } catch (error) {
     console.error('Error decoding JWT:', error);
     return null;
@@ -21,7 +21,6 @@ async function checkUserAuthentication(request, webid) {
 
   if (!jwtToken) {
     console.log('No jwt token');
-
     return { isValid: false, redirect: true };
   }
 
@@ -46,15 +45,7 @@ async function checkUserAuthentication(request, webid) {
     if (apiResponse.ok) {
       const data = await apiResponse.json();
       if (data && !data.error) {
-
         const response = NextResponse.next();
-        // response.cookies.set('user_data', JSON.stringify(data), {
-        //   httpOnly: true,
-        //   secure: request.url.startsWith('https'),
-        //   sameSite: 'lax',
-        //   maxAge: 86400, // Cookie expiry set to 1 day (86400 seconds)
-        // });
-
         return { response, data, isValid: true };
       } else {
         console.log(data.error);
@@ -73,23 +64,18 @@ async function checkUserAuthentication(request, webid) {
 export async function middleware(request) {
   // Extract current pathname
   const currentPathname = request.nextUrl.pathname;
-
   const indexOfFirstSlash = currentPathname.indexOf('/');
 
   let pathAfterFirstSlash = '';
   if (indexOfFirstSlash !== -1) {
-
     const indexOfNextSlash = currentPathname.indexOf('/', indexOfFirstSlash + 1);
 
     if (indexOfNextSlash !== -1) {
       pathAfterFirstSlash = currentPathname.substring(indexOfFirstSlash + 1, indexOfNextSlash);
     } else {
-
       pathAfterFirstSlash = currentPathname.substring(indexOfFirstSlash + 1);
     }
   }
-
-
 
   const requiresAuthPaths = ['/user', '/subscription-pass'];
 
@@ -99,13 +85,15 @@ export async function middleware(request) {
     const jwtToken = request.cookies.get('jwt_token');
 
     if (!jwtToken) {
-
       return NextResponse.redirect(new URL(`/${pathAfterFirstSlash}/Login`, request.url));
     }
 
     const UserData = getWebidFromJwt(jwtToken);
+    if (!UserData || !UserData.users || !UserData.users.WebData) {
+      return NextResponse.redirect(new URL(`/${pathAfterFirstSlash}/Login`, request.url));
+    }
 
-    const webid = UserData.users.WebData.webid
+    const webid = UserData.users.WebData.webid;
 
     if (webid === pathAfterFirstSlash) {
       // Call the API to check user authentication
@@ -113,7 +101,6 @@ export async function middleware(request) {
 
       if (isValid) {
         console.log('pathAfterFirstSlash matches User_Webid');
-
         return response;
       } else {
         console.log(`Redirecting to /${webid}/Login`);

@@ -44,19 +44,24 @@ function Overview() {
             <NavbarTitle Title={'Profile Settings'} />
 
             <div>
+                {!Loading &&
+                    <div>
+                        <div className={Mstyles.Minh100vh}>
 
+                            <div className={Mstyles.MboxSmall}>
+                                <div className={Mstyles.OnlyDesktop}>
+                                    <div style={{ height: '20px' }}></div>
+                                </div>
+                                <EditProfile />
 
-                <div className={Mstyles.Minh100vh}>
+                            </div>
 
-                    <div className={Mstyles.MboxSmall}>
-                        <div className={Mstyles.OnlyDesktop}>
-                            <div style={{ height: '20px' }}></div>
                         </div>
-                        <EditProfile/>
-                     
                     </div>
 
-                </div>
+                }
+
+
 
             </div>
             <div className={Mstyles.FDevider} ></div>
