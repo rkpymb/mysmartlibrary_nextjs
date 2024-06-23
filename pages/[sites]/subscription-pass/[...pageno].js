@@ -376,14 +376,16 @@ function Overview({ PassD }) {
                                 <span>{PassD.PassData[0].details} {PassD.PassData[0].details}{PassD.PassData[0].details}{PassD.PassData[0].details}</span>
                             </div>
 
-                            <div className={Mstyles.MSecDevider} id="booknow"></div>
+                            <div className={Mstyles.MSecDevider} ></div>
 
-                            <div className={Mstyles.Shiftbox}>
+                            <div className={Mstyles.LbAmenitiesbox} id="booknow">
                                 <LbAmenities />
                             
                             </div>
 
-                            <div className={Mstyles.MSecDevider} ></div>
+                            <div className={Mstyles.OnlyMobile}>
+                                <div style={{ height: '20px' }}></div>
+                            </div>
 
                             <div className={Mstyles.Shiftbox} >
 
@@ -423,24 +425,22 @@ function Overview({ PassD }) {
                                 </div>
                             </div>
 
-                            <div className={Mstyles.MSecDevider} ></div>
+                           
                             <div className={Mstyles.OnlyMobile}>
                                 <div style={{ height: '20px' }}></div>
                             </div>
-                            <WhyChooseus />
-                            <div className={Mstyles.OnlyMobile}>
-                                <div style={{ height: '20px' }}></div>
-                            </div>
-                            <div className={Mstyles.MSecDevider} ></div>
 
+                            <WhyChooseus />
+                            
+                            <div className={Mstyles.OnlyMobile}>
+                                <div style={{ height: '20px' }}></div>
+                            </div>
+                            
                             <div className={Mstyles.P7}>
                                 <Lbreviews />
                             </div>
-                            <div className={Mstyles.MSecDevider} ></div>
-                            <LbContactboxHome />
-                            <div className={Mstyles.MSecDevider} ></div>
-
-
+                           
+                           
                         </div>
 
                     </div>
