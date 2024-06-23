@@ -127,6 +127,7 @@ const LocationboxMain = ({ ShowType }) => {
 
     const handleClickOpen = () => {
         setOpenEdit(true);
+        Locateuser();
     };
     const RetryLocate = () => {
         Locateuser()
