@@ -30,7 +30,7 @@ import Footer from '/src/components/Parts/Footer'
 
 import { AppDesc, AppName } from '/Data/config'
 import { useRouter, useParams } from 'next/router'
-
+import SelectBranch from '../../src/components/Parts/StudyCenter/SelectBranch'
 
 
 const HeaderWrapper = styled(Card)(
@@ -116,82 +116,112 @@ function Overview({ WD }) {
                     <NavBarTop SubTitle={false} SubTitleText={null} />
 
                     <div className={Mstyles.Minh100vh}>
-                        <div className={Mstyles.OnlyDesktop} >
-                            <div className={Mstyles.Mbox} >
-                                <UserBoxHome />
+                        {!Contextdata.UserBranchData ?
+
+                            <div className={Mstyles.SelectBranchMb}>
+                                <div className={Mstyles.SelectBranchMbText}>
+                                    <span>Select Branch</span>
+                                    <small>Please Select a Branch to Continue</small>
+                                    
+                                </div>
+                                <div style={{height:'10px'}}></div>
+                               
+
+                                <div className={Mstyles.SelectBranchMbBtn}>
+                                <SelectBranch ShowType={2} />
+                                    
+                                </div>
                             </div>
-                        </div>
-                        <div className={Mstyles.Mbox} >
-                            <div className={Mstyles.P7}>
-                                <BranchPosterSlider />
+                            :
+                            <div className={Mstyles.Minh100vh}>
+
+                                <div className={Mstyles.OnlyDesktop} >
+                                    <div className={Mstyles.Mbox} >
+                                        <UserBoxHome />
+                                    </div>
+                                </div>
+
+                                <div className={Mstyles.Mbox} >
+                                    <div className={Mstyles.P7}>
+                                        <BranchPosterSlider />
+                                    </div>
+                                </div>
+                                <div className={Mstyles.OnlyMobile} >
+                                    <div className={Mstyles.MSecDeviderSmall} ></div>
+                                    <div className={Mstyles.Mbox} >
+                                        <UserBoxHome />
+                                    </div>
+                                    <div className={Mstyles.MSecDevider} ></div>
+                                </div>
+                                <div className={Mstyles.Mbox} >
+                                    <div className={Mstyles.MobileDiv} >
+                                        <HomeAbout />
+                                    </div>
+                                </div>
+
+                                <div className={Mstyles.MSecDevider} ></div>
+
+                                <div className={Mstyles.Mbox} >
+                                    <WhyChooseus />
+                                </div>
+                                <div className={Mstyles.OnlyMobile} >
+                                    <div className={Mstyles.MSecDevider} ></div>
+                                </div>
+
+
+                                <div className={Mstyles.OnlyDesktop} >
+                                    <div className={Mstyles.MSecDevider} ></div>
+                                </div>
+                                <div className={Mstyles.Mbox} >
+                                    <div className={Mstyles.MobileDiv} >
+                                        <LbAmenities />
+                                    </div>
+                                </div>
+
+                                <div className={Mstyles.OnlyMobile} >
+                                    <div className={Mstyles.MSecDevider} ></div>
+                                </div>
+
+                                <div className={Mstyles.Mbox} >
+                                    <BranchPhotos />
+                                </div>
+
+
+                                <div className={Mstyles.Mbox} >
+                                    <LBPassList />
+                                </div>
+
+
+                                <div className={Mstyles.Mbox} >
+                                    <Lbreviews />
+                                </div>
+
+
+
+                                <div className={Mstyles.Mbox} >
+                                    <LbContactboxHome />
+                                </div>
+
                             </div>
-                        </div>
-                        <div className={Mstyles.OnlyMobile} >
-                            <div className={Mstyles.MSecDeviderSmall} ></div>
-                            <div className={Mstyles.Mbox} >
-                                <UserBoxHome />
-                            </div>
-                            <div className={Mstyles.MSecDevider} ></div>
-                        </div>
-                        <div className={Mstyles.Mbox} >
-                            <div className={Mstyles.MobileDiv} >
-                                <HomeAbout />
-                            </div>
-                        </div>
+                        }
 
-                        <div className={Mstyles.MSecDevider} ></div>
-
-                        <div className={Mstyles.Mbox} >
-                            <WhyChooseus />
-                        </div>
-                        <div className={Mstyles.OnlyMobile} >
-                            <div className={Mstyles.MSecDevider} ></div>
-                        </div>
-
-
-                        <div className={Mstyles.OnlyDesktop} >
-                            <div className={Mstyles.MSecDevider} ></div>
-                        </div>
-                        <div className={Mstyles.Mbox} >
-                            <div className={Mstyles.MobileDiv} >
-                                <LbAmenities />
-                            </div>
-                        </div>
-
-                        <div className={Mstyles.OnlyMobile} >
-                            <div className={Mstyles.MSecDevider} ></div>
-                        </div>
-
-                        <div className={Mstyles.Mbox} >
-                            <BranchPhotos />
-                        </div>
-
-
-                        <div className={Mstyles.Mbox} >
-                            <LBPassList />
-                        </div>
-
-
-                        <div className={Mstyles.Mbox} >
-                            <Lbreviews />
-                        </div>
-
-
-
-                        <div className={Mstyles.Mbox} >
-                            <LbContactboxHome />
-                        </div>
 
 
 
                     </div>
-                    {isMobile &&
-                        <FooterNav />
+                    {Contextdata.UserBranchData &&
+                        <div>
+                            {isMobile &&
+                                <FooterNav />
+
+                            }
+                            <InstallModal />
+
+                            <Footer />
+                        </div>
 
                     }
-                    <InstallModal />
 
-                    <Footer />
 
 
 

@@ -33,7 +33,7 @@ const LocationboxMain = ({ ShowType }) => {
     const [isLoading, setIsLoading] = useState(true);
 
     const Locateuser = async () => {
-        handleClickOpen();
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 position => {
@@ -117,17 +117,18 @@ const LocationboxMain = ({ ShowType }) => {
             }
 
         } else {
-          
+
             Locateuser();
-           
-           
+
+
         }
 
     }, [Contextdata.UserBranchData, Contextdata.WebData]);
 
     const handleClickOpen = () => {
         setOpenEdit(true);
-        Locateuser();
+        Locateuser()
+
     };
     const RetryLocate = () => {
         Locateuser()
@@ -158,6 +159,21 @@ const LocationboxMain = ({ ShowType }) => {
                     <div className={Mstyles.SelectbranchtopbtnB}>
                         {SelectedBranchName && SelectedBranchName.slice(0, 17)} {SelectedBranchName.length > 15 && <span>...</span>}
                     </div>
+                </div>
+            }
+            {ShowType == 2 &&
+                <div>
+                    <LoadingButton
+                    onClick={handleClickOpen}
+                        startIcon={<LuMapPin />}
+                        loading={false}
+                        loadingPosition="end"
+                        variant="contained"
+                        fullWidth
+
+                    >
+                         {SelectedBranchName && SelectedBranchName.slice(0, 17)} {SelectedBranchName.length > 15 && <span>...</span>}
+                    </LoadingButton>
                 </div>
             }
 

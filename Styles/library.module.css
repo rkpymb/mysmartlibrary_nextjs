@@ -1,3 +1,25 @@
+.SelectBranchMb {
+  margin: 60px auto;
+  width: 50%;
+  padding: 20px;
+  border-radius: 10px;
+ box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+}
+.SelectBranchMbText{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.SelectBranchMbBtn{
+  margin: auto;
+  width: 50%;
+}
+.SelectBranchMbText span{
+  font-size: 14px;
+  font-weight: 600;
+}
 .PageBox {
   margin: 10px auto;
   width: 90%;
@@ -3744,4 +3766,29 @@
    box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
   
   }
+
+
+  .SelectBranchMb {
+    margin: 60px auto;
+    width: 100%;
+    padding: 20px;
+    border-radius: 0px;
+   box-shadow: none;
+  }
+  .SelectBranchMbText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .SelectBranchMbBtn{
+    margin: auto;
+    width: 100%;
+  }
+  .SelectBranchMbText span{
+    font-size: 14px;
+    font-weight: 600;
+  }
 }
+
