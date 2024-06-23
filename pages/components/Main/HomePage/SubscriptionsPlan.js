@@ -347,7 +347,7 @@ const SubscriptionsPlan = () => {
                                             {item.Trial == false ?
                                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                                     <LoadingButton
-                                                         onClick={() => router.push(`https://admin.mysmartlibrary.in/admin/buy-subscriptions`)}
+                                                         onClick={() => router.push(`https://dashboard.mysmartlibrary.in/admin/buy-subscriptions`)}
                                                         endIcon={<LuArrowRight />}
                                                         loading={false}
                                                         loadingPosition="end"
@@ -358,7 +358,7 @@ const SubscriptionsPlan = () => {
                                                 </div> :
                                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                                     <LoadingButton
-                                                         onClick={() => router.push(`https://admin.mysmartlibrary.in/admin/buy-subscriptions`)}
+                                                         onClick={() => router.push(`https://dashboard.mysmartlibrary.in/admin/buy-subscriptions`)}
                                                         endIcon={<LuArrowRight />}
                                                         loading={false}
                                                         loadingPosition="end"

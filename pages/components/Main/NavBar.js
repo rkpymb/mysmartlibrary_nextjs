@@ -73,7 +73,7 @@ const NavBar = () => {
                         <div className={Mstyles.NavBtn}>
 
                             <LoadingButton
-                                onClick={() => router.push(`https://admin.mysmartlibrary.in/Signup`)}
+                                onClick={() => router.push(`https://dashboard.mysmartlibrary.in/Signup`)}
                                 startIcon={<LuUser2 />}
                                 loadingPosition="end"
                                 variant="outlined"
@@ -86,7 +86,7 @@ const NavBar = () => {
                             </LoadingButton>
                             <div style={{ width: '10px' }} ></div>
                             <LoadingButton
-                                onClick={() => router.push(`https://admin.mysmartlibrary.in/Login`)}
+                                onClick={() => router.push(`https://dashboard.mysmartlibrary.in/Login`)}
                                 startIcon={<LuLogIn />}
                                 loadingPosition="end"
                                 variant="contained"
@@ -106,7 +106,7 @@ const NavBar = () => {
 
                             <div style={{ width: '10px' }} ></div>
                             <LoadingButton
-                                onClick={() => router.push(`https://admin.mysmartlibrary.in/Login`)}
+                                onClick={() => router.push(`https://dashboard.mysmartlibrary.in/Login`)}
                                 startIcon={<LuLogIn />}
                                 loadingPosition="end"
                                 variant="outlined"

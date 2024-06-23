@@ -20,6 +20,7 @@ import Highlights from './components/Main/HomePage/Highlights'
 import HighlightsA from './components/Main/HomePage/HighlightsA'
 import KeyFeatures from './components/Main/HomePage/KeyFeatures'
 import GoliveSteps from './components/Main/HomePage/GoliveSteps'
+import FooterStickey from './components/Main/HomePage/FooterStickey'
 import DemoBox from './components/Main/HomePage/DemoBox'
 import SubscriptionsPlan from './components/Main/HomePage/SubscriptionsPlan'
 import MainFooter from './components/Main/MainFooter'
@@ -81,8 +82,10 @@ function Overview() {
         <SubscriptionsPlan />
   
       </div>
-
       <div className={Mstyles.MainDevidor}> </div>
+      <FooterStickey/>
+      <div className={Mstyles.MainDevidor}> </div>
+ 
       <MainFooter/>
 
 

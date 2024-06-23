@@ -3,8 +3,8 @@ export const MediaFilesUrl = 'https://api.mysmartlibrary.in/';
 export const MediaFilesFolder = 'images'
 export const AppVersionCode = '2.0'
 
-// export const API_URL = 'https://api.mysmartlibrary.in/';
 export const API_URL = 'https://api.mysmartlibrary.in/';
+export const AdminUrl = 'https://dashboard.mysmartlibrary.in/';
 export const AppName = 'My Smart Library';
 export const AppDesc = 'On Stop Solution for Self Study Center Business';
 export const DomainURL = 'https://mysmartlibrary.in/';
@@ -23,7 +23,7 @@ export const SocialHandles = {
     Playstore: 'https://play.google.com/store/apps/details?id=com.dritapp',
 
 };
-export const ShortAbout = 'offers industry-relevant Courses and Test Series to crack your Jobs with high performance and get succeeded in your Career. 👍';
+export const ShortAbout = 'On Stop Solution for Self Study Center Busines 👍';
 export const Contactinfo = {
     MainMobile: '+91 8437632258, +91 9060839661',
     MainAddress: '3rd Floor Astitva Complex, Bhabua, kaimur, Bihar, 821101 IN.',

@@ -192,7 +192,7 @@ const KeyFeatures = () => {
                                 />
                             </div>
                             <div className={Mstyles.FeatursItemB}>
-                                <span>Users Attendance</span>
+                                <span>QR Based Users Attendance</span>
                                 <small>Now make the attendance of your library center even easier with QR based attendance system.</small>
                             </div>
                         </div>

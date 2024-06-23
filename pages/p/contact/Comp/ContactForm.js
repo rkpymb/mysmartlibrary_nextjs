@@ -39,25 +39,19 @@ const ContactForm = () => {
 
 
     const SendEnq = async (e) => {
-        const webid = Contextdata.UserBranchData.WebData.webid
-        const Branchcode = Contextdata.UserBranchData.BranchCode
+      
 
         e.preventDefault();
         if (MobileNumber.length > 9 && FullName !== '' && Email !== '' && Message !== '') {
             setLoadingBtn(true)
-
             const sendUM = {
-                webid:webid,
-                Branchcode:Branchcode,
                 FullName: FullName,
                 MobileNumber: MobileNumber,
-              
                 Email: Email,
                 Message: Message,
-              
-
+            
             }
-            const data = await fetch("/api/V3/Library/CreateEnq", {
+            const data = await fetch("/api/Home/CreateEnqMain", {
                 method: "POST",
                 headers: {
                     'Content-type': 'application/json'

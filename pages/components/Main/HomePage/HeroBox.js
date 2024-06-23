@@ -6,7 +6,7 @@ const HeroBox = () => {
     const router = useRouter()
     return (
         <div>
-            <div className={Mstyles.Heroimg}  onClick={() => router.push(`https://admin.mysmartlibrary.in/Signup`)}>
+            <div className={Mstyles.Heroimg}  onClick={() => router.push(`https://dashboard.mysmartlibrary.in/Signup`)}>
                 <img src='/Home/heropostermain.png' className={Mstyles.OnlyDesktop}/>
                 <img src='/Home/heropostermainmobile.png' className={Mstyles.OnlyMobile} />
             </div>

@@ -26,13 +26,14 @@ const LocationboxMain = ({ ShowType }) => {
     const router = useRouter();
     const blurredImageData = 'data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88enTfwAJYwPNteQx0wAAAABJRU5ErkJggg==';
     const Contextdata = useContext(CheckloginContext);
-    const [OpenEdit, setOpenEdit] = React.useState(false);
+    const [OpenEdit, setOpenEdit] = useState(false);
     const [SelectedBranchName, setSelectedBranchName] = useState('Select Branch');
 
     const [Retdata, setRetdata] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     const Locateuser = async () => {
+        handleClickOpen();
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 position => {
@@ -116,21 +117,19 @@ const LocationboxMain = ({ ShowType }) => {
             }
 
         } else {
-            handleClickOpen();
+          
             Locateuser();
+           
+           
         }
 
     }, [Contextdata.UserBranchData, Contextdata.WebData]);
 
     const handleClickOpen = () => {
         setOpenEdit(true);
-        Locateuser()
-
     };
     const RetryLocate = () => {
-
         Locateuser()
-
     };
 
     const handleCloseEdit = () => {

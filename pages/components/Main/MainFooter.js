@@ -2,9 +2,10 @@ import React, { useState, useEffect, useContext } from 'react';
 import Mstyles from '/Styles/main.module.css'
 import Link from 'next/link';
 import { useRouter, useParams } from 'next/router'
+
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 import Image from 'next/image';
-
+import {AdminUrl} from '/Data/config'
 import Skeleton from '@mui/material/Skeleton';
 import CheckloginContext from '/context/auth/CheckloginContext'
 const Footer = () => {
@@ -20,7 +21,7 @@ const Footer = () => {
                 <div className={Mstyles.FotterMBox}>
                     <div className={Mstyles.FotterMBoxA}>
                         <div className={Mstyles.menuurlfGrid}>
-                            <div className={Mstyles.menuurlf} onClick={() => router.push(`/p/tutorials`)}>
+                            <div className={Mstyles.menuurlf} onClick={() => router.push(`${AdminUrl}/tutorials`)}>
                                 <span>Tutorials</span>
                             </div>
                             <div className={Mstyles.menuurlf} onClick={() => router.push(`/p/about`)}>
