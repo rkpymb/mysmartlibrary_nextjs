@@ -373,7 +373,7 @@ function Overview({ PassD }) {
                             </div>
 
                             <div className={Mstyles.PassDbox}>
-                                <span>{PassD.PassData[0].details} {PassD.PassData[0].details}{PassD.PassData[0].details}{PassD.PassData[0].details}</span>
+                                <span>{PassD.PassData[0].details} </span>
                             </div>
 
                             <div className={Mstyles.MSecDevider} ></div>
@@ -401,7 +401,7 @@ function Overview({ PassD }) {
                                                 <div className={Mstyles.ShiftitemA}>
                                                     <div>  <span style={{ fontWeight: 600 }}>{item.title}</span></div>
                                                     <div>  <span style={{ fontWeight: 500, fontSize: 12 }}>{item.uptime} - {item.downtime}</span></div>
-                                                    <div>  <span style={{ fontWeight: 500, fontSize: 12 }}>Price  <del>{item.mprice * DataMian.Validity}</del> <span style={{ fontWeight: 700 }}>₹{item.sprice * DataMian.Validity}</span> (for {DataMian.Validity} days)</span></div>
+                                                    <div>  <span style={{ fontWeight: 500, fontSize: 12 }}>Price  <del>{parseFloat(item.mprice * DataMian.Validity).toFixed(2)}</del> <span style={{ fontWeight: 700 }}>₹{parseFloat(item.sprice * DataMian.Validity).toFixed(2)}</span> (for {DataMian.Validity} days)</span></div>
                                                 </div>
                                                 <div className={Mstyles.ShiftitemB}>
                                                     <LoadingButton
@@ -493,16 +493,16 @@ function Overview({ PassD }) {
                                 </div>
                                 <div style={{ height: '20px' }}> </div>
                                 <div className={Mstyles.SeatGrid}>
-                                    {Seats.map((item) => {
+                                    {Seats.map((item,index) => {
                                         return <div>
 
                                             {item.Occupied === true &&
                                                 <div>
                                                     <div className={Mstyles.SeatGridItemOccupied}
-                                                        key={item.SeatCode}
+                                                        key={index}
 
                                                     >
-                                                        <span style={{ fontWeight: 500, fontSize: 10 }}>{item.SeatCode}</span>
+                                                        <span style={{ fontWeight: 500, fontSize: 10 }}>{item.title}</span>
 
                                                     </div>
                                                 </div>
@@ -510,10 +510,10 @@ function Overview({ PassD }) {
                                             {item.Occupied === false &&
                                                 <div>
                                                     <div className={SelectedSeatCode == item.SeatCode && item.Occupied === false ? Mstyles.SeatGridItemChoosed : Mstyles.SeatGridItem}
-                                                        key={item.SeatCode}
+                                                        key={index}
                                                         onClick={() => item.Occupied === false ? SeatSeleted(item) : null}
                                                     >
-                                                        <span style={{ fontWeight: 500, fontSize: 10 }}>{item.SeatCode}</span>
+                                                        <span style={{ fontWeight: 500, fontSize: 10 }}>{item.title}</span>
 
                                                     </div>
                                                 </div>
@@ -578,6 +578,7 @@ function Overview({ PassD }) {
 
                         {ShowPaybtn &&
                             <div className={Mstyles.LbFooterStikey}>
+                               <div className={Mstyles.BuYPbnt}>
                                 <LoadingButton
                                     fullWidth
                                     endIcon={<FiChevronRight />}
@@ -590,6 +591,7 @@ function Overview({ PassD }) {
                                 >
                                     <span>Confirm Booking</span>
                                 </LoadingButton>
+                            </div>
                             </div>
                         }
 

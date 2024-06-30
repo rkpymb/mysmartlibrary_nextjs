@@ -109,16 +109,13 @@ export default function SimpleBackdrop({ PaymentData }) {
             const parsed = await response.json();
 
             if (parsed.ReqData) {
-                console.log(parsed)
-
                 if (parsed.ReqData.Balance) {
                     setBalance(parsed.ReqData.Balance)
-                    setTimeout(function () {
-                        setLoading(false)
-                    }, 2000);
-
                 }
-
+                setTimeout(function () {
+                    setLoading(false)
+                }, 2000);
+                
             }
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -127,8 +124,7 @@ export default function SimpleBackdrop({ PaymentData }) {
     };
 
     useEffect(() => {
-        console.log('PaymentData')
-        console.log(PaymentData)
+       
         setPayCredit(PaymentData.amt)
         setOrderTitle(PaymentData.OrderTitle)
         setValidity(PaymentData.validity)

@@ -161,7 +161,7 @@ function QrOrderslist() {
                         <div className={Mstyles.WalletItemA}>
                             <div className={Mstyles.Amountbox} >
                                 {item.isActive === true ?
-                                    <span style={{ color: 'black' }}>+{item.amt}</span> : <span style={{ color: 'red' }}>-{item.amt}</span>
+                                    <span style={{ color: 'black' }}>+{parseFloat(item.amt).toFixed(2)}</span> : <span style={{ color: 'red' }}>-{parseFloat(item.amt).toFixed(2)}</span>
                                 }
                             </div>
                             <div style={{ height: '10px' }}></div>
