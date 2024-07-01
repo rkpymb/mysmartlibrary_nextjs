@@ -28,7 +28,6 @@ import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detec
 import { API_URL, DomainURL } from '/Data/config'
 import Footer from '/src/components/Parts/Footer'
 
-import { AppDesc, AppName } from '/Data/config'
 import { useRouter, useParams } from 'next/router'
 import SelectBranch from '../../src/components/Parts/StudyCenter/SelectBranch'
 
@@ -76,16 +75,13 @@ export async function getServerSideProps(context) {
 function Overview({ WD }) {
     const router = useRouter()
     const [Loading, setLoading] = useState(true);
-    const [manifestURL, setManifestURL] = useState(null);
+   
     const Contextdata = useContext(CheckloginContext)
 
     useEffect(() => {
         if (WD.WebData && WD.WebData.isActive) {
-
             Contextdata.ChangeWebData(WD.WebData)
             Contextdata.ChangeWebSettings(WD.WebSetings.SettingsData)
-
-            setManifestURL(`${API_URL}Openendpoint/manifest.json?webid=${WD.WebData.webid}`)
             setLoading(false)
 
         } else {
@@ -104,12 +100,10 @@ function Overview({ WD }) {
                 <meta name="description" property="og:description" content={WD.WebData && WD.WebData.WebData.ShortDesc} />
                 <meta property="og:image" name="og:image" content={WD.WebData && `${DomainURL}${WD.WebData.WebData.Logo}`} />
                 <meta property="og:url" name="og:url" content={WD.WebData && `${DomainURL}${WD.webid}`} />
-                <link rel="manifest" href={manifestURL && manifestURL} />
-                <meta name="theme-color" content="#ffffff" />
-                <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+               
             </Head>
 
-            {!Loading && manifestURL &&
+            {!Loading &&
 
                 <div>
 
@@ -122,14 +116,14 @@ function Overview({ WD }) {
                                 <div className={Mstyles.SelectBranchMbText}>
                                     <span>Select Branch</span>
                                     <small>Please Select a Branch to Continue</small>
-                                    
+
                                 </div>
-                                <div style={{height:'10px'}}></div>
-                               
+                                <div style={{ height: '10px' }}></div>
+
 
                                 <div className={Mstyles.SelectBranchMbBtn}>
-                                <SelectBranch ShowType={2} />
-                                    
+                                    <SelectBranch ShowType={2} />
+
                                 </div>
                             </div>
                             :
@@ -215,13 +209,13 @@ function Overview({ WD }) {
                                 <FooterNav />
 
                             }
-                            <InstallModal />
+
 
                             <Footer />
                         </div>
 
                     }
-
+                    <InstallModal />
 
 
 

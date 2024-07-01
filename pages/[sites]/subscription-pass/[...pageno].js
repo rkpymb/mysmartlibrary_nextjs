@@ -396,8 +396,8 @@ function Overview({ PassD }) {
                                     </div>
                                     <div style={{ height: '20px' }}></div>
                                     <div className={Mstyles.Shiftgrid}>
-                                        {ShiftsList.map((item) => {
-                                            return <div className={Mstyles.Shiftitem} key={item._id} onClick={() => Showseats(item)} >
+                                        {ShiftsList.map((item,index) => {
+                                            return <div className={Mstyles.Shiftitem} key={index} onClick={() => Showseats(item)} >
                                                 <div className={Mstyles.ShiftitemA}>
                                                     <div>  <span style={{ fontWeight: 600 }}>{item.title}</span></div>
                                                     <div>  <span style={{ fontWeight: 500, fontSize: 12 }}>{item.uptime} - {item.downtime}</span></div>
@@ -538,8 +538,8 @@ function Overview({ PassD }) {
                                 <div>
 
                                     <div className={Mstyles.Shiftgrid}>
-                                        {Addons.map((item) => {
-                                            return <div className={Mstyles.Shiftitem} key={item._id}
+                                        {Addons.map((item,index) => {
+                                            return <div className={Mstyles.Shiftitem} key={index}
                                                 onClick={() => handleToggleSelection(item)}
 
                                             >
@@ -583,7 +583,7 @@ function Overview({ PassD }) {
                                     fullWidth
                                     endIcon={<FiChevronRight />}
                                     loading={CreateOrderLoader}
-                                    desabled={CreateOrderLoader}
+                                    disabled={CreateOrderLoader}
                                     loadingPosition="end"
                                     variant="contained"
                                     onClick={CreateOrder}

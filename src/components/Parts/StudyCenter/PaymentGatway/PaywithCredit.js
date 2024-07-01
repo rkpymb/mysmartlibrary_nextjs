@@ -245,7 +245,7 @@ export default function SimpleBackdrop({ PaymentData }) {
                                         </div>
                                         <div style={{ height: "20px" }}></div>
                                         <div>
-                                            {Balance < PayCredit ?
+                                            {parseFloat(Balance) < parseFloat(PayCredit) ?
 
                                                 <div>
                                                     <div className={Mstyles.BtnboxPageB}>
