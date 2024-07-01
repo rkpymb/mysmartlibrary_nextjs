@@ -13,27 +13,25 @@ const InstallModal = () => {
     const [BtnLoading, setBtnLoading] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [deferredPrompt, setDeferredPrompt] = useState(null);
-    const [PwaSettings, setPwaSettings] = useState([]);
-    const [selectedPwaIndex, setSelectedPwaIndex] = useState(0);
+    const [isAppInstalled, setIsAppInstalled] = useState(false);
+    const [manifestURL, setManifestURL] = useState(null);
+    const [PwaSetting, setPwaSetting] = useState(null);
+    const [PwaUrl, setPwaUrl] = useState(null);
 
     const blurredImageData = 'data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88enTfwAJYwPNteQx0wAAAABJRU5ErkJggg==';
 
     useEffect(() => {
-        if (Contextdata.WebData && Contextdata.WebData.length > 0) {
-            const settings = Contextdata.WebData.map((webData) => ({
-                url: `${DomainURL}${webData.webid}`,
-                manifestURL: `${API_URL}Openendpoint/manifest.json?webid=${webData.webid}`,
-                icon: `${MediaFilesUrl}${MediaFilesFolder}/${webData.icon}`,
-                appName: webData.appName,
-            }));
-            setPwaSettings(settings);
+        if (Contextdata.WebData && Contextdata.WebSettings) {
+            setPwaUrl(`${DomainURL}${Contextdata.WebData.webid}`);
+            setManifestURL(`${API_URL}Openendpoint/manifest.json?webid=${Contextdata.WebData.webid}`);
+            setPwaSetting(Contextdata.WebSettings.PwaSetting);
         }
-    }, [Contextdata.WebData]);
+    }, [Contextdata.WebData, Contextdata.WebSettings]);
 
     useEffect(() => {
         const checkAppInstalled = () => {
             const isInstalled = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-            return isInstalled;
+            setIsAppInstalled(isInstalled);
         };
 
         const listenForInstallPrompt = (event) => {
@@ -43,11 +41,12 @@ const InstallModal = () => {
         };
 
         window.addEventListener('beforeinstallprompt', listenForInstallPrompt);
+        checkAppInstalled();
 
         return () => {
             window.removeEventListener('beforeinstallprompt', listenForInstallPrompt);
         };
-    }, []);
+    }, [PwaSetting]);
 
     const installApp = () => {
         if (deferredPrompt) {
@@ -58,33 +57,23 @@ const InstallModal = () => {
                 }
                 setTimeout(() => {
                     setBtnLoading(false);
-                    setShowModal(false);
                 }, 1000);
+                setShowModal(false);
             });
         }
     };
 
-    const handlePwaChange = (index) => {
-        setSelectedPwaIndex(index);
-    };
-
-    const selectedPwa = PwaSettings[selectedPwaIndex];
-
-    if (!selectedPwa) {
-        return null; // Or some loading state if PwaSettings is still being fetched
-    }
-
     return (
         <div>
             <Head>
-                <link rel="manifest" href={selectedPwa.manifestURL} />
+                {manifestURL && <link rel="manifest" href={manifestURL} />}
                 <meta name="theme-color" content="#ffffff" />
-                <link rel="apple-touch-icon" href={selectedPwa.icon} />
+                <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
             </Head>
 
             <Backdrop
                 sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                open={showModal && !checkAppInstalled()}
+                open={showModal && !isAppInstalled}
             >
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                     <div className={Mstyles.PGDilogBox}>
@@ -94,7 +83,7 @@ const InstallModal = () => {
                                     <div className={Mstyles.PwaaBox}>
                                         <div className={Mstyles.PwaImg}>
                                             <Image
-                                                src={selectedPwa.icon}
+                                                src={`${MediaFilesUrl}${MediaFilesFolder}/${PwaSetting?.Icon512}`}
                                                 alt="image"
                                                 layout="responsive"
                                                 placeholder='blur'
@@ -105,7 +94,7 @@ const InstallModal = () => {
                                                 objectFit='cover'
                                             />
                                         </div>
-                                        <span>Try {selectedPwa.appName} Progressive Web App for Better Experience 🚀</span>
+                                        <span>Try {PwaSetting?.AppName} Progressive web App for Better Experience 🚀</span>
                                     </div>
                                     <div style={{ height: '10px' }}></div>
                                     <LoadingButton
