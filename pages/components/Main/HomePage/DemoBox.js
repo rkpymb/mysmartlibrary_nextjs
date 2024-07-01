@@ -7,7 +7,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import ReactPlayer from 'react-player/youtube';
 import { LuLogIn, LuArrowRight } from "react-icons/lu";
 const GoliveSteps = () => {
-    const [url, setUrl] = useState('https://www.youtube.com/watch?v=3yYSZTnf96Y');
+    const [url, setUrl] = useState('https://www.youtube.com/watch?v=OLmwmvuYlfA');
     const blurredImageData = 'data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88enTfwAJYwPNteQx0wAAAABJRU5ErkJggg==';
     return (
         <div>
