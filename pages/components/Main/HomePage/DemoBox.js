@@ -13,7 +13,7 @@ const GoliveSteps = () => {
         <div>
             <div className={Mstyles.SecInTitle}>
                 <h1>Software Demo Video ✅</h1>
-                <span>Watch Complete Software Demo here.</span>
+                <span>Watch Quick Software Demo here.</span>
             </div>
 
             <div className={Mstyles.playerwrapper}>
