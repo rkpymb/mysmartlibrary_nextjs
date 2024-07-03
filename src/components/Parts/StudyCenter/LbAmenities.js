@@ -93,7 +93,7 @@ function RecentOrders() {
 
                         <div className={Mstyles.Tbox} >
                             <h1>Facilities & Amenities</h1>
-                            <span>Let's Look Hows Looks Your Study Center , we have listed best photos </span>
+                            <span>Our self-study center offers a quiet, well-equipped environment with WiFi, comfortable seating, and a library, perfect for focused learning. </span>
                         </div>
 
                         <div className={Mstyles.AmenitiesItemGrid}>
