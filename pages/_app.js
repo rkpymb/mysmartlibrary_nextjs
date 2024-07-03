@@ -12,19 +12,21 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import CheckloginStates from '../context/auth/CheckloginStates'
 const clientSideEmotionCache = createEmotionCache();
 import BackdropLoader from '/src/components/Parts/BackdropLoader'
+import Script from 'next/script';
+
 import '../Styles/globals.css'
 
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 function TokyoApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const getLayout = Component.getLayout ?? ((page) => page);
- 
+
   Router.events.on('routeChangeStart', nProgress.start);
   Router.events.on('routeChangeError', nProgress.done);
   Router.events.on('routeChangeComplete', nProgress.done);
 
 
-  
+
 
 
 
@@ -32,27 +34,44 @@ function TokyoApp(props) {
 
   return (
 
-    <CheckloginStates >
-      {/* Same as */}
-      
-      <CacheProvider value={emotionCache}>
-        <Head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
-        </Head>
-        <SidebarProvider>
-          <ThemeProvider >
-          <BackdropLoader />
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <CssBaseline />
-              {getLayout(<Component {...pageProps} />)}
-            </LocalizationProvider>
-          </ThemeProvider>
-        </SidebarProvider>
-      </CacheProvider>
-    </CheckloginStates >
+    <>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-FM1WTL6LJF"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-FM1WTL6LJF');
+        `}
+      </Script>
+      <CheckloginStates >
+        {/* Same as */}
+
+        <CacheProvider value={emotionCache}>
+          <Head>
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            />
+          </Head>
+          <SidebarProvider>
+            <ThemeProvider >
+              <BackdropLoader />
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <CssBaseline />
+                {getLayout(<Component {...pageProps} />)}
+              </LocalizationProvider>
+            </ThemeProvider>
+          </SidebarProvider>
+        </CacheProvider>
+      </CheckloginStates >
+    </>
+
+
   );
 }
 
